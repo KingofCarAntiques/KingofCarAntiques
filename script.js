@@ -57,7 +57,8 @@ function handleFormSubmit(e) {
 
     const carBrandSelect = document.getElementById('carBrand');
     const manufactureDate = document.getElementById('manufactureDate').value;
-const mileageRange = parseFloat(document.getElementById("mileageRange").value);    const carColor = document.getElementById("carColor").value;
+    const mileage = parseFloat(document.getElementById('mileage').value);
+    const carColor = document.getElementById('carColor').value;
 
     if (!carBrandSelect.value) {
         alert('請選擇車款');
@@ -69,8 +70,13 @@ const mileageRange = parseFloat(document.getElementById("mileageRange").value); 
         return;
     }
 
-if (!mileageRange || mileageRange < 0) {        alert("請選擇行駛里程");        return;    }    if (!carColor) {        alert("請選擇車身顏色");        return;    }
+    if (!mileage || mileage < 0) {
         alert('請輸入正確的行駛里程');
+        return;
+    }
+
+    if (!carColor) {
+        alert('請選擇車身顏色');
         return;
     }
 
@@ -78,7 +84,7 @@ if (!mileageRange || mileageRange < 0) {        alert("請選擇行駛里程"); 
     const carData = JSON.parse(carBrandSelect.value);
 
     // 計算估價
-const estimation = calculateCarValue(carData, manufactureDate, mileageRange, carColor);
+    const estimation = calculateCarValue(carData, manufactureDate, mileage, carColor);
 
     // 儲存估價結果
     currentEstimation = {
@@ -93,7 +99,7 @@ const estimation = calculateCarValue(carData, manufactureDate, mileageRange, car
 }
 
 // 計算車輛估價
-function calculateCarValue(carData, manufactureDate, mileageRange, carColor) {
+function calculateCarValue(carData, manufactureDate, mileage, carColor) {
     const basePrice = carData.basePrice;
     const depreciationRate = carData.depreciation;
 
@@ -113,7 +119,7 @@ function calculateCarValue(carData, manufactureDate, mileageRange, carColor) {
     }
 
     // 里程折舊（每萬公里減少一定比例）
-    const mileageRange * carAge / 10000Depreciation = Math.max(0.7, 1 - (mileage * 0.015));
+    const mileageDepreciation = Math.max(0.7, 1 - (mileage / 10000 * 0.015));
 
     // 計算估價
     let estimatedPrice = basePrice * depreciation * mileageDepreciation;
@@ -131,17 +137,18 @@ function calculateCarValue(carData, manufactureDate, mileageRange, carColor) {
         maxPrice: maxPrice,
         avgPrice: Math.round((minPrice + maxPrice) / 2),
         carAge: carAge,
-        condition: getCarCondition(carAge, mileageRange)
+        condition: getCarCondition(carAge, mileage)
     };
 }
 
 // 根據車齡和里程判斷車況
-function getCarCondition(carAge, mileageRange / 10000Range) {
-    if (carAge <= 2 && mileageRange / 10000 <= 5) return 'A+（極佳）';
-    if (carAge <= 3 && mileageRange / 10000 <= 8) return 'A（優良）';
-    if (carAge <= 5 && mileageRange / 10000 <= 12) return 'B+（良好）';
-    if (carAge <= 7 && mileageRange / 10000 <= 15) return 'B（尚可）';
-    if (carAge <= 10 && mileageRange / 10000 <= 20) return 'C（一般）';
+function getCarCondition(carAge, mileage) {
+    const mileageInTenThousand = mileage / 10000;
+    if (carAge <= 2 && mileageInTenThousand <= 5) return 'A+（極佳）';
+    if (carAge <= 3 && mileageInTenThousand <= 8) return 'A（優良）';
+    if (carAge <= 5 && mileageInTenThousand <= 12) return 'B+（良好）';
+    if (carAge <= 7 && mileageInTenThousand <= 15) return 'B（尚可）';
+    if (carAge <= 10 && mileageInTenThousand <= 20) return 'C（一般）';
     return 'D（需檢修）';
 }
 
@@ -150,7 +157,7 @@ function displayResult(estimation) {
     // 填充結果資料
     document.getElementById('resultCar').textContent = estimation.car;
     document.getElementById('resultDate').textContent = formatDate(estimation.date);
-    document.getElementById('resultMileage').textContent = `${estimation.mileage} 萬公里`;
+    document.getElementById('resultMileage').textContent = `${estimation.mileage.toLocaleString()} 公里`;
     document.getElementById('resultPrice').textContent =
         `NT$ ${estimation.minPrice.toLocaleString()} - ${estimation.maxPrice.toLocaleString()}`;
 

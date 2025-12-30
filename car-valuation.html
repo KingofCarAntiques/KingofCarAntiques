@@ -78,15 +78,7 @@
 <!-- 車身顏色 -->                    <div class="form-group">                        <select id="carColor" required>                            <option value="">請選擇車身顏色</option>                            <option value="white">白色 (保值)</option>                            <option value="black">黑色 (保值)</option>                            <option value="silver">銀色 (保值)</option>                            <option value="gray">灰色</option>                            <option value="red">紅色</option>                            <option value="blue">藍色</option>                            <option value="yellow">黃色</option>                            <option value="green">綠色</option>                            <option value="orange">橘色</option>                            <option value="brown">咖啡色</option>                            <option value="other">其他顏色</option>                        </select>                    </div>
                     <!-- 行駛里程 -->
                     <div class="form-group">
-                        <select id="mileageRange" required>
-                            <option value="">請選擇平均年行駛里程</option>
-                            <option value="2500">0-5,000 公里/年 (極少使用)</option>
-                            <option value="7500">5,000-10,000 公里/年 (少用)</option>
-                            <option value="15000">10,000-20,000 公里/年 (一般)</option>
-                            <option value="27500">20,000-35,000 公里/年 (常用)</option>
-                            <option value="42500">35,000-50,000 公里/年 (大量使用)</option>
-                            <option value="60000">50,000+ 公里/年 (營業用)</option>
-                        </select>
+                        <input type="number" id="mileage" placeholder="請輸入行駛里程（公里）" min="0" max="999999" required>
 
 
                         </div>
