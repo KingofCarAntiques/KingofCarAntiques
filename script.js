@@ -57,7 +57,7 @@ function handleFormSubmit(e) {
 
     const carBrandSelect = document.getElementById('carBrand');
     const manufactureDate = document.getElementById('manufactureDate').value;
-    const mileage = parseFloat(document.getElementById('mileage').value);
+const mileageRange = parseFloat(document.getElementById("mileageRange").value);    const carColor = document.getElementById("carColor").value;
 
     if (!carBrandSelect.value) {
         alert('請選擇車款');
@@ -69,7 +69,7 @@ function handleFormSubmit(e) {
         return;
     }
 
-    if (!mileage || mileage < 0) {
+if (!mileageRange || mileageRange < 0) {        alert("請選擇行駛里程");        return;    }    if (!carColor) {        alert("請選擇車身顏色");        return;    }
         alert('請輸入正確的行駛里程');
         return;
     }
@@ -78,7 +78,7 @@ function handleFormSubmit(e) {
     const carData = JSON.parse(carBrandSelect.value);
 
     // 計算估價
-    const estimation = calculateCarValue(carData, manufactureDate, mileage);
+const estimation = calculateCarValue(carData, manufactureDate, mileageRange, carColor);
 
     // 儲存估價結果
     currentEstimation = {
@@ -93,7 +93,7 @@ function handleFormSubmit(e) {
 }
 
 // 計算車輛估價
-function calculateCarValue(carData, manufactureDate, mileage) {
+function calculateCarValue(carData, manufactureDate, mileageRange, carColor) {
     const basePrice = carData.basePrice;
     const depreciationRate = carData.depreciation;
 
@@ -113,10 +113,11 @@ function calculateCarValue(carData, manufactureDate, mileage) {
     }
 
     // 里程折舊（每萬公里減少一定比例）
-    const mileageDepreciation = Math.max(0.7, 1 - (mileage * 0.015));
+    const mileageRange * carAge / 10000Depreciation = Math.max(0.7, 1 - (mileage * 0.015));
 
     // 計算估價
     let estimatedPrice = basePrice * depreciation * mileageDepreciation;
+// 顏色調整（白/黑/銀色較保值）    let colorAdjustment = 1.0;    if (carColor === "white" || carColor === "black" || carColor === "silver") {        colorAdjustment = 1.05; // 保值色 +5%    } else if (carColor === "gray" || carColor === "blue") {        colorAdjustment = 1.0; // 一般色 0%    } else if (carColor === "red") {        colorAdjustment = 0.98; // 紅色 -2%    } else {        colorAdjustment = 0.95; // 其他色 -5%    }    estimatedPrice *= colorAdjustment;
 
     // 確保最低價格
     estimatedPrice = Math.max(estimatedPrice, basePrice * 0.1);
@@ -130,17 +131,17 @@ function calculateCarValue(carData, manufactureDate, mileage) {
         maxPrice: maxPrice,
         avgPrice: Math.round((minPrice + maxPrice) / 2),
         carAge: carAge,
-        condition: getCarCondition(carAge, mileage)
+        condition: getCarCondition(carAge, mileageRange)
     };
 }
 
 // 根據車齡和里程判斷車況
-function getCarCondition(carAge, mileage) {
-    if (carAge <= 2 && mileage <= 5) return 'A+（極佳）';
-    if (carAge <= 3 && mileage <= 8) return 'A（優良）';
-    if (carAge <= 5 && mileage <= 12) return 'B+（良好）';
-    if (carAge <= 7 && mileage <= 15) return 'B（尚可）';
-    if (carAge <= 10 && mileage <= 20) return 'C（一般）';
+function getCarCondition(carAge, mileageRange / 10000Range) {
+    if (carAge <= 2 && mileageRange / 10000 <= 5) return 'A+（極佳）';
+    if (carAge <= 3 && mileageRange / 10000 <= 8) return 'A（優良）';
+    if (carAge <= 5 && mileageRange / 10000 <= 12) return 'B+（良好）';
+    if (carAge <= 7 && mileageRange / 10000 <= 15) return 'B（尚可）';
+    if (carAge <= 10 && mileageRange / 10000 <= 20) return 'C（一般）';
     return 'D（需檢修）';
 }
 
