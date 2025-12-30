@@ -1,8 +1,3 @@
-/* ===============================================
-   秒估車 - 專業版樣式
-   參考：CarP、AutoStar、SUM、GoGoCar
-   =============================================== */
-
 * {
     margin: 0;
     padding: 0;
@@ -10,211 +5,433 @@
 }
 
 body {
-    font-family: 'Microsoft JhengHei', 'PingFang TC', Arial, sans-serif;
-    background: linear-gradient(135deg, #e8f1f8 0%, #cfe5f5 100%);
+    font-family: 'Microsoft JhengHei', Arial, sans-serif;
+    background:
+        linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(20, 20, 20, 0.8) 100%),
+        url('data:image/svg+xml,\
+        <svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">\
+            <defs>\
+                <linearGradient id="grad1" x1="0%25" y1="0%25" x2="100%25" y2="100%25">\
+                    <stop offset="0%25" style="stop-color:%23dc0000;stop-opacity:0.1" />\
+                    <stop offset="25%25" style="stop-color:%23ff6b00;stop-opacity:0.1" />\
+                    <stop offset="50%25" style="stop-color:%23000000;stop-opacity:0.2" />\
+                    <stop offset="75%25" style="stop-color:%230066b2;stop-opacity:0.1" />\
+                    <stop offset="100%25" style="stop-color:%23c00000;stop-opacity:0.1" />\
+                </linearGradient>\
+            </defs>\
+            <rect width="1920" height="1080" fill="url(%23grad1)"/>\
+            <!-- 法拉利風格跑車 -->\
+            <path d="M 200 400 Q 250 380 350 380 L 450 380 Q 500 380 520 400 L 540 450 L 180 450 Z" fill="%23dc0000" opacity="0.15"/>\
+            <circle cx="250" cy="450" r="25" fill="%23333" opacity="0.2"/>\
+            <circle cx="490" cy="450" r="25" fill="%23333" opacity="0.2"/>\
+            <!-- 保時捷風格跑車 -->\
+            <path d="M 800 350 Q 850 330 950 330 L 1050 330 Q 1100 330 1120 350 L 1140 400 L 780 400 Z" fill="%23ffcc00" opacity="0.12"/>\
+            <circle cx="850" cy="400" r="25" fill="%23333" opacity="0.2"/>\
+            <circle cx="1090" cy="400" r="25" fill="%23333" opacity="0.2"/>\
+            <!-- 賓士風格豪華車 -->\
+            <path d="M 1300 500 Q 1350 480 1450 480 L 1600 480 Q 1650 480 1670 500 L 1690 550 L 1280 550 Z" fill="%23c0c0c0" opacity="0.15"/>\
+            <circle cx="1360" cy="550" r="28" fill="%23333" opacity="0.2"/>\
+            <circle cx="1630" cy="550" r="28" fill="%23333" opacity="0.2"/>\
+            <!-- 麥拉倫風格跑車 -->\
+            <path d="M 400 700 Q 450 680 550 680 L 650 680 Q 700 680 720 700 L 740 750 L 380 750 Z" fill="%23ff6b00" opacity="0.13"/>\
+            <circle cx="450" cy="750" r="24" fill="%23333" opacity="0.2"/>\
+            <circle cx="690" cy="750" r="24" fill="%23333" opacity="0.2"/>\
+            <!-- BMW風格跑車 -->\
+            <path d="M 1100 650 Q 1150 630 1250 630 L 1350 630 Q 1400 630 1420 650 L 1440 700 L 1080 700 Z" fill="%230066b2" opacity="0.14"/>\
+            <circle cx="1150" cy="700" r="26" fill="%23333" opacity="0.2"/>\
+            <circle cx="1390" cy="700" r="26" fill="%23333" opacity="0.2"/>\
+            <!-- 裝飾線條 -->\
+            <line x1="0" y1="200" x2="1920" y2="250" stroke="%23fff" stroke-width="1" opacity="0.05"/>\
+            <line x1="0" y1="800" x2="1920" y2="850" stroke="%23fff" stroke-width="1" opacity="0.05"/>\
+        </svg>');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
     position: relative;
+    overflow-x: hidden;
 }
 
-/* 專業背景紋理 */
+/* 動態光暈效果 */
 body::before {
     content: '';
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image:
-        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(0,102,178,.08) 35px, rgba(0,102,178,.08) 70px);
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(220, 0, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(0, 102, 178, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(255, 204, 0, 0.08) 0%, transparent 50%);
+    animation: rotateGradient 20s linear infinite;
     pointer-events: none;
     z-index: 0;
+}
+
+@keyframes rotateGradient {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .container {
     position: relative;
     z-index: 1;
     width: 100%;
-    max-width: 500px;
+    max-width: 450px;
 }
 
 .card {
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 20px;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
     overflow: hidden;
-}
-
-/* 頂部標題區 */
-.brand-showcase {
-    background: linear-gradient(135deg, #004d8c 0%, #0066b2 100%);
-    padding: 30px 20px;
-    text-align: center;
+    border: 3px solid #ffd700;
+    backdrop-filter: blur(10px);
     position: relative;
 }
 
-.logo-container {
-    margin-bottom: 10px;
+/* 卡片頂部光澤效果 */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(180deg,
+        rgba(255, 215, 0, 0.1) 0%,
+        transparent 100%);
+    pointer-events: none;
+    z-index: 1;
 }
 
-.logo-icon {
-    font-size: 48px;
-    animation: none;
+/* 品牌展示區 */
+.brand-showcase {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    padding: 25px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
 }
 
-.brand-showcase h1 {
-    color: #ffffff;
+.brand-showcase::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.brand-title {
     font-size: 32px;
-    font-weight: 700;
-    margin: 10px 0 5px 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    color: #ffd700;
+    text-shadow:
+        0 0 10px rgba(255, 215, 0, 0.5),
+        0 0 20px rgba(255, 215, 0, 0.3),
+        2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 8px;
+    letter-spacing: 2px;
 }
 
 .brand-subtitle {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 13px;
+    color: #c0c0c0;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
 }
 
-/* 表單區域 */
+/* 汽車照片輪播 */
+.car-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.car-slides {
+    position: relative;
+    width: 100%;
+    height: 180px;
+}
+
+.car-slide {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 180px;
+    animation: fadeIn 0.8s;
+}
+
+.car-slide.active {
+    display: block;
+}
+
+.car-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.car-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    color: #ffd700;
+    padding: 15px 20px 10px;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0.6;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* 輪播控制按鈕 */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: #ffd700;
+    border: 2px solid #ffd700;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 10;
+    transition: all 0.3s;
+    border-radius: 3px;
+}
+
+.carousel-btn:hover {
+    background: rgba(255, 215, 0, 0.9);
+    color: #000;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev {
+    left: 10px;
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
+
+/* 輪播指示器 */
+.carousel-dots {
+    text-align: center;
+    padding: 12px 0 5px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid #ffd700;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.dot:hover,
+.dot.active {
+    background-color: #ffd700;
+    transform: scale(1.3);
+    box-shadow: 0 0 8px #ffd700;
+}
+
+/* 標籤切換 */
+.tabs {
+    display: flex;
+    background: linear-gradient(180deg, #fff9e6 0%, #fffbf0 100%);
+    padding: 15px 20px 0;
+    position: relative;
+    z-index: 2;
+    border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+}
+
+.tab {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #999;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+}
+
+.tab.active {
+    color: #333;
+    border-bottom: 3px solid #ff8c00;
+}
+
+.tab:hover {
+    color: #666;
+}
+
+/* 表單容器 */
 .form-container {
     padding: 30px 25px;
+    background: linear-gradient(180deg, #fffbf0 0%, #fff9e6 100%);
+    position: relative;
+    z-index: 2;
 }
 
+/* 表單組件 */
 .form-group {
     margin-bottom: 20px;
 }
 
+.form-group select,
+.form-group input[type="month"],
+.form-group input[type="number"],
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 16px;
+    background: white;
+    transition: border-color 0.3s;
+}
+
+.form-group select:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ff8c00;
+}
+
 .form-group label {
     display: block;
-    color: #333;
-    font-size: 15px;
-    font-weight: 600;
     margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
 }
 
-.form-group label .required {
-    color: #dc0000;
-    margin-left: 3px;
+/* 帶單位的輸入框 */
+.input-with-unit {
+    position: relative;
 }
 
-/* 輸入框樣式 */
-select, input[type="number"] {
-    width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 15px;
-    font-family: inherit;
-    transition: all 0.3s ease;
-    background: #ffffff;
+.input-with-unit input {
+    padding-right: 70px;
 }
 
-select:focus, input[type="number"]:focus {
-    outline: none;
-    border-color: #0066b2;
-    box-shadow: 0 0 0 3px rgba(0, 102, 178, 0.1);
-}
-
-select {
-    cursor: pointer;
-    appearance: none;
-    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path fill="%23666" d="M0 0l6 8 6-8z"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 15px center;
-    padding-right: 40px;
-}
-
-input[type="number"] {
-    -moz-appearance: textfield;
-}
-
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-/* 按鈕樣式 */
-.btn-container {
-    display: flex;
-    gap: 12px;
-    margin-top: 25px;
-}
-
-.btn {
-    flex: 1;
-    padding: 14px 20px;
-    border: none;
-    border-radius: 8px;
+.unit {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
     font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: inherit;
 }
 
-.btn-primary {
-    background: linear-gradient(135deg, #e8f1f8 0%, #cfe5f5 100%);
+/* 提交按鈕 */
+.submit-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%);
     color: white;
-    box-shadow: 0 4px 12px rgba(0, 102, 178, 0.3);
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
 }
 
-.btn-primary:hover {
+.submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 102, 178, 0.4);
+    box-shadow: 0 6px 20px rgba(255, 140, 0, 0.4);
 }
 
-.btn-primary:active {
+.submit-btn:active {
     transform: translateY(0);
 }
 
-.btn-secondary {
-    background: #f5f5f5;
-    color: #666;
-    border: 2px solid #e0e0e0;
+/* 隱藏類 */
+.hidden {
+    display: none !important;
 }
 
-.btn-secondary:hover {
-    background: #e8e8e8;
-    border-color: #ccc;
-}
-
-/* 結果顯示區 */
+/* 估價結果區域 */
 .result-section {
-    margin-top: 25px;
-    padding: 25px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border-radius: 12px;
-    border: 2px solid #0066b2;
+    margin-top: 20px;
+    animation: fadeIn 0.5s;
 }
 
-.result-section.hidden {
-    display: none;
-}
-
-.result-title {
-    color: #004d8c;
-    font-size: 18px;
-    font-weight: 700;
+.result-section h3 {
+    color: #333;
     margin-bottom: 15px;
-    text-align: center;
+    font-size: 20px;
 }
 
-.result-info {
+.result-card {
     background: white;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .result-item {
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
+    padding: 12px 0;
     border-bottom: 1px solid #f0f0f0;
 }
 
@@ -222,142 +439,324 @@ input[type="number"]::-webkit-inner-spin-button {
     border-bottom: none;
 }
 
-.result-label {
+.result-item .label {
     color: #666;
-    font-size: 14px;
+    font-weight: 500;
 }
 
-.result-value {
+.result-item .value {
     color: #333;
-    font-size: 14px;
-    font-weight: 600;
+    font-weight: bold;
 }
 
-/* 價格顯示 */
-.price-display {
-    background: linear-gradient(135deg, #e8f1f8 0%, #cfe5f5 100%);
-    padding: 20px;
-    border-radius: 10px;
+.result-item.price .value {
+    color: #ff8c00;
+    font-size: 20px;
+}
+
+/* LINE 官方帳號區塊 */
+.line-contact-section {
+    margin-top: 20px;
+}
+
+.line-divider {
     text-align: center;
-    margin: 15px 0;
+    margin: 20px 0;
+    position: relative;
 }
 
-.price-label {
-    color: rgba(255, 255, 255, 0.9);
+.line-divider::before,
+.line-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background: #ddd;
+}
+
+.line-divider::before {
+    left: 0;
+}
+
+.line-divider::after {
+    right: 0;
+}
+
+.line-divider span {
+    background: #fff9e6;
+    padding: 0 10px;
+    color: #999;
     font-size: 14px;
+}
+
+.line-contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 15px;
+    background: #06C755;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(6, 199, 85, 0.3);
+}
+
+.line-contact-btn:hover {
+    background: #05B04C;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(6, 199, 85, 0.4);
+}
+
+.line-contact-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* 數據來源聲明 */
+.data-source-note {
+    margin-top: 25px;
+    padding: 15px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-left: 4px solid #ff8c00;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.note-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
     margin-bottom: 8px;
 }
 
-.price-value {
-    color: #ffffff;
-    font-size: 32px;
-    font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.price-range {
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 13px;
-    margin-top: 8px;
-}
-
-/* 免責聲明 */
-.disclaimer {
-    background: #fff3cd;
-    border-left: 4px solid #ffc107;
-    padding: 12px 15px;
-    margin-top: 15px;
-    border-radius: 4px;
-}
-
-.disclaimer-title {
-    color: #856404;
-    font-size: 13px;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.disclaimer-text {
-    color: #856404;
+.note-content {
     font-size: 12px;
-    line-height: 1.5;
-}
-
-/* 頁尾 */
-.footer {
-    padding: 20px;
-    text-align: center;
-    background: #f8f9fa;
-    border-top: 1px solid #e0e0e0;
-}
-
-.footer-text {
     color: #666;
-    font-size: 13px;
     line-height: 1.6;
+    margin-bottom: 8px;
 }
 
-.footer-text a {
-    color: #0066b2;
-    text-decoration: none;
-    font-weight: 600;
+.disclaimer {
+    font-size: 11px;
+    color: #d63031;
+    font-weight: 500;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #ddd;
 }
 
-.footer-text a:hover {
-    text-decoration: underline;
+/* 操作按鈕 */
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-/* LINE 按鈕 */
-.line-btn {
-    display: inline-flex;
+.line-btn,
+.consult-btn,
+.recalculate-btn {
+    flex: 1;
+    min-width: calc(50% - 5px);
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
+}
+
+.line-btn {
     background: #06C755;
     color: white;
-    padding: 12px 24px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    margin-top: 15px;
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(6, 199, 85, 0.3);
 }
 
 .line-btn:hover {
-    background: #05b34b;
+    background: #05B04C;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(6, 199, 85, 0.3);
+    box-shadow: 0 6px 20px rgba(6, 199, 85, 0.4);
 }
 
-/* 響應式設計 */
-@media (max-width: 768px) {
-    .container {
-        max-width: 100%;
-    }
-
-    .brand-showcase h1 {
-        font-size: 28px;
-    }
-
-    .form-container {
-        padding: 25px 20px;
-    }
-
-    .btn-container {
-        flex-direction: column;
-    }
-
-    .btn {
-        width: 100%;
-    }
-
-    .price-value {
-        font-size: 28px;
-    }
+.consult-btn {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
 }
 
-/* 載入動畫 */
+.consult-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.recalculate-btn {
+    background: white;
+    color: #666;
+    border: 2px solid #ddd;
+    flex-basis: 100%;
+}
+
+.recalculate-btn:hover {
+    background: #f5f5f5;
+    border-color: #ccc;
+}
+
+/* 彈窗樣式 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideIn 0.3s;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: #333;
+}
+
+/* 動畫 */
 @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== 線上客服系統 ==================== */
+
+/* 客服小工具容器 */
+.chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+/* 客服按鈕 */
+.chat-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    border: none;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(76, 175, 80, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.chat-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(76, 175, 80, 0.5);
+}
+
+.chat-button svg {
+    width: 28px;
+    height: 28px;
+}
+
+/* 未讀訊息徽章 */
+.chat-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #f44336;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    border: 2px solid white;
+}
+
+.chat-badge.hidden {
+    display: none;
+}
+
+/* 聊天視窗 */
+.chat-window {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 360px;
+    height: 550px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -368,30 +767,259 @@ input[type="number"]::-webkit-inner-spin-button {
     }
 }
 
-.card {
-    animation: fadeIn 0.6s ease-out;
+/* 聊天標題欄 */
+.chat-header {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* 輸入提示 */
-.input-hint {
-    color: #999;
+.chat-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.agent-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    color: #4CAF50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.agent-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.agent-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.agent-status {
     font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    opacity: 0.9;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.close-chat-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s;
+}
+
+.close-chat-btn:hover {
+    opacity: 0.8;
+}
+
+/* 聊天訊息區 */
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    background: #f5f5f5;
+}
+
+.message {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    animation: messageSlideIn 0.3s ease-out;
+}
+
+@keyframes messageSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #4CAF50;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.user-message .message-avatar {
+    background: #ff8c00;
+}
+
+.message-content {
+    background: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    max-width: 75%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.message-content p {
+    margin: 5px 0;
+    line-height: 1.5;
+    color: #333;
+}
+
+.user-message {
+    flex-direction: row-reverse;
+}
+
+.user-message .message-content {
+    background: #ff8c00;
+    color: white;
+}
+
+.message-time {
+    font-size: 11px;
+    color: #999;
     margin-top: 5px;
 }
 
-/* 錯誤提示 */
-.error-message {
-    color: #dc0000;
+/* 快速回覆選項 */
+.quick-replies {
+    padding: 10px 15px;
+    background: white;
+    border-top: 1px solid #eee;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.quick-reply-btn {
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 8px 15px;
     font-size: 13px;
-    margin-top: 5px;
-    display: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: #333;
 }
 
-.form-group.error select,
-.form-group.error input {
-    border-color: #dc0000;
+.quick-reply-btn:hover {
+    background: #e0e0e0;
+    border-color: #ccc;
 }
 
-.form-group.error .error-message {
-    display: block;
+/* 輸入區 */
+.chat-input-container {
+    display: flex;
+    padding: 15px;
+    background: white;
+    border-top: 1px solid #eee;
+    gap: 10px;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.chat-input:focus {
+    border-color: #4CAF50;
+}
+
+.send-message-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #4CAF50;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.send-message-btn:hover {
+    background: #45a049;
+    transform: scale(1.05);
+}
+
+/* 響應式設計 */
+@media (max-width: 480px) {
+    .card {
+        border-radius: 15px;
+    }
+
+    .form-container {
+        padding: 20px 15px;
+    }
+
+    .tab {
+        font-size: 16px;
+        padding: 12px 15px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    /* 客服響應式調整 */
+    .chat-window {
+        width: calc(100vw - 40px);
+        height: calc(100vh - 120px);
+        bottom: 80px;
+        right: -10px;
+    }
+
+    .chat-widget {
+        right: 10px;
+        bottom: 10px;
+    }
 }
