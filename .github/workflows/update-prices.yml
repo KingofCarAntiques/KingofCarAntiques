@@ -42,7 +42,7 @@ jobs:
       - name: 🕷️ 爬取最新車價數據
         run: |
           cd scripts
-          node scraper.js
+          node scraper-improved.js
         env:
           NODE_ENV: production
 
@@ -50,7 +50,7 @@ jobs:
       - name: 📝 更新車價資料庫
         run: |
           cd scripts
-          node update-car-data.js
+          node update-car-data-improved.js
 
       # 6. 檢查是否有變更
       - name: 🔍 檢查檔案變更
