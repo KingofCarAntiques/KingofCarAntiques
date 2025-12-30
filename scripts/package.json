@@ -1,0 +1,24 @@
+{
+  "name": "miaoguche-price-scraper",
+  "version": "1.0.0",
+  "description": "秒估車 - 自動價格更新系統",
+  "main": "scraper.js",
+  "scripts": {
+    "scrape": "node scraper.js",
+    "update": "node update-car-data.js",
+    "auto-update": "node scraper.js && node update-car-data.js"
+  },
+  "keywords": [
+    "car",
+    "price",
+    "scraper",
+    "automation"
+  ],
+  "author": "秒估車",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "cheerio": "^1.0.0-rc.12",
+    "puppeteer": "^21.6.1"
+  }
+}

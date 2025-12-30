@@ -1,0 +1,84 @@
+# ===============================================
+# 秒估車 - 每月自動更新價格工作流程
+# ===============================================
+# 📅 執行時間：每月1日凌晨 2:00 (台灣時間)
+# 🔄 功能：自動爬取 8891、行將拍賣等數據並更新車價
+# ===============================================
+
+name: 每月自動更新車輛價格
+
+on:
+  # 每月1日凌晨2點執行（台灣時間）
+  schedule:
+    - cron: '0 18 1 * *'  # UTC 18:00 = 台灣時間隔日 02:00
+
+  # 也可以手動觸發
+  workflow_dispatch:
+
+jobs:
+  update-car-prices:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 檢出代碼
+      - name: 📥 檢出代碼
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # 2. 設定 Node.js 環境
+      - name: 🔧 設定 Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # 3. 安裝依賴套件
+      - name: 📦 安裝依賴套件
+        run: |
+          cd scripts
+          npm install
+
+      # 4. 執行價格爬蟲
+      - name: 🕷️ 爬取最新車價數據
+        run: |
+          cd scripts
+          node scraper.js
+        env:
+          NODE_ENV: production
+
+      # 5. 更新 car-data.js
+      - name: 📝 更新車價資料庫
+        run: |
+          cd scripts
+          node update-car-data.js
+
+      # 6. 檢查是否有變更
+      - name: 🔍 檢查檔案變更
+        id: check_changes
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      # 7. 提交變更
+      - name: 💾 提交價格更新
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add car-data.js
+          git commit -m "🔄 自動更新車價 - $(date +'%Y年%m月')"
+          git push
+
+      # 8. 完成通知
+      - name: ✅ 更新完成
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          echo "✅ 車價已成功更新至 $(date +'%Y年%m月') 版本"
+
+      - name: ℹ️ 無需更新
+        if: steps.check_changes.outputs.changes == 'false'
+        run: |
+          echo "ℹ️ 價格無變化，無需更新"

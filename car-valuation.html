@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>秒估車 - 快速汽車估價系統 | www.秒估車.com.tw</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <!-- 頂部品牌展示 -->
+            <div class="brand-showcase">
+                <div class="brand-title">秒估車</div>
+                <div class="brand-subtitle">專業收購各大品牌豪華車款</div>
+
+                <!-- 汽車照片輪播 -->
+                <div class="car-carousel">
+                    <div class="car-slides">
+                        <div class="car-slide active">
+                            <img src="images/ferrari.jpg" alt="Ferrari" onerror="this.src='https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=800&h=400&fit=crop'">
+                            <div class="car-label">Ferrari</div>
+                        </div>
+                        <div class="car-slide">
+                            <img src="images/mclaren.jpg" alt="McLaren" onerror="this.src='https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&h=400&fit=crop'">
+                            <div class="car-label">McLaren</div>
+                        </div>
+                        <div class="car-slide">
+                            <img src="images/porsche.jpg" alt="Porsche" onerror="this.src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&h=400&fit=crop'">
+                            <div class="car-label">Porsche</div>
+                        </div>
+                        <div class="car-slide">
+                            <img src="images/mercedes.jpg" alt="Mercedes-Benz" onerror="this.src='https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&h=400&fit=crop'">
+                            <div class="car-label">Mercedes-Benz</div>
+                        </div>
+                        <div class="car-slide">
+                            <img src="images/bmw.jpg" alt="BMW" onerror="this.src='https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&h=400&fit=crop'">
+                            <div class="car-label">BMW</div>
+                        </div>
+                    </div>
+
+                    <!-- 輪播控制按鈕 -->
+                    <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
+                    <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
+
+                    <!-- 輪播指示器 -->
+                    <div class="carousel-dots">
+                        <span class="dot active" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
+                        <span class="dot" onclick="currentSlide(5)"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 標籤切換 -->
+            <div class="tabs">
+                <button class="tab active" data-tab="sell">快速賣車</button>
+                <button class="tab" data-tab="estimate">二手車估價</button>
+            </div>
+
+            <!-- 表單內容 -->
+            <div class="form-container">
+                <form id="carForm">
+                    <!-- 廠牌車款選擇 -->
+                    <div class="form-group">
+                        <select id="carBrand" required>
+                            <option value="">請選擇廠牌車款</option>
+                        </select>
+                    </div>
+
+                    <!-- 出廠年月 -->
+                    <div class="form-group">
+                        <input type="month" id="manufactureDate" placeholder="出廠年月" required>
+                    </div>
+
+                    <!-- 行駛里程 -->
+                    <div class="form-group">
+                        <div class="input-with-unit">
+                            <input type="number" id="mileage" placeholder="行駛里程" min="0" step="0.1" required>
+                            <span class="unit">萬公里</span>
+                        </div>
+                    </div>
+
+                    <!-- 提交按鈕 -->
+                    <button type="submit" class="submit-btn">免費快速賣車</button>
+
+                    <!-- LINE 官方帳號快速連結 -->
+                    <div class="line-contact-section">
+                        <div class="line-divider">
+                            <span>或透過 LINE 即時諮詢</span>
+                        </div>
+                        <a href="#" id="lineContactBtn" class="line-contact-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+                            </svg>
+                            <span>加入 LINE 官方帳號 (@288dyysc)</span>
+                        </a>
+                    </div>
+
+                    <!-- 數據來源聲明 -->
+                    <div class="data-source-note">
+                        <p class="note-title">📊 估價數據來源</p>
+                        <p class="note-content">
+                            參考 8891汽車網、行將拍賣、市場行情<br>
+                            最後更新：2025年12月 | 每月定期更新
+                        </p>
+                        <p class="disclaimer">
+                            ⚠️ 本估價僅供參考，實際價格以現場鑑定為準
+                        </p>
+                    </div>
+                </form>
+
+                <!-- 估價結果顯示區 -->
+                <div id="resultSection" class="result-section hidden">
+                    <h3>估價結果</h3>
+                    <div class="result-card">
+                        <div class="result-item">
+                            <span class="label">車款：</span>
+                            <span id="resultCar" class="value"></span>
+                        </div>
+                        <div class="result-item">
+                            <span class="label">出廠年月：</span>
+                            <span id="resultDate" class="value"></span>
+                        </div>
+                        <div class="result-item">
+                            <span class="label">行駛里程：</span>
+                            <span id="resultMileage" class="value"></span>
+                        </div>
+                        <div class="result-item price">
+                            <span class="label">估價範圍：</span>
+                            <span id="resultPrice" class="value"></span>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button id="lineBtn" class="line-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+                            </svg>
+                            加入 LINE 諮詢
+                        </button>
+                        <button id="consultBtn" class="consult-btn">填寫表單諮詢</button>
+                        <button id="recalculateBtn" class="recalculate-btn">重新估價</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 線上諮詢彈窗 -->
+        <div id="consultModal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>線上一對一諮詢</h2>
+                <form id="consultForm">
+                    <div class="form-group">
+                        <label>姓名</label>
+                        <input type="text" id="userName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>聯絡電話</label>
+                        <input type="tel" id="userPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="userEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>諮詢時間偏好</label>
+                        <select id="preferTime" required>
+                            <option value="">請選擇</option>
+                            <option value="morning">上午 9:00-12:00</option>
+                            <option value="afternoon">下午 13:00-17:00</option>
+                            <option value="evening">晚上 18:00-21:00</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>備註</label>
+                        <textarea id="userNote" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">送出諮詢</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 線上客服系統 -->
+    <div id="chatWidget" class="chat-widget">
+        <!-- 客服按鈕 -->
+        <button id="chatButton" class="chat-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" fill="currentColor"/>
+            </svg>
+            <span class="chat-badge" id="chatBadge">1</span>
+        </button>
+
+        <!-- 聊天視窗 -->
+        <div id="chatWindow" class="chat-window hidden">
+            <!-- 聊天標題欄 -->
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="agent-avatar">客</div>
+                    <div class="agent-info">
+                        <div class="agent-name">秒估車客服</div>
+                        <div class="agent-status">
+                            <span class="status-dot"></span>
+                            線上服務中
+                        </div>
+                    </div>
+                </div>
+                <button id="closeChatBtn" class="close-chat-btn">&times;</button>
+            </div>
+
+            <!-- 聊天訊息區 -->
+            <div id="chatMessages" class="chat-messages">
+                <div class="message bot-message">
+                    <div class="message-avatar">客</div>
+                    <div class="message-content">
+                        <p>您好！歡迎使用秒估車線上客服 👋</p>
+                        <p>我們能為您提供以下服務：</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 快速回覆選項 -->
+            <div id="quickReplies" class="quick-replies">
+                <button class="quick-reply-btn" data-message="我想了解估價流程">📋 估價流程</button>
+                <button class="quick-reply-btn" data-message="如何聯繫真人客服">👤 真人客服</button>
+                <button class="quick-reply-btn" data-message="營業時間是什麼時候">⏰ 營業時間</button>
+                <button class="quick-reply-btn" data-message="我想賣車">🚗 我要賣車</button>
+            </div>
+
+            <!-- 輸入區 -->
+            <div class="chat-input-container">
+                <input type="text" id="chatInput" class="chat-input" placeholder="輸入訊息...">
+                <button id="sendMessageBtn" class="send-message-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="car-data.js"></script>
+    <script src="script.js"></script>
+    <script src="chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+# ===============================================
+# 秒估車 - Git 忽略檔案設定
+# ===============================================
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# 爬蟲數據（臨時檔案）
+scripts/price-data.json
+scripts/scraper.log
+scripts/*.log
+
+# 備份檔案
+scripts/backups/
+
+# 作業系統
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 臨時檔案
+*.tmp
+*.temp
+.cache/
+
+# 環境變數
+.env
+.env.local
+.env.*.local
+
+# 測試檔案
+test/
+*.test.js
+coverage/
