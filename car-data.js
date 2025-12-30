@@ -16,6 +16,9 @@ const carDatabase = {
             { name: "Corolla Cross", basePrice: 900000, depreciation: 0.13 },
             { name: "RAV4", basePrice: 1200000, depreciation: 0.12 },
             { name: "Yaris", basePrice: 650000, depreciation: 0.16 },
+            { name: "Yaris Cross", basePrice: 750000, depreciation: 0.15 },
+            { name: "GR Yaris", basePrice: 1850000, depreciation: 0.14 },
+            { name: "bZ4X", basePrice: 1850000, depreciation: 0.16 },
             { name: "Sienna", basePrice: 2200000, depreciation: 0.14 },
             { name: "Vios", basePrice: 550000, depreciation: 0.16 },
             { name: "C-HR", basePrice: 950000, depreciation: 0.14 },
@@ -27,6 +30,8 @@ const carDatabase = {
             { name: "Innova", basePrice: 850000, depreciation: 0.15 },
             { name: "Vellfire", basePrice: 3800000, depreciation: 0.12 },
             { name: "Granvia", basePrice: 2800000, depreciation: 0.13 },
+            { name: "Granace", basePrice: 1600000, depreciation: 0.14 },
+            { name: "Town Ace", basePrice: 950000, depreciation: 0.15 },
             { name: "Land Cruiser", basePrice: 4500000, depreciation: 0.12 },
             { name: "Hilux", basePrice: 1400000, depreciation: 0.14 },
             { name: "Prius c", basePrice: 800000, depreciation: 0.15 },
@@ -48,6 +53,9 @@ const carDatabase = {
             { name: "Freed", basePrice: 850000, depreciation: 0.14 },
             { name: "NSX", basePrice: 12000000, depreciation: 0.15 },
             { name: "Civic Type R", basePrice: 2200000, depreciation: 0.14 }
+,
+            { name: "ZR-V", basePrice: 1150000, depreciation: 0.13 },
+            { name: "BR-V", basePrice: 850000, depreciation: 0.14 }
         ]
     },
     "Nissan日產": {
@@ -66,6 +74,9 @@ const carDatabase = {
             { name: "Urvan", basePrice: 1100000, depreciation: 0.15 },
             { name: "Navara", basePrice: 1300000, depreciation: 0.14 },
             { name: "370Z", basePrice: 2200000, depreciation: 0.16 }
+,
+            { name: "Ariya", basePrice: 1900000, depreciation: 0.16 },
+            { name: "Note", basePrice: 700000, depreciation: 0.15 }
         ]
     },
     "Mazda馬自達": {
@@ -81,6 +92,8 @@ const carDatabase = {
             { name: "CX-60", basePrice: 1800000, depreciation: 0.13 },
             { name: "CX-90", basePrice: 2200000, depreciation: 0.13 },
             { name: "BT-50", basePrice: 1200000, depreciation: 0.14 }
+,
+            { name: "MX-30", basePrice: 1350000, depreciation: 0.16 }
         ]
     },
     "Mitsubishi三菱": {
@@ -112,6 +125,8 @@ const carDatabase = {
             { name: "Starex", basePrice: 1300000, depreciation: 0.15 },
             { name: "Porter", basePrice: 900000, depreciation: 0.16 },
             { name: "Palisade", basePrice: 2200000, depreciation: 0.13 }
+,
+            { name: "Staria", basePrice: 1800000, depreciation: 0.14 }
         ]
     },
     "Kia起亞": {
@@ -563,6 +578,13 @@ const carDatabase = {
         models: [
             { name: "9-3", basePrice: 900000, depreciation: 0.18 },
             { name: "9-5", basePrice: 1200000, depreciation: 0.18 }
+        ]
+    },
+    "BYD比亞迪": {
+        models: [
+            { name: "Atto 3", basePrice: 1350000, depreciation: 0.16 },
+            { name: "Dolphin", basePrice: 1100000, depreciation: 0.16 },
+            { name: "Seal", basePrice: 1750000, depreciation: 0.16 }
         ]
     },
     "Chery奇瑞": {
