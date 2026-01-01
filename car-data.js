@@ -1,51 +1,324 @@
 // ===============================================
-// 秒估車 - 車款價格資料庫
+// 秒估車 - 車款價格資料庫（詳細版）
 // ===============================================
-// 📅 最後更新：2025年12月
-// 📊 數據來源：8891汽車網、行將拍賣、市場行情
+// 📅 最後更新：2026年1月（基於石貳全460期）
+// 📊 數據來源：石貳全中古車行情表第460期（第51-75頁）
 // 🔄 更新頻率：每月更新
-// 📝 更新說明：請參閱「價格更新說明.md」
 // ===============================================
 
 // 車款資料庫
 const carDatabase = {
-    "Toyota豐田": {
+    // ========== 德國品牌 ==========
+    "Audi奧迪": {
         models: [
-            { name: "Altis", basePrice: 700000, depreciation: 0.15 },
-            { name: "Camry", basePrice: 1300000, depreciation: 0.12 },
-            { name: "Corolla Cross", basePrice: 900000, depreciation: 0.13 },
-            { name: "RAV4", basePrice: 1200000, depreciation: 0.12 },
-            { name: "Yaris", basePrice: 650000, depreciation: 0.16 },
-            { name: "Yaris Cross", basePrice: 750000, depreciation: 0.15 },
-            { name: "GR Yaris", basePrice: 1850000, depreciation: 0.14 },
-            { name: "bZ4X", basePrice: 1850000, depreciation: 0.16 },
-            { name: "Sienna", basePrice: 2200000, depreciation: 0.14 },
-            { name: "Vios", basePrice: 550000, depreciation: 0.16 },
-            { name: "C-HR", basePrice: 950000, depreciation: 0.14 },
-            { name: "Prius", basePrice: 1200000, depreciation: 0.13 },
-            { name: "Alphard", basePrice: 3500000, depreciation: 0.12 },
-            { name: "Sienta", basePrice: 750000, depreciation: 0.15 },
-            { name: "Wish", basePrice: 680000, depreciation: 0.16 },
-            { name: "Previa", basePrice: 1400000, depreciation: 0.15 },
-            { name: "Innova", basePrice: 850000, depreciation: 0.15 },
-            { name: "Vellfire", basePrice: 3800000, depreciation: 0.12 },
-            { name: "Granvia", basePrice: 2800000, depreciation: 0.13 },
-            { name: "Granace", basePrice: 1600000, depreciation: 0.14 },
-            { name: "Town Ace", basePrice: 950000, depreciation: 0.15 },
-            { name: "Land Cruiser", basePrice: 4500000, depreciation: 0.12 },
-            { name: "Hilux", basePrice: 1400000, depreciation: 0.14 },
-            { name: "Prius c", basePrice: 800000, depreciation: 0.15 },
-            { name: "86", basePrice: 1500000, depreciation: 0.15 },
-            { name: "Supra", basePrice: 3200000, depreciation: 0.15 },
-            { name: "Corolla Sport", basePrice: 900000, depreciation: 0.14 },
-            { name: "Prius PHEV", basePrice: 1400000, depreciation: 0.13 },
-            { name: "Crown", basePrice: 2500000, depreciation: 0.12 },
-            { name: "GR86", basePrice: 1550000, depreciation: 0.15 },
-            { name: "Prado", basePrice: 2800000, depreciation: 0.12 },
-            { name: "Urban Cruiser", basePrice: 1200000, depreciation: 0.16 },
-            { name: "Auris", basePrice: 850000, depreciation: 0.15 }
+            // A系列
+            { name: "A1", basePrice: 1200000, depreciation: 0.18 },
+            { name: "A3", basePrice: 1550000, depreciation: 0.17 },
+            { name: "A3 Sportback", basePrice: 1650000, depreciation: 0.17 },
+            { name: "A4", basePrice: 2200000, depreciation: 0.17 },
+            { name: "A4 Avant", basePrice: 2350000, depreciation: 0.17 },
+            { name: "A5", basePrice: 2500000, depreciation: 0.17 },
+            { name: "A5 Sportback", basePrice: 2650000, depreciation: 0.17 },
+            { name: "A6", basePrice: 2800000, depreciation: 0.16 },
+            { name: "A6 Avant", basePrice: 2900000, depreciation: 0.16 },
+            { name: "A7", basePrice: 3500000, depreciation: 0.16 },
+            { name: "A8", basePrice: 4500000, depreciation: 0.15 },
+
+            // Q系列 SUV
+            { name: "Q2", basePrice: 1350000, depreciation: 0.17 },
+            { name: "Q3", basePrice: 1700000, depreciation: 0.17 },
+            { name: "Q3 Sportback", basePrice: 1800000, depreciation: 0.17 },
+            { name: "Q5", basePrice: 2700000, depreciation: 0.16 },
+            { name: "Q5 Sportback", basePrice: 2850000, depreciation: 0.16 },
+            { name: "Q7", basePrice: 3500000, depreciation: 0.16 },
+            { name: "Q8", basePrice: 4200000, depreciation: 0.16 },
+
+            // TT系列
+            { name: "TT Coupe", basePrice: 2500000, depreciation: 0.17 },
+            { name: "TT Roadster", basePrice: 2650000, depreciation: 0.17 },
+
+            // S/RS性能系列
+            { name: "S3", basePrice: 2400000, depreciation: 0.17 },
+            { name: "S4", basePrice: 3200000, depreciation: 0.17 },
+            { name: "S5", basePrice: 3400000, depreciation: 0.17 },
+            { name: "RS3", basePrice: 3200000, depreciation: 0.17 },
+            { name: "RS4 Avant", basePrice: 4200000, depreciation: 0.16 },
+            { name: "RS5", basePrice: 4500000, depreciation: 0.16 },
+            { name: "RS6 Avant", basePrice: 6800000, depreciation: 0.16 },
+            { name: "RS7", basePrice: 7000000, depreciation: 0.16 },
+            { name: "RSQ8", basePrice: 6500000, depreciation: 0.16 },
+
+            // e-tron電動系列
+            { name: "e-tron", basePrice: 3300000, depreciation: 0.18 },
+            { name: "e-tron GT", basePrice: 5500000, depreciation: 0.17 },
+            { name: "e-tron Sportback", basePrice: 3450000, depreciation: 0.18 }
         ]
     },
+
+    "Mercedes-Benz賓士": {
+        models: [
+            // A-Class系列
+            { name: "A180", basePrice: 1600000, depreciation: 0.18 },
+            { name: "A200", basePrice: 1800000, depreciation: 0.18 },
+            { name: "A250", basePrice: 2000000, depreciation: 0.18 },
+            { name: "A35 AMG", basePrice: 2600000, depreciation: 0.17 },
+            { name: "A45 AMG", basePrice: 3400000, depreciation: 0.17 },
+
+            // B-Class系列
+            { name: "B180", basePrice: 1700000, depreciation: 0.18 },
+            { name: "B200", basePrice: 1900000, depreciation: 0.18 },
+
+            // C-Class系列
+            { name: "C180", basePrice: 2100000, depreciation: 0.17 },
+            { name: "C200", basePrice: 2300000, depreciation: 0.17 },
+            { name: "C250", basePrice: 2600000, depreciation: 0.17 },
+            { name: "C300", basePrice: 2850000, depreciation: 0.17 },
+            { name: "C43 AMG", basePrice: 3800000, depreciation: 0.16 },
+            { name: "C63 AMG", basePrice: 5500000, depreciation: 0.16 },
+
+            // E-Class系列
+            { name: "E200", basePrice: 2800000, depreciation: 0.16 },
+            { name: "E250", basePrice: 3100000, depreciation: 0.16 },
+            { name: "E300", basePrice: 3400000, depreciation: 0.16 },
+            { name: "E350", basePrice: 3700000, depreciation: 0.16 },
+            { name: "E43 AMG", basePrice: 4500000, depreciation: 0.16 },
+            { name: "E53 AMG", basePrice: 4900000, depreciation: 0.16 },
+            { name: "E63 AMG", basePrice: 7100000, depreciation: 0.15 },
+
+            // S-Class系列
+            { name: "S350", basePrice: 5300000, depreciation: 0.15 },
+            { name: "S400", basePrice: 5800000, depreciation: 0.15 },
+            { name: "S450", basePrice: 6200000, depreciation: 0.15 },
+            { name: "S500", basePrice: 6800000, depreciation: 0.15 },
+            { name: "S560", basePrice: 7500000, depreciation: 0.15 },
+            { name: "S600 Maybach", basePrice: 12800000, depreciation: 0.14 },
+            { name: "S650 Maybach", basePrice: 14200000, depreciation: 0.14 },
+
+            // CLA/CLS轎跑系列
+            { name: "CLA180", basePrice: 1900000, depreciation: 0.18 },
+            { name: "CLA200", basePrice: 2100000, depreciation: 0.18 },
+            { name: "CLA250", basePrice: 2400000, depreciation: 0.17 },
+            { name: "CLA45 AMG", basePrice: 3300000, depreciation: 0.17 },
+            { name: "CLS350", basePrice: 4200000, depreciation: 0.16 },
+            { name: "CLS450", basePrice: 4800000, depreciation: 0.16 },
+            { name: "CLS53 AMG", basePrice: 5500000, depreciation: 0.16 },
+
+            // GLA/GLB/GLC/GLE/GLS SUV系列
+            { name: "GLA180", basePrice: 1800000, depreciation: 0.18 },
+            { name: "GLA200", basePrice: 2000000, depreciation: 0.18 },
+            { name: "GLA250", basePrice: 2300000, depreciation: 0.17 },
+            { name: "GLB180", basePrice: 2000000, depreciation: 0.18 },
+            { name: "GLB200", basePrice: 2200000, depreciation: 0.17 },
+            { name: "GLB250", basePrice: 2500000, depreciation: 0.17 },
+            { name: "GLC200", basePrice: 2500000, depreciation: 0.17 },
+            { name: "GLC250", basePrice: 2800000, depreciation: 0.17 },
+            { name: "GLC300", basePrice: 3100000, depreciation: 0.17 },
+            { name: "GLC43 AMG", basePrice: 4000000, depreciation: 0.16 },
+            { name: "GLC63 AMG", basePrice: 5600000, depreciation: 0.16 },
+            { name: "GLE300", basePrice: 3500000, depreciation: 0.16 },
+            { name: "GLE350", basePrice: 3900000, depreciation: 0.16 },
+            { name: "GLE450", basePrice: 4500000, depreciation: 0.16 },
+            { name: "GLE53 AMG", basePrice: 5300000, depreciation: 0.16 },
+            { name: "GLE63 AMG", basePrice: 7500000, depreciation: 0.15 },
+            { name: "GLS350", basePrice: 4200000, depreciation: 0.16 },
+            { name: "GLS450", basePrice: 4800000, depreciation: 0.16 },
+            { name: "GLS580", basePrice: 6200000, depreciation: 0.15 },
+            { name: "GLS600 Maybach", basePrice: 9700000, depreciation: 0.15 },
+
+            // V-Class/Vito商務車
+            { name: "V220d", basePrice: 2500000, depreciation: 0.16 },
+            { name: "V250d", basePrice: 2800000, depreciation: 0.16 },
+            { name: "Vito Tourer", basePrice: 2200000, depreciation: 0.16 },
+
+            // AMG GT跑車系列
+            { name: "AMG GT", basePrice: 6500000, depreciation: 0.16 },
+            { name: "AMG GT C", basePrice: 7900000, depreciation: 0.16 },
+            { name: "AMG GT R", basePrice: 10800000, depreciation: 0.15 },
+            { name: "AMG GT 4-Door", basePrice: 5500000, depreciation: 0.16 },
+
+            // EQ電動車系列
+            { name: "EQA", basePrice: 2200000, depreciation: 0.18 },
+            { name: "EQB", basePrice: 2500000, depreciation: 0.18 },
+            { name: "EQC", basePrice: 3200000, depreciation: 0.17 },
+            { name: "EQE", basePrice: 3500000, depreciation: 0.17 },
+            { name: "EQS", basePrice: 5500000, depreciation: 0.16 }
+        ]
+    },
+
+    "BMW": {
+        models: [
+            // 1系列
+            { name: "118i", basePrice: 1600000, depreciation: 0.18 },
+            { name: "120i", basePrice: 1800000, depreciation: 0.18 },
+            { name: "M135i", basePrice: 2500000, depreciation: 0.17 },
+
+            // 2系列
+            { name: "218i", basePrice: 1700000, depreciation: 0.18 },
+            { name: "220i", basePrice: 1900000, depreciation: 0.18 },
+            { name: "230i", basePrice: 2100000, depreciation: 0.17 },
+            { name: "M240i", basePrice: 2800000, depreciation: 0.17 },
+
+            // 3系列
+            { name: "318i", basePrice: 2000000, depreciation: 0.17 },
+            { name: "320i", basePrice: 2300000, depreciation: 0.17 },
+            { name: "330i", basePrice: 2700000, depreciation: 0.17 },
+            { name: "M340i", basePrice: 3500000, depreciation: 0.16 },
+            { name: "M3", basePrice: 5200000, depreciation: 0.16 },
+
+            // 4系列
+            { name: "420i", basePrice: 2500000, depreciation: 0.17 },
+            { name: "430i", basePrice: 2900000, depreciation: 0.17 },
+            { name: "M440i", basePrice: 3800000, depreciation: 0.16 },
+            { name: "M4", basePrice: 5500000, depreciation: 0.16 },
+
+            // 5系列
+            { name: "520i", basePrice: 2800000, depreciation: 0.16 },
+            { name: "530i", basePrice: 3200000, depreciation: 0.16 },
+            { name: "540i", basePrice: 3800000, depreciation: 0.16 },
+            { name: "M550i", basePrice: 4500000, depreciation: 0.16 },
+            { name: "M5", basePrice: 7000000, depreciation: 0.15 },
+
+            // 6系列
+            { name: "630i", basePrice: 4200000, depreciation: 0.16 },
+            { name: "640i", basePrice: 4800000, depreciation: 0.16 },
+            { name: "650i", basePrice: 5500000, depreciation: 0.16 },
+            { name: "M6", basePrice: 7700000, depreciation: 0.15 },
+
+            // 7系列
+            { name: "730i", basePrice: 4500000, depreciation: 0.15 },
+            { name: "740i", basePrice: 5200000, depreciation: 0.15 },
+            { name: "750i", basePrice: 6200000, depreciation: 0.15 },
+            { name: "M760i", basePrice: 8500000, depreciation: 0.15 },
+
+            // 8系列
+            { name: "840i", basePrice: 5500000, depreciation: 0.16 },
+            { name: "M850i", basePrice: 7500000, depreciation: 0.15 },
+
+            // X系列 SUV
+            { name: "X1 sDrive18i", basePrice: 1900000, depreciation: 0.17 },
+            { name: "X1 sDrive20i", basePrice: 2100000, depreciation: 0.17 },
+            { name: "X2 sDrive18i", basePrice: 2000000, depreciation: 0.17 },
+            { name: "X2 sDrive20i", basePrice: 2200000, depreciation: 0.17 },
+            { name: "X3 xDrive20i", basePrice: 2600000, depreciation: 0.17 },
+            { name: "X3 xDrive30i", basePrice: 3000000, depreciation: 0.17 },
+            { name: "X3 M40i", basePrice: 3800000, depreciation: 0.16 },
+            { name: "X4 xDrive20i", basePrice: 2800000, depreciation: 0.17 },
+            { name: "X4 xDrive30i", basePrice: 3200000, depreciation: 0.17 },
+            { name: "X4 M40i", basePrice: 4000000, depreciation: 0.16 },
+            { name: "X5 xDrive25d", basePrice: 3500000, depreciation: 0.16 },
+            { name: "X5 xDrive40i", basePrice: 4000000, depreciation: 0.16 },
+            { name: "X5 M50i", basePrice: 5200000, depreciation: 0.16 },
+            { name: "X6 xDrive40i", basePrice: 4500000, depreciation: 0.16 },
+            { name: "X6 M50i", basePrice: 5800000, depreciation: 0.16 },
+            { name: "X7 xDrive40i", basePrice: 4800000, depreciation: 0.16 },
+            { name: "X7 M50i", basePrice: 6200000, depreciation: 0.15 },
+
+            // i系列電動車
+            { name: "i3", basePrice: 1900000, depreciation: 0.18 },
+            { name: "i4 eDrive40", basePrice: 2800000, depreciation: 0.17 },
+            { name: "i4 M50", basePrice: 3500000, depreciation: 0.17 },
+            { name: "i7 xDrive60", basePrice: 6200000, depreciation: 0.16 },
+            { name: "iX xDrive40", basePrice: 3500000, depreciation: 0.17 },
+            { name: "iX xDrive50", basePrice: 4200000, depreciation: 0.17 },
+
+            // Z系列跑車
+            { name: "Z4 sDrive20i", basePrice: 2800000, depreciation: 0.17 },
+            { name: "Z4 M40i", basePrice: 3500000, depreciation: 0.16 }
+        ]
+    },
+
+    // ========== 英國品牌 ==========
+    "Bentley賓利": {
+        models: [
+            { name: "Continental GT", basePrice: 13800000, depreciation: 0.16 },
+            { name: "Continental GT Speed", basePrice: 16600000, depreciation: 0.15 },
+            { name: "Continental GT Convertible", basePrice: 14200000, depreciation: 0.16 },
+            { name: "Flying Spur", basePrice: 12000000, depreciation: 0.16 },
+            { name: "Flying Spur Speed", basePrice: 14000000, depreciation: 0.15 },
+            { name: "Bentayga", basePrice: 13000000, depreciation: 0.16 },
+            { name: "Bentayga Speed", basePrice: 15000000, depreciation: 0.15 },
+            { name: "Mulsanne", basePrice: 22000000, depreciation: 0.15 }
+        ]
+    },
+
+    "Aston Martin奧斯頓馬丁": {
+        models: [
+            { name: "Vantage", basePrice: 8680000, depreciation: 0.16 },
+            { name: "Vantage Roadster", basePrice: 9380000, depreciation: 0.16 },
+            { name: "DB11 V8", basePrice: 11800000, depreciation: 0.15 },
+            { name: "DB11 AMR", basePrice: 14800000, depreciation: 0.15 },
+            { name: "DB12", basePrice: 12880000, depreciation: 0.15 },
+            { name: "DBS", basePrice: 16800000, depreciation: 0.15 },
+            { name: "DBS Volante", basePrice: 17800000, depreciation: 0.15 },
+            { name: "DBX", basePrice: 10530000, depreciation: 0.16 },
+            { name: "Rapide", basePrice: 13800000, depreciation: 0.16 },
+            { name: "Vanquish", basePrice: 16800000, depreciation: 0.15 }
+        ]
+    },
+
+    // ========== 意大利品牌 ==========
+    "Ferrari法拉利": {
+        models: [
+            { name: "F12 Berlinetta", basePrice: 17610000, depreciation: 0.15 },
+            { name: "458 Italia", basePrice: 13790000, depreciation: 0.15 },
+            { name: "488 GTB", basePrice: 14690000, depreciation: 0.15 },
+            { name: "F8 Tributo", basePrice: 15000000, depreciation: 0.14 },
+            { name: "F8 Spider", basePrice: 16000000, depreciation: 0.14 },
+            { name: "Roma", basePrice: 12000000, depreciation: 0.15 },
+            { name: "Portofino", basePrice: 11000000, depreciation: 0.15 },
+            { name: "SF90 Stradale", basePrice: 25000000, depreciation: 0.13 },
+            { name: "296 GTB", basePrice: 18000000, depreciation: 0.14 },
+            { name: "812 Superfast", basePrice: 20000000, depreciation: 0.14 },
+            { name: "GTC4Lusso", basePrice: 18000000, depreciation: 0.15 }
+        ]
+    },
+
+    "Alfa Romeo愛快羅密歐": {
+        models: [
+            { name: "MiTo", basePrice: 1680000, depreciation: 0.18 },
+            { name: "Giulietta", basePrice: 1740000, depreciation: 0.17 },
+            { name: "Giulia", basePrice: 2280000, depreciation: 0.17 },
+            { name: "Giulia Sport", basePrice: 1840000, depreciation: 0.17 },
+            { name: "Giulia Sportiva", basePrice: 1690000, depreciation: 0.17 },
+            { name: "Stelvio", basePrice: 2800000, depreciation: 0.17 },
+            { name: "Stelvio Sport", basePrice: 2280000, depreciation: 0.17 },
+            { name: "4C", basePrice: 4280000, depreciation: 0.16 }
+        ]
+    },
+
+    // ========== 法國品牌 ==========
+    "Citroen雪鐵龍": {
+        models: [
+            { name: "C3", basePrice: 868000, depreciation: 0.17 },
+            { name: "C3 Picasso", basePrice: 968000, depreciation: 0.17 },
+            { name: "C4", basePrice: 1068000, depreciation: 0.16 },
+            { name: "C4 Picasso", basePrice: 1728000, depreciation: 0.16 },
+            { name: "C5", basePrice: 1468000, depreciation: 0.16 },
+            { name: "C5 Aircross", basePrice: 1388000, depreciation: 0.16 },
+            { name: "DS3", basePrice: 1108000, depreciation: 0.17 },
+            { name: "DS4", basePrice: 1398000, depreciation: 0.17 },
+            { name: "DS5", basePrice: 1698000, depreciation: 0.16 },
+            { name: "Berlingo", basePrice: 988000, depreciation: 0.16 },
+            { name: "Berlingo Van", basePrice: 898000, depreciation: 0.16 }
+        ]
+    },
+
+    // ========== 保留原有日系品牌（簡化版）==========
+    "Toyota豐田": {
+        models: [
+            { name: "Altis", basePrice: 712000, depreciation: 0.15 },
+            { name: "Camry", basePrice: 1113000, depreciation: 0.12 },
+            { name: "Camry Hybrid", basePrice: 1289000, depreciation: 0.12 },
+            { name: "Corolla Cross", basePrice: 873000, depreciation: 0.13 },
+            { name: "RAV4", basePrice: 1077000, depreciation: 0.12 },
+            { name: "Yaris", basePrice: 636000, depreciation: 0.16 },
+            { name: "Yaris Cross", basePrice: 745000, depreciation: 0.15 },
+            { name: "Sienna", basePrice: 2530000, depreciation: 0.14 },
+            { name: "Alphard", basePrice: 2390000, depreciation: 0.12 },
+            { name: "Vellfire", basePrice: 2710000, depreciation: 0.12 }
+        ]
+    },
+
     "Honda本田": {
         models: [
             { name: "Civic", basePrice: 950000, depreciation: 0.14 },
@@ -53,215 +326,37 @@ const carDatabase = {
             { name: "Fit", basePrice: 700000, depreciation: 0.15 },
             { name: "HR-V", basePrice: 850000, depreciation: 0.14 },
             { name: "Accord", basePrice: 1500000, depreciation: 0.12 },
-            { name: "City", basePrice: 650000, depreciation: 0.15 },
-            { name: "Odyssey", basePrice: 1800000, depreciation: 0.13 },
-            { name: "CR-V Hybrid", basePrice: 1450000, depreciation: 0.12 },
-            { name: "Shuttle", basePrice: 750000, depreciation: 0.15 },
-            { name: "Freed", basePrice: 850000, depreciation: 0.14 },
-            { name: "NSX", basePrice: 12000000, depreciation: 0.15 },
-            { name: "Civic Type R", basePrice: 2200000, depreciation: 0.14 }
-,
-            { name: "ZR-V", basePrice: 1150000, depreciation: 0.13 },
-            { name: "BR-V", basePrice: 850000, depreciation: 0.14 }
+            { name: "Odyssey", basePrice: 1800000, depreciation: 0.13 }
         ]
     },
+
     "Nissan日產": {
         models: [
-            { name: "Sentra", basePrice: 750000, depreciation: 0.15 },
-            { name: "Kicks", basePrice: 800000, depreciation: 0.14 },
-            { name: "X-Trail", basePrice: 1100000, depreciation: 0.13 },
-            { name: "Tiida", basePrice: 650000, depreciation: 0.16 },
-            { name: "Livina", basePrice: 700000, depreciation: 0.15 },
-            { name: "Juke", basePrice: 900000, depreciation: 0.14 },
-            { name: "Leaf", basePrice: 1500000, depreciation: 0.16 },
-            { name: "GT-R", basePrice: 6500000, depreciation: 0.15 },
-            { name: "March", basePrice: 550000, depreciation: 0.17 },
-            { name: "Teana", basePrice: 1200000, depreciation: 0.14 },
-            { name: "Murano", basePrice: 1600000, depreciation: 0.14 },
-            { name: "Urvan", basePrice: 1100000, depreciation: 0.15 },
-            { name: "Navara", basePrice: 1300000, depreciation: 0.14 },
-            { name: "370Z", basePrice: 2200000, depreciation: 0.16 },
-            { name: "Ariya", basePrice: 1900000, depreciation: 0.16 },
-            { name: "Note", basePrice: 700000, depreciation: 0.15 },
-            { name: "X-Trail e-POWER", basePrice: 1520000, depreciation: 0.13 },
-            { name: "Altima", basePrice: 1300000, depreciation: 0.14 },
-            { name: "Big Tiida 5D", basePrice: 750000, depreciation: 0.15 },
-            { name: "iTiida", basePrice: 700000, depreciation: 0.15 }
+            { name: "Sentra", basePrice: 805000, depreciation: 0.15 },
+            { name: "Kicks", basePrice: 785000, depreciation: 0.14 },
+            { name: "X-Trail", basePrice: 1195000, depreciation: 0.13 },
+            { name: "Leaf", basePrice: 1490000, depreciation: 0.16 }
         ]
     },
+
     "Mazda馬自達": {
         models: [
-            { name: "Mazda2", basePrice: 650000, depreciation: 0.15 },
-            { name: "Mazda3", basePrice: 850000, depreciation: 0.14 },
-            { name: "Mazda6", basePrice: 1300000, depreciation: 0.12 },
-            { name: "CX-3", basePrice: 800000, depreciation: 0.14 },
-            { name: "CX-30", basePrice: 1000000, depreciation: 0.13 },
-            { name: "CX-5", basePrice: 1200000, depreciation: 0.13 },
-            { name: "CX-9", basePrice: 1600000, depreciation: 0.13 },
-            { name: "MX-5", basePrice: 1500000, depreciation: 0.14 },
-            { name: "CX-60", basePrice: 1800000, depreciation: 0.13 },
-            { name: "CX-90", basePrice: 2200000, depreciation: 0.13 },
-            { name: "BT-50", basePrice: 1200000, depreciation: 0.14 },
-            { name: "MX-30", basePrice: 1350000, depreciation: 0.16 },
-            { name: "Mazda5", basePrice: 850000, depreciation: 0.15 }
+            { name: "Mazda3", basePrice: 739000, depreciation: 0.14 },
+            { name: "CX-30", basePrice: 918000, depreciation: 0.13 },
+            { name: "CX-5", basePrice: 1169000, depreciation: 0.13 },
+            { name: "CX-60", basePrice: 1499000, depreciation: 0.13 }
         ]
     },
-    "Mitsubishi三菱": {
-        models: [
-            { name: "Colt Plus", basePrice: 650000, depreciation: 0.16 },
-            { name: "Grand Lancer", basePrice: 700000, depreciation: 0.15 },
-            { name: "Outlander", basePrice: 1100000, depreciation: 0.14 },
-            { name: "Eclipse Cross", basePrice: 1000000, depreciation: 0.14 },
-            { name: "Zinger", basePrice: 750000, depreciation: 0.15 },
-            { name: "Delica", basePrice: 1400000, depreciation: 0.14 },
-            { name: "Lancer Fortis", basePrice: 650000, depreciation: 0.16 },
-            { name: "Lancer iO", basePrice: 600000, depreciation: 0.16 },
-            { name: "Pajero", basePrice: 1800000, depreciation: 0.15 },
-            { name: "ASX", basePrice: 850000, depreciation: 0.15 },
-            { name: "Triton", basePrice: 1100000, depreciation: 0.14 },
-            { name: "Veryca", basePrice: 550000, depreciation: 0.17 },
-            { name: "Canter", basePrice: 1200000, depreciation: 0.16 }
-        ]
-    },
-    "Hyundai現代": {
-        models: [
-            { name: "Venue", basePrice: 700000, depreciation: 0.15 },
-            { name: "Elantra", basePrice: 800000, depreciation: 0.14 },
-            { name: "Tucson", basePrice: 1100000, depreciation: 0.13 },
-            { name: "Santa Fe", basePrice: 1500000, depreciation: 0.13 },
-            { name: "Kona", basePrice: 900000, depreciation: 0.14 },
-            { name: "Ioniq 5", basePrice: 1800000, depreciation: 0.15 },
-            { name: "Ioniq 6", basePrice: 2000000, depreciation: 0.15 },
-            { name: "Starex", basePrice: 1300000, depreciation: 0.15 },
-            { name: "Porter", basePrice: 900000, depreciation: 0.16 },
-            { name: "Palisade", basePrice: 2200000, depreciation: 0.13 }
-,
-            { name: "Staria", basePrice: 1800000, depreciation: 0.14 }
-        ]
-    },
-    "Kia起亞": {
-        models: [
-            { name: "Picanto", basePrice: 550000, depreciation: 0.16 },
-            { name: "Morning", basePrice: 550000, depreciation: 0.16 },
-            { name: "Stonic", basePrice: 750000, depreciation: 0.15 },
-            { name: "Sportage", basePrice: 1200000, depreciation: 0.13 },
-            { name: "Sorento", basePrice: 1500000, depreciation: 0.13 },
-            { name: "Carnival", basePrice: 1600000, depreciation: 0.14 },
-            { name: "EV6", basePrice: 2000000, depreciation: 0.15 }
-        ]
-    },
-    "Ford福特": {
-        models: [
-            { name: "Focus", basePrice: 850000, depreciation: 0.15 },
-            { name: "Kuga", basePrice: 1200000, depreciation: 0.14 },
-            { name: "Mondeo", basePrice: 1400000, depreciation: 0.14 },
-            { name: "Mustang", basePrice: 2800000, depreciation: 0.16 },
-            { name: "Explorer", basePrice: 2200000, depreciation: 0.14 },
-            { name: "Ranger", basePrice: 1300000, depreciation: 0.14 },
-            { name: "Fiesta", basePrice: 700000, depreciation: 0.16 },
-            { name: "EcoSport", basePrice: 850000, depreciation: 0.15 },
-            { name: "Tourneo Custom", basePrice: 1600000, depreciation: 0.15 },
-            { name: "Focus ST", basePrice: 1490000, depreciation: 0.15 },
-            { name: "Territory", basePrice: 950000, depreciation: 0.14 },
-            { name: "Ranger Raptor", basePrice: 2090000, depreciation: 0.14 },
-            { name: "Tourneo Connect", basePrice: 1200000, depreciation: 0.15 },
-            { name: "Mustang Mach-E", basePrice: 2200000, depreciation: 0.16 },
-            { name: "Focus Wagon", basePrice: 1050000, depreciation: 0.15 },
-            { name: "ST Wagon", basePrice: 1650000, depreciation: 0.15 }
-        ]
-    },
-    "Volkswagen福斯": {
-        models: [
-            { name: "Polo", basePrice: 750000, depreciation: 0.15 },
-            { name: "Golf", basePrice: 1100000, depreciation: 0.14 },
-            { name: "Tiguan", basePrice: 1400000, depreciation: 0.13 },
-            { name: "Passat", basePrice: 1500000, depreciation: 0.13 },
-            { name: "T-Cross", basePrice: 950000, depreciation: 0.14 },
-            { name: "Touran", basePrice: 1300000, depreciation: 0.14 },
-            { name: "Arteon", basePrice: 1800000, depreciation: 0.14 },
-            { name: "Tiguan Allspace", basePrice: 1550000, depreciation: 0.13 },
-            { name: "T-Roc", basePrice: 1200000, depreciation: 0.14 },
-            { name: "Sharan", basePrice: 1700000, depreciation: 0.14 },
-            { name: "Caddy", basePrice: 1200000, depreciation: 0.15 },
-            { name: "California", basePrice: 3500000, depreciation: 0.14 }
-        ]
-    },
-    "Subaru速霸陸": {
-        models: [
-            { name: "Impreza", basePrice: 950000, depreciation: 0.14 },
-            { name: "XV", basePrice: 1100000, depreciation: 0.13 },
-            { name: "Forester", basePrice: 1300000, depreciation: 0.13 },
-            { name: "Outback", basePrice: 1500000, depreciation: 0.13 },
-            { name: "Legacy", basePrice: 1400000, depreciation: 0.13 },
-            { name: "WRX", basePrice: 1800000, depreciation: 0.15 },
-            { name: "Levorg", basePrice: 1600000, depreciation: 0.14 }
-        ]
-    },
-    "Audi奧迪": {
-        models: [
-            { name: "A3", basePrice: 1600000, depreciation: 0.17 },
-            { name: "A4", basePrice: 2000000, depreciation: 0.17 },
-            { name: "A6", basePrice: 2800000, depreciation: 0.16 },
-            { name: "Q2", basePrice: 1400000, depreciation: 0.17 },
-            { name: "Q3", basePrice: 1700000, depreciation: 0.17 },
-            { name: "Q5", basePrice: 2500000, depreciation: 0.16 },
-            { name: "Q7", basePrice: 3500000, depreciation: 0.16 },
-            { name: "TT", basePrice: 2800000, depreciation: 0.17 }
-        ]
-    },
-    "Mercedes-Benz賓士": {
-        models: [
-            { name: "A-Class", basePrice: 1800000, depreciation: 0.18 },
-            { name: "C-Class", basePrice: 2500000, depreciation: 0.17 },
-            { name: "E-Class", basePrice: 3200000, depreciation: 0.16 },
-            { name: "S-Class", basePrice: 5500000, depreciation: 0.15 },
-            { name: "GLA", basePrice: 2000000, depreciation: 0.18 },
-            { name: "GLB", basePrice: 2200000, depreciation: 0.17 },
-            { name: "GLC", basePrice: 2700000, depreciation: 0.17 },
-            { name: "GLE", basePrice: 3800000, depreciation: 0.16 },
-            { name: "GLS", basePrice: 4500000, depreciation: 0.16 },
-            { name: "CLA", basePrice: 2100000, depreciation: 0.18 },
-            { name: "CLS", basePrice: 4000000, depreciation: 0.16 },
-            { name: "AMG GT", basePrice: 7000000, depreciation: 0.17 },
-            { name: "Vito", basePrice: 2400000, depreciation: 0.16 },
-            { name: "V-Class", basePrice: 3000000, depreciation: 0.16 },
-            { name: "Sprinter", basePrice: 2800000, depreciation: 0.16 }
-        ]
-    },
-    "BMW": {
-        models: [
-            { name: "1 Series", basePrice: 1700000, depreciation: 0.18 },
-            { name: "2 Series", basePrice: 1900000, depreciation: 0.18 },
-            { name: "3 Series", basePrice: 2500000, depreciation: 0.17 },
-            { name: "4 Series", basePrice: 2800000, depreciation: 0.17 },
-            { name: "5 Series", basePrice: 3500000, depreciation: 0.16 },
-            { name: "7 Series", basePrice: 5500000, depreciation: 0.15 },
-            { name: "X1", basePrice: 2000000, depreciation: 0.18 },
-            { name: "X2", basePrice: 2100000, depreciation: 0.18 },
-            { name: "X3", basePrice: 2800000, depreciation: 0.17 },
-            { name: "X4", basePrice: 3200000, depreciation: 0.17 },
-            { name: "X5", basePrice: 3800000, depreciation: 0.16 },
-            { name: "X6", basePrice: 4200000, depreciation: 0.16 },
-            { name: "X7", basePrice: 4800000, depreciation: 0.16 },
-            { name: "Z4", basePrice: 3000000, depreciation: 0.17 },
-            { name: "i4", basePrice: 2800000, depreciation: 0.17 },
-            { name: "iX", basePrice: 3500000, depreciation: 0.17 }
-        ]
-    },
+
     "Lexus凌志": {
         models: [
-            { name: "CT", basePrice: 1500000, depreciation: 0.15 },
             { name: "IS", basePrice: 2000000, depreciation: 0.14 },
             { name: "ES", basePrice: 2200000, depreciation: 0.13 },
-            { name: "LS", basePrice: 4500000, depreciation: 0.13 },
-            { name: "UX", basePrice: 1600000, depreciation: 0.14 },
             { name: "NX", basePrice: 2100000, depreciation: 0.13 },
-            { name: "RX", basePrice: 3000000, depreciation: 0.13 },
-            { name: "LX", basePrice: 5000000, depreciation: 0.13 },
-            { name: "RC", basePrice: 2800000, depreciation: 0.14 },
-            { name: "LC", basePrice: 5500000, depreciation: 0.14 }
+            { name: "RX", basePrice: 3000000, depreciation: 0.13 }
         ]
     },
+
     "Porsche保時捷": {
         models: [
             { name: "718 Cayman", basePrice: 3500000, depreciation: 0.16 },
@@ -274,46 +369,7 @@ const carDatabase = {
             { name: "Cayenne", basePrice: 4200000, depreciation: 0.15 }
         ]
     },
-    "Ferrari法拉利": {
-        models: [
-            { name: "Roma", basePrice: 12000000, depreciation: 0.15 },
-            { name: "Portofino", basePrice: 11000000, depreciation: 0.15 },
-            { name: "F8 Tributo", basePrice: 15000000, depreciation: 0.14 },
-            { name: "F8 Spider", basePrice: 16000000, depreciation: 0.14 },
-            { name: "SF90 Stradale", basePrice: 25000000, depreciation: 0.13 },
-            { name: "296 GTB", basePrice: 18000000, depreciation: 0.14 },
-            { name: "812 Superfast", basePrice: 20000000, depreciation: 0.14 }
-        ]
-    },
-    "Lamborghini藍寶堅尼": {
-        models: [
-            { name: "Huracán", basePrice: 15000000, depreciation: 0.15 },
-            { name: "Aventador", basePrice: 25000000, depreciation: 0.14 },
-            { name: "Urus", basePrice: 13000000, depreciation: 0.15 }
-        ]
-    },
-    "McLaren麥拉倫": {
-        models: [
-            { name: "GT", basePrice: 12000000, depreciation: 0.16 },
-            { name: "Artura", basePrice: 13000000, depreciation: 0.16 },
-            { name: "720S", basePrice: 16000000, depreciation: 0.15 },
-            { name: "765LT", basePrice: 22000000, depreciation: 0.15 }
-        ]
-    },
-    "Bentley賓利": {
-        models: [
-            { name: "Continental GT", basePrice: 18000000, depreciation: 0.16 },
-            { name: "Flying Spur", basePrice: 20000000, depreciation: 0.15 },
-            { name: "Bentayga", basePrice: 16000000, depreciation: 0.16 }
-        ]
-    },
-    "Rolls-Royce勞斯萊斯": {
-        models: [
-            { name: "Ghost", basePrice: 25000000, depreciation: 0.14 },
-            { name: "Phantom", basePrice: 35000000, depreciation: 0.13 },
-            { name: "Cullinan", basePrice: 28000000, depreciation: 0.14 }
-        ]
-    },
+
     "Tesla特斯拉": {
         models: [
             { name: "Model 3", basePrice: 1800000, depreciation: 0.16 },
@@ -322,341 +378,207 @@ const carDatabase = {
             { name: "Model X", basePrice: 4000000, depreciation: 0.15 }
         ]
     },
+
     "Volvo富豪": {
         models: [
             { name: "S60", basePrice: 2000000, depreciation: 0.15 },
             { name: "S90", basePrice: 2500000, depreciation: 0.14 },
-            { name: "V60", basePrice: 2100000, depreciation: 0.15 },
-            { name: "V90", basePrice: 2600000, depreciation: 0.14 },
             { name: "XC40", basePrice: 1800000, depreciation: 0.15 },
             { name: "XC60", basePrice: 2400000, depreciation: 0.14 },
-            { name: "XC90", basePrice: 3200000, depreciation: 0.14 }
+            { name: "XC90", basePrice: 3200000, depreciation: 0.14 },
+            { name: "V60", basePrice: 2200000, depreciation: 0.14 },
+            { name: "V90", basePrice: 2800000, depreciation: 0.14 }
         ]
     },
-    "Peugeot寶獅": {
-        models: [
-            { name: "208", basePrice: 750000, depreciation: 0.16 },
-            { name: "2008", basePrice: 850000, depreciation: 0.15 },
-            { name: "3008", basePrice: 1200000, depreciation: 0.15 },
-            { name: "5008", basePrice: 1400000, depreciation: 0.15 }
-        ]
-    },
-    "Skoda斯柯達": {
-        models: [
-            { name: "Fabia", basePrice: 700000, depreciation: 0.16 },
-            { name: "Scala", basePrice: 850000, depreciation: 0.15 },
-            { name: "Kamiq", basePrice: 900000, depreciation: 0.15 },
-            { name: "Karoq", basePrice: 1100000, depreciation: 0.14 },
-            { name: "Kodiaq", basePrice: 1350000, depreciation: 0.14 },
-            { name: "Superb", basePrice: 1300000, depreciation: 0.14 }
-        ]
-    },
-    "Luxgen納智捷": {
-        models: [
-            { name: "U5", basePrice: 650000, depreciation: 0.17 },
-            { name: "U6 GT", basePrice: 850000, depreciation: 0.16 },
-            { name: "URX", basePrice: 950000, depreciation: 0.16 },
-            { name: "U7", basePrice: 900000, depreciation: 0.17 },
-            { name: "S5", basePrice: 700000, depreciation: 0.17 }
-        ]
-    },
-    "Infiniti極致": {
-        models: [
-            { name: "Q30", basePrice: 1400000, depreciation: 0.17 },
-            { name: "Q50", basePrice: 1900000, depreciation: 0.16 },
-            { name: "Q60", basePrice: 2300000, depreciation: 0.16 },
-            { name: "QX30", basePrice: 1500000, depreciation: 0.17 },
-            { name: "QX50", basePrice: 2100000, depreciation: 0.16 },
-            { name: "QX55", basePrice: 2400000, depreciation: 0.16 }
-        ]
-    },
-    "Land Rover荒原路華": {
-        models: [
-            { name: "Defender", basePrice: 4500000, depreciation: 0.15 },
-            { name: "Discovery", basePrice: 3800000, depreciation: 0.15 },
-            { name: "Discovery Sport", basePrice: 2500000, depreciation: 0.16 },
-            { name: "Range Rover Evoque", basePrice: 2600000, depreciation: 0.16 },
-            { name: "Range Rover Velar", basePrice: 3500000, depreciation: 0.15 },
-            { name: "Range Rover Sport", basePrice: 4500000, depreciation: 0.15 },
-            { name: "Range Rover", basePrice: 6000000, depreciation: 0.14 }
-        ]
-    },
+
     "Jaguar捷豹": {
         models: [
-            { name: "E-PACE", basePrice: 2100000, depreciation: 0.17 },
-            { name: "F-PACE", basePrice: 2800000, depreciation: 0.16 },
-            { name: "I-PACE", basePrice: 3500000, depreciation: 0.17 },
-            { name: "XE", basePrice: 2200000, depreciation: 0.17 },
-            { name: "XF", basePrice: 2800000, depreciation: 0.16 },
-            { name: "F-TYPE", basePrice: 4500000, depreciation: 0.16 }
+            { name: "XE", basePrice: 2400000, depreciation: 0.17 },
+            { name: "XF", basePrice: 3000000, depreciation: 0.16 },
+            { name: "XJ", basePrice: 4500000, depreciation: 0.16 },
+            { name: "F-TYPE", basePrice: 3800000, depreciation: 0.16 },
+            { name: "F-TYPE Coupe", basePrice: 4000000, depreciation: 0.16 },
+            { name: "F-PACE", basePrice: 3000000, depreciation: 0.16 },
+            { name: "E-PACE", basePrice: 2200000, depreciation: 0.17 },
+            { name: "I-PACE", basePrice: 3500000, depreciation: 0.17 }
         ]
     },
-    "MINI": {
+
+    "Lamborghini藍寶堅尼": {
         models: [
-            { name: "3-Door", basePrice: 1300000, depreciation: 0.17 },
-            { name: "5-Door", basePrice: 1400000, depreciation: 0.17 },
-            { name: "Clubman", basePrice: 1550000, depreciation: 0.17 },
-            { name: "Countryman", basePrice: 1650000, depreciation: 0.16 },
-            { name: "Convertible", basePrice: 1800000, depreciation: 0.17 },
-            { name: "John Cooper Works", basePrice: 2200000, depreciation: 0.17 }
+            { name: "Gallardo", basePrice: 13500000, depreciation: 0.15 },
+            { name: "Huracan", basePrice: 15000000, depreciation: 0.15 },
+            { name: "Huracan Evo", basePrice: 19000000, depreciation: 0.14 },
+            { name: "Aventador", basePrice: 25000000, depreciation: 0.14 },
+            { name: "Urus", basePrice: 10000000, depreciation: 0.16 },
+            { name: "Revuelto", basePrice: 28000000, depreciation: 0.13 }
         ]
     },
+
+    "Land Rover路虎": {
+        models: [
+            { name: "Discovery", basePrice: 3600000, depreciation: 0.16 },
+            { name: "Discovery Sport", basePrice: 2400000, depreciation: 0.17 },
+            { name: "Range Rover", basePrice: 7000000, depreciation: 0.15 },
+            { name: "Range Rover Sport", basePrice: 5000000, depreciation: 0.15 },
+            { name: "Range Rover Evoque", basePrice: 2400000, depreciation: 0.17 },
+            { name: "Range Rover Velar", basePrice: 3500000, depreciation: 0.16 },
+            { name: "Defender", basePrice: 3000000, depreciation: 0.16 }
+        ]
+    },
+
     "Maserati瑪莎拉蒂": {
         models: [
-            { name: "Ghibli", basePrice: 4500000, depreciation: 0.17 },
-            { name: "Quattroporte", basePrice: 6500000, depreciation: 0.16 },
-            { name: "Levante", basePrice: 5000000, depreciation: 0.16 },
-            { name: "GranTurismo", basePrice: 8000000, depreciation: 0.16 },
-            { name: "MC20", basePrice: 15000000, depreciation: 0.15 }
+            { name: "Ghibli", basePrice: 4500000, depreciation: 0.16 },
+            { name: "Quattroporte", basePrice: 7000000, depreciation: 0.16 },
+            { name: "Levante", basePrice: 5500000, depreciation: 0.16 },
+            { name: "GranTurismo", basePrice: 8000000, depreciation: 0.15 },
+            { name: "GranCabrio", basePrice: 8500000, depreciation: 0.15 },
+            { name: "MC20", basePrice: 10000000, depreciation: 0.15 },
+            { name: "Grecale", basePrice: 3500000, depreciation: 0.16 }
         ]
     },
+
+    "McLaren麥拉倫": {
+        models: [
+            { name: "540C", basePrice: 8990000, depreciation: 0.16 },
+            { name: "570S", basePrice: 10880000, depreciation: 0.16 },
+            { name: "600LT", basePrice: 13800000, depreciation: 0.15 },
+            { name: "650S", basePrice: 15350000, depreciation: 0.15 },
+            { name: "720S", basePrice: 16200000, depreciation: 0.15 },
+            { name: "765LT", basePrice: 25680000, depreciation: 0.14 },
+            { name: "GT", basePrice: 12600000, depreciation: 0.15 },
+            { name: "Artura", basePrice: 13980000, depreciation: 0.15 }
+        ]
+    },
+
+    "Rolls Royce勞斯萊斯": {
+        models: [
+            { name: "Ghost", basePrice: 24000000, depreciation: 0.14 },
+            { name: "Phantom", basePrice: 30000000, depreciation: 0.13 },
+            { name: "Wraith", basePrice: 24000000, depreciation: 0.14 },
+            { name: "Cullinan", basePrice: 26000000, depreciation: 0.14 },
+            { name: "Dawn", basePrice: 23500000, depreciation: 0.14 },
+            { name: "Spectre", basePrice: 25700000, depreciation: 0.14 }
+        ]
+    },
+
+    "Mini": {
+        models: [
+            { name: "Cooper", basePrice: 1400000, depreciation: 0.17 },
+            { name: "Cooper S", basePrice: 1650000, depreciation: 0.17 },
+            { name: "Cooper Clubman", basePrice: 1580000, depreciation: 0.17 },
+            { name: "Cooper Countryman", basePrice: 1700000, depreciation: 0.17 },
+            { name: "JCW", basePrice: 1860000, depreciation: 0.17 },
+            { name: "Cabrio", basePrice: 1790000, depreciation: 0.17 }
+        ]
+    },
+
+    "Peugeot寶獅": {
+        models: [
+            { name: "208", basePrice: 1000000, depreciation: 0.16 },
+            { name: "2008", basePrice: 1200000, depreciation: 0.16 },
+            { name: "308", basePrice: 1350000, depreciation: 0.16 },
+            { name: "3008", basePrice: 1500000, depreciation: 0.16 },
+            { name: "5008", basePrice: 1650000, depreciation: 0.16 },
+            { name: "508", basePrice: 1800000, depreciation: 0.16 },
+            { name: "Traveller", basePrice: 1700000, depreciation: 0.16 }
+        ]
+    },
+
+    "Volkswagen福斯": {
+        models: [
+            { name: "Polo", basePrice: 800000, depreciation: 0.15 },
+            { name: "Golf", basePrice: 1100000, depreciation: 0.15 },
+            { name: "Passat", basePrice: 1500000, depreciation: 0.15 },
+            { name: "Tiguan", basePrice: 1400000, depreciation: 0.15 },
+            { name: "Touran", basePrice: 1300000, depreciation: 0.15 },
+            { name: "T-Roc", basePrice: 1200000, depreciation: 0.15 },
+            { name: "T-Cross", basePrice: 1000000, depreciation: 0.15 },
+            { name: "Amarok", basePrice: 1900000, depreciation: 0.15 },
+            { name: "Arteon", basePrice: 1800000, depreciation: 0.15 },
+            { name: "ID.4", basePrice: 1900000, depreciation: 0.16 }
+        ]
+    },
+
+    "Skoda斯柯達": {
+        models: [
+            { name: "Fabia", basePrice: 700000, depreciation: 0.15 },
+            { name: "Scala", basePrice: 900000, depreciation: 0.15 },
+            { name: "Octavia", basePrice: 1100000, depreciation: 0.15 },
+            { name: "Superb", basePrice: 1500000, depreciation: 0.14 },
+            { name: "Kamiq", basePrice: 950000, depreciation: 0.15 },
+            { name: "Karoq", basePrice: 1200000, depreciation: 0.15 },
+            { name: "Kodiaq", basePrice: 1550000, depreciation: 0.14 }
+        ]
+    },
+
+    "Lotus蓮花": {
+        models: [
+            { name: "Elise", basePrice: 2800000, depreciation: 0.16 },
+            { name: "Exige", basePrice: 3500000, depreciation: 0.16 },
+            { name: "Evora", basePrice: 5000000, depreciation: 0.15 },
+            { name: "Emira", basePrice: 5800000, depreciation: 0.15 }
+        ]
+    },
+
     "Smart": {
         models: [
-            { name: "Fortwo", basePrice: 800000, depreciation: 0.18 },
-            { name: "Forfour", basePrice: 850000, depreciation: 0.18 }
+            { name: "Fortwo", basePrice: 750000, depreciation: 0.17 },
+            { name: "Forfour", basePrice: 850000, depreciation: 0.17 }
         ]
     },
-    "SsangYong雙龍": {
+
+    "Jeep吉普": {
         models: [
-            { name: "Tivoli", basePrice: 750000, depreciation: 0.16 },
-            { name: "Korando", basePrice: 900000, depreciation: 0.15 },
-            { name: "Rexton", basePrice: 1400000, depreciation: 0.15 }
+            { name: "Compass", basePrice: 1350000, depreciation: 0.16 },
+            { name: "Cherokee", basePrice: 2000000, depreciation: 0.16 },
+            { name: "Grand Cherokee", basePrice: 3500000, depreciation: 0.15 },
+            { name: "Wrangler", basePrice: 2600000, depreciation: 0.14 },
+            { name: "Gladiator", basePrice: 3180000, depreciation: 0.15 }
         ]
     },
-    "Suzuki鈴木": {
-        models: [
-            { name: "Swift", basePrice: 600000, depreciation: 0.16 },
-            { name: "Vitara", basePrice: 850000, depreciation: 0.15 },
-            { name: "Jimny", basePrice: 850000, depreciation: 0.14 },
-            { name: "Ignis", basePrice: 650000, depreciation: 0.16 }
-        ]
-    },
-    "MG": {
-        models: [
-            { name: "MG3", basePrice: 550000, depreciation: 0.17 },
-            { name: "MG5", basePrice: 650000, depreciation: 0.16 },
-            { name: "HS", basePrice: 900000, depreciation: 0.16 },
-            { name: "ZS", basePrice: 750000, depreciation: 0.16 }
-        ]
-    },
-    "Tobe酷比": {
-        models: [
-            { name: "W'car", basePrice: 400000, depreciation: 0.18 },
-            { name: "M'car", basePrice: 450000, depreciation: 0.18 }
-        ]
-    },
-    "Chevrolet雪佛蘭": {
-        models: [
-            { name: "Spark", basePrice: 550000, depreciation: 0.17 },
-            { name: "Cruze", basePrice: 750000, depreciation: 0.16 },
-            { name: "Malibu", basePrice: 1100000, depreciation: 0.16 },
-            { name: "Trax", basePrice: 850000, depreciation: 0.16 },
-            { name: "Camaro", basePrice: 2800000, depreciation: 0.16 },
-            { name: "Corvette", basePrice: 6500000, depreciation: 0.15 }
-        ]
-    },
-    "Citroen雪鐵龍": {
-        models: [
-            { name: "C3", basePrice: 700000, depreciation: 0.17 },
-            { name: "C4", basePrice: 850000, depreciation: 0.16 },
-            { name: "C5 Aircross", basePrice: 1150000, depreciation: 0.15 },
-            { name: "Berlingo", basePrice: 950000, depreciation: 0.16 }
-        ]
-    },
-    "Isuzu五十鈴": {
-        models: [
-            { name: "D-Max", basePrice: 1100000, depreciation: 0.15 },
-            { name: "mu-X", basePrice: 1200000, depreciation: 0.14 },
-            { name: "ELF", basePrice: 1500000, depreciation: 0.16 },
-            { name: "Forward", basePrice: 2000000, depreciation: 0.16 }
-        ]
-    },
-    "Hino日野": {
-        models: [
-            { name: "300系列", basePrice: 1800000, depreciation: 0.16 },
-            { name: "500系列", basePrice: 2500000, depreciation: 0.16 },
-            { name: "700系列", basePrice: 3500000, depreciation: 0.16 }
-        ]
-    }
-    ,
-    "Alfa Romeo愛快羅密歐": {
-        models: [
-            { name: "Giulia", basePrice: 2500000, depreciation: 0.17 },
-            { name: "Stelvio", basePrice: 2800000, depreciation: 0.17 },
-            { name: "Giulietta", basePrice: 1800000, depreciation: 0.18 }
-        ]
-    },
-    "Aston Martin奧斯頓馬丁": {
-        models: [
-            { name: "DB11", basePrice: 18000000, depreciation: 0.15 },
-            { name: "Vantage", basePrice: 15000000, depreciation: 0.16 },
-            { name: "DBX", basePrice: 16000000, depreciation: 0.16 }
-        ]
-    },
+
     "Cadillac凱迪拉克": {
         models: [
-            { name: "CT4", basePrice: 2000000, depreciation: 0.17 },
-            { name: "CT5", basePrice: 2500000, depreciation: 0.16 },
-            { name: "XT4", basePrice: 2100000, depreciation: 0.17 },
-            { name: "XT5", basePrice: 2600000, depreciation: 0.16 },
-            { name: "XT6", basePrice: 3000000, depreciation: 0.16 },
+            { name: "CT5", basePrice: 2290000, depreciation: 0.16 },
+            { name: "CT6", basePrice: 2590000, depreciation: 0.16 },
+            { name: "XT4", basePrice: 1795000, depreciation: 0.16 },
+            { name: "XT5", basePrice: 2295000, depreciation: 0.16 },
+            { name: "XT6", basePrice: 2895000, depreciation: 0.16 },
             { name: "Escalade", basePrice: 4500000, depreciation: 0.15 }
         ]
     },
-    "Daihatsu大發": {
-        models: [
-            { name: "Terios", basePrice: 550000, depreciation: 0.17 },
-            { name: "Sirion", basePrice: 500000, depreciation: 0.17 },
-            { name: "Copen", basePrice: 700000, depreciation: 0.17 }
-        ]
-    },
-    "DFSK東風": {
-        models: [
-            { name: "Glory 580", basePrice: 650000, depreciation: 0.17 },
-            { name: "Glory 560", basePrice: 600000, depreciation: 0.17 }
-        ]
-    },
-    "Foton福田": {
-        models: [
-            { name: "View", basePrice: 1200000, depreciation: 0.16 },
-            { name: "Tunland", basePrice: 1000000, depreciation: 0.16 }
-        ]
-    },
+
     "Fiat飛雅特": {
         models: [
-            { name: "500", basePrice: 850000, depreciation: 0.17 },
-            { name: "500X", basePrice: 1100000, depreciation: 0.16 },
-            { name: "Panda", basePrice: 650000, depreciation: 0.18 },
-            { name: "Tipo", basePrice: 900000, depreciation: 0.17 }
+            { name: "500", basePrice: 800000, depreciation: 0.16 },
+            { name: "500X", basePrice: 1000000, depreciation: 0.16 },
+            { name: "Panda", basePrice: 650000, depreciation: 0.16 }
         ]
     },
-    "Iveco依維柯": {
-        models: [
-            { name: "Daily", basePrice: 2000000, depreciation: 0.16 },
-            { name: "Eurocargo", basePrice: 2500000, depreciation: 0.16 }
-        ]
-    },
-    "Jeep吉普": {
-        models: [
-            { name: "Renegade", basePrice: 1300000, depreciation: 0.16 },
-            { name: "Compass", basePrice: 1500000, depreciation: 0.15 },
-            { name: "Cherokee", basePrice: 1800000, depreciation: 0.15 },
-            { name: "Grand Cherokee", basePrice: 2800000, depreciation: 0.15 },
-            { name: "Wrangler", basePrice: 2500000, depreciation: 0.14 },
-            { name: "Gladiator", basePrice: 2600000, depreciation: 0.15 }
-        ]
-    },
-    "Lotus蓮花": {
-        models: [
-            { name: "Elise", basePrice: 5500000, depreciation: 0.16 },
-            { name: "Exige", basePrice: 6500000, depreciation: 0.16 },
-            { name: "Evora", basePrice: 7500000, depreciation: 0.16 },
-            { name: "Emira", basePrice: 8000000, depreciation: 0.16 }
-        ]
-    },
-    "Mahindra馬恆達": {
-        models: [
-            { name: "Scorpio", basePrice: 800000, depreciation: 0.17 },
-            { name: "XUV500", basePrice: 1000000, depreciation: 0.16 }
-        ]
-    },
-    "Morgan摩根": {
-        models: [
-            { name: "Plus Four", basePrice: 8000000, depreciation: 0.16 },
-            { name: "Plus Six", basePrice: 10000000, depreciation: 0.16 }
-        ]
-    },
+
     "Opel歐寶": {
         models: [
-            { name: "Astra", basePrice: 800000, depreciation: 0.17 },
-            { name: "Corsa", basePrice: 650000, depreciation: 0.17 },
-            { name: "Insignia", basePrice: 1200000, depreciation: 0.16 },
-            { name: "Crossland", basePrice: 900000, depreciation: 0.16 }
+            { name: "Astra", basePrice: 1100000, depreciation: 0.16 },
+            { name: "Insignia", basePrice: 1400000, depreciation: 0.16 },
+            { name: "Mokka", basePrice: 1100000, depreciation: 0.16 },
+            { name: "Grandland", basePrice: 1300000, depreciation: 0.16 }
         ]
     },
-    "Proton寶騰": {
-        models: [
-            { name: "Saga", basePrice: 500000, depreciation: 0.18 },
-            { name: "Persona", basePrice: 550000, depreciation: 0.17 },
-            { name: "X50", basePrice: 700000, depreciation: 0.17 },
-            { name: "X70", basePrice: 850000, depreciation: 0.16 }
-        ]
-    },
-    "Renault雷諾": {
-        models: [
-            { name: "Clio", basePrice: 750000, depreciation: 0.17 },
-            { name: "Captur", basePrice: 900000, depreciation: 0.16 },
-            { name: "Megane", basePrice: 1000000, depreciation: 0.16 },
-            { name: "Kadjar", basePrice: 1200000, depreciation: 0.15 },
-            { name: "Koleos", basePrice: 1400000, depreciation: 0.15 }
-        ]
-    },
+
     "Saab紳寶": {
         models: [
-            { name: "9-3", basePrice: 900000, depreciation: 0.18 },
-            { name: "9-5", basePrice: 1200000, depreciation: 0.18 }
+            { name: "9-3", basePrice: 1780000, depreciation: 0.17 },
+            { name: "9-5", basePrice: 2280000, depreciation: 0.17 }
         ]
     },
-    "BYD比亞迪": {
+
+    "Morgan摩根": {
         models: [
-            { name: "Atto 3", basePrice: 1350000, depreciation: 0.16 },
-            { name: "Dolphin", basePrice: 1100000, depreciation: 0.16 },
-            { name: "Seal", basePrice: 1750000, depreciation: 0.16 }
-        ]
-    },
-    "Chery奇瑞": {
-        models: [
-            { name: "Tiggo 7", basePrice: 700000, depreciation: 0.17 },
-            { name: "Tiggo 8", basePrice: 850000, depreciation: 0.16 }
-        ]
-    },
-    "Daihatsu大發": {
-        models: [
-            { name: "SIRION 第三代", basePrice: 688000, depreciation: 0.15 },
-            { name: "TERIOS 第二代", basePrice: 858000, depreciation: 0.14 }
-        ]
-    },
-    "DFSK東風": {
-        models: [
-            { name: "大錦鯉 S2.5t", basePrice: 445000, depreciation: 0.16 },
-            { name: "大錦鯉雙廂終端", basePrice: 638000, depreciation: 0.15 },
-            { name: "金錦鯉", basePrice: 498000, depreciation: 0.16 },
-            { name: "WINMAN", basePrice: 658000, depreciation: 0.16 }
-        ]
-    },
-    "Foton福田": {
-        models: [
-            { name: "AUMARK 歐馬可", basePrice: 899000, depreciation: 0.15 }
-        ]
-    },
-    "Hino日野": {
-        models: [
-            { name: "300 系列", basePrice: 1044000, depreciation: 0.14 },
-            { name: "XZU600L", basePrice: 1070000, depreciation: 0.14 },
-            { name: "200 系列", basePrice: 1245000, depreciation: 0.14 }
-        ]
-    },
-    "Isuzu五十鈴": {
-        models: [
-            { name: "ELF 第五代", basePrice: 1420000, depreciation: 0.14 },
-            { name: "ELF 第六代", basePrice: 1565000, depreciation: 0.13 },
-            { name: "NP85R 排氣量 3.0", basePrice: 1945000, depreciation: 0.14 },
-            { name: "NP85R 排氣量 5.2", basePrice: 2095000, depreciation: 0.13 }
-        ]
-    },
-    "Cadillac凱迪拉克": {
-        models: [
-            { name: "CT6", basePrice: 2500000, depreciation: 0.15 },
-            { name: "XT5", basePrice: 2200000, depreciation: 0.14 },
-            { name: "Escalade", basePrice: 4500000, depreciation: 0.14 }
-        ]
-    },
-    "Jeep吉普": {
-        models: [
-            { name: "Compass", basePrice: 1350000, depreciation: 0.14 },
-            { name: "Cherokee", basePrice: 1800000, depreciation: 0.14 },
-            { name: "Grand Cherokee", basePrice: 2800000, depreciation: 0.13 },
-            { name: "Wrangler", basePrice: 2500000, depreciation: 0.13 }
+            { name: "Plus 4", basePrice: 4000000, depreciation: 0.16 },
+            { name: "Plus Six", basePrice: 6470000, depreciation: 0.15 },
+            { name: "Aero", basePrice: 8888000, depreciation: 0.15 }
         ]
     }
 };
