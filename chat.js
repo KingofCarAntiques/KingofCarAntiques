@@ -62,15 +62,18 @@ const autoReplies = {
         messages: [
             '感謝您的訊息！我們已收到 ✅',
             '',
-            '💚 建議加入 LINE 官方帳號獲得即時回覆：',
+            '💡 為了更快為您服務，請選擇：',
+            '',
+            '【推薦】💚 加入 LINE 官方帳號',
             '👉 @288dyysc',
+            '✅ 即時回覆、專人服務',
             '點擊下方「加入 LINE 諮詢」按鈕',
             '',
-            '或您也可以：',
-            '📞 撥打專線：0911-177-619',
-            '📧 Email：a0911177619@yahoo.com.tw',
+            '或點擊下方「📋 快速留單」',
+            '留下您的聯絡方式，我們會主動聯繫！',
             '',
-            '我們的專業顧問將竭誠為您服務！'
+            '也可以直接撥打：📞 0911-177-619',
+            '⏰ 週一至週五 09:00-21:00'
         ]
     }
 };
@@ -115,10 +118,36 @@ document.addEventListener('DOMContentLoaded', function() {
     quickReplyBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             const message = this.getAttribute('data-message');
-            sendUserMessage(message);
-            handleAutoReply(message);
+            if (message) {
+                sendUserMessage(message);
+                handleAutoReply(message);
+            }
         });
     });
+
+    // 快速留單按鈕
+    const quickContactBtn = document.getElementById('quickContactBtn');
+    const quickContactForm = document.getElementById('quickContactForm');
+    const closeContactForm = document.getElementById('closeContactForm');
+    const submitQuickContact = document.getElementById('submitQuickContact');
+
+    if (quickContactBtn) {
+        quickContactBtn.addEventListener('click', function() {
+            quickContactForm.classList.remove('hidden');
+            document.getElementById('quickReplies').style.display = 'none';
+        });
+    }
+
+    if (closeContactForm) {
+        closeContactForm.addEventListener('click', function() {
+            quickContactForm.classList.add('hidden');
+            document.getElementById('quickReplies').style.display = 'grid';
+        });
+    }
+
+    if (submitQuickContact) {
+        submitQuickContact.addEventListener('click', submitQuickContactForm);
+    }
 
     // 3秒後顯示歡迎提示
     setTimeout(function() {
@@ -420,6 +449,82 @@ function exportConversation() {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+}
+
+// 提交快速留單表單
+function submitQuickContactForm() {
+    const name = document.getElementById('quickName').value.trim();
+    const phone = document.getElementById('quickPhone').value.trim();
+    const line = document.getElementById('quickLine').value.trim();
+
+    // 驗證必填欄位
+    if (!name || !phone) {
+        alert('請填寫姓名和手機號碼');
+        return;
+    }
+
+    // 驗證手機號碼格式（台灣手機號碼）
+    const phoneRegex = /^09\d{8}$/;
+    if (!phoneRegex.test(phone)) {
+        alert('請輸入正確的手機號碼格式（例如：0912345678）');
+        return;
+    }
+
+    // 保存客戶資訊
+    conversationHistory.userInfo = {
+        name: name,
+        phone: phone,
+        line: line || '未提供'
+    };
+
+    // 立即發送 Email 通知
+    const contactData = new FormData();
+    contactData.append('_to', 'a0911177619@yahoo.com.tw');
+    contactData.append('_subject', `💚【秒估車】客戶快速留單 - ${name} (${getCurrentTime()})`);
+    contactData.append('_template', 'table');
+    contactData.append('👤 客戶姓名', name);
+    contactData.append('📱 手機號碼', phone);
+    contactData.append('💚 LINE ID', line || '未提供');
+    contactData.append('⏰ 留單時間', new Date().toLocaleString('zh-TW'));
+    contactData.append('🆔 對話編號', conversationHistory.sessionId);
+    contactData.append('💡 建議', '請透過電話或 LINE 官方帳號 @288dyysc 聯繫客戶');
+
+    fetch('https://formsubmit.co/ajax/a0911177619@yahoo.com.tw', {
+        method: 'POST',
+        body: contactData
+    }).then(response => {
+        console.log('✅ 快速留單已發送');
+
+        // 關閉表單
+        document.getElementById('quickContactForm').classList.add('hidden');
+        document.getElementById('quickReplies').style.display = 'grid';
+
+        // 清空表單
+        document.getElementById('quickName').value = '';
+        document.getElementById('quickPhone').value = '';
+        document.getElementById('quickLine').value = '';
+
+        // 發送確認訊息
+        sendBotMessage({
+            messages: [
+                '感謝您！我們已收到您的聯絡資訊 ✅',
+                '',
+                `👤 姓名：${name}`,
+                `📱 電話：${phone}`,
+                line ? `💚 LINE ID：${line}` : '',
+                '',
+                '我們的專業顧問會盡快與您聯繫！',
+                '',
+                '如需立即服務，歡迎：',
+                '💚 加入 LINE 官方帳號 @288dyysc',
+                '📞 或撥打 0911-177-619'
+            ].filter(msg => msg !== '')
+        });
+
+    }).catch(error => {
+        console.error('❌ 快速留單發送失敗:', error);
+        alert('發送失敗，請稍後再試或直接撥打 0911-177-619');
+    });
 }
 
 // 匯出函數供其他腳本使用

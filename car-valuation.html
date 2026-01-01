@@ -471,6 +471,21 @@
                 <button class="quick-reply-btn" data-message="如何聯繫真人客服">👤 真人客服</button>
                 <button class="quick-reply-btn" data-message="營業時間是什麼時候">⏰ 營業時間</button>
                 <button class="quick-reply-btn" data-message="我想賣車">🚗 我要賣車</button>
+                <button class="quick-reply-btn quick-contact-btn" id="quickContactBtn">📋 快速留單</button>
+            </div>
+
+            <!-- 快速留單表單 -->
+            <div id="quickContactForm" class="quick-contact-form hidden">
+                <div class="quick-contact-header">
+                    <h4>📋 快速留下聯絡方式</h4>
+                    <button id="closeContactForm" class="close-contact-form">✕</button>
+                </div>
+                <div class="quick-contact-body">
+                    <input type="text" id="quickName" placeholder="您的姓名" required>
+                    <input type="tel" id="quickPhone" placeholder="手機號碼" required>
+                    <input type="text" id="quickLine" placeholder="LINE ID（選填）">
+                    <button id="submitQuickContact" class="submit-quick-contact">送出</button>
+                </div>
             </div>
 
             <!-- 輸入區 -->

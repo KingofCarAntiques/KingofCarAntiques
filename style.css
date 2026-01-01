@@ -1176,6 +1176,111 @@ body::before {
     transform: scale(1.05);
 }
 
+/* 快速留單按鈕 */
+.quick-contact-btn {
+    background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+    color: white;
+    font-weight: 600;
+}
+
+.quick-contact-btn:hover {
+    background: linear-gradient(135deg, #FF5252 0%, #FF7043 100%);
+    transform: translateY(-2px);
+}
+
+/* 快速留單表單 */
+.quick-contact-form {
+    background: white;
+    padding: 20px;
+    border-top: 1px solid #eee;
+    animation: slideDown 0.3s ease;
+}
+
+.quick-contact-form.hidden {
+    display: none;
+}
+
+.quick-contact-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.quick-contact-header h4 {
+    margin: 0;
+    color: #333;
+    font-size: 16px;
+}
+
+.close-contact-form {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #999;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s;
+}
+
+.close-contact-form:hover {
+    color: #333;
+}
+
+.quick-contact-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quick-contact-body input {
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.quick-contact-body input:focus {
+    border-color: #4CAF50;
+}
+
+.submit-quick-contact {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 5px;
+}
+
+.submit-quick-contact:hover {
+    background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* 響應式設計 */
 @media (max-width: 480px) {
     .card {
