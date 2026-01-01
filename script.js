@@ -592,39 +592,56 @@ function setupQuickEstimate() {
     const manufactureDate = document.getElementById('manufactureDate');
     const mileage = document.getElementById('mileage');
     const equipmentCheckboxes = document.querySelectorAll('input[name="equipment"]');
-    
+
+    console.log('🔧 設置快速估價事件監聽器...');
+
     // 移除舊的事件監聽器（如果存在）
     if (carBrand) carBrand.removeEventListener('change', checkAndCalculateQuick);
     if (manufactureDate) manufactureDate.removeEventListener('change', checkAndCalculateQuick);
     if (mileage) mileage.removeEventListener('input', checkAndCalculateQuick);
-    
+
     // 添加新的事件監聽器
     if (carBrand) carBrand.addEventListener('change', checkAndCalculateQuick);
     if (manufactureDate) manufactureDate.addEventListener('change', checkAndCalculateQuick);
     if (mileage) mileage.addEventListener('input', checkAndCalculateQuick);
-    
+
     equipmentCheckboxes.forEach(checkbox => {
         checkbox.removeEventListener('change', checkAndCalculateQuick);
         checkbox.addEventListener('change', checkAndCalculateQuick);
     });
+
+    console.log('✅ 快速估價監聽器已設置完成');
 }
 
 // 檢查並計算快速估價
 function checkAndCalculateQuick() {
-    if (!isQuickEstimateActive || currentMode !== 'quick') return;
-    
+    console.log('📊 檢查快速估價條件...');
+
+    if (!isQuickEstimateActive || currentMode !== 'quick') {
+        console.log('⚠️ 快速估價未啟用或模式不正確');
+        return;
+    }
+
     const carBrand = document.getElementById('carBrand');
     const manufactureDate = document.getElementById('manufactureDate');
     const mileage = document.getElementById('mileage');
-    
+
     if (carBrand && manufactureDate && mileage) {
         const brandValue = carBrand.value;
         const dateValue = manufactureDate.value;
         const mileageValue = mileage.value;
-        
+
+        console.log('📋 表單值:', {
+            brand: brandValue ? '已選擇' : '未選擇',
+            date: dateValue || '未填寫',
+            mileage: mileageValue || '未填寫'
+        });
+
         if (brandValue && dateValue && mileageValue) {
+            console.log('✅ 所有必填欄位已完成，開始計算估價...');
             calculateQuickPrice(brandValue, dateValue, mileageValue);
         } else {
+            console.log('⚠️ 還有必填欄位未填寫');
             hideQuickPriceSection();
         }
     }
@@ -678,6 +695,14 @@ function calculateQuickPrice(brandValue, dateValue, mileageValue) {
 
 // 顯示快速估價結果
 function displayQuickEstimate(carData, year, mileage, basePrice, retailPrice, purchasePrice) {
+    console.log('💰 顯示估價結果:', {
+        車款: `${carData.brand} ${carData.model}`,
+        年份: year,
+        里程: mileage,
+        零售價: (retailPrice / 10000).toFixed(1) + '萬',
+        收購價: (purchasePrice / 10000).toFixed(1) + '萬'
+    });
+
     // 顯示車輛資訊
     document.getElementById('displayBrand').textContent = carData.brand || '-';
     document.getElementById('displayModel').textContent = carData.model || '-';
@@ -685,23 +710,26 @@ function displayQuickEstimate(carData, year, mileage, basePrice, retailPrice, pu
     document.getElementById('displayYear').textContent = year || '-';
     document.getElementById('displayMileage').textContent = (parseInt(mileage) / 10000).toFixed(1) + ' 萬公里';
     document.getElementById('displayNewPrice').textContent = '$' + (basePrice / 10000).toFixed(1) + ' 萬';
-    
+
     // 顯示價格
     const retailWan = (retailPrice / 10000).toFixed(1);
     const purchaseWan = (purchasePrice / 10000).toFixed(1);
-    
+
     document.getElementById('retailPrice').textContent = '$ ' + retailWan + ' 萬';
     document.getElementById('purchasePrice').textContent = '$ ' + purchaseWan + ' 萬';
-    
+
     // 顯示快速估價區域
     const quickPriceSection = document.getElementById('quickPriceSection');
     if (quickPriceSection) {
         quickPriceSection.style.display = 'block';
-        
+        console.log('✅ 快速估價區域已顯示');
+
         // 平滑滾動到結果
         setTimeout(() => {
             quickPriceSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }, 100);
+    } else {
+        console.error('❌ 找不到 quickPriceSection 元素');
     }
 }
 
