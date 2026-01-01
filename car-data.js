@@ -1,9 +1,23 @@
 // ===============================================
-// 秒估車 - 車款價格資料庫（詳細版）
+// 秒估車 - 車款價格資料庫（完整版）
 // ===============================================
-// 📅 最後更新：2026年1月（基於石貳全460期）
-// 📊 數據來源：石貳全中古車行情表第460期（第51-75頁）
+// 📅 最後更新：2026年1月（基於石貳全460期 第1-25頁）
+// 📊 數據來源：石貳全中古車行情表第460期 完整版
 // 🔄 更新頻率：每月更新
+// 📋 支援品牌：43個（新增10個品牌）
+// 📋 支援車款：480+ 款
+//
+// 🆕 本次新增品牌（2026年1月）：
+//    1. Daihatsu 大發
+//    2. DFSK 東風
+//    3. Ford 福特 ⭐
+//    4. Foton 福田
+//    5. Hino 日野
+//    6. Hyundai 現代 ⭐
+//    7. Infiniti 無限 ⭐
+//    8. Isuzu 五十鈴
+//    9. Kia 起亞 ⭐
+//   10. Luxgen 納智捷 ⭐
 // ===============================================
 
 // 車款資料庫
@@ -571,6 +585,270 @@ const carDatabase = {
         models: [
             { name: "9-3", basePrice: 1780000, depreciation: 0.17 },
             { name: "9-5", basePrice: 2280000, depreciation: 0.17 }
+        ]
+    },
+
+    "Daihatsu大發": {
+        models: [
+            { name: "Sirion 第三代", basePrice: 658000, depreciation: 0.17 },
+            { name: "Terios 第二代", basePrice: 848000, depreciation: 0.16 }
+        ]
+    },
+
+    "DFSK東風": {
+        models: [
+            { name: "大發 S2.5t", basePrice: 445000, depreciation: 0.17 }
+        ]
+    },
+
+    "Ford福特": {
+        models: [
+            // Fiesta系列
+            { name: "Fiesta 第五代", basePrice: 588000, depreciation: 0.17 },
+            { name: "Fiesta 小改款", basePrice: 698000, depreciation: 0.17 },
+
+            // Focus系列
+            { name: "Focus 第二代", basePrice: 599000, depreciation: 0.16 },
+            { name: "Focus 第三代", basePrice: 759000, depreciation: 0.16 },
+            { name: "Focus 第四代", basePrice: 809000, depreciation: 0.15 },
+            { name: "Focus Active", basePrice: 859000, depreciation: 0.15 },
+
+            // Escort
+            { name: "Escort 第一代", basePrice: 579000, depreciation: 0.17 },
+
+            // Mondeo
+            { name: "Mondeo CD345 第四代", basePrice: 889000, depreciation: 0.16 },
+            { name: "Mondeo 第五代", basePrice: 999000, depreciation: 0.16 },
+
+            // Kuga系列
+            { name: "Kuga 第一代", basePrice: 993000, depreciation: 0.16 },
+            { name: "Kuga 第二代", basePrice: 1099000, depreciation: 0.15 },
+            { name: "Kuga 第三代", basePrice: 1139000, depreciation: 0.15 },
+
+            // Mustang
+            { name: "Mustang Mach-E 野馬", basePrice: 1899000, depreciation: 0.16 },
+
+            // Ranger系列
+            { name: "Ranger 第三代", basePrice: 1288000, depreciation: 0.14 },
+            { name: "Ranger 藍哥第二代", basePrice: 1468000, depreciation: 0.14 },
+
+            // Escape系列
+            { name: "Escape 第二代", basePrice: 659000, depreciation: 0.16 },
+
+            // i-Max
+            { name: "i-Max 第一代", basePrice: 706000, depreciation: 0.16 },
+
+            // Tourneo系列
+            { name: "Tourneo Custom 旅行家", basePrice: 1469000, depreciation: 0.16 },
+            { name: "Tourneo Custom 小改款", basePrice: 1633000, depreciation: 0.16 },
+            { name: "Tourneo Connect 第二代", basePrice: 1048000, depreciation: 0.16 }
+        ]
+    },
+
+    "Foton福田": {
+        models: [
+            { name: "Aumark 歐馬可", basePrice: 899000, depreciation: 0.16 }
+        ]
+    },
+
+    "Hino日野": {
+        models: [
+            // 300系列
+            { name: "300系列貨車 3.49噸", basePrice: 1044000, depreciation: 0.15 },
+            { name: "300系列 XZU307L", basePrice: 1040000, depreciation: 0.15 },
+
+            // 200系列
+            { name: "200系列 HKMEVR3", basePrice: 1190000, depreciation: 0.15 },
+            { name: "200系列貨車", basePrice: 1245000, depreciation: 0.15 }
+        ]
+    },
+
+    "Hyundai現代": {
+        models: [
+            // Elantra系列
+            { name: "Elantra 伊倫強第一代", basePrice: 689000, depreciation: 0.16 },
+            { name: "Elantra 第二代", basePrice: 739000, depreciation: 0.16 },
+            { name: "Elantra 第三代", basePrice: 759000, depreciation: 0.15 },
+
+            // i30
+            { name: "i30 第一代", basePrice: 599000, depreciation: 0.16 },
+            { name: "i30 第二代", basePrice: 449000, depreciation: 0.16 },
+
+            // Ioniq系列
+            { name: "Ioniq 第一代", basePrice: 1019000, depreciation: 0.16 },
+            { name: "Ioniq 5", basePrice: 1059000, depreciation: 0.16 },
+            { name: "Ioniq 6", basePrice: 1599000, depreciation: 0.16 },
+
+            // Genesis
+            { name: "Genesis 第一代", basePrice: 2880000, depreciation: 0.16 },
+
+            // Veloster
+            { name: "Veloster 第一代", basePrice: 1009000, depreciation: 0.17 },
+            { name: "Veloster 第二代", basePrice: 1199000, depreciation: 0.16 },
+
+            // Porter
+            { name: "Porter 波特第一代", basePrice: 698000, depreciation: 0.16 },
+            { name: "Porter 第二代", basePrice: 728000, depreciation: 0.16 },
+
+            // Grand Starex
+            { name: "Grand Starex 第一代 TQ型", basePrice: 1168000, depreciation: 0.16 },
+            { name: "Grand Starex 第二代小改款", basePrice: 1268000, depreciation: 0.16 },
+
+            // Staria
+            { name: "Staria 第一代", basePrice: 1598000, depreciation: 0.16 },
+
+            // Tucson系列
+            { name: "Tucson 社會第二代", basePrice: 809000, depreciation: 0.16 },
+            { name: "Tucson 第三代", basePrice: 849000, depreciation: 0.15 },
+            { name: "Tucson 第四代小改款", basePrice: 829000, depreciation: 0.15 },
+
+            // Santa Fe系列
+            { name: "Santa Fe 聖塔第一代", basePrice: 1019000, depreciation: 0.15 },
+            { name: "Santa Fe 第二代", basePrice: 1199000, depreciation: 0.15 },
+            { name: "Santa Fe 聖塔第三代", basePrice: 1249000, depreciation: 0.15 },
+            { name: "Santa Fe 第四代", basePrice: 1329000, depreciation: 0.15 },
+
+            // Venue
+            { name: "Venue QXG型", basePrice: 729000, depreciation: 0.16 },
+
+            // Kona系列
+            { name: "Kona 科納第一代", basePrice: 799000, depreciation: 0.16 },
+            { name: "Kona 科納Electric", basePrice: 1319000, depreciation: 0.17 }
+        ]
+    },
+
+    "Infiniti無限": {
+        models: [
+            // Q25
+            { name: "Q25", basePrice: 1920000, depreciation: 0.17 },
+
+            // Q37系列
+            { name: "Q37", basePrice: 2210000, depreciation: 0.16 },
+            { name: "Q37C", basePrice: 2350000, depreciation: 0.16 },
+
+            // M系列
+            { name: "M25", basePrice: 2290000, depreciation: 0.16 },
+            { name: "M35", basePrice: 2560000, depreciation: 0.16 },
+            { name: "M37", basePrice: 2780000, depreciation: 0.16 },
+
+            // Q50系列
+            { name: "Q50 第一代", basePrice: 2050000, depreciation: 0.16 },
+            { name: "Q50 第二代", basePrice: 2450000, depreciation: 0.16 },
+
+            // Q60系列
+            { name: "Q60 第一代", basePrice: 2050000, depreciation: 0.16 },
+            { name: "Q60 第二代", basePrice: 2990000, depreciation: 0.16 },
+
+            // Q70
+            { name: "Q70", basePrice: 2290000, depreciation: 0.16 },
+            { name: "Q70 小改款", basePrice: 2090000, depreciation: 0.16 },
+
+            // FX系列
+            { name: "FX35 第二代", basePrice: 2460000, depreciation: 0.16 },
+            { name: "FX37", basePrice: 2480000, depreciation: 0.16 },
+            { name: "FX50", basePrice: 3300000, depreciation: 0.16 },
+
+            // QX30
+            { name: "QX30", basePrice: 1680000, depreciation: 0.17 },
+
+            // QX50系列
+            { name: "QX50 第一代", basePrice: 2170000, depreciation: 0.16 },
+            { name: "QX50 第二代", basePrice: 2450000, depreciation: 0.16 },
+
+            // QX60系列
+            { name: "QX60 第一代", basePrice: 2990000, depreciation: 0.16 },
+            { name: "QX60 第二代", basePrice: 2680000, depreciation: 0.16 },
+
+            // QX70
+            { name: "QX70", basePrice: 2480000, depreciation: 0.16 }
+        ]
+    },
+
+    "Isuzu五十鈴": {
+        models: [
+            // ELF系列
+            { name: "ELF 第五代 貨車", basePrice: 1280000, depreciation: 0.15 },
+            { name: "ELF 第六代 貨車", basePrice: 1565000, depreciation: 0.15 },
+            { name: "ELF 一路發（日本）", basePrice: 1565000, depreciation: 0.15 }
+        ]
+    },
+
+    "Kia起亞": {
+        models: [
+            // Morning系列
+            { name: "Morning 第一代", basePrice: 519800, depreciation: 0.17 },
+            { name: "Morning 晨尼第一代小改款", basePrice: 495000, depreciation: 0.17 },
+
+            // Picanto系列
+            { name: "Picanto 帕克托第一代", basePrice: 499000, depreciation: 0.17 },
+            { name: "Picanto 第一代小改款", basePrice: 565000, depreciation: 0.17 },
+            { name: "Picanto 第二代小改款", basePrice: 590000, depreciation: 0.17 },
+
+            // Stinger
+            { name: "Stinger 史丁格", basePrice: 1558000, depreciation: 0.16 },
+
+            // Stonic
+            { name: "Stonic 史托尼克", basePrice: 739000, depreciation: 0.16 },
+
+            // Soul
+            { name: "Soul 靈魂", basePrice: 869800, depreciation: 0.16 },
+            { name: "Soul 第二代小改款", basePrice: 859000, depreciation: 0.16 },
+
+            // Sportage系列
+            { name: "Sportage 第三代", basePrice: 989000, depreciation: 0.15 },
+            { name: "Sportage 第四代", basePrice: 1039000, depreciation: 0.15 },
+            { name: "Sportage 運動版第四代", basePrice: 1139000, depreciation: 0.15 },
+
+            // Sorento系列
+            { name: "Sorento 所蘭托第二代", basePrice: 1419000, depreciation: 0.15 },
+            { name: "Sorento 第三代", basePrice: 1670000, depreciation: 0.15 },
+            { name: "Sorento 所蘭托第四代", basePrice: 1780000, depreciation: 0.15 },
+
+            // Carnival系列
+            { name: "Carnival 嘉年華第二代", basePrice: 1389000, depreciation: 0.15 },
+            { name: "Carnival 第三代", basePrice: 1559000, depreciation: 0.15 },
+
+            // EV6
+            { name: "EV6", basePrice: 1669000, depreciation: 0.17 },
+            { name: "EV6 小改款", basePrice: 1979000, depreciation: 0.17 },
+
+            // Ceed SW
+            { name: "Ceed SW", basePrice: 1129000, depreciation: 0.16 }
+        ]
+    },
+
+    "Luxgen納智捷": {
+        models: [
+            // S3
+            { name: "S3 拉傑第一代", basePrice: 649000, depreciation: 0.17 },
+
+            // S5系列
+            { name: "S5 Sedan", basePrice: 690000, depreciation: 0.17 },
+            { name: "S5 Turbo", basePrice: 690000, depreciation: 0.17 },
+            { name: "S5 Turbo Eco Hyper", basePrice: 659000, depreciation: 0.17 },
+
+            // U6系列
+            { name: "U6 Turbo", basePrice: 819000, depreciation: 0.16 },
+            { name: "U6 Turbo Eco Hyper", basePrice: 812000, depreciation: 0.16 },
+            { name: "U6 GT", basePrice: 899000, depreciation: 0.16 },
+            { name: "U6 GT220", basePrice: 939000, depreciation: 0.16 },
+
+            // U7系列
+            { name: "U7 Turbo", basePrice: 945000, depreciation: 0.16 },
+            { name: "U7 Turbo Eco Hyper", basePrice: 923000, depreciation: 0.16 },
+
+            // M7系列
+            { name: "M7 Turbo", basePrice: 1015000, depreciation: 0.16 },
+            { name: "M7 Turbo Eco Hyper", basePrice: 1013000, depreciation: 0.16 },
+
+            // URX
+            { name: "URX", basePrice: 848000, depreciation: 0.16 },
+
+            // N7
+            { name: "N7 電動車", basePrice: 999000, depreciation: 0.17 },
+
+            // U5
+            { name: "U5", basePrice: 659000, depreciation: 0.16 }
         ]
     },
 
