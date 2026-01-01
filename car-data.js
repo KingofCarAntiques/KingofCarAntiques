@@ -1,13 +1,13 @@
 // ===============================================
 // 秒估車 - 車款價格資料庫（完整版）
 // ===============================================
-// 📅 最後更新：2026年1月（基於石貳全460期 第1-25頁）
+// 📅 最後更新：2026年1月2日（基於石貳全460期 第25-50頁補充）
 // 📊 數據來源：石貳全中古車行情表第460期 完整版
 // 🔄 更新頻率：每月更新
-// 📋 支援品牌：43個（新增10個品牌）
-// 📋 支援車款：480+ 款
+// 📋 支援品牌：51個品牌
+// 📋 支援車款：630+ 款
 //
-// 🆕 本次新增品牌（2026年1月）：
+// 🆕 本次新增品牌（2026年1月1日）：
 //    1. Daihatsu 大發
 //    2. DFSK 東風
 //    3. Ford 福特 ⭐
@@ -18,6 +18,16 @@
 //    8. Isuzu 五十鈴
 //    9. Kia 起亞 ⭐
 //   10. Luxgen 納智捷 ⭐
+//
+// 🔥 新增品牌（2026年1月2日）：
+//   11. Mitsubishi 三菱 ⭐⭐ (20款車型)
+//   12. Suzuki 鈴木 ⭐⭐ (12款車型)
+//   13. Subaru 速霸陸 ⭐⭐ (14款車型)
+//   14. Ssangyong 雙龍 (8款車型)
+//   15. MG ⭐ (5款車型)
+//   16. Proton 普騰 (3款車型)
+//   17. Mahindra 馬亨達 (2款車型)
+//   18. CMC 中華汽車 (10款車型，商用車)
 // ===============================================
 
 // 車款資料庫
@@ -857,6 +867,200 @@ const carDatabase = {
             { name: "Plus 4", basePrice: 4000000, depreciation: 0.16 },
             { name: "Plus Six", basePrice: 6470000, depreciation: 0.15 },
             { name: "Aero", basePrice: 8888000, depreciation: 0.15 }
+        ]
+    },
+
+    // ========== 日本品牌（新增）==========
+    "Mitsubishi三菱": {
+        models: [
+            // Lancer系列
+            { name: "Lancer", basePrice: 839000, depreciation: 0.16 },
+            { name: "Sport Back", basePrice: 859000, depreciation: 0.16 },
+            { name: "Lancer Fortis", basePrice: 649000, depreciation: 0.16 },
+            { name: "Lancer Fortis 旗艦版", basePrice: 779000, depreciation: 0.16 },
+            { name: "Lancer iO", basePrice: 699000, depreciation: 0.16 },
+            { name: "Grand Lancer", basePrice: 669000, depreciation: 0.16 },
+            { name: "Grand Lancer 旗艦版", basePrice: 881000, depreciation: 0.16 },
+
+            // SUV系列
+            { name: "ASX", basePrice: 1128000, depreciation: 0.16 },
+            { name: "Eclipse Cross", basePrice: 949000, depreciation: 0.16 },
+            { name: "Eclipse Cross PHEV", basePrice: 1339000, depreciation: 0.17 },
+            { name: "Outlander", basePrice: 789000, depreciation: 0.15 },
+            { name: "Outlander PHEV", basePrice: 1990000, depreciation: 0.16 },
+            { name: "Xforce", basePrice: 799000, depreciation: 0.16 },
+
+            // Pajero系列
+            { name: "Pajero", basePrice: 2280000, depreciation: 0.15 },
+
+            // MPV/商用車系列
+            { name: "Colt Plus", basePrice: 549000, depreciation: 0.17 },
+            { name: "Savrin", basePrice: 747000, depreciation: 0.16 },
+            { name: "Zinger", basePrice: 540000, depreciation: 0.16 },
+            { name: "Zinger Pickup", basePrice: 629000, depreciation: 0.16 },
+
+            // 其他
+            { name: "Galant Grunder", basePrice: 845000, depreciation: 0.16 }
+        ]
+    },
+
+    "Suzuki鈴木": {
+        models: [
+            // Swift系列
+            { name: "Swift", basePrice: 578000, depreciation: 0.17 },
+            { name: "Swift 思維特", basePrice: 720000, depreciation: 0.17 },
+
+            // SX4系列
+            { name: "SX4", basePrice: 568000, depreciation: 0.17 },
+            { name: "SX4 Crossover", basePrice: 785000, depreciation: 0.16 },
+
+            // Baleno系列
+            { name: "Baleno", basePrice: 708000, depreciation: 0.17 },
+
+            // Ignis系列
+            { name: "Ignis", basePrice: 638000, depreciation: 0.17 },
+
+            // Jimny系列
+            { name: "Jimny", basePrice: 648000, depreciation: 0.17 },
+
+            // Vitara系列
+            { name: "Vitara", basePrice: 768000, depreciation: 0.16 },
+
+            // S-Cross系列
+            { name: "S-Cross", basePrice: 980000, depreciation: 0.16 },
+
+            // Alto系列
+            { name: "Alto", basePrice: 468000, depreciation: 0.17 },
+
+            // 商用車
+            { name: "Carry", basePrice: 479000, depreciation: 0.16 },
+            { name: "Grand Vitara JP", basePrice: 1038000, depreciation: 0.16 }
+        ]
+    },
+
+    "Subaru速霸陸": {
+        models: [
+            // Impreza系列
+            { name: "Impreza", basePrice: 1850000, depreciation: 0.16 },
+            { name: "Impreza WRX STI", basePrice: 1900000, depreciation: 0.16 },
+
+            // WRX系列
+            { name: "WRX", basePrice: 1270000, depreciation: 0.16 },
+            { name: "WRX STI", basePrice: 1760000, depreciation: 0.16 },
+            { name: "WRX Wagon", basePrice: 1658000, depreciation: 0.16 },
+
+            // Legacy系列
+            { name: "Legacy", basePrice: 1100000, depreciation: 0.16 },
+            { name: "Legacy Wagon", basePrice: 1230000, depreciation: 0.16 },
+
+            // BRZ系列
+            { name: "BRZ", basePrice: 1330000, depreciation: 0.16 },
+            { name: "BRZ STI", basePrice: 1748000, depreciation: 0.16 },
+
+            // Forester系列
+            { name: "Forester", basePrice: 1070000, depreciation: 0.15 },
+            { name: "Forester GT", basePrice: 1258000, depreciation: 0.15 },
+
+            // Outback系列
+            { name: "Outback", basePrice: 1800000, depreciation: 0.15 },
+
+            // XV系列
+            { name: "XV", basePrice: 980000, depreciation: 0.16 },
+
+            // Levorg系列
+            { name: "Levorg", basePrice: 1220000, depreciation: 0.16 },
+
+            // Crosstrek系列
+            { name: "Crosstrek", basePrice: 1148000, depreciation: 0.16 },
+
+            // Solterra電動車
+            { name: "Solterra", basePrice: 1898000, depreciation: 0.17 }
+        ]
+    },
+
+    // ========== 韓國品牌（新增）==========
+    "Ssangyong雙龍": {
+        models: [
+            // Korando系列
+            { name: "Korando", basePrice: 1148000, depreciation: 0.16 },
+
+            // Rexton系列
+            { name: "Rexton II", basePrice: 2150000, depreciation: 0.16 },
+            { name: "Rexton W", basePrice: 1570000, depreciation: 0.16 },
+            { name: "Rexton W Sports", basePrice: 1368000, depreciation: 0.16 },
+
+            // Tivoli系列
+            { name: "Tivoli", basePrice: 768000, depreciation: 0.16 },
+
+            // Stavic系列
+            { name: "Stavic", basePrice: 1698000, depreciation: 0.16 },
+
+            // Actyon系列
+            { name: "Actyon", basePrice: 1180000, depreciation: 0.16 },
+
+            // Kyron系列
+            { name: "Kyron", basePrice: 1428000, depreciation: 0.16 }
+        ]
+    },
+
+    // ========== 英國品牌（新增）==========
+    "MG": {
+        models: [
+            // HS系列
+            { name: "HS", basePrice: 939000, depreciation: 0.16 },
+
+            // ZS系列
+            { name: "ZS", basePrice: 769000, depreciation: 0.16 },
+
+            // MG4電動車
+            { name: "MG4", basePrice: 1189000, depreciation: 0.17 },
+
+            // MG5
+            { name: "MG5", basePrice: 1085000, depreciation: 0.16 },
+
+            // GS50 Plus
+            { name: "GS50 Plus", basePrice: 1085000, depreciation: 0.16 }
+        ]
+    },
+
+    // ========== 馬來西亞品牌（新增）==========
+    "Proton普騰": {
+        models: [
+            { name: "Gen2", basePrice: 578000, depreciation: 0.17 },
+            { name: "Savvy", basePrice: 448000, depreciation: 0.17 },
+            { name: "Persona", basePrice: 568000, depreciation: 0.17 }
+        ]
+    },
+
+    // ========== 印度品牌（新增）==========
+    "Mahindra馬亨達": {
+        models: [
+            { name: "PIK-UP", basePrice: 758000, depreciation: 0.16 },
+            { name: "KUV100", basePrice: 558000, depreciation: 0.16 }
+        ]
+    },
+
+    // ========== 中華品牌（商用車）==========
+    "CMC中華汽車": {
+        models: [
+            // Veryca系列
+            { name: "Veryca", basePrice: 486000, depreciation: 0.16 },
+            { name: "Veryca 菱利", basePrice: 527000, depreciation: 0.16 },
+            { name: "E-Veryca", basePrice: 879000, depreciation: 0.17 },
+
+            // Delica系列
+            { name: "Delica", basePrice: 484000, depreciation: 0.16 },
+            { name: "Delica 得利卡", basePrice: 497000, depreciation: 0.16 },
+
+            // Canter系列
+            { name: "Canter", basePrice: 1140000, depreciation: 0.15 },
+            { name: "Canter Turbo", basePrice: 943000, depreciation: 0.15 },
+
+            // Leadca系列
+            { name: "Leadca", basePrice: 806000, depreciation: 0.16 },
+
+            // J-Space系列
+            { name: "J-Space", basePrice: 950000, depreciation: 0.16 }
         ]
     }
 };
