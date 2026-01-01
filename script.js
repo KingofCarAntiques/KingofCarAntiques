@@ -81,6 +81,7 @@ function handleFormSubmit(e) {
     }
 
     const carBrandSelect = document.getElementById('carBrand');
+    const carType = document.getElementById('carType').value;
     const manufactureDate = document.getElementById('manufactureDate').value;
     const mileage = parseFloat(document.getElementById('mileage').value);
     const carColor = document.getElementById('carColor').value;
@@ -92,6 +93,11 @@ function handleFormSubmit(e) {
     // 表單驗證
     if (!carBrandSelect.value) {
         alert('請選擇車款');
+        return;
+    }
+
+    if (!carType) {
+        alert('請選擇車輛形式');
         return;
     }
 
@@ -142,6 +148,20 @@ function handleFormSubmit(e) {
     const contactEmail = document.getElementById('contactEmail')?.value || '';
 
     // 中文對照表
+    const carTypeMap = {
+        'sedan': '轎車 (Sedan)',
+        'suv': '休旅車 (SUV)',
+        'mpv': '多功能車 (MPV)',
+        'sports': '跑車 (Sports Car)',
+        'coupe': '雙門轎跑 (Coupe)',
+        'hatchback': '掀背車 (Hatchback)',
+        'wagon': '旅行車 (Wagon)',
+        'truck': '貨卡 (Truck)',
+        'van': '廂型車 (Van)',
+        'convertible': '敞篷車 (Convertible)',
+        'other': '其他'
+    };
+
     const colorMap = {
         'white': '白色', 'black': '黑色', 'silver': '銀色', 'gray': '灰色',
         'red': '紅色', 'blue': '藍色', 'yellow': '黃色', 'green': '綠色',
@@ -171,6 +191,7 @@ function handleFormSubmit(e) {
     let lineMessage = `【我要估車】\n\n`;
     lineMessage += `🚗 車輛資訊\n`;
     lineMessage += `廠牌車款：${carData.brand} ${carData.model}\n`;
+    lineMessage += `車輛形式：${carTypeMap[carType] || carType}\n`;
     lineMessage += `出廠年月：${manufactureDate}\n`;
     lineMessage += `車身顏色：${colorMap[carColor] || carColor}\n`;
     lineMessage += `行駛里程：${mileage.toLocaleString()} 公里\n`;
@@ -194,6 +215,7 @@ function handleFormSubmit(e) {
     // 準備要儲存的資料
     const formData = {
         carBrand: `${carData.brand} ${carData.model}`,
+        carType: carTypeMap[carType] || carType,
         manufactureDate: manufactureDate,
         carColor: colorMap[carColor] || carColor,
         mileage: mileage,
@@ -267,6 +289,7 @@ function sendEmailNotification(data) {
     emailData.append('_template', 'table');
     emailData.append('提交時間', data.timestamp);
     emailData.append('廠牌車款', data.carBrand);
+    emailData.append('車輛形式', data.carType);
     emailData.append('出廠年月', data.manufactureDate);
     emailData.append('車身顏色', data.carColor);
     emailData.append('行駛里程', `${data.mileage} 公里`);
@@ -740,6 +763,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeCarOptions(); // 初始化車款選項
     setupMainResetButton(); // 設置重新填寫按鈕
     setupQuickEstimateButton(); // 設置即時估價按鈕
+    setupNoBrandHandler(); // 設置「沒有品牌」選項處理
 });
 
 
@@ -821,7 +845,16 @@ function initializeCarOptions() {
         }
     });
 
-    console.log('✅ 車款選項初始化完成，共', carBrandSelect.options.length - 1, '個車款');
+    // 新增「沒有您的品牌車型」選項
+    const noBrandOption = document.createElement('option');
+    noBrandOption.value = 'no-brand';
+    noBrandOption.textContent = '── 沒有您的品牌車型？點此聯繫我們 ──';
+    noBrandOption.style.color = '#e74c3c';
+    noBrandOption.style.fontWeight = 'bold';
+    noBrandOption.style.textAlign = 'center';
+    carBrandSelect.appendChild(noBrandOption);
+
+    console.log('✅ 車款選項初始化完成，共', carBrandSelect.options.length - 2, '個車款 + 1 個「沒有品牌」選項');
 }
 
 // ==================== 設置主要重新填寫按鈕 ====================
@@ -923,5 +956,49 @@ function getSelectedEquipment() {
         return cb.nextElementSibling.textContent.trim();
     });
     return equipmentList;
+}
+
+// ==================== 處理「沒有品牌」選項 ====================
+
+function setupNoBrandHandler() {
+    const carBrandSelect = document.getElementById('carBrand');
+
+    if (!carBrandSelect) {
+        console.error('找不到 carBrand 選單元素');
+        return;
+    }
+
+    carBrandSelect.addEventListener('change', function() {
+        if (this.value === 'no-brand') {
+            // 顯示提示訊息
+            const userConfirm = confirm(
+                '😊 沒找到您的愛車品牌或車型？\n\n' +
+                '別擔心！我們收購所有品牌車款\n' +
+                '點擊「確定」將為您開啟 LINE 諮詢，\n' +
+                '我們的專員會立即為您服務！'
+            );
+
+            if (userConfirm) {
+                // 準備 LINE 訊息
+                const lineMessage =
+                    '您好！我想詢問車輛估價\n\n' +
+                    '📋 我的車款在清單中找不到：\n' +
+                    '希望能提供估價服務，謝謝！';
+
+                // 開啟 LINE 對話
+                const lineUrl = `${LINE_OFFICIAL_URL}?text=${encodeURIComponent(lineMessage)}`;
+                window.open(lineUrl, '_blank');
+
+                console.log('✅ 已開啟 LINE 諮詢（無品牌選項）');
+            }
+
+            // 重置選單到預設值
+            setTimeout(() => {
+                this.value = '';
+            }, 100);
+        }
+    });
+
+    console.log('✅ 「沒有品牌」選項處理已設置');
 }
 
