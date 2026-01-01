@@ -273,7 +273,7 @@
 
                     <!-- 提交按鈕組 -->
                     <div class="button-group">
-                        <button type="reset" class="reset-btn">重新填寫</button>
+                        <button type="button" class="reset-btn" id="mainResetBtn">重新填寫</button>
                         <button type="submit" class="submit-btn">送出留單</button>
 
                     <!-- 即時估價顯示區域（僅快速估價模式） -->
@@ -321,6 +321,10 @@
                                 <button type="button" class="contact-btn line-btn" onclick="openLineChat()">
                                     <span class="btn-icon">💬</span>
                                     LINE 諮詢專人服務
+                                </button>
+                                <button type="button" class="contact-btn reset-btn" onclick="resetQuickEstimate()">
+                                    <span class="btn-icon">🔄</span>
+                                    重新填寫快速估價
                                 </button>
                             </div>
                         </div>

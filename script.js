@@ -716,5 +716,116 @@ function hideQuickPriceSection() {
 // 頁面載入後初始化
 document.addEventListener('DOMContentLoaded', function() {
     setupTabSwitching();
+    initializeCarOptions(); // 初始化車款選項
+    setupMainResetButton(); // 設置重新填寫按鈕
 });
+
+
+// ==================== 重新填寫快速估價 ====================
+
+function resetQuickEstimate() {
+    // 隱藏估價結果區域
+    hideQuickPriceSection();
+    
+    // 清空表單字段
+    const carBrand = document.getElementById('carBrand');
+    const manufactureDate = document.getElementById('manufactureDate');
+    const mileage = document.getElementById('mileage');
+    const equipmentCheckboxes = document.querySelectorAll('input[name="equipment"]');
+    
+    if (carBrand) carBrand.value = '';
+    if (manufactureDate) manufactureDate.value = '';
+    if (mileage) mileage.value = '';
+    
+    equipmentCheckboxes.forEach(checkbox => {
+        checkbox.checked = false;
+    });
+    
+    // 平滑滾動到表單頂部
+    const formContainer = document.querySelector('.form-container');
+    if (formContainer) {
+        formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    
+    // 提示訊息（可選）
+    console.log('已重置快速估價表單');
+}
+
+// ==================== 初始化車款選項 ====================
+
+function initializeCarOptions() {
+    const carBrandSelect = document.getElementById('carBrand');
+
+    if (!carBrandSelect) {
+        console.error('找不到 carBrand 選單元素');
+        return;
+    }
+
+    // 清空現有選項（保留第一個「請選擇」選項）
+    carBrandSelect.innerHTML = '<option value="">請選擇廠牌車款</option>';
+
+    // 檢查 carDatabase 是否存在
+    if (typeof carDatabase === 'undefined') {
+        console.error('carDatabase 未定義，請確認 car-data.js 已正確載入');
+        return;
+    }
+
+    // 遍歷所有品牌
+    Object.keys(carDatabase).forEach(brand => {
+        const brandData = carDatabase[brand];
+
+        if (brandData.models && Array.isArray(brandData.models)) {
+            // 為每個車型建立選項
+            brandData.models.forEach(model => {
+                const option = document.createElement('option');
+
+                // 建立車輛資料物件
+                const carData = {
+                    brand: brand,
+                    model: model.name,
+                    type: model.type || 'N/A',
+                    basePrice: model.basePrice,
+                    depreciation: model.depreciation
+                };
+
+                // 將資料轉為 JSON 字串作為 value
+                option.value = JSON.stringify(carData);
+
+                // 顯示文字：品牌 + 車型
+                option.textContent = `${brand} - ${model.name}`;
+
+                carBrandSelect.appendChild(option);
+            });
+        }
+    });
+
+    console.log('✅ 車款選項初始化完成，共', carBrandSelect.options.length - 1, '個車款');
+}
+
+// ==================== 設置主要重新填寫按鈕 ====================
+
+function setupMainResetButton() {
+    const mainResetBtn = document.getElementById('mainResetBtn');
+
+    if (!mainResetBtn) {
+        console.error('找不到 mainResetBtn 按鈕');
+        return;
+    }
+
+    mainResetBtn.addEventListener('click', function() {
+        if (currentMode === 'quick') {
+            // 快速估價模式：調用快速重置
+            resetQuickEstimate();
+        } else {
+            // 我要估車模式：重置整個表單
+            const carForm = document.getElementById('carForm');
+            if (carForm) {
+                carForm.reset();
+                hideQuickPriceSection();
+            }
+        }
+    });
+
+    console.log('✅ 重新填寫按鈕已設置');
+}
 
