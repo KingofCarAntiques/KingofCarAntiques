@@ -36,7 +36,14 @@ const carDatabase = {
             { name: "Hilux", basePrice: 1400000, depreciation: 0.14 },
             { name: "Prius c", basePrice: 800000, depreciation: 0.15 },
             { name: "86", basePrice: 1500000, depreciation: 0.15 },
-            { name: "Supra", basePrice: 3200000, depreciation: 0.15 }
+            { name: "Supra", basePrice: 3200000, depreciation: 0.15 },
+            { name: "Corolla Sport", basePrice: 900000, depreciation: 0.14 },
+            { name: "Prius PHEV", basePrice: 1400000, depreciation: 0.13 },
+            { name: "Crown", basePrice: 2500000, depreciation: 0.12 },
+            { name: "GR86", basePrice: 1550000, depreciation: 0.15 },
+            { name: "Prado", basePrice: 2800000, depreciation: 0.12 },
+            { name: "Urban Cruiser", basePrice: 1200000, depreciation: 0.16 },
+            { name: "Auris", basePrice: 850000, depreciation: 0.15 }
         ]
     },
     "Honda本田": {
@@ -73,10 +80,13 @@ const carDatabase = {
             { name: "Murano", basePrice: 1600000, depreciation: 0.14 },
             { name: "Urvan", basePrice: 1100000, depreciation: 0.15 },
             { name: "Navara", basePrice: 1300000, depreciation: 0.14 },
-            { name: "370Z", basePrice: 2200000, depreciation: 0.16 }
-,
+            { name: "370Z", basePrice: 2200000, depreciation: 0.16 },
             { name: "Ariya", basePrice: 1900000, depreciation: 0.16 },
-            { name: "Note", basePrice: 700000, depreciation: 0.15 }
+            { name: "Note", basePrice: 700000, depreciation: 0.15 },
+            { name: "X-Trail e-POWER", basePrice: 1520000, depreciation: 0.13 },
+            { name: "Altima", basePrice: 1300000, depreciation: 0.14 },
+            { name: "Big Tiida 5D", basePrice: 750000, depreciation: 0.15 },
+            { name: "iTiida", basePrice: 700000, depreciation: 0.15 }
         ]
     },
     "Mazda馬自達": {
@@ -91,9 +101,9 @@ const carDatabase = {
             { name: "MX-5", basePrice: 1500000, depreciation: 0.14 },
             { name: "CX-60", basePrice: 1800000, depreciation: 0.13 },
             { name: "CX-90", basePrice: 2200000, depreciation: 0.13 },
-            { name: "BT-50", basePrice: 1200000, depreciation: 0.14 }
-,
-            { name: "MX-30", basePrice: 1350000, depreciation: 0.16 }
+            { name: "BT-50", basePrice: 1200000, depreciation: 0.14 },
+            { name: "MX-30", basePrice: 1350000, depreciation: 0.16 },
+            { name: "Mazda5", basePrice: 850000, depreciation: 0.15 }
         ]
     },
     "Mitsubishi三菱": {
@@ -150,7 +160,14 @@ const carDatabase = {
             { name: "Ranger", basePrice: 1300000, depreciation: 0.14 },
             { name: "Fiesta", basePrice: 700000, depreciation: 0.16 },
             { name: "EcoSport", basePrice: 850000, depreciation: 0.15 },
-            { name: "Tourneo Custom", basePrice: 1600000, depreciation: 0.15 }
+            { name: "Tourneo Custom", basePrice: 1600000, depreciation: 0.15 },
+            { name: "Focus ST", basePrice: 1490000, depreciation: 0.15 },
+            { name: "Territory", basePrice: 950000, depreciation: 0.14 },
+            { name: "Ranger Raptor", basePrice: 2090000, depreciation: 0.14 },
+            { name: "Tourneo Connect", basePrice: 1200000, depreciation: 0.15 },
+            { name: "Mustang Mach-E", basePrice: 2200000, depreciation: 0.16 },
+            { name: "Focus Wagon", basePrice: 1050000, depreciation: 0.15 },
+            { name: "ST Wagon", basePrice: 1650000, depreciation: 0.15 }
         ]
     },
     "Volkswagen福斯": {
