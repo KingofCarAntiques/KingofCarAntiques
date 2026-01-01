@@ -1575,3 +1575,183 @@ body::before {
         width: 100%;
     }
 }
+
+/* ==================== 模式切換控制 ==================== */
+/* 快速估價模式：隱藏這些欄位 */
+.mode-quick-estimate .full-estimate-only {
+    display: none !important;
+}
+
+/* 我要估車模式：隱藏即時估價區域 */
+.mode-full-estimate .quick-price-section {
+    display: none !important;
+}
+
+/* 我要估車模式：顯示送出按鈕 */
+.mode-full-estimate .submit-btn {
+    display: block !important;
+}
+
+/* 快速估價模式：隱藏送出按鈕 */
+.mode-quick-estimate .submit-btn {
+    display: none !important;
+}
+
+/* ==================== 即時估價顯示區域樣式 ==================== */
+.quick-price-section {
+    margin-top: 30px;
+}
+
+.car-info-display {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.info-title {
+    color: #667eea;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 10px;
+}
+
+.car-info-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.car-info-table tr {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.car-info-table tr:last-child {
+    border-bottom: none;
+}
+
+.car-info-table td {
+    padding: 12px 10px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.info-label {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.new-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.price-display {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.price-section {
+    background: #4a90e2;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.price-section:hover {
+    transform: translateY(-3px);
+}
+
+.retail-price {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.purchase-price {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.price-header {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.price-value {
+    color: #fff;
+    font-size: 36px;
+    font-weight: 700;
+    margin: 15px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.price-note {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.contact-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.contact-btn {
+    background: linear-gradient(135deg, #06c755 0%, #00b900 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 16px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(6, 199, 85, 0.3);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(6, 199, 85, 0.4);
+}
+
+.btn-icon {
+    font-size: 22px;
+}
+
+/* 手機版樣式 */
+@media (max-width: 768px) {
+    .car-info-display {
+        padding: 20px 15px;
+    }
+    
+    .info-title {
+        font-size: 18px;
+    }
+    
+    .car-info-table td {
+        padding: 10px 8px;
+        font-size: 13px;
+    }
+    
+    .price-value {
+        font-size: 28px;
+    }
+    
+    .contact-btn {
+        padding: 14px 30px;
+        font-size: 16px;
+        width: 100%;
+    }
+}

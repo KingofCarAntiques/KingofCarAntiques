@@ -536,309 +536,185 @@ function stopAutoSlide() {
     clearInterval(autoSlideInterval);
 }
 
-// ==================== 即時估價功能 ====================
+// ==================== 模式切換功能 ====================
 
-// 當前選擇的車輛資料
-let currentCarData = null;
+let currentMode = 'quick'; // 'quick' 或 'full'
+let isQuickEstimateActive = false;
 
-// 監聽所有表單字段變化
-function setupRealtimeEstimation() {
-    const brand = document.getElementById('carBrand');
-    const model = document.getElementById('carModel');
-    const date = document.getElementById('manufactureDate');
+// 標籤切換功能
+function setupTabSwitching() {
+    const tabs = document.querySelectorAll('.tab');
+    const formContainer = document.querySelector('.form-container');
+    
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            // 更新標籤樣式
+            tabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            
+            // 切換模式
+            const tabType = this.getAttribute('data-tab');
+            switchMode(tabType, formContainer);
+        });
+    });
+    
+    // 初始化為快速估價模式
+    switchMode('sell', formContainer);
+}
+
+// 切換模式函數
+function switchMode(mode, container) {
+    if (mode === 'sell') {
+        // 快速估價模式
+        currentMode = 'quick';
+        container.classList.remove('mode-full-estimate');
+        container.classList.add('mode-quick-estimate');
+        
+        // 啟用即時估價
+        isQuickEstimateActive = true;
+        setupQuickEstimate();
+        
+    } else if (mode === 'estimate') {
+        // 我要估車模式
+        currentMode = 'full';
+        container.classList.remove('mode-quick-estimate');
+        container.classList.add('mode-full-estimate');
+        
+        // 禁用即時估價，隱藏結果
+        isQuickEstimateActive = false;
+        hideQuickPriceSection();
+    }
+}
+
+// 設置快速估價功能
+function setupQuickEstimate() {
+    const carBrand = document.getElementById('carBrand');
+    const manufactureDate = document.getElementById('manufactureDate');
     const mileage = document.getElementById('mileage');
     const equipmentCheckboxes = document.querySelectorAll('input[name="equipment"]');
     
-    if (brand) brand.addEventListener('change', checkAndCalculate);
-    if (model) model.addEventListener('change', checkAndCalculate);
-    if (date) date.addEventListener('change', checkAndCalculate);
-    if (mileage) mileage.addEventListener('input', checkAndCalculate);
+    // 移除舊的事件監聽器（如果存在）
+    if (carBrand) carBrand.removeEventListener('change', checkAndCalculateQuick);
+    if (manufactureDate) manufactureDate.removeEventListener('change', checkAndCalculateQuick);
+    if (mileage) mileage.removeEventListener('input', checkAndCalculateQuick);
+    
+    // 添加新的事件監聽器
+    if (carBrand) carBrand.addEventListener('change', checkAndCalculateQuick);
+    if (manufactureDate) manufactureDate.addEventListener('change', checkAndCalculateQuick);
+    if (mileage) mileage.addEventListener('input', checkAndCalculateQuick);
     
     equipmentCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', checkAndCalculate);
+        checkbox.removeEventListener('change', checkAndCalculateQuick);
+        checkbox.addEventListener('change', checkAndCalculateQuick);
     });
 }
 
-// 檢查並計算估價
-function checkAndCalculate() {
-    const brand = document.getElementById('carBrand')?.value;
-    const model = document.getElementById('carModel')?.value;
-    const date = document.getElementById('manufactureDate')?.value;
-    const mileage = document.getElementById('mileage')?.value;
+// 檢查並計算快速估價
+function checkAndCalculateQuick() {
+    if (!isQuickEstimateActive || currentMode !== 'quick') return;
     
-    // 檢查所有必填欄位是否填寫
-    if (brand && model && date && mileage) {
-        calculateRealtimePrice(brand, model, date, mileage);
-    } else {
-        // 隱藏結果區域
-        hideResults();
+    const carBrand = document.getElementById('carBrand');
+    const manufactureDate = document.getElementById('manufactureDate');
+    const mileage = document.getElementById('mileage');
+    
+    if (carBrand && manufactureDate && mileage) {
+        const brandValue = carBrand.value;
+        const dateValue = manufactureDate.value;
+        const mileageValue = mileage.value;
+        
+        if (brandValue && dateValue && mileageValue) {
+            calculateQuickPrice(brandValue, dateValue, mileageValue);
+        } else {
+            hideQuickPriceSection();
+        }
     }
 }
 
-// 隱藏結果區域
-function hideResults() {
-    const infoDisplay = document.getElementById('carInfoDisplay');
-    const priceDisplay = document.getElementById('priceDisplay');
-    if (infoDisplay) infoDisplay.style.display = 'none';
-    if (priceDisplay) priceDisplay.style.display = 'none';
+// 計算快速估價
+function calculateQuickPrice(brandValue, dateValue, mileageValue) {
+    try {
+        // 從 carBrand select 的 value 解析車輛資料
+        const carData = JSON.parse(brandValue);
+        
+        // 解析出廠年月
+        const [year, month] = dateValue.split('-').map(Number);
+        const carAge = new Date().getFullYear() - year;
+        
+        // 基礎價格
+        let basePrice = carData.basePrice || 500000;
+        
+        // 年份折舊（每年約12%）
+        const depreciationRate = 0.12;
+        let depreciation = 1;
+        for (let i = 0; i < carAge; i++) {
+            depreciation *= (1 - depreciationRate);
+        }
+        
+        // 里程影響（每萬公里折2.5%）
+        const mileageInWan = parseInt(mileageValue) / 10000;
+        const mileageFactor = Math.max(0.5, 1 - (mileageInWan * 0.025));
+        
+        // 配備加成
+        const selectedEquipment = document.querySelectorAll('input[name="equipment"]:checked');
+        const equipmentBonus = selectedEquipment.length * 0.02;
+        
+        // 計算最終價格
+        let estimatedPrice = basePrice * depreciation * mileageFactor * (1 + equipmentBonus);
+        
+        // 零售行情（約1.2倍）
+        const retailPrice = estimatedPrice * 1.20;
+        
+        // 收購行情（約0.85倍）
+        const purchasePrice = estimatedPrice * 0.85;
+        
+        // 顯示結果
+        displayQuickEstimate(carData, year, mileageValue, basePrice, retailPrice, purchasePrice);
+        
+    } catch (error) {
+        console.error('計算估價時出錯:', error);
+        hideQuickPriceSection();
+    }
 }
 
-// 計算即時價格
-function calculateRealtimePrice(brand, modelName, manufactureDate, mileage) {
-    // 從 car-data.js 中獲取車輛資料
-    const carInfo = carData[brand]?.models?.find(m => m.name === modelName);
-    
-    if (!carInfo) {
-        console.log('找不到車輛資料');
-        return;
-    }
-    
-    currentCarData = carInfo;
-    
-    // 解析出廠年月
-    const [year, month] = manufactureDate.split('-').map(Number);
-    const carAge = new Date().getFullYear() - year;
-    
-    // 基礎價格計算
-    let basePrice = carInfo.basePrice;
-    
-    // 年份折舊計算（每年約折舊 10-15%）
-    const depreciationRate = 0.12; // 12% 年折舊率
-    let depreciation = 1;
-    for (let i = 0; i < carAge; i++) {
-        depreciation *= (1 - depreciationRate);
-    }
-    
-    // 里程數影響（每萬公里約折 2-3%）
-    const mileageInWan = parseInt(mileage) / 10000;
-    const mileageFactor = Math.max(0.6, 1 - (mileageInWan * 0.025));
-    
-    // 配備加成
-    const selectedEquipment = document.querySelectorAll('input[name="equipment"]:checked');
-    const equipmentBonus = selectedEquipment.length * 0.02; // 每個配備加 2%
-    
-    // 計算最終價格
-    let estimatedPrice = basePrice * depreciation * mileageFactor * (1 + equipmentBonus);
-    
-    // 零售行情（約為估價的 1.1-1.2 倍）
-    const retailPrice = estimatedPrice * 1.15;
-    
-    // 收購行情（約為估價的 0.85-0.9 倍）
-    const purchasePrice = estimatedPrice * 0.87;
-    
+// 顯示快速估價結果
+function displayQuickEstimate(carData, year, mileage, basePrice, retailPrice, purchasePrice) {
     // 顯示車輛資訊
-    displayCarInfo(brand, carInfo, year);
+    document.getElementById('displayBrand').textContent = carData.brand || '-';
+    document.getElementById('displayModel').textContent = carData.model || '-';
+    document.getElementById('displayType').textContent = carData.type || 'N/A';
+    document.getElementById('displayYear').textContent = year || '-';
+    document.getElementById('displayMileage').textContent = (parseInt(mileage) / 10000).toFixed(1) + ' 萬公里';
+    document.getElementById('displayNewPrice').textContent = '$' + (basePrice / 10000).toFixed(1) + ' 萬';
     
     // 顯示價格
-    displayPrices(retailPrice, purchasePrice);
-}
-
-// 顯示車輛資訊
-function displayCarInfo(brand, carInfo, year) {
-    const infoDisplay = document.getElementById('carInfoDisplay');
-    if (!infoDisplay) return;
-    
-    // 填充車輛資訊
-    document.getElementById('displayBrand').textContent = brand;
-    document.getElementById('displayModel').textContent = carInfo.name;
-    document.getElementById('displayType').textContent = carInfo.type || 'SUV';
-    document.getElementById('displayEngine').textContent = carInfo.engine || '2.0';
-    document.getElementById('displayYears').textContent = carInfo.years || '-';
-    document.getElementById('displayYear').textContent = year;
-    document.getElementById('displayNewPrice').textContent = 
-        `$${(carInfo.basePrice / 10000).toFixed(1)} 萬`;
-    
-    // 顯示區域
-    infoDisplay.style.display = 'block';
-    
-    // 平滑滾動到結果
-    setTimeout(() => {
-        infoDisplay.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 100);
-}
-
-// 顯示價格
-function displayPrices(retailPrice, purchasePrice) {
-    const priceDisplay = document.getElementById('priceDisplay');
-    if (!priceDisplay) return;
-    
-    // 轉換為萬元並格式化
     const retailWan = (retailPrice / 10000).toFixed(1);
     const purchaseWan = (purchasePrice / 10000).toFixed(1);
     
-    // 更新價格顯示
-    document.getElementById('retailPrice').textContent = `$ ${retailWan} 萬`;
-    document.getElementById('purchasePrice').textContent = `$ ${purchaseWan} 萬`;
+    document.getElementById('retailPrice').textContent = '$ ' + retailWan + ' 萬';
+    document.getElementById('purchasePrice').textContent = '$ ' + purchaseWan + ' 萬';
     
-    // 顯示區域
-    priceDisplay.style.display = 'block';
+    // 顯示快速估價區域
+    const quickPriceSection = document.getElementById('quickPriceSection');
+    if (quickPriceSection) {
+        quickPriceSection.style.display = 'block';
+        
+        // 平滑滾動到結果
+        setTimeout(() => {
+            quickPriceSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+    }
+}
+
+// 隱藏快速估價區域
+function hideQuickPriceSection() {
+    const quickPriceSection = document.getElementById('quickPriceSection');
+    if (quickPriceSection) {
+        quickPriceSection.style.display = 'none';
+    }
 }
 
 // 頁面載入後初始化
 document.addEventListener('DOMContentLoaded', function() {
-    setupRealtimeEstimation();
-});
-
-
-// ==================== 廠牌和車型選擇功能 ====================
-
-// 填充廠牌選項
-function populateBrands() {
-    const brandSelect = document.getElementById('carBrand');
-    if (!brandSelect || typeof carDatabase === 'undefined') return;
-    
-    // 清空現有選項（保留第一個提示選項）
-    brandSelect.innerHTML = '<option value="">請選擇廠牌</option>';
-    
-    // 添加所有廠牌
-    Object.keys(carDatabase).forEach(brand => {
-        const option = document.createElement('option');
-        option.value = brand;
-        option.textContent = brand;
-        brandSelect.appendChild(option);
-    });
-}
-
-// 填充車型選項
-function populateModels(brand) {
-    const modelSelect = document.getElementById('carModel');
-    if (!modelSelect || !brand || typeof carDatabase === 'undefined') return;
-    
-    // 清空現有選項
-    modelSelect.innerHTML = '<option value="">請選擇車型</option>';
-    
-    // 獲取該品牌的車型列表
-    const brandData = carDatabase[brand];
-    if (brandData && brandData.models) {
-        brandData.models.forEach(model => {
-            const option = document.createElement('option');
-            option.value = model.name;
-            option.textContent = model.name;
-            modelSelect.appendChild(option);
-        });
-        
-        // 啟用車型選擇
-        modelSelect.disabled = false;
-    }
-}
-
-// 監聽廠牌選擇變化
-function setupBrandModelSelection() {
-    const brandSelect = document.getElementById('carBrand');
-    const modelSelect = document.getElementById('carModel');
-    
-    if (brandSelect) {
-        brandSelect.addEventListener('change', function() {
-            const brand = this.value;
-            if (brand) {
-                populateModels(brand);
-            } else {
-                // 重置車型選擇
-                if (modelSelect) {
-                    modelSelect.innerHTML = '<option value="">請先選擇廠牌</option>';
-                    modelSelect.disabled = true;
-                }
-            }
-            // 隱藏結果
-            hideResults();
-        });
-    }
-}
-
-// 修正即時計算函數中的變數名稱
-function calculateRealtimePrice(brand, modelName, manufactureDate, mileage) {
-    // 從 carDatabase 中獲取車輛資料
-    const brandData = carDatabase[brand];
-    if (!brandData || !brandData.models) {
-        console.log('找不到品牌資料');
-        return;
-    }
-    
-    const carInfo = brandData.models.find(m => m.name === modelName);
-    if (!carInfo) {
-        console.log('找不到車輛資料');
-        return;
-    }
-    
-    currentCarData = carInfo;
-    
-    // 解析出廠年月
-    const [year, month] = manufactureDate.split('-').map(Number);
-    const carAge = new Date().getFullYear() - year;
-    
-    // 基礎價格計算
-    let basePrice = carInfo.basePrice;
-    
-    // 年份折舊計算
-    const depreciationRate = carInfo.depreciation || 0.12;
-    let depreciation = 1;
-    for (let i = 0; i < carAge; i++) {
-        depreciation *= (1 - depreciationRate);
-    }
-    
-    // 里程數影響（每萬公里約折 2-3%）
-    const mileageInWan = parseInt(mileage) / 10000;
-    const mileageFactor = Math.max(0.5, 1 - (mileageInWan * 0.025));
-    
-    // 配備加成
-    const selectedEquipment = document.querySelectorAll('input[name="equipment"]:checked');
-    const equipmentBonus = selectedEquipment.length * 0.02; // 每個配備加 2%
-    
-    // 計算最終價格
-    let estimatedPrice = basePrice * depreciation * mileageFactor * (1 + equipmentBonus);
-    
-    // 零售行情（市場零售價，約為估價的 1.15-1.25 倍）
-    const retailPrice = estimatedPrice * 1.20;
-    
-    // 收購行情（車商收購價，約為估價的 0.8-0.9 倍）
-    const purchasePrice = estimatedPrice * 0.85;
-    
-    // 顯示車輛資訊
-    displayCarInfo(brand, carInfo, year, basePrice);
-    
-    // 顯示價格
-    displayPrices(retailPrice, purchasePrice);
-}
-
-// 更新顯示車輛資訊函數
-function displayCarInfo(brand, carInfo, year, basePrice) {
-    const infoDisplay = document.getElementById('carInfoDisplay');
-    if (!infoDisplay) return;
-    
-    // 填充車輛資訊
-    document.getElementById('displayBrand').textContent = brand;
-    document.getElementById('displayModel').textContent = carInfo.name;
-    document.getElementById('displayType').textContent = carInfo.type || 'N/A';
-    document.getElementById('displayEngine').textContent = carInfo.engine || 'N/A';
-    
-    // 年式範圍（根據折舊率推算）
-    const currentYear = new Date().getFullYear();
-    const minYear = currentYear - 10;
-    const maxYear = currentYear;
-    document.getElementById('displayYears').textContent = `${minYear}-${maxYear}`;
-    
-    document.getElementById('displayYear').textContent = year;
-    document.getElementById('displayNewPrice').textContent = 
-        `$${(basePrice / 10000).toFixed(1)} 萬`;
-    
-    // 顯示區域
-    infoDisplay.style.display = 'block';
-    
-    // 平滑滾動到結果
-    setTimeout(() => {
-        infoDisplay.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 100);
-}
-
-// 初始化所有功能
-document.addEventListener('DOMContentLoaded', function() {
-    // 填充廠牌選項
-    populateBrands();
-    
-    // 設置廠牌車型選擇
-    setupBrandModelSelection();
-    
-    // 設置即時估價
-    setupRealtimeEstimation();
+    setupTabSwitching();
 });
 
