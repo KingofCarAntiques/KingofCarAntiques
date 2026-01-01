@@ -1313,3 +1313,80 @@ body::before {
         bottom: 10px;
     }
 }
+
+/* ==================== 數據來源說明區域 ==================== */
+.data-source-info {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.data-source-icon {
+    font-size: 28px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.data-source-text {
+    color: white;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.data-source-text strong {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.source-list {
+    opacity: 0.95;
+    font-size: 13px;
+}
+
+/* 手機版樣式 */
+@media (max-width: 768px) {
+    .data-source-info {
+        padding: 12px 15px;
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+    
+    .data-source-icon {
+        font-size: 24px;
+    }
+    
+    .data-source-text {
+        font-size: 13px;
+    }
+    
+    .data-source-text strong {
+        font-size: 14px;
+    }
+    
+    .source-list {
+        font-size: 12px;
+        display: block;
+        margin-top: 2px;
+    }
+}
+
+/* 淡入向上動畫 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
