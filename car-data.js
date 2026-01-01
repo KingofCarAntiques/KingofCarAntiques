@@ -609,6 +609,55 @@ const carDatabase = {
             { name: "Tiggo 7", basePrice: 700000, depreciation: 0.17 },
             { name: "Tiggo 8", basePrice: 850000, depreciation: 0.16 }
         ]
+    },
+    "Daihatsu大發": {
+        models: [
+            { name: "SIRION 第三代", basePrice: 688000, depreciation: 0.15 },
+            { name: "TERIOS 第二代", basePrice: 858000, depreciation: 0.14 }
+        ]
+    },
+    "DFSK東風": {
+        models: [
+            { name: "大錦鯉 S2.5t", basePrice: 445000, depreciation: 0.16 },
+            { name: "大錦鯉雙廂終端", basePrice: 638000, depreciation: 0.15 },
+            { name: "金錦鯉", basePrice: 498000, depreciation: 0.16 },
+            { name: "WINMAN", basePrice: 658000, depreciation: 0.16 }
+        ]
+    },
+    "Foton福田": {
+        models: [
+            { name: "AUMARK 歐馬可", basePrice: 899000, depreciation: 0.15 }
+        ]
+    },
+    "Hino日野": {
+        models: [
+            { name: "300 系列", basePrice: 1044000, depreciation: 0.14 },
+            { name: "XZU600L", basePrice: 1070000, depreciation: 0.14 },
+            { name: "200 系列", basePrice: 1245000, depreciation: 0.14 }
+        ]
+    },
+    "Isuzu五十鈴": {
+        models: [
+            { name: "ELF 第五代", basePrice: 1420000, depreciation: 0.14 },
+            { name: "ELF 第六代", basePrice: 1565000, depreciation: 0.13 },
+            { name: "NP85R 排氣量 3.0", basePrice: 1945000, depreciation: 0.14 },
+            { name: "NP85R 排氣量 5.2", basePrice: 2095000, depreciation: 0.13 }
+        ]
+    },
+    "Cadillac凱迪拉克": {
+        models: [
+            { name: "CT6", basePrice: 2500000, depreciation: 0.15 },
+            { name: "XT5", basePrice: 2200000, depreciation: 0.14 },
+            { name: "Escalade", basePrice: 4500000, depreciation: 0.14 }
+        ]
+    },
+    "Jeep吉普": {
+        models: [
+            { name: "Compass", basePrice: 1350000, depreciation: 0.14 },
+            { name: "Cherokee", basePrice: 1800000, depreciation: 0.14 },
+            { name: "Grand Cherokee", basePrice: 2800000, depreciation: 0.13 },
+            { name: "Wrangler", basePrice: 2500000, depreciation: 0.13 }
+        ]
     }
 };
 
