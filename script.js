@@ -257,6 +257,9 @@ function saveToGoogleSheet(data) {
 
 // 發送 Email 通知
 function sendEmailNotification(data) {
+    console.log('📧 開始發送 Email 到:', NOTIFICATION_EMAIL);
+    console.log('📝 表單資料:', data);
+
     // 使用 FormSubmit.co 免費服務發送 Email
     const emailData = new FormData();
     emailData.append('_to', NOTIFICATION_EMAIL);
@@ -280,10 +283,17 @@ function sendEmailNotification(data) {
     fetch(`https://formsubmit.co/ajax/${NOTIFICATION_EMAIL}`, {
         method: 'POST',
         body: emailData
-    }).then(response => {
-        console.log('✅ Email 通知已發送');
+    }).then(response => response.json())
+    .then(result => {
+        console.log('✅ Email 發送成功！回應:', result);
+        if (result.success) {
+            console.log('✅ FormSubmit 確認收到');
+        } else {
+            console.warn('⚠️ FormSubmit 回應異常:', result);
+        }
     }).catch(error => {
         console.error('❌ Email 發送失敗:', error);
+        alert('⚠️ Email 發送可能失敗，請檢查網路連線或聯絡技術支援');
     });
 }
 
