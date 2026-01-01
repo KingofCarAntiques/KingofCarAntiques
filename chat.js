@@ -315,7 +315,12 @@ function saveMessage(sender, message, time) {
     // 保存到 localStorage
     saveToLocalStorage();
 
-    // 如果對話超過 10 條訊息，自動發送到後端
+    // 如果是客戶訊息，立即發送 Email 通知
+    if (sender === 'user') {
+        sendInstantNotification(message, time);
+    }
+
+    // 如果對話超過 10 條訊息，自動發送完整對話記錄
     if (conversationHistory.messages.length >= 10 && conversationHistory.messages.length % 10 === 0) {
         sendConversationToBackend();
     }
@@ -328,6 +333,36 @@ function saveToLocalStorage() {
     } catch (e) {
         console.error('無法保存對話記錄:', e);
     }
+}
+
+// 發送即時通知（每條客戶訊息）
+function sendInstantNotification(message, time) {
+    // 計算客戶訊息數量
+    const userMessageCount = conversationHistory.messages.filter(msg => msg.sender === 'user').length;
+
+    // 截取訊息預覽（最多50字）
+    const messagePreview = message.length > 50 ? message.substring(0, 50) + '...' : message;
+
+    // 準備要發送的資料
+    const notificationData = new FormData();
+    notificationData.append('_to', 'a0911177619@yahoo.com.tw');
+    notificationData.append('_subject', `💬【秒估車客服】新訊息 - ${messagePreview} (${time})`);
+    notificationData.append('_template', 'table');
+    notificationData.append('⏰ 時間', time);
+    notificationData.append('👤 客戶訊息', message);
+    notificationData.append('🆔 對話編號', conversationHistory.sessionId);
+    notificationData.append('📊 本次對話', `第 ${userMessageCount} 條客戶訊息`);
+    notificationData.append('💚 建議', '請透過 LINE 官方帳號 @288dyysc 或撥打 0911-177-619 回覆客戶');
+
+    // 發送到 FormSubmit
+    fetch('https://formsubmit.co/ajax/a0911177619@yahoo.com.tw', {
+        method: 'POST',
+        body: notificationData
+    }).then(response => {
+        console.log('✅ 即時通知已發送');
+    }).catch(error => {
+        console.error('❌ 即時通知發送失敗:', error);
+    });
 }
 
 // 發送對話記錄到後端（Email）
