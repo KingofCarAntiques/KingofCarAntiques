@@ -91,46 +91,31 @@
 
             <!-- 表單內容 -->
             <div class="form-container">
+                <!-- 簡化表單 -->
                 <form id="carForm">
-                    <!-- 表單項目標題 -->
-                    <div class="form-section-title">
-                        <span class="required-mark">*為必填項目</span>
-                    </div>
-
                     <!-- 車輛資訊 -->
                     <div class="form-section-header">車輛資訊</div>
 
-                    <!-- 廠牌車款選擇 -->
+                    <!-- 廠牌選擇 -->
                     <div class="form-group">
                         <label>廠牌 <span class="required">*</span></label>
                         <select id="carBrand" required>
-                            <option value="">請選擇廠牌車款</option>
+                            <option value="">請選擇廠牌</option>
+                        </select>
+                    </div>
+
+                    <!-- 車型選擇 -->
+                    <div class="form-group">
+                        <label>車型 <span class="required">*</span></label>
+                        <select id="carModel" required disabled>
+                            <option value="">請先選擇廠牌</option>
                         </select>
                     </div>
 
                     <!-- 出廠年月 -->
                     <div class="form-group">
                         <label>出廠年月 <span class="required">*</span></label>
-                        <input type="month" id="manufactureDate" placeholder="出廠年月" min="2006-01" max="2026-12" required>
-                    </div>
-
-                    <!-- 車身顏色 -->
-                    <div class="form-group">
-                        <label>車身顏色 <span class="required">*</span></label>
-                        <select id="carColor" required>
-                            <option value="">請選擇車身顏色</option>
-                            <option value="white">白色 (保值)</option>
-                            <option value="black">黑色 (保值)</option>
-                            <option value="silver">銀色 (保值)</option>
-                            <option value="gray">灰色</option>
-                            <option value="red">紅色</option>
-                            <option value="blue">藍色</option>
-                            <option value="yellow">黃色</option>
-                            <option value="green">綠色</option>
-                            <option value="orange">橘色</option>
-                            <option value="brown">咖啡色</option>
-                            <option value="other">其他顏色</option>
-                        </select>
+                        <input type="month" id="manufactureDate" placeholder="出廠年月" min="2000-01" max="2026-12" required>
                     </div>
 
                     <!-- 行駛里程 -->
@@ -139,9 +124,9 @@
                         <input type="number" id="mileage" placeholder="請輸入行駛里程（公里）" min="0" max="999999" required>
                     </div>
 
-                    <!-- 車輛配備 -->
+                    <!-- 車輛配備（保留） -->
                     <div class="form-group">
-                        <label>車輛配備（可複選）</label>
+                        <label>車輛配備（可複選，影響估價）</label>
                         <div class="equipment-checkboxes">
                             <label class="checkbox-item">
                                 <input type="checkbox" name="equipment" value="4WD">
@@ -168,7 +153,7 @@
                                 <span>真皮座椅</span>
                             </label>
                             <label class="checkbox-item">
-                                <input type="checkbox" name="equipment" value="navigation">
+                                <input type="checkbox" name="equipment" value="navi">
                                 <span>原廠導航</span>
                             </label>
                             <label class="checkbox-item">
@@ -180,170 +165,68 @@
                                 <span>倒車雷達</span>
                             </label>
                             <label class="checkbox-item">
-                                <input type="checkbox" name="equipment" value="acc">
-                                <span>ACC主動跟車</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="equipment" value="abs">
-                                <span>ABS防鎖死煞車</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="equipment" value="airbags">
-                                <span>多氣囊</span>
+                                <input type="checkbox" name="equipment" value="cruise">
+                                <span>定速巡航</span>
                             </label>
                         </div>
-                    </div>
-
-                    <!-- 車況評估 -->
-                    <div class="form-group">
-                        <label>車況評估 <span class="required">*</span></label>
-                        <select id="carCondition" required>
-                            <option value="">請選擇車況</option>
-                            <option value="excellent">極佳（原廠保養、無瑕疵）</option>
-                            <option value="good">良好（正常使用痕跡）</option>
-                            <option value="fair">普通（有使用痕跡）</option>
-                            <option value="poor">需整理（有明顯損傷）</option>
-                        </select>
-                    </div>
-
-                    <!-- 事故記錄 -->
-                    <div class="form-group">
-                        <label>事故記錄 <span class="required">*</span></label>
-                        <select id="accidentHistory" required>
-                            <option value="">請選擇事故記錄</option>
-                            <option value="none">無事故（原廠件）</option>
-                            <option value="minor">小事故（已修復、非結構損傷）</option>
-                            <option value="major">重大事故（結構受損）</option>
-                            <option value="flood">泡水車</option>
-                            <option value="fire">火燒車</option>
-                        </select>
-                    </div>
-
-                    <!-- 車籍所在地 -->
-                    <div class="form-group">
-                        <label>車籍所在地 <span class="required">*</span></label>
-                        <select id="carLocation" required>
-                            <option value="">請選擇所在地</option>
-                            <option value="north">北部（基隆、台北、新北、桃園、新竹）</option>
-                            <option value="central">中部（苗栗、台中、彰化、南投、雲林）</option>
-                            <option value="south">南部（嘉義、台南、高雄、屏東）</option>
-                            <option value="east">東部（宜蘭、花蓮、台東）</option>
-                            <option value="offshore">離島（澎湖、金門、馬祖）</option>
-                        </select>
-                    </div>
-
-                    <!-- 預期售車時間 -->
-                    <div class="form-group">
-                        <label>預期售車時間</label>
-                        <select id="urgency">
-                            <option value="">請選擇（選填）</option>
-                            <option value="urgent">🔥 急售（3天內）</option>
-                            <option value="week">一週內</option>
-                            <option value="month">一個月內</option>
-                            <option value="flexible">不急，先了解行情</option>
-                        </select>
-                    </div>
-
-                    <!-- 聯絡資訊 -->
-                    <div class="form-section-header">聯絡資訊</div>
-
-                    <!-- 聯絡人姓名 -->
-                    <div class="form-group">
-                        <label>聯絡人全名 <span class="required">*</span></label>
-                        <input type="text" id="contactName" placeholder="請輸入您的姓名" required>
-                    </div>
-
-                    <!-- 聯絡電話 -->
-                    <div class="form-group">
-                        <label>聯絡電話 <span class="required">*</span></label>
-                        <input type="tel" id="contactPhone" placeholder="請輸入聯絡電話" required>
-                    </div>
-
-                    <!-- Line ID -->
-                    <div class="form-group">
-                        <label>Line ID</label>
-                        <input type="text" id="lineId" placeholder="請輸入您的 Line ID（選填）">
-                    </div>
-
-                    <!-- E-Mail -->
-                    <div class="form-group">
-                        <label>E-Mail</label>
-                        <input type="email" id="contactEmail" placeholder="請輸入您的 E-Mail（選填）">
-                    </div>
-
-                    <!-- 提交按鈕組 -->
-                    <div class="button-group">
-                        <button type="reset" class="reset-btn">重新填寫</button>
-                        <button type="submit" class="submit-btn">送出留單</button>
-                    </div>
-
-                    <!-- 快速聯絡區 -->
-                    <div class="quick-contact-section">
-                        <div class="contact-divider">
-                            <span>或直接聯絡我們</span>
-                        </div>
-
-                        <!-- 電話按鈕 -->
-                        <a href="tel:0911177619" class="phone-contact-btn">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
-                            </svg>
-                            <span>📞 撥打收購專線：0911-177-619</span>
-                        </a>
-
-                        <!-- LINE 按鈕 -->
-                        <a href="#" id="lineContactBtn" class="line-contact-btn">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
-                            </svg>
-                            <span>加入 LINE 官方帳號 (@288dyysc)</span>
-                        </a>
-                    </div>
-
-                    <!-- 數據來源聲明 -->
-                    <div class="data-source-note">
-                        <p class="note-title">📊 估價數據來源</p>
-                        <p class="note-content">
-                            參考 8891汽車網、行將拍賣、市場行情<br>
-                            最後更新：2025年12月 | 每月定期更新
-                        </p>
-                        <p class="disclaimer">
-                            ⚠️ 本估價僅供參考，實際價格以現場鑑定為準
-                        </p>
                     </div>
                 </form>
 
-                <!-- 估價結果顯示區 -->
-                <div id="resultSection" class="result-section hidden">
-                    <h3>估價結果</h3>
-                    <div class="result-card">
-                        <div class="result-item">
-                            <span class="label">車款：</span>
-                            <span id="resultCar" class="value"></span>
-                        </div>
-                        <div class="result-item">
-                            <span class="label">出廠年月：</span>
-                            <span id="resultDate" class="value"></span>
-                        </div>
-                        <div class="result-item">
-                            <span class="label">行駛里程：</span>
-                            <span id="resultMileage" class="value"></span>
-                        </div>
-                        <div class="result-item price">
-                            <span class="label">估價範圍：</span>
-                            <span id="resultPrice" class="value"></span>
-                        </div>
+                <!-- 車輛資訊顯示區域 -->
+                <div id="carInfoDisplay" class="car-info-display" style="display: none;">
+                    <h3 class="info-title">車價查詢</h3>
+                    <table class="car-info-table">
+                        <tr>
+                            <td class="info-label">廠牌</td>
+                            <td class="info-label">車型</td>
+                            <td class="info-label">車款</td>
+                        </tr>
+                        <tr>
+                            <td id="displayBrand">-</td>
+                            <td id="displayModel">-</td>
+                            <td id="displayType">-</td>
+                        </tr>
+                        <tr>
+                            <td class="info-label">排氣量</td>
+                            <td class="info-label">年式</td>
+                            <td class="info-label">出廠年份</td>
+                        </tr>
+                        <tr>
+                            <td id="displayEngine">-</td>
+                            <td id="displayYears">-</td>
+                            <td id="displayYear">-</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="info-label">新車價</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" id="displayNewPrice" class="new-price">-</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- 行情顯示區域 -->
+                <div id="priceDisplay" class="price-display" style="display: none;">
+                    <!-- 零售行情 -->
+                    <div class="price-section retail-price">
+                        <div class="price-header">零售行情</div>
+                        <div class="price-value" id="retailPrice">$ 0 萬</div>
+                        <div class="price-note">參考來源：8891、權威資訊</div>
                     </div>
 
-                    <div class="action-buttons">
-                        <button id="lineBtn" class="line-btn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
-                            </svg>
-                            加入 LINE 諮詢
+                    <!-- 收購行情 -->
+                    <div class="price-section purchase-price">
+                        <div class="price-header">收購行情</div>
+                        <div class="price-value" id="purchasePrice">$ 0 萬</div>
+                        <div class="price-note">參考來源：SUM、行將拍賣、和運競拍</div>
+                    </div>
+
+                    <!-- 聯絡按鈕 -->
+                    <div class="contact-buttons">
+                        <button type="button" class="contact-btn line-btn" onclick="openLineChat()">
+                            <span class="btn-icon">💬</span>
+                            LINE 諮詢專人服務
                         </button>
-                        <button id="consultBtn" class="consult-btn">填寫表單諮詢</button>
-                        <button id="recalculateBtn" class="recalculate-btn">重新估價</button>
                     </div>
                 </div>
             </div>
