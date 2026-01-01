@@ -627,45 +627,44 @@ function checkAndCalculateQuick() {
 }
 
 // 計算快速估價
-function calculateQuickPrice(brandValue, dateValue, mileageValue) {
+function calculateQuickPrice(brandValue, dateValue, mileageValue, selectedEquipment = []) {
     try {
         // 從 carBrand select 的 value 解析車輛資料
         const carData = JSON.parse(brandValue);
-        
+
         // 解析出廠年月
         const [year, month] = dateValue.split('-').map(Number);
         const carAge = new Date().getFullYear() - year;
-        
+
         // 基礎價格
         let basePrice = carData.basePrice || 500000;
-        
+
         // 年份折舊（每年約12%）
         const depreciationRate = 0.12;
         let depreciation = 1;
         for (let i = 0; i < carAge; i++) {
             depreciation *= (1 - depreciationRate);
         }
-        
+
         // 里程影響（每萬公里折2.5%）
         const mileageInWan = parseInt(mileageValue) / 10000;
         const mileageFactor = Math.max(0.5, 1 - (mileageInWan * 0.025));
-        
+
         // 配備加成
-        const selectedEquipment = document.querySelectorAll('input[name="equipment"]:checked');
         const equipmentBonus = selectedEquipment.length * 0.02;
-        
+
         // 計算最終價格
         let estimatedPrice = basePrice * depreciation * mileageFactor * (1 + equipmentBonus);
-        
+
         // 零售行情（約1.2倍）
         const retailPrice = estimatedPrice * 1.20;
-        
+
         // 收購行情（約0.85倍）
         const purchasePrice = estimatedPrice * 0.85;
-        
+
         // 顯示結果
-        displayQuickEstimate(carData, year, mileageValue, basePrice, retailPrice, purchasePrice);
-        
+        displayQuickEstimate(carData, year, mileageValue, basePrice, retailPrice, purchasePrice, selectedEquipment);
+
     } catch (error) {
         console.error('計算估價時出錯:', error);
         hideQuickPriceSection();
@@ -673,11 +672,12 @@ function calculateQuickPrice(brandValue, dateValue, mileageValue) {
 }
 
 // 顯示快速估價結果
-function displayQuickEstimate(carData, year, mileage, basePrice, retailPrice, purchasePrice) {
+function displayQuickEstimate(carData, year, mileage, basePrice, retailPrice, purchasePrice, selectedEquipment = []) {
     console.log('💰 顯示估價結果:', {
         車款: `${carData.brand} ${carData.model}`,
         年份: year,
         里程: mileage,
+        配備: selectedEquipment.join('、') || '無',
         零售價: (retailPrice / 10000).toFixed(1) + '萬',
         收購價: (purchasePrice / 10000).toFixed(1) + '萬'
     });
@@ -689,6 +689,20 @@ function displayQuickEstimate(carData, year, mileage, basePrice, retailPrice, pu
     document.getElementById('displayYear').textContent = year || '-';
     document.getElementById('displayMileage').textContent = (parseInt(mileage) / 10000).toFixed(1) + ' 萬公里';
     document.getElementById('displayNewPrice').textContent = '$' + (basePrice / 10000).toFixed(1) + ' 萬';
+
+    // 顯示配備
+    const equipmentDisplay = document.getElementById('displayEquipment');
+    if (equipmentDisplay) {
+        if (selectedEquipment.length > 0) {
+            equipmentDisplay.textContent = selectedEquipment.join('、');
+            equipmentDisplay.style.color = '#333';
+            equipmentDisplay.style.fontWeight = '500';
+        } else {
+            equipmentDisplay.textContent = '無選擇配備';
+            equipmentDisplay.style.color = '#999';
+            equipmentDisplay.style.fontWeight = 'normal';
+        }
+    }
 
     // 顯示價格
     const retailWan = (retailPrice / 10000).toFixed(1);
@@ -891,9 +905,23 @@ function setupQuickEstimateButton() {
 
         // 所有必填欄位都已填寫，開始計算估價
         console.log('✅ 開始計算即時估價...');
-        calculateQuickPrice(brandValue, dateValue, mileageValue);
+
+        // 取得選擇的配備
+        const selectedEquipment = getSelectedEquipment();
+
+        calculateQuickPrice(brandValue, dateValue, mileageValue, selectedEquipment);
     });
 
     console.log('✅ 即時估價按鈕已設置');
+}
+
+// ==================== 取得選擇的配備 ====================
+
+function getSelectedEquipment() {
+    const equipmentCheckboxes = document.querySelectorAll('input[name="equipment"]:checked');
+    const equipmentList = Array.from(equipmentCheckboxes).map(cb => {
+        return cb.nextElementSibling.textContent.trim();
+    });
+    return equipmentList;
 }
 
