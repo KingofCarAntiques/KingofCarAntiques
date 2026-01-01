@@ -3,6 +3,23 @@
 // LINE 官方帳號設定
 const LINE_OFFICIAL_URL = 'https://line.me/R/ti/p/@288dyysc';
 
+// Google Sheets 網址（請在設定 Google Apps Script 後填入）
+// 設定教學：請參考 Google-Sheet-設定說明.md
+const GOOGLE_SHEET_URL = ''; // 👈 設定完 Google Sheet 後，請在這裡填入您的 Web 應用程式網址
+
+// Email 通知設定
+const NOTIFICATION_EMAIL = 'a0911177619@yahoo.com.tw';
+
+// 電話號碼設定
+const PHONE_NUMBER = '0911177619'; // 收購專線電話號碼
+
+// Google Analytics ID（選填）
+const GA_TRACKING_ID = ''; // 👈 如需使用 Google Analytics，請填入追蹤 ID（例如：G-XXXXXXXXXX）
+
+// 防重複提交機制
+let lastSubmitTime = 0;
+const SUBMIT_COOLDOWN = 30000; // 30秒內不能重複提交
+
 // 全域變數
 let currentEstimation = null;
 
@@ -55,11 +72,24 @@ document.addEventListener('DOMContentLoaded', function() {
 function handleFormSubmit(e) {
     e.preventDefault();
 
+    // 防重複提交檢查
+    const currentTime = Date.now();
+    if (currentTime - lastSubmitTime < SUBMIT_COOLDOWN) {
+        const remainingTime = Math.ceil((SUBMIT_COOLDOWN - (currentTime - lastSubmitTime)) / 1000);
+        alert(`⏱️ 請稍候 ${remainingTime} 秒後再提交\n避免重複送出表單`);
+        return;
+    }
+
     const carBrandSelect = document.getElementById('carBrand');
     const manufactureDate = document.getElementById('manufactureDate').value;
     const mileage = parseFloat(document.getElementById('mileage').value);
     const carColor = document.getElementById('carColor').value;
+    const carCondition = document.getElementById('carCondition').value;
+    const accidentHistory = document.getElementById('accidentHistory').value;
+    const carLocation = document.getElementById('carLocation').value;
+    const urgency = document.getElementById('urgency').value;
 
+    // 表單驗證
     if (!carBrandSelect.value) {
         alert('請選擇車款');
         return;
@@ -80,22 +110,181 @@ function handleFormSubmit(e) {
         return;
     }
 
+    if (!carCondition) {
+        alert('請選擇車況評估');
+        return;
+    }
+
+    if (!accidentHistory) {
+        alert('請選擇事故記錄');
+        return;
+    }
+
+    if (!carLocation) {
+        alert('請選擇車籍所在地');
+        return;
+    }
+
     // 解析車款資料
     const carData = JSON.parse(carBrandSelect.value);
 
-    // 計算估價
-    const estimation = calculateCarValue(carData, manufactureDate, mileage, carColor);
+    // 取得車輛配備（checkbox）
+    const equipmentCheckboxes = document.querySelectorAll('input[name="equipment"]:checked');
+    const equipmentList = Array.from(equipmentCheckboxes).map(cb => {
+        return cb.nextElementSibling.textContent;
+    });
+    const equipment = equipmentList.join('、') || '無特殊配備';
 
-    // 儲存估價結果
-    currentEstimation = {
-        car: `${carData.brand} ${carData.model}`,
-        date: manufactureDate,
-        mileage: mileage,
-        ...estimation
+    // 取得聯絡資訊（如果有填寫）
+    const contactName = document.getElementById('contactName')?.value || '';
+    const contactPhone = document.getElementById('contactPhone')?.value || '';
+    const lineId = document.getElementById('lineId')?.value || '';
+    const contactEmail = document.getElementById('contactEmail')?.value || '';
+
+    // 中文對照表
+    const colorMap = {
+        'white': '白色', 'black': '黑色', 'silver': '銀色', 'gray': '灰色',
+        'red': '紅色', 'blue': '藍色', 'yellow': '黃色', 'green': '綠色',
+        'orange': '橘色', 'brown': '咖啡色', 'other': '其他顏色'
     };
 
-    // 顯示結果
-    displayResult(currentEstimation);
+    const conditionMap = {
+        'excellent': '極佳', 'good': '良好', 'fair': '普通', 'poor': '需整理'
+    };
+
+    const accidentMap = {
+        'none': '無事故', 'minor': '小事故（已修復）',
+        'major': '重大事故', 'flood': '泡水車', 'fire': '火燒車'
+    };
+
+    const locationMap = {
+        'north': '北部', 'central': '中部', 'south': '南部',
+        'east': '東部', 'offshore': '離島'
+    };
+
+    const urgencyMap = {
+        'urgent': '🔥 急售（3天內）', 'week': '一週內',
+        'month': '一個月內', 'flexible': '不急，先了解行情'
+    };
+
+    // 組合 LINE 訊息
+    let lineMessage = `【我要估車】\n\n`;
+    lineMessage += `🚗 車輛資訊\n`;
+    lineMessage += `廠牌車款：${carData.brand} ${carData.model}\n`;
+    lineMessage += `出廠年月：${manufactureDate}\n`;
+    lineMessage += `車身顏色：${colorMap[carColor] || carColor}\n`;
+    lineMessage += `行駛里程：${mileage.toLocaleString()} 公里\n`;
+    lineMessage += `車輛配備：${equipment}\n`;
+    lineMessage += `車況評估：${conditionMap[carCondition]}\n`;
+    lineMessage += `事故記錄：${accidentMap[accidentHistory]}\n`;
+    lineMessage += `車籍所在：${locationMap[carLocation]}\n`;
+    if (urgency) lineMessage += `售車時間：${urgencyMap[urgency]}\n`;
+
+    // 如果有填寫聯絡資訊，加入訊息中
+    if (contactName || contactPhone || lineId || contactEmail) {
+        lineMessage += `\n👤 聯絡資訊\n`;
+        if (contactName) lineMessage += `姓名：${contactName}\n`;
+        if (contactPhone) lineMessage += `電話：${contactPhone}\n`;
+        if (lineId) lineMessage += `Line ID：${lineId}\n`;
+        if (contactEmail) lineMessage += `Email：${contactEmail}\n`;
+    }
+
+    lineMessage += `\n希望了解更詳細的估價資訊，謝謝！`;
+
+    // 準備要儲存的資料
+    const formData = {
+        carBrand: `${carData.brand} ${carData.model}`,
+        manufactureDate: manufactureDate,
+        carColor: colorMap[carColor] || carColor,
+        mileage: mileage,
+        equipment: equipment,
+        carCondition: conditionMap[carCondition],
+        accidentHistory: accidentMap[accidentHistory],
+        carLocation: locationMap[carLocation],
+        urgency: urgency ? urgencyMap[urgency] : '未填寫',
+        contactName: contactName,
+        contactPhone: contactPhone,
+        lineId: lineId,
+        contactEmail: contactEmail,
+        timestamp: new Date().toLocaleString('zh-TW')
+    };
+
+    // 1. 儲存到 Google 試算表（如果已設定）
+    if (GOOGLE_SHEET_URL) {
+        saveToGoogleSheet(formData);
+    }
+
+    // 2. 發送 Email 通知
+    sendEmailNotification(formData);
+
+    // 3. 記錄提交時間（防重複提交）
+    lastSubmitTime = currentTime;
+
+    // 4. Google Analytics 事件追蹤
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'form_submit', {
+            'event_category': 'engagement',
+            'event_label': `${carData.brand} ${carData.model}`,
+            'value': urgency === 'urgent' ? 10 : 5
+        });
+    }
+
+    // 5. 跳轉到 LINE 並帶入訊息
+    setTimeout(() => {
+        const lineUrl = `${LINE_OFFICIAL_URL}?text=${encodeURIComponent(lineMessage)}`;
+        window.open(lineUrl, '_blank');
+    }, 500);
+
+    // 顯示提示訊息
+    alert('✅ 您的資料已送出！\n\n即將開啟 LINE 對話視窗\n我們會為您提供專業的估價服務！');
+}
+
+// 儲存資料到 Google 試算表
+function saveToGoogleSheet(data) {
+    fetch(GOOGLE_SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    }).then(() => {
+        console.log('✅ 資料已儲存到 Google 試算表');
+    }).catch((error) => {
+        console.error('❌ 儲存失敗:', error);
+    });
+}
+
+// 發送 Email 通知
+function sendEmailNotification(data) {
+    // 使用 FormSubmit.co 免費服務發送 Email
+    const emailData = new FormData();
+    emailData.append('_to', NOTIFICATION_EMAIL);
+    emailData.append('_subject', '🚗 秒估車新留單通知');
+    emailData.append('_template', 'table');
+    emailData.append('提交時間', data.timestamp);
+    emailData.append('廠牌車款', data.carBrand);
+    emailData.append('出廠年月', data.manufactureDate);
+    emailData.append('車身顏色', data.carColor);
+    emailData.append('行駛里程', `${data.mileage} 公里`);
+    emailData.append('車輛配備', data.equipment);
+    emailData.append('車況評估', data.carCondition);
+    emailData.append('事故記錄', data.accidentHistory);
+    emailData.append('車籍所在地', data.carLocation);
+    emailData.append('預期售車時間', data.urgency);
+    emailData.append('聯絡人', data.contactName || '未填寫');
+    emailData.append('電話', data.contactPhone || '未填寫');
+    emailData.append('Line ID', data.lineId || '未填寫');
+    emailData.append('Email', data.contactEmail || '未填寫');
+
+    fetch(`https://formsubmit.co/ajax/${NOTIFICATION_EMAIL}`, {
+        method: 'POST',
+        body: emailData
+    }).then(response => {
+        console.log('✅ Email 通知已發送');
+    }).catch(error => {
+        console.error('❌ Email 發送失敗:', error);
+    });
 }
 
 // 計算車輛估價

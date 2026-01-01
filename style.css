@@ -359,6 +359,122 @@ body::before {
     margin-bottom: 8px;
     font-weight: bold;
     color: #333;
+    font-size: 15px;
+}
+
+/* 必填標記 */
+.required {
+    color: #ff0000;
+    margin-left: 3px;
+}
+
+/* 車輛配備選項 */
+.equipment-checkboxes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: #f8f8f8;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: normal;
+}
+
+.checkbox-item:hover {
+    background: #fff;
+    border-color: #ff8c00;
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    cursor: pointer;
+    accent-color: #ff8c00;
+}
+
+.checkbox-item input[type="checkbox"]:checked + span {
+    color: #ff8c00;
+    font-weight: bold;
+}
+
+.checkbox-item span {
+    font-size: 14px;
+    color: #333;
+}
+
+/* 手機版調整 */
+@media (max-width: 480px) {
+    .equipment-checkboxes {
+        grid-template-columns: 1fr;
+    }
+}
+
+.required-mark {
+    color: #ff0000;
+    font-size: 14px;
+    display: block;
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+/* 表單項目標題 */
+.form-section-title {
+    margin-bottom: 10px;
+}
+
+/* 表單區段標題 */
+.form-section-header {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 25px 0 15px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ff8c00;
+}
+
+.form-section-header:first-of-type {
+    margin-top: 5px;
+}
+
+/* 按鈕組 */
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* 重新填寫按鈕 */
+.reset-btn {
+    flex: 1;
+    padding: 18px;
+    background: linear-gradient(135deg, #999 0%, #777 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.reset-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #888 0%, #666 100%);
+}
+
+.reset-btn:active {
+    transform: translateY(0);
 }
 
 /* 帶單位的輸入框 */
@@ -381,7 +497,7 @@ body::before {
 
 /* 提交按鈕 */
 .submit-btn {
-    width: 100%;
+    flex: 1;
     padding: 18px;
     background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%);
     color: white;
@@ -490,6 +606,75 @@ body::before {
     font-size: 14px;
 }
 
+/* 快速聯絡區 */
+.quick-contact-section {
+    margin-top: 25px;
+}
+
+.contact-divider {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+}
+
+.contact-divider::before,
+.contact-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 35%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #ddd, transparent);
+}
+
+.contact-divider::before {
+    left: 0;
+}
+
+.contact-divider::after {
+    right: 0;
+}
+
+.contact-divider span {
+    background: white;
+    padding: 0 15px;
+    color: #666;
+    font-size: 14px;
+}
+
+/* 電話按鈕 */
+.phone-contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+    margin-bottom: 12px;
+}
+
+.phone-contact-btn:hover {
+    background: linear-gradient(135deg, #ff7700 0%, #ff5500 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 140, 0, 0.4);
+}
+
+.phone-contact-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* LINE 按鈕 */
 .line-contact-btn {
     display: flex;
     align-items: center;
