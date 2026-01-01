@@ -17,8 +17,8 @@ const autoReplies = {
         messages: [
             '您可以透過以下方式聯繫我們的專業顧問：',
             '',
-            '📞 客服專線：0800-123-456',
-            '📧 Email：service@秒估車.com.tw',
+            '📞 客服專線：0911-177-619',
+            '📧 Email：a0911177619@yahoo.com.tw',
             '💬 LINE 官方帳號：@288dyysc',
             '👉 點擊下方「加入 LINE 諮詢」按鈕即可直接聯繫！',
             '',
@@ -43,7 +43,7 @@ const autoReplies = {
             '您可以：',
             '1. 使用上方表單快速估價',
             '2. 點擊「線上一對一諮詢」預約專人服務',
-            '3. 直接撥打 0800-123-456',
+            '3. 直接撥打 0911-177-619',
             '',
             '我們提供免費到府鑑定服務，當天即可完成交易！'
         ]
@@ -53,7 +53,7 @@ const autoReplies = {
             '感謝您的訊息！',
             '',
             '如需立即協助，請選擇下方快速選項，或直接撥打客服專線：',
-            '📞 0800-123-456',
+            '📞 0911-177-619',
             '',
             '我們的專業顧問將竭誠為您服務。'
         ]
@@ -65,6 +65,14 @@ let chatState = {
     isOpen: false,
     messageCount: 0,
     hasUnread: true
+};
+
+// 對話歷史記錄
+let conversationHistory = {
+    sessionId: generateSessionId(),
+    startTime: new Date().toISOString(),
+    messages: [],
+    userInfo: {}
 };
 
 // 初始化客服系統
@@ -161,6 +169,9 @@ function sendUserMessage(message) {
     chatMessages.insertAdjacentHTML('beforeend', messageHtml);
     scrollToBottom();
     chatState.messageCount++;
+
+    // 保存訊息到對話記錄
+    saveMessage('user', message, messageTime);
 }
 
 // 發送客服訊息
@@ -170,6 +181,7 @@ function sendBotMessage(messages) {
 
     // 組合所有訊息段落
     let content = '';
+    const fullMessage = messages.join('\n');
     messages.forEach(msg => {
         if (msg) {
             content += `<p>${escapeHtml(msg)}</p>`;
@@ -190,6 +202,9 @@ function sendBotMessage(messages) {
     setTimeout(() => {
         chatMessages.insertAdjacentHTML('beforeend', messageHtml);
         scrollToBottom();
+
+        // 保存客服訊息到對話記錄
+        saveMessage('bot', fullMessage, messageTime);
 
         // 如果聊天視窗關閉，顯示未讀提示
         if (!chatState.isOpen) {
@@ -268,7 +283,98 @@ function notifyCarEstimation(carInfo) {
     }
 }
 
+// 生成對話 Session ID
+function generateSessionId() {
+    return 'chat_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+}
+
+// 保存訊息到對話記錄
+function saveMessage(sender, message, time) {
+    conversationHistory.messages.push({
+        sender: sender,
+        message: message,
+        timestamp: time,
+        fullTimestamp: new Date().toISOString()
+    });
+
+    // 保存到 localStorage
+    saveToLocalStorage();
+
+    // 如果對話超過 10 條訊息，自動發送到後端
+    if (conversationHistory.messages.length >= 10 && conversationHistory.messages.length % 10 === 0) {
+        sendConversationToBackend();
+    }
+}
+
+// 保存對話到 localStorage
+function saveToLocalStorage() {
+    try {
+        localStorage.setItem('chatHistory_' + conversationHistory.sessionId, JSON.stringify(conversationHistory));
+    } catch (e) {
+        console.error('無法保存對話記錄:', e);
+    }
+}
+
+// 發送對話記錄到後端（Email）
+function sendConversationToBackend() {
+    // 準備要發送的資料
+    const chatData = new FormData();
+    chatData.append('_to', 'a0911177619@yahoo.com.tw');
+    chatData.append('_subject', `💬 秒估車客服對話記錄 - ${conversationHistory.sessionId}`);
+    chatData.append('_template', 'table');
+    chatData.append('Session ID', conversationHistory.sessionId);
+    chatData.append('開始時間', conversationHistory.startTime);
+    chatData.append('訊息數量', conversationHistory.messages.length);
+
+    // 組合對話內容
+    let conversationText = '';
+    conversationHistory.messages.forEach((msg, index) => {
+        const senderName = msg.sender === 'user' ? '客戶' : '客服';
+        conversationText += `\n[${msg.timestamp}] ${senderName}：${msg.message}\n`;
+    });
+
+    chatData.append('對話內容', conversationText);
+
+    // 發送到 FormSubmit
+    fetch('https://formsubmit.co/ajax/a0911177619@yahoo.com.tw', {
+        method: 'POST',
+        body: chatData
+    }).then(response => {
+        console.log('✅ 對話記錄已發送到 Email');
+    }).catch(error => {
+        console.error('❌ 對話記錄發送失敗:', error);
+    });
+}
+
+// 導出對話記錄為文字檔
+function exportConversation() {
+    let text = `秒估車客服對話記錄\n`;
+    text += `Session ID: ${conversationHistory.sessionId}\n`;
+    text += `開始時間: ${conversationHistory.startTime}\n`;
+    text += `訊息數量: ${conversationHistory.messages.length}\n`;
+    text += `\n${'='.repeat(50)}\n\n`;
+
+    conversationHistory.messages.forEach((msg, index) => {
+        const senderName = msg.sender === 'user' ? '客戶' : '客服';
+        text += `[${msg.timestamp}] ${senderName}：\n`;
+        text += `${msg.message}\n\n`;
+    });
+
+    // 創建下載連結
+    const blob = new Blob([text], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `對話記錄_${conversationHistory.sessionId}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
 // 匯出函數供其他腳本使用
 window.chatService = {
-    notifyEstimation: notifyCarEstimation
+    notifyEstimation: notifyCarEstimation,
+    exportConversation: exportConversation,
+    getConversationHistory: () => conversationHistory
 };
