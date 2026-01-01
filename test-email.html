@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📧 測試 Email 功能 - 秒估車</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .info-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .info-box p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        .info-box strong {
+            color: #667eea;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        input[type="email"],
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="email"]:focus,
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .steps {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .steps h3 {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+
+        .steps ol {
+            margin-left: 20px;
+            color: #333;
+        }
+
+        .steps li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📧 測試 Email 功能</h1>
+        <p class="subtitle">秒估車系統 - FormSubmit 驗證測試</p>
+
+        <div class="info-box">
+            <h3>🎯 這個頁面的用途</h3>
+            <p>這是一個測試頁面，用來觸發 FormSubmit.co 發送驗證信到您的信箱。</p>
+            <p><strong>目標信箱：</strong>a0911177619@yahoo.com.tw</p>
+        </div>
+
+        <form id="testForm">
+            <div class="form-group">
+                <label for="email">📧 接收信箱（預設已填）</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value="a0911177619@yahoo.com.tw"
+                    readonly
+                    style="background-color: #f5f5f5;"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="testName">👤 測試名稱</label>
+                <input
+                    type="text"
+                    id="testName"
+                    name="testName"
+                    value="測試 - FormSubmit 驗證"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="btn">
+                🚀 發送測試郵件（觸發驗證）
+            </button>
+        </form>
+
+        <div id="status" class="status"></div>
+
+        <div class="steps">
+            <h3>📋 接下來的步驟</h3>
+            <ol>
+                <li><strong>點擊上方按鈕</strong>發送測試郵件</li>
+                <li><strong>檢查您的信箱</strong>（收件匣 + 垃圾郵件）</li>
+                <li>尋找來自 <strong>FormSubmit.co</strong> 的驗證信</li>
+                <li><strong>點擊驗證連結</strong>完成驗證</li>
+                <li>驗證後，回到主網站測試表單功能</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('testForm');
+        const statusDiv = document.getElementById('status');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // 顯示發送中
+            statusDiv.className = 'status';
+            statusDiv.style.display = 'block';
+            statusDiv.textContent = '⏳ 正在發送測試郵件...';
+
+            try {
+                const formData = new FormData();
+                formData.append('_to', 'a0911177619@yahoo.com.tw');
+                formData.append('_subject', '🧪 秒估車 Email 測試 - FormSubmit 驗證');
+                formData.append('測試名稱', document.getElementById('testName').value);
+                formData.append('測試時間', new Date().toLocaleString('zh-TW'));
+                formData.append('說明', '這是一封測試郵件，用來觸發 FormSubmit.co 的首次驗證流程。');
+
+                console.log('📧 開始發送測試郵件...');
+
+                const response = await fetch('https://formsubmit.co/ajax/a0911177619@yahoo.com.tw', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                console.log('✅ 發送回應:', result);
+
+                if (result.success) {
+                    statusDiv.className = 'status success';
+                    statusDiv.innerHTML = `
+                        ✅ <strong>測試郵件已發送！</strong><br>
+                        請立即檢查您的信箱：a0911177619@yahoo.com.tw<br>
+                        <small>（記得檢查垃圾郵件資料夾）</small>
+                    `;
+                } else {
+                    statusDiv.className = 'status error';
+                    statusDiv.innerHTML = `
+                        ⚠️ <strong>發送狀態：</strong>${result.message || '未知'}<br>
+                        請檢查信箱是否收到 FormSubmit 驗證信
+                    `;
+                }
+            } catch (error) {
+                console.error('❌ 發送錯誤:', error);
+                statusDiv.className = 'status error';
+                statusDiv.innerHTML = `
+                    ❌ <strong>發送失敗</strong><br>
+                    錯誤訊息：${error.message}<br>
+                    請檢查網路連線後重試
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
