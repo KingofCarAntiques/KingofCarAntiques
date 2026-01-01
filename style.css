@@ -1592,9 +1592,48 @@ body::before {
     display: block !important;
 }
 
-/* 快速估價模式：隱藏送出按鈕 */
+/* 快速估價模式：隱藏送出按鈕和重新填寫按鈕 */
 .mode-quick-estimate .submit-btn {
     display: none !important;
+}
+
+.mode-quick-estimate #mainResetBtn {
+    display: none !important;
+}
+
+/* 快速估價模式：顯示即時估價按鈕 */
+.mode-quick-estimate .quick-estimate-btn {
+    display: block !important;
+}
+
+/* 我要估車模式：隱藏即時估價按鈕 */
+.mode-full-estimate .quick-estimate-btn {
+    display: none !important;
+}
+
+/* 即時估價按鈕樣式 */
+.quick-estimate-btn {
+    flex: 1;
+    padding: 18px;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(238, 90, 111, 0.3);
+}
+
+.quick-estimate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(238, 90, 111, 0.4);
+    background: linear-gradient(135deg, #ee5a6f 0%, #ff6b6b 100%);
+}
+
+.quick-estimate-btn:active {
+    transform: translateY(0);
 }
 
 /* ==================== 即時估價顯示區域樣式 ==================== */
@@ -1753,5 +1792,28 @@ body::before {
         padding: 14px 30px;
         font-size: 16px;
         width: 100%;
+    }
+}
+
+/* 重新填寫按鈕 */
+.reset-btn {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
+    margin-top: 15px;
+}
+
+.reset-btn:hover {
+    background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%) !important;
+}
+
+/* 按鈕容器調整 */
+.contact-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+@media (max-width: 768px) {
+    .contact-buttons {
+        gap: 10px;
     }
 }
