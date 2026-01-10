@@ -318,6 +318,30 @@ body::before {
     color: #666;
 }
 
+/* 快速估價 - 淺藍色樣式 */
+.tab[data-tab="sell"] {
+    background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+    color: white !important;
+    border-radius: 8px;
+    margin-right: 10px;
+    border-bottom: none !important;
+    box-shadow: 0 4px 15px rgba(23, 162, 184, 0.4);
+    transition: all 0.3s ease;
+}
+
+.tab[data-tab="sell"]:hover {
+    background: linear-gradient(135deg, #138496 0%, #117a8b 100%);
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(23, 162, 184, 0.5);
+}
+
+.tab[data-tab="sell"].active {
+    background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+    color: white !important;
+    border-bottom: none !important;
+}
+
 /* 我要估車 - 紅底醒目樣式 */
 .tab[data-tab="estimate"] {
     background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
