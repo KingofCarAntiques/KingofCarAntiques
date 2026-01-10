@@ -318,6 +318,30 @@ body::before {
     color: #666;
 }
 
+/* 我要估車 - 紅底醒目樣式 */
+.tab[data-tab="estimate"] {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white !important;
+    border-radius: 8px;
+    margin-left: 10px;
+    border-bottom: none !important;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+    transition: all 0.3s ease;
+}
+
+.tab[data-tab="estimate"]:hover {
+    background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 53, 69, 0.5);
+}
+
+.tab[data-tab="estimate"].active {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white !important;
+    border-bottom: none !important;
+}
+
 /* 表單容器 */
 .form-container {
     padding: 30px 25px;
