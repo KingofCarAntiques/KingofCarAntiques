@@ -1333,45 +1333,96 @@ const carDatabase = {
 
     "Kia起亞": {
         models: [
-            // Morning系列
-            { name: "Morning 第一代", basePrice: 519800, depreciation: 0.17 },
-            { name: "Morning 晨尼第一代小改款", basePrice: 495000, depreciation: 0.17 },
+            // Picanto / Morning 系列（小型車）
+            { name: "Picanto", basePrice: 550000, depreciation: 0.16 },
+            { name: "Picanto X-Line", basePrice: 620000, depreciation: 0.16 },
+            { name: "Picanto GT Line", basePrice: 650000, depreciation: 0.15 },
+            { name: "Morning", basePrice: 500000, depreciation: 0.17 },
 
-            // Picanto系列
-            { name: "Picanto 帕克托第一代", basePrice: 499000, depreciation: 0.17 },
-            { name: "Picanto 第一代小改款", basePrice: 565000, depreciation: 0.17 },
-            { name: "Picanto 第二代小改款", basePrice: 590000, depreciation: 0.17 },
+            // Stonic 系列（小型 SUV）
+            { name: "Stonic", basePrice: 780000, depreciation: 0.15 },
+            { name: "Stonic 1.0T", basePrice: 850000, depreciation: 0.15 },
+            { name: "Stonic GT Line", basePrice: 920000, depreciation: 0.15 },
 
-            // Stinger
-            { name: "Stinger 史丁格", basePrice: 1558000, depreciation: 0.16 },
+            // Soul 系列
+            { name: "Soul", basePrice: 850000, depreciation: 0.15 },
+            { name: "Soul EV", basePrice: 1350000, depreciation: 0.16 },
 
-            // Stonic
-            { name: "Stonic 史托尼克", basePrice: 739000, depreciation: 0.16 },
+            // Sportage 系列（中型 SUV）
+            { name: "Sportage", basePrice: 1150000, depreciation: 0.14 },
+            { name: "Sportage 1.6T", basePrice: 1250000, depreciation: 0.14 },
+            { name: "Sportage 2.0", basePrice: 1180000, depreciation: 0.14 },
+            { name: "Sportage Hybrid", basePrice: 1380000, depreciation: 0.13 },
+            { name: "Sportage GT Line", basePrice: 1350000, depreciation: 0.14 },
+            { name: "Sportage AWD", basePrice: 1320000, depreciation: 0.14 },
 
-            // Soul
-            { name: "Soul 靈魂", basePrice: 869800, depreciation: 0.16 },
-            { name: "Soul 第二代小改款", basePrice: 859000, depreciation: 0.16 },
+            // Sorento 系列（大型 SUV）
+            { name: "Sorento", basePrice: 1550000, depreciation: 0.14 },
+            { name: "Sorento 2.2D", basePrice: 1650000, depreciation: 0.14 },
+            { name: "Sorento 2.5T", basePrice: 1750000, depreciation: 0.13 },
+            { name: "Sorento Hybrid", basePrice: 1850000, depreciation: 0.13 },
+            { name: "Sorento PHEV", basePrice: 2050000, depreciation: 0.14 },
+            { name: "Sorento 7人座", basePrice: 1680000, depreciation: 0.14 },
 
-            // Sportage系列
-            { name: "Sportage 第三代", basePrice: 989000, depreciation: 0.15 },
-            { name: "Sportage 第四代", basePrice: 1039000, depreciation: 0.15 },
-            { name: "Sportage 運動版第四代", basePrice: 1139000, depreciation: 0.15 },
+            // Carnival 系列（MPV）
+            { name: "Carnival", basePrice: 1650000, depreciation: 0.14 },
+            { name: "Carnival 2.2D", basePrice: 1750000, depreciation: 0.14 },
+            { name: "Carnival 7人座", basePrice: 1580000, depreciation: 0.14 },
+            { name: "Carnival 9人座", basePrice: 1550000, depreciation: 0.14 },
+            { name: "Carnival Hi-Limousine", basePrice: 2150000, depreciation: 0.13 },
 
-            // Sorento系列
-            { name: "Sorento 所蘭托第二代", basePrice: 1419000, depreciation: 0.15 },
-            { name: "Sorento 第三代", basePrice: 1670000, depreciation: 0.15 },
-            { name: "Sorento 所蘭托第四代", basePrice: 1780000, depreciation: 0.15 },
+            // Stinger 系列（性能轎跑）
+            { name: "Stinger", basePrice: 1650000, depreciation: 0.15 },
+            { name: "Stinger 2.0T", basePrice: 1550000, depreciation: 0.15 },
+            { name: "Stinger 3.3T", basePrice: 1950000, depreciation: 0.14 },
+            { name: "Stinger GT", basePrice: 2050000, depreciation: 0.14 },
 
-            // Carnival系列
-            { name: "Carnival 嘉年華第二代", basePrice: 1389000, depreciation: 0.15 },
-            { name: "Carnival 第三代", basePrice: 1559000, depreciation: 0.15 },
+            // K 系列（轎車）
+            { name: "K3", basePrice: 750000, depreciation: 0.15 },
+            { name: "K5", basePrice: 1050000, depreciation: 0.15 },
+            { name: "K5 2.0", basePrice: 1100000, depreciation: 0.15 },
+            { name: "K5 GT Line", basePrice: 1250000, depreciation: 0.14 },
+            { name: "K8", basePrice: 1450000, depreciation: 0.14 },
+            { name: "K9", basePrice: 2250000, depreciation: 0.14 },
 
-            // EV6
-            { name: "EV6", basePrice: 1669000, depreciation: 0.17 },
-            { name: "EV6 小改款", basePrice: 1979000, depreciation: 0.17 },
+            // EV 電動車系列
+            { name: "EV6", basePrice: 1850000, depreciation: 0.15 },
+            { name: "EV6 Long Range", basePrice: 2050000, depreciation: 0.15 },
+            { name: "EV6 GT", basePrice: 2450000, depreciation: 0.14 },
+            { name: "EV6 GT-Line", basePrice: 2150000, depreciation: 0.15 },
+            { name: "EV9", basePrice: 2650000, depreciation: 0.15 },
+            { name: "EV9 Long Range", basePrice: 2850000, depreciation: 0.14 },
+            { name: "Niro EV", basePrice: 1550000, depreciation: 0.15 },
+            { name: "Niro Hybrid", basePrice: 1250000, depreciation: 0.14 },
+            { name: "Niro PHEV", basePrice: 1450000, depreciation: 0.15 },
 
-            // Ceed SW
-            { name: "Ceed SW", basePrice: 1129000, depreciation: 0.16 }
+            // Ceed 系列
+            { name: "Ceed", basePrice: 950000, depreciation: 0.15 },
+            { name: "Ceed SW", basePrice: 1050000, depreciation: 0.15 },
+            { name: "Ceed GT", basePrice: 1150000, depreciation: 0.15 },
+
+            // Kaon 卡旺系列（貨車）⭐
+            { name: "Kaon 卡旺", basePrice: 650000, depreciation: 0.14 },
+            { name: "Kaon 卡旺 2.5", basePrice: 680000, depreciation: 0.14 },
+            { name: "Kaon 卡旺 2.7", basePrice: 720000, depreciation: 0.14 },
+            { name: "Kaon 卡旺 3噸", basePrice: 750000, depreciation: 0.14 },
+            { name: "Kaon 卡旺 冷凍車", basePrice: 850000, depreciation: 0.14 },
+            { name: "Kaon 卡旺 廂型車", basePrice: 780000, depreciation: 0.14 },
+            { name: "Kaon 卡旺 雙乘車", basePrice: 800000, depreciation: 0.14 },
+
+            // Bongo 商用車系列
+            { name: "Bongo", basePrice: 580000, depreciation: 0.15 },
+            { name: "Bongo 2.5", basePrice: 620000, depreciation: 0.15 },
+            { name: "Bongo 冷凍車", basePrice: 750000, depreciation: 0.14 },
+            { name: "Bongo III", basePrice: 680000, depreciation: 0.14 },
+
+            // 經典車款
+            { name: "Carens", basePrice: 750000, depreciation: 0.16 },
+            { name: "Optima", basePrice: 950000, depreciation: 0.15 },
+            { name: "Cadenza", basePrice: 1350000, depreciation: 0.15 },
+            { name: "Forte", basePrice: 700000, depreciation: 0.16 },
+            { name: "Rio", basePrice: 550000, depreciation: 0.16 },
+            { name: "Cerato", basePrice: 680000, depreciation: 0.16 }
         ]
     },
 
