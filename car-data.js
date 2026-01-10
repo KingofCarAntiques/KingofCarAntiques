@@ -1507,36 +1507,68 @@ const carDatabase = {
 
     "Luxgen納智捷": {
         models: [
-            // S3
-            { name: "S3 拉傑第一代", basePrice: 649000, depreciation: 0.17 },
+            // S3 系列（小型轎車）
+            { name: "S3", basePrice: 650000, depreciation: 0.17 },
+            { name: "S3 EV+", basePrice: 720000, depreciation: 0.17 },
+            { name: "S3 1.6", basePrice: 620000, depreciation: 0.17 },
 
-            // S5系列
+            // S5 系列（中型轎車）
+            { name: "S5", basePrice: 750000, depreciation: 0.16 },
             { name: "S5 Sedan", basePrice: 690000, depreciation: 0.17 },
-            { name: "S5 Turbo", basePrice: 690000, depreciation: 0.17 },
-            { name: "S5 Turbo Eco Hyper", basePrice: 659000, depreciation: 0.17 },
+            { name: "S5 Turbo", basePrice: 750000, depreciation: 0.16 },
+            { name: "S5 Turbo Eco Hyper", basePrice: 720000, depreciation: 0.16 },
+            { name: "S5 GT", basePrice: 850000, depreciation: 0.16 },
+            { name: "S5 GT225", basePrice: 920000, depreciation: 0.15 },
 
-            // U6系列
-            { name: "U6 Turbo", basePrice: 819000, depreciation: 0.16 },
-            { name: "U6 Turbo Eco Hyper", basePrice: 812000, depreciation: 0.16 },
-            { name: "U6 GT", basePrice: 899000, depreciation: 0.16 },
-            { name: "U6 GT220", basePrice: 939000, depreciation: 0.16 },
+            // U5 系列（小型 SUV）
+            { name: "U5", basePrice: 700000, depreciation: 0.16 },
+            { name: "U5 1.6", basePrice: 680000, depreciation: 0.16 },
+            { name: "U5 Turbo", basePrice: 750000, depreciation: 0.16 },
+            { name: "U5 EV+", basePrice: 780000, depreciation: 0.16 },
 
-            // U7系列
-            { name: "U7 Turbo", basePrice: 945000, depreciation: 0.16 },
-            { name: "U7 Turbo Eco Hyper", basePrice: 923000, depreciation: 0.16 },
+            // U6 系列（中型 SUV）
+            { name: "U6", basePrice: 850000, depreciation: 0.16 },
+            { name: "U6 Turbo", basePrice: 850000, depreciation: 0.16 },
+            { name: "U6 Turbo Eco Hyper", basePrice: 820000, depreciation: 0.16 },
+            { name: "U6 GT", basePrice: 920000, depreciation: 0.15 },
+            { name: "U6 GT220", basePrice: 980000, depreciation: 0.15 },
+            { name: "U6 GT225", basePrice: 1050000, depreciation: 0.15 },
+            { name: "U6 1.8", basePrice: 800000, depreciation: 0.16 },
+            { name: "U6 2.0T", basePrice: 880000, depreciation: 0.16 },
 
-            // M7系列
-            { name: "M7 Turbo", basePrice: 1015000, depreciation: 0.16 },
-            { name: "M7 Turbo Eco Hyper", basePrice: 1013000, depreciation: 0.16 },
+            // U7 系列（大型 SUV）
+            { name: "U7", basePrice: 1000000, depreciation: 0.16 },
+            { name: "U7 Turbo", basePrice: 1050000, depreciation: 0.16 },
+            { name: "U7 Turbo Eco Hyper", basePrice: 1020000, depreciation: 0.16 },
+            { name: "U7 2.2T", basePrice: 980000, depreciation: 0.16 },
+            { name: "U7 SUV", basePrice: 1000000, depreciation: 0.16 },
 
-            // URX
-            { name: "URX", basePrice: 848000, depreciation: 0.16 },
+            // M7 系列（MPV）
+            { name: "M7", basePrice: 1100000, depreciation: 0.15 },
+            { name: "M7 Turbo", basePrice: 1150000, depreciation: 0.15 },
+            { name: "M7 Turbo Eco Hyper", basePrice: 1120000, depreciation: 0.15 },
+            { name: "M7 2.2T", basePrice: 1080000, depreciation: 0.15 },
+            { name: "M7 7人座", basePrice: 1100000, depreciation: 0.15 },
 
-            // N7
-            { name: "N7 電動車", basePrice: 999000, depreciation: 0.17 },
+            // N7 系列（電動車）
+            { name: "N7", basePrice: 1100000, depreciation: 0.16 },
+            { name: "N7 電動車", basePrice: 1100000, depreciation: 0.16 },
+            { name: "N7 純電", basePrice: 1150000, depreciation: 0.16 },
+            { name: "N7 5人座", basePrice: 1050000, depreciation: 0.16 },
+            { name: "N7 亮點版", basePrice: 1200000, depreciation: 0.16 },
 
-            // U5
-            { name: "U5", basePrice: 659000, depreciation: 0.16 }
+            // URX 系列（跨界 SUV）
+            { name: "URX", basePrice: 900000, depreciation: 0.16 },
+            { name: "URX 5+1", basePrice: 920000, depreciation: 0.16 },
+            { name: "URX 7人座", basePrice: 950000, depreciation: 0.16 },
+            { name: "URX Neo", basePrice: 980000, depreciation: 0.16 },
+            { name: "URX 樂活版", basePrice: 1020000, depreciation: 0.16 },
+
+            // 經典/停產車款
+            { name: "MPV", basePrice: 950000, depreciation: 0.17 },
+            { name: "CEO", basePrice: 1350000, depreciation: 0.16 },
+            { name: "SUV", basePrice: 900000, depreciation: 0.17 },
+            { name: "Sedan", basePrice: 750000, depreciation: 0.17 }
         ]
     },
 
