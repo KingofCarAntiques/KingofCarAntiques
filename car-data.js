@@ -1055,55 +1055,105 @@ const carDatabase = {
 
     "Hyundai現代": {
         models: [
-            // Elantra系列
-            { name: "Elantra 伊倫強第一代", basePrice: 689000, depreciation: 0.16 },
-            { name: "Elantra 第二代", basePrice: 739000, depreciation: 0.16 },
-            { name: "Elantra 第三代", basePrice: 759000, depreciation: 0.15 },
+            // Elantra 系列（轎車）
+            { name: "Elantra", basePrice: 750000, depreciation: 0.15 },
+            { name: "Elantra 1.6", basePrice: 720000, depreciation: 0.15 },
+            { name: "Elantra 1.8", basePrice: 780000, depreciation: 0.15 },
+            { name: "Elantra Sport", basePrice: 850000, depreciation: 0.14 },
+            { name: "Elantra Hybrid", basePrice: 920000, depreciation: 0.14 },
+            { name: "Elantra N Line", basePrice: 980000, depreciation: 0.14 },
+            { name: "Elantra N", basePrice: 1350000, depreciation: 0.13 },
 
-            // i30
-            { name: "i30 第一代", basePrice: 599000, depreciation: 0.16 },
-            { name: "i30 第二代", basePrice: 449000, depreciation: 0.16 },
+            // Sonata 系列
+            { name: "Sonata", basePrice: 1150000, depreciation: 0.14 },
+            { name: "Sonata 2.0", basePrice: 1100000, depreciation: 0.14 },
+            { name: "Sonata 2.4", basePrice: 1200000, depreciation: 0.14 },
+            { name: "Sonata Hybrid", basePrice: 1350000, depreciation: 0.13 },
+            { name: "Sonata N Line", basePrice: 1450000, depreciation: 0.13 },
 
-            // Ioniq系列
-            { name: "Ioniq 第一代", basePrice: 1019000, depreciation: 0.16 },
-            { name: "Ioniq 5", basePrice: 1059000, depreciation: 0.16 },
-            { name: "Ioniq 6", basePrice: 1599000, depreciation: 0.16 },
+            // Accent 系列
+            { name: "Accent", basePrice: 550000, depreciation: 0.16 },
+            { name: "Accent 1.6", basePrice: 580000, depreciation: 0.16 },
+            { name: "Verna", basePrice: 520000, depreciation: 0.16 },
 
-            // Genesis
-            { name: "Genesis 第一代", basePrice: 2880000, depreciation: 0.16 },
+            // i 系列
+            { name: "i10", basePrice: 450000, depreciation: 0.17 },
+            { name: "i30", basePrice: 650000, depreciation: 0.16 },
+            { name: "i30 N", basePrice: 1350000, depreciation: 0.14 },
+            { name: "i40", basePrice: 950000, depreciation: 0.15 },
 
-            // Veloster
-            { name: "Veloster 第一代", basePrice: 1009000, depreciation: 0.17 },
-            { name: "Veloster 第二代", basePrice: 1199000, depreciation: 0.16 },
+            // ix35 系列（SUV）
+            { name: "ix35", basePrice: 850000, depreciation: 0.15 },
+            { name: "ix35 2.0", basePrice: 880000, depreciation: 0.15 },
+            { name: "ix35 2.4", basePrice: 950000, depreciation: 0.15 },
+            { name: "ix35 旗艦版", basePrice: 980000, depreciation: 0.14 },
 
-            // Porter
-            { name: "Porter 波特第一代", basePrice: 698000, depreciation: 0.16 },
-            { name: "Porter 第二代", basePrice: 728000, depreciation: 0.16 },
+            // Tucson 系列（SUV）
+            { name: "Tucson", basePrice: 950000, depreciation: 0.14 },
+            { name: "Tucson 1.6T", basePrice: 1050000, depreciation: 0.14 },
+            { name: "Tucson 2.0", basePrice: 980000, depreciation: 0.14 },
+            { name: "Tucson Hybrid", basePrice: 1150000, depreciation: 0.13 },
+            { name: "Tucson L", basePrice: 1100000, depreciation: 0.14 },
+            { name: "Tucson N Line", basePrice: 1180000, depreciation: 0.13 },
 
-            // Grand Starex
-            { name: "Grand Starex 第一代 TQ型", basePrice: 1168000, depreciation: 0.16 },
-            { name: "Grand Starex 第二代小改款", basePrice: 1268000, depreciation: 0.16 },
+            // Santa Fe 系列（SUV）
+            { name: "Santa Fe", basePrice: 1250000, depreciation: 0.14 },
+            { name: "Santa Fe 2.2D", basePrice: 1350000, depreciation: 0.14 },
+            { name: "Santa Fe 2.5T", basePrice: 1450000, depreciation: 0.13 },
+            { name: "Santa Fe Hybrid", basePrice: 1550000, depreciation: 0.13 },
+            { name: "Santa Fe PHEV", basePrice: 1750000, depreciation: 0.14 },
+            { name: "Santa Fe 7人座", basePrice: 1380000, depreciation: 0.14 },
 
-            // Staria
-            { name: "Staria 第一代", basePrice: 1598000, depreciation: 0.16 },
+            // Kona 系列（小型SUV）
+            { name: "Kona", basePrice: 850000, depreciation: 0.15 },
+            { name: "Kona 1.6T", basePrice: 950000, depreciation: 0.14 },
+            { name: "Kona Hybrid", basePrice: 1050000, depreciation: 0.14 },
+            { name: "Kona Electric", basePrice: 1350000, depreciation: 0.15 },
+            { name: "Kona N", basePrice: 1280000, depreciation: 0.14 },
+            { name: "Kona N Line", basePrice: 1080000, depreciation: 0.14 },
 
-            // Tucson系列
-            { name: "Tucson 社會第二代", basePrice: 809000, depreciation: 0.16 },
-            { name: "Tucson 第三代", basePrice: 849000, depreciation: 0.15 },
-            { name: "Tucson 第四代小改款", basePrice: 829000, depreciation: 0.15 },
+            // Venue 系列（小型SUV）
+            { name: "Venue", basePrice: 700000, depreciation: 0.15 },
+            { name: "Venue GLB", basePrice: 750000, depreciation: 0.15 },
+            { name: "Venue GLC", basePrice: 780000, depreciation: 0.15 },
 
-            // Santa Fe系列
-            { name: "Santa Fe 聖塔第一代", basePrice: 1019000, depreciation: 0.15 },
-            { name: "Santa Fe 第二代", basePrice: 1199000, depreciation: 0.15 },
-            { name: "Santa Fe 聖塔第三代", basePrice: 1249000, depreciation: 0.15 },
-            { name: "Santa Fe 第四代", basePrice: 1329000, depreciation: 0.15 },
+            // Palisade 系列（大型SUV）
+            { name: "Palisade", basePrice: 1850000, depreciation: 0.13 },
+            { name: "Palisade 2.2D", basePrice: 1950000, depreciation: 0.13 },
+            { name: "Palisade 旗艦版", basePrice: 2100000, depreciation: 0.12 },
 
-            // Venue
-            { name: "Venue QXG型", basePrice: 729000, depreciation: 0.16 },
+            // Ioniq 電動車系列
+            { name: "Ioniq", basePrice: 1050000, depreciation: 0.16 },
+            { name: "Ioniq Hybrid", basePrice: 1100000, depreciation: 0.15 },
+            { name: "Ioniq 5", basePrice: 1650000, depreciation: 0.15 },
+            { name: "Ioniq 5 Long Range", basePrice: 1850000, depreciation: 0.14 },
+            { name: "Ioniq 6", basePrice: 1750000, depreciation: 0.15 },
+            { name: "Ioniq 6 Long Range", basePrice: 1950000, depreciation: 0.14 },
 
-            // Kona系列
-            { name: "Kona 科納第一代", basePrice: 799000, depreciation: 0.16 },
-            { name: "Kona 科納Electric", basePrice: 1319000, depreciation: 0.17 }
+            // MPV / 商旅車
+            { name: "Grand Starex", basePrice: 1350000, depreciation: 0.14 },
+            { name: "Grand Starex 9人座", basePrice: 1280000, depreciation: 0.14 },
+            { name: "Grand Starex 12人座", basePrice: 1250000, depreciation: 0.14 },
+            { name: "Staria", basePrice: 1650000, depreciation: 0.14 },
+            { name: "Staria 9人座", basePrice: 1580000, depreciation: 0.14 },
+            { name: "Custin", basePrice: 1150000, depreciation: 0.15 },
+
+            // 性能車
+            { name: "Veloster", basePrice: 1050000, depreciation: 0.15 },
+            { name: "Veloster N", basePrice: 1450000, depreciation: 0.14 },
+            { name: "Genesis Coupe", basePrice: 1550000, depreciation: 0.15 },
+
+            // 商用車
+            { name: "Porter", basePrice: 720000, depreciation: 0.15 },
+            { name: "Porter II", basePrice: 780000, depreciation: 0.15 },
+
+            // 經典車款
+            { name: "Matrix", basePrice: 550000, depreciation: 0.16 },
+            { name: "Getz", basePrice: 450000, depreciation: 0.17 },
+            { name: "Lavita", basePrice: 480000, depreciation: 0.17 },
+            { name: "Trajet", basePrice: 650000, depreciation: 0.16 },
+            { name: "Terracan", basePrice: 750000, depreciation: 0.16 },
+            { name: "Grandeur", basePrice: 1200000, depreciation: 0.15 }
         ]
     },
 
