@@ -1159,48 +1159,101 @@ const carDatabase = {
 
     "Infiniti無限": {
         models: [
-            // Q25
-            { name: "Q25", basePrice: 1920000, depreciation: 0.17 },
+            // G 系列（轎車/跑車）
+            { name: "G25", basePrice: 1650000, depreciation: 0.16 },
+            { name: "G25 Sedan", basePrice: 1680000, depreciation: 0.16 },
+            { name: "G35", basePrice: 1850000, depreciation: 0.16 },
+            { name: "G35 Sedan", basePrice: 1880000, depreciation: 0.16 },
+            { name: "G35 Coupe", basePrice: 1950000, depreciation: 0.15 },
+            { name: "G37", basePrice: 2100000, depreciation: 0.15 },
+            { name: "G37 Sedan", basePrice: 2150000, depreciation: 0.15 },
+            { name: "G37 Coupe", basePrice: 2280000, depreciation: 0.15 },
+            { name: "G37 Convertible", basePrice: 2450000, depreciation: 0.15 },
+            { name: "G37S", basePrice: 2350000, depreciation: 0.14 },
 
-            // Q37系列
-            { name: "Q37", basePrice: 2210000, depreciation: 0.16 },
-            { name: "Q37C", basePrice: 2350000, depreciation: 0.16 },
-
-            // M系列
+            // M 系列（豪華轎車）
             { name: "M25", basePrice: 2290000, depreciation: 0.16 },
             { name: "M35", basePrice: 2560000, depreciation: 0.16 },
-            { name: "M37", basePrice: 2780000, depreciation: 0.16 },
+            { name: "M35h Hybrid", basePrice: 2750000, depreciation: 0.15 },
+            { name: "M37", basePrice: 2780000, depreciation: 0.15 },
+            { name: "M37S", basePrice: 2950000, depreciation: 0.15 },
+            { name: "M45", basePrice: 3200000, depreciation: 0.15 },
+            { name: "M56", basePrice: 3500000, depreciation: 0.15 },
 
-            // Q50系列
-            { name: "Q50 第一代", basePrice: 2050000, depreciation: 0.16 },
-            { name: "Q50 第二代", basePrice: 2450000, depreciation: 0.16 },
+            // Q50 系列（G37 後繼）
+            { name: "Q50", basePrice: 2050000, depreciation: 0.15 },
+            { name: "Q50 2.0T", basePrice: 1950000, depreciation: 0.15 },
+            { name: "Q50 3.0T", basePrice: 2350000, depreciation: 0.14 },
+            { name: "Q50 3.7", basePrice: 2280000, depreciation: 0.15 },
+            { name: "Q50 Hybrid", basePrice: 2450000, depreciation: 0.15 },
+            { name: "Q50 Red Sport", basePrice: 2650000, depreciation: 0.14 },
+            { name: "Q50 Silver Sport", basePrice: 2150000, depreciation: 0.15 },
 
-            // Q60系列
-            { name: "Q60 第一代", basePrice: 2050000, depreciation: 0.16 },
-            { name: "Q60 第二代", basePrice: 2990000, depreciation: 0.16 },
+            // Q60 系列（G37 Coupe 後繼）
+            { name: "Q60", basePrice: 2350000, depreciation: 0.15 },
+            { name: "Q60 2.0T", basePrice: 2250000, depreciation: 0.15 },
+            { name: "Q60 3.0T", basePrice: 2650000, depreciation: 0.14 },
+            { name: "Q60 Red Sport", basePrice: 2950000, depreciation: 0.14 },
+            { name: "Q60 Coupe", basePrice: 2450000, depreciation: 0.15 },
 
-            // Q70
-            { name: "Q70", basePrice: 2290000, depreciation: 0.16 },
-            { name: "Q70 小改款", basePrice: 2090000, depreciation: 0.16 },
+            // Q70 系列（M 系列後繼）
+            { name: "Q70", basePrice: 2290000, depreciation: 0.15 },
+            { name: "Q70 3.7", basePrice: 2450000, depreciation: 0.15 },
+            { name: "Q70 5.6", basePrice: 3200000, depreciation: 0.15 },
+            { name: "Q70 Hybrid", basePrice: 2650000, depreciation: 0.15 },
+            { name: "Q70L", basePrice: 2550000, depreciation: 0.15 },
 
-            // FX系列
-            { name: "FX35 第二代", basePrice: 2460000, depreciation: 0.16 },
-            { name: "FX37", basePrice: 2480000, depreciation: 0.16 },
-            { name: "FX50", basePrice: 3300000, depreciation: 0.16 },
+            // FX 系列（跨界休旅）
+            { name: "FX35", basePrice: 2350000, depreciation: 0.15 },
+            { name: "FX37", basePrice: 2480000, depreciation: 0.15 },
+            { name: "FX45", basePrice: 2850000, depreciation: 0.15 },
+            { name: "FX50", basePrice: 3300000, depreciation: 0.14 },
+            { name: "FX50S", basePrice: 3500000, depreciation: 0.14 },
 
-            // QX30
-            { name: "QX30", basePrice: 1680000, depreciation: 0.17 },
+            // EX 系列（小型跨界）
+            { name: "EX25", basePrice: 1850000, depreciation: 0.16 },
+            { name: "EX35", basePrice: 2050000, depreciation: 0.15 },
+            { name: "EX37", basePrice: 2150000, depreciation: 0.15 },
 
-            // QX50系列
-            { name: "QX50 第一代", basePrice: 2170000, depreciation: 0.16 },
-            { name: "QX50 第二代", basePrice: 2450000, depreciation: 0.16 },
+            // QX30 系列（小型 SUV）
+            { name: "QX30", basePrice: 1680000, depreciation: 0.16 },
+            { name: "QX30 AWD", basePrice: 1850000, depreciation: 0.16 },
 
-            // QX60系列
-            { name: "QX60 第一代", basePrice: 2990000, depreciation: 0.16 },
-            { name: "QX60 第二代", basePrice: 2680000, depreciation: 0.16 },
+            // QX50 系列（EX 後繼）
+            { name: "QX50", basePrice: 2250000, depreciation: 0.15 },
+            { name: "QX50 2.0T", basePrice: 2150000, depreciation: 0.15 },
+            { name: "QX50 AWD", basePrice: 2350000, depreciation: 0.15 },
+            { name: "QX50 Sensory", basePrice: 2450000, depreciation: 0.15 },
+            { name: "QX50 Autograph", basePrice: 2550000, depreciation: 0.14 },
 
-            // QX70
-            { name: "QX70", basePrice: 2480000, depreciation: 0.16 }
+            // QX55 系列（跑旅）
+            { name: "QX55", basePrice: 2450000, depreciation: 0.15 },
+            { name: "QX55 Sensory", basePrice: 2550000, depreciation: 0.15 },
+
+            // QX60 系列（7人座 SUV）
+            { name: "QX60", basePrice: 2850000, depreciation: 0.14 },
+            { name: "QX60 3.5", basePrice: 2950000, depreciation: 0.14 },
+            { name: "QX60 Hybrid", basePrice: 3150000, depreciation: 0.14 },
+            { name: "QX60 AWD", basePrice: 3050000, depreciation: 0.14 },
+            { name: "QX60 Sensory", basePrice: 3150000, depreciation: 0.14 },
+            { name: "QX60 Autograph", basePrice: 3350000, depreciation: 0.13 },
+
+            // QX70 系列（FX 後繼）
+            { name: "QX70", basePrice: 2480000, depreciation: 0.15 },
+            { name: "QX70 3.7", basePrice: 2580000, depreciation: 0.15 },
+            { name: "QX70 5.0", basePrice: 3200000, depreciation: 0.14 },
+
+            // QX80 系列（旗艦 SUV）
+            { name: "QX80", basePrice: 3850000, depreciation: 0.14 },
+            { name: "QX80 5.6", basePrice: 3950000, depreciation: 0.14 },
+            { name: "QX80 Sensory", basePrice: 4150000, depreciation: 0.13 },
+            { name: "QX80 ProActive", basePrice: 4050000, depreciation: 0.13 },
+
+            // 經典車款
+            { name: "I30", basePrice: 1450000, depreciation: 0.16 },
+            { name: "I35", basePrice: 1650000, depreciation: 0.16 },
+            { name: "J30", basePrice: 1550000, depreciation: 0.16 },
+            { name: "Q45", basePrice: 2500000, depreciation: 0.16 }
         ]
     },
 
