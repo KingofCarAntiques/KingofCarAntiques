@@ -517,52 +517,94 @@ const carDatabase = {
 
     "Honda本田": {
         models: [
+            // City 系列
+            { name: "City", basePrice: 650000, depreciation: 0.15 },
+            { name: "City 1.5", basePrice: 680000, depreciation: 0.15 },
+            { name: "City VTi", basePrice: 720000, depreciation: 0.14 },
+            { name: "City VTi-S", basePrice: 750000, depreciation: 0.14 },
+
+            // Fit 系列
+            { name: "Fit", basePrice: 700000, depreciation: 0.15 },
+            { name: "Fit e:HEV", basePrice: 850000, depreciation: 0.14 },
+            { name: "Fit 1.5", basePrice: 720000, depreciation: 0.15 },
+            { name: "Fit VTi", basePrice: 750000, depreciation: 0.14 },
+            { name: "Fit VTi-S", basePrice: 780000, depreciation: 0.14 },
+            { name: "Fit Home", basePrice: 760000, depreciation: 0.14 },
+
             // Civic 系列
             { name: "Civic", basePrice: 950000, depreciation: 0.14 },
             { name: "Civic e:HEV", basePrice: 1150000, depreciation: 0.13 },
             { name: "Civic Type R", basePrice: 1890000, depreciation: 0.12 },
             { name: "Civic Ferio", basePrice: 550000, depreciation: 0.16 },
+            { name: "Civic 1.5T", basePrice: 980000, depreciation: 0.14 },
+            { name: "Civic VTi", basePrice: 920000, depreciation: 0.14 },
+            { name: "Civic VTi-S", basePrice: 1050000, depreciation: 0.13 },
+            { name: "Civic Si", basePrice: 1280000, depreciation: 0.13 },
+            { name: "Civic Hatchback", basePrice: 1100000, depreciation: 0.14 },
 
             // CR-V 系列
             { name: "CR-V", basePrice: 1300000, depreciation: 0.13 },
             { name: "CR-V e:HEV", basePrice: 1450000, depreciation: 0.12 },
             { name: "CR-V 2.0", basePrice: 1150000, depreciation: 0.13 },
             { name: "CR-V 1.5T", basePrice: 1250000, depreciation: 0.13 },
-
-            // Fit 系列
-            { name: "Fit", basePrice: 700000, depreciation: 0.15 },
-            { name: "Fit e:HEV", basePrice: 850000, depreciation: 0.14 },
-            { name: "Fit 1.5", basePrice: 720000, depreciation: 0.15 },
+            { name: "CR-V VTi", basePrice: 1190000, depreciation: 0.13 },
+            { name: "CR-V VTi-S", basePrice: 1290000, depreciation: 0.12 },
+            { name: "CR-V S", basePrice: 1350000, depreciation: 0.12 },
+            { name: "CR-V Prestige", basePrice: 1420000, depreciation: 0.12 },
 
             // HR-V 系列
             { name: "HR-V", basePrice: 850000, depreciation: 0.14 },
             { name: "HR-V e:HEV", basePrice: 980000, depreciation: 0.13 },
             { name: "HR-V S", basePrice: 820000, depreciation: 0.14 },
+            { name: "HR-V VTi", basePrice: 870000, depreciation: 0.14 },
+            { name: "HR-V VTi-S", basePrice: 920000, depreciation: 0.13 },
+            { name: "HR-V RS", basePrice: 950000, depreciation: 0.13 },
+            { name: "HR-V Prestige", basePrice: 990000, depreciation: 0.13 },
 
             // Accord 系列
             { name: "Accord", basePrice: 1500000, depreciation: 0.12 },
             { name: "Accord Hybrid", basePrice: 1690000, depreciation: 0.11 },
             { name: "Accord 2.0T", basePrice: 1600000, depreciation: 0.12 },
+            { name: "Accord 1.5T", basePrice: 1450000, depreciation: 0.12 },
+            { name: "Accord VTi", basePrice: 1420000, depreciation: 0.12 },
+            { name: "Accord VTi-S", basePrice: 1550000, depreciation: 0.12 },
 
             // MPV 系列
             { name: "Odyssey", basePrice: 1800000, depreciation: 0.13 },
             { name: "Odyssey Apex", basePrice: 1990000, depreciation: 0.12 },
+            { name: "Odyssey Elite", basePrice: 1850000, depreciation: 0.12 },
+            { name: "Freed", basePrice: 950000, depreciation: 0.14 },
+            { name: "Freed+", basePrice: 1050000, depreciation: 0.14 },
+            { name: "Stepwgn", basePrice: 1350000, depreciation: 0.14 },
 
-            // 其他車款
-            { name: "City", basePrice: 650000, depreciation: 0.15 },
+            // SUV 系列
             { name: "ZR-V", basePrice: 1150000, depreciation: 0.13 },
+            { name: "ZR-V e:HEV", basePrice: 1350000, depreciation: 0.12 },
+            { name: "Passport", basePrice: 1650000, depreciation: 0.13 },
+            { name: "Pilot", basePrice: 1850000, depreciation: 0.13 },
+            { name: "Vezel", basePrice: 900000, depreciation: 0.14 },
+
+            // 性能車 / 跑車
             { name: "NSX", basePrice: 9500000, depreciation: 0.14 },
             { name: "S2000", basePrice: 1800000, depreciation: 0.12 },
+            { name: "S660", basePrice: 850000, depreciation: 0.14 },
+            { name: "Integra Type R", basePrice: 1200000, depreciation: 0.12 },
 
             // 經典 / 停產車款（二手市場常見）
             { name: "Stream", basePrice: 750000, depreciation: 0.15 },
+            { name: "Stream RSZ", basePrice: 820000, depreciation: 0.14 },
             { name: "Insight", basePrice: 900000, depreciation: 0.15 },
             { name: "Jazz", basePrice: 650000, depreciation: 0.15 },
             { name: "Legend", basePrice: 1500000, depreciation: 0.14 },
             { name: "Element", basePrice: 850000, depreciation: 0.15 },
-            { name: "Pilot", basePrice: 1650000, depreciation: 0.13 },
             { name: "Prelude", basePrice: 900000, depreciation: 0.14 },
-            { name: "Integra", basePrice: 850000, depreciation: 0.14 }
+            { name: "Integra", basePrice: 850000, depreciation: 0.14 },
+            { name: "CRX", basePrice: 600000, depreciation: 0.15 },
+            { name: "Beat", basePrice: 550000, depreciation: 0.15 },
+            { name: "Concerto", basePrice: 500000, depreciation: 0.16 },
+            { name: "Edix", basePrice: 700000, depreciation: 0.15 },
+            { name: "Mobilio", basePrice: 650000, depreciation: 0.15 },
+            { name: "Spike", basePrice: 600000, depreciation: 0.15 }
         ]
     },
 
