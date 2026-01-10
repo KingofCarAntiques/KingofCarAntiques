@@ -650,41 +650,131 @@ const carDatabase = {
 
     "Mazda馬自達": {
         models: [
-            // Mazda3 系列
-            { name: "Mazda3", basePrice: 739000, depreciation: 0.14 },
-            { name: "Mazda3 5D", basePrice: 769000, depreciation: 0.14 },
-            { name: "Mazda3 Fastback", basePrice: 850000, depreciation: 0.13 },
-            { name: "Mazda3 Sedan", basePrice: 739000, depreciation: 0.14 },
+            // Mazda2 馬二系列（小型車）
+            { name: "Mazda2", basePrice: 650000, depreciation: 0.15 },
+            { name: "馬2", basePrice: 650000, depreciation: 0.15 },
+            { name: "馬二", basePrice: 650000, depreciation: 0.15 },
+            { name: "Mazda2 1.5", basePrice: 680000, depreciation: 0.15 },
+            { name: "Mazda2 Sedan", basePrice: 700000, depreciation: 0.15 },
+            { name: "Mazda2 Hatchback", basePrice: 680000, depreciation: 0.15 },
 
-            // Mazda6 系列
+            // Mazda3 馬三系列（中型車）
+            { name: "Mazda3", basePrice: 850000, depreciation: 0.14 },
+            { name: "馬3", basePrice: 850000, depreciation: 0.14 },
+            { name: "馬三", basePrice: 850000, depreciation: 0.14 },
+            { name: "Mazda3 5D", basePrice: 880000, depreciation: 0.14 },
+            { name: "Mazda3 4D", basePrice: 850000, depreciation: 0.14 },
+            { name: "Mazda3 Sedan", basePrice: 850000, depreciation: 0.14 },
+            { name: "Mazda3 Fastback", basePrice: 920000, depreciation: 0.13 },
+            { name: "Mazda3 Hatchback", basePrice: 880000, depreciation: 0.14 },
+            { name: "Mazda3 2.0", basePrice: 920000, depreciation: 0.14 },
+            { name: "Mazda3 2.5", basePrice: 980000, depreciation: 0.13 },
+            { name: "Mazda3 e-Skyactiv X", basePrice: 1050000, depreciation: 0.13 },
+            { name: "Mazda3 Hybrid", basePrice: 1020000, depreciation: 0.13 },
+            { name: "混動馬三", basePrice: 1020000, depreciation: 0.13 },
+            { name: "Mazda3 Sport", basePrice: 950000, depreciation: 0.14 },
+
+            // Mazda6 馬六系列（中大型車）
             { name: "Mazda6", basePrice: 1190000, depreciation: 0.13 },
+            { name: "馬6", basePrice: 1190000, depreciation: 0.13 },
+            { name: "馬六", basePrice: 1190000, depreciation: 0.13 },
+            { name: "Mazda6 Sedan", basePrice: 1190000, depreciation: 0.13 },
             { name: "Mazda6 Wagon", basePrice: 1290000, depreciation: 0.13 },
-            { name: "Mazda6 2.5T", basePrice: 1350000, depreciation: 0.13 },
+            { name: "Mazda6 旅行車", basePrice: 1290000, depreciation: 0.13 },
+            { name: "Mazda6 2.0", basePrice: 1150000, depreciation: 0.13 },
+            { name: "Mazda6 2.5", basePrice: 1250000, depreciation: 0.13 },
+            { name: "Mazda6 2.5T", basePrice: 1350000, depreciation: 0.12 },
+            { name: "Mazda6 SKY-G", basePrice: 1220000, depreciation: 0.13 },
 
-            // CX 休旅車系列
+            // CX-3 系列（小型休旅）
             { name: "CX-3", basePrice: 780000, depreciation: 0.14 },
+            { name: "CX3", basePrice: 780000, depreciation: 0.14 },
+            { name: "CX-3 1.5", basePrice: 750000, depreciation: 0.14 },
+            { name: "CX-3 2.0", basePrice: 850000, depreciation: 0.14 },
+            { name: "CX-3 SKY-G", basePrice: 820000, depreciation: 0.14 },
+
+            // CX-30 系列（跨界休旅）
             { name: "CX-30", basePrice: 918000, depreciation: 0.13 },
+            { name: "CX30", basePrice: 918000, depreciation: 0.13 },
+            { name: "CX-30 2.0", basePrice: 950000, depreciation: 0.13 },
+            { name: "CX-30 e-Skyactiv X", basePrice: 1080000, depreciation: 0.13 },
+            { name: "CX-30 Hybrid", basePrice: 1050000, depreciation: 0.13 },
+
+            // CX-5 系列（中型休旅）
             { name: "CX-5", basePrice: 1169000, depreciation: 0.13 },
+            { name: "CX5", basePrice: 1169000, depreciation: 0.13 },
+            { name: "CX-5 2.0", basePrice: 1120000, depreciation: 0.13 },
+            { name: "CX-5 2.5", basePrice: 1250000, depreciation: 0.12 },
+            { name: "CX-5 2.5T", basePrice: 1380000, depreciation: 0.12 },
             { name: "CX-5 AWD", basePrice: 1300000, depreciation: 0.12 },
+            { name: "CX-5 SKY-G", basePrice: 1200000, depreciation: 0.13 },
+            { name: "CX-5 SKY-D", basePrice: 1350000, depreciation: 0.12 },
+            { name: "CX-5 旗艦版", basePrice: 1380000, depreciation: 0.12 },
+
+            // CX-60 系列（中大型休旅）
             { name: "CX-60", basePrice: 1499000, depreciation: 0.13 },
+            { name: "CX60", basePrice: 1499000, depreciation: 0.13 },
+            { name: "CX-60 2.5T", basePrice: 1550000, depreciation: 0.13 },
+            { name: "CX-60 3.3D", basePrice: 1650000, depreciation: 0.12 },
             { name: "CX-60 PHEV", basePrice: 1890000, depreciation: 0.14 },
+            { name: "CX-60 Hybrid", basePrice: 1750000, depreciation: 0.13 },
+            { name: "CX-60 AWD", basePrice: 1620000, depreciation: 0.13 },
+
+            // CX-9 系列（大型休旅 7人座）
             { name: "CX-9", basePrice: 1750000, depreciation: 0.13 },
+            { name: "CX9", basePrice: 1750000, depreciation: 0.13 },
+            { name: "CX-9 2.5T", basePrice: 1850000, depreciation: 0.13 },
+            { name: "CX-9 AWD", basePrice: 1880000, depreciation: 0.12 },
+            { name: "CX-9 7人座", basePrice: 1750000, depreciation: 0.13 },
+            { name: "CX-9 旗艦版", basePrice: 1950000, depreciation: 0.12 },
+
+            // CX-90 系列（旗艦休旅）
             { name: "CX-90", basePrice: 2090000, depreciation: 0.13 },
+            { name: "CX90", basePrice: 2090000, depreciation: 0.13 },
+            { name: "CX-90 3.3T", basePrice: 2250000, depreciation: 0.12 },
+            { name: "CX-90 PHEV", basePrice: 2450000, depreciation: 0.13 },
+            { name: "CX-90 7人座", basePrice: 2090000, depreciation: 0.13 },
+
+            // CX-50 系列（越野休旅）
+            { name: "CX-50", basePrice: 1350000, depreciation: 0.13 },
+            { name: "CX50", basePrice: 1350000, depreciation: 0.13 },
+            { name: "CX-50 2.5T", basePrice: 1480000, depreciation: 0.13 },
+
+            // CX-70 系列
+            { name: "CX-70", basePrice: 1850000, depreciation: 0.13 },
+            { name: "CX70", basePrice: 1850000, depreciation: 0.13 },
+
+            // CX-80 系列
+            { name: "CX-80", basePrice: 1950000, depreciation: 0.13 },
+            { name: "CX80", basePrice: 1950000, depreciation: 0.13 },
+
+            // Mazda5 馬五系列（MPV）
+            { name: "Mazda5", basePrice: 850000, depreciation: 0.15 },
+            { name: "馬5", basePrice: 850000, depreciation: 0.15 },
+            { name: "馬五", basePrice: 850000, depreciation: 0.15 },
+            { name: "Mazda5 2.0", basePrice: 880000, depreciation: 0.15 },
+            { name: "Mazda5 7人座", basePrice: 900000, depreciation: 0.15 },
 
             // MX 跑車系列
             { name: "MX-5", basePrice: 1290000, depreciation: 0.13 },
+            { name: "MX5", basePrice: 1290000, depreciation: 0.13 },
+            { name: "MX-5 Miata", basePrice: 1290000, depreciation: 0.13 },
             { name: "MX-5 RF", basePrice: 1390000, depreciation: 0.12 },
+            { name: "MX-5 敞篷", basePrice: 1350000, depreciation: 0.13 },
             { name: "MX-30", basePrice: 1350000, depreciation: 0.15 },
+            { name: "MX-30 EV", basePrice: 1450000, depreciation: 0.16 },
 
-            // Mazda2 系列
-            { name: "Mazda2", basePrice: 650000, depreciation: 0.15 },
-
-            // 經典車款
-            { name: "Mazda5", basePrice: 850000, depreciation: 0.15 },
+            // 經典/停產車款
+            { name: "RX-7", basePrice: 1800000, depreciation: 0.12 },
             { name: "RX-8", basePrice: 1200000, depreciation: 0.14 },
             { name: "323", basePrice: 450000, depreciation: 0.17 },
+            { name: "626", basePrice: 500000, depreciation: 0.17 },
+            { name: "Premacy", basePrice: 750000, depreciation: 0.16 },
             { name: "Tribute", basePrice: 750000, depreciation: 0.15 },
-            { name: "MPV", basePrice: 900000, depreciation: 0.15 }
+            { name: "MPV", basePrice: 900000, depreciation: 0.15 },
+            { name: "Isamu", basePrice: 450000, depreciation: 0.17 },
+            { name: "Capella", basePrice: 480000, depreciation: 0.17 },
+            { name: "Familia", basePrice: 420000, depreciation: 0.18 }
         ]
     },
 
