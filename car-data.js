@@ -690,74 +690,153 @@ const carDatabase = {
 
     "Lexus凌志": {
         models: [
-            // IS 系列
+            // CT 系列（掀背油電）
+            { name: "CT200h", basePrice: 1450000, depreciation: 0.14 },
+            { name: "CT 200h", basePrice: 1450000, depreciation: 0.14 },
+            { name: "CT200h F Sport", basePrice: 1580000, depreciation: 0.14 },
+
+            // IS 系列（轎車）
             { name: "IS", basePrice: 2000000, depreciation: 0.14 },
+            { name: "IS200t", basePrice: 1850000, depreciation: 0.14 },
+            { name: "IS250", basePrice: 1750000, depreciation: 0.14 },
+            { name: "IS300", basePrice: 2130000, depreciation: 0.14 },
             { name: "IS 300", basePrice: 2130000, depreciation: 0.14 },
+            { name: "IS300h", basePrice: 2350000, depreciation: 0.13 },
             { name: "IS 300h", basePrice: 2350000, depreciation: 0.13 },
+            { name: "IS350", basePrice: 2600000, depreciation: 0.13 },
             { name: "IS 350", basePrice: 2600000, depreciation: 0.13 },
+            { name: "IS F", basePrice: 3200000, depreciation: 0.13 },
             { name: "IS F Sport", basePrice: 2400000, depreciation: 0.13 },
 
-            // ES 系列
+            // ES 系列（豪華轎車）
             { name: "ES", basePrice: 2200000, depreciation: 0.13 },
+            { name: "ES200", basePrice: 2020000, depreciation: 0.13 },
             { name: "ES 200", basePrice: 2020000, depreciation: 0.13 },
+            { name: "ES250", basePrice: 2190000, depreciation: 0.13 },
             { name: "ES 250", basePrice: 2190000, depreciation: 0.13 },
+            { name: "ES300", basePrice: 2350000, depreciation: 0.13 },
+            { name: "ES300h", basePrice: 2390000, depreciation: 0.12 },
             { name: "ES 300h", basePrice: 2390000, depreciation: 0.12 },
+            { name: "ES330", basePrice: 2450000, depreciation: 0.13 },
+            { name: "ES350", basePrice: 2650000, depreciation: 0.13 },
             { name: "ES 350", basePrice: 2650000, depreciation: 0.13 },
+            { name: "ES F Sport", basePrice: 2550000, depreciation: 0.13 },
 
-            // GS 系列
+            // GS 系列（運動轎車）
             { name: "GS", basePrice: 2800000, depreciation: 0.14 },
+            { name: "GS200t", basePrice: 2650000, depreciation: 0.14 },
+            { name: "GS250", basePrice: 2750000, depreciation: 0.14 },
+            { name: "GS300", basePrice: 2850000, depreciation: 0.14 },
             { name: "GS 300", basePrice: 2850000, depreciation: 0.14 },
+            { name: "GS300h", basePrice: 2950000, depreciation: 0.13 },
+            { name: "GS350", basePrice: 3200000, depreciation: 0.13 },
             { name: "GS 350", basePrice: 3200000, depreciation: 0.13 },
+            { name: "GS430", basePrice: 3450000, depreciation: 0.13 },
+            { name: "GS450h", basePrice: 3650000, depreciation: 0.13 },
+            { name: "GS460", basePrice: 3850000, depreciation: 0.13 },
             { name: "GS F", basePrice: 4800000, depreciation: 0.13 },
+            { name: "GS F Sport", basePrice: 3350000, depreciation: 0.13 },
 
-            // LS 系列
+            // LS 系列（旗艦轎車）
             { name: "LS", basePrice: 4500000, depreciation: 0.13 },
+            { name: "LS350", basePrice: 4390000, depreciation: 0.13 },
             { name: "LS 350", basePrice: 4390000, depreciation: 0.13 },
+            { name: "LS430", basePrice: 4550000, depreciation: 0.13 },
+            { name: "LS460", basePrice: 4850000, depreciation: 0.12 },
+            { name: "LS460L", basePrice: 5250000, depreciation: 0.12 },
+            { name: "LS500", basePrice: 5150000, depreciation: 0.12 },
             { name: "LS 500", basePrice: 5150000, depreciation: 0.12 },
+            { name: "LS500h", basePrice: 5650000, depreciation: 0.12 },
             { name: "LS 500h", basePrice: 5650000, depreciation: 0.12 },
+            { name: "LS600h", basePrice: 6250000, depreciation: 0.11 },
+            { name: "LS600hL", basePrice: 6850000, depreciation: 0.11 },
+            { name: "LS F Sport", basePrice: 5450000, depreciation: 0.12 },
 
-            // NX 系列
-            { name: "NX", basePrice: 2100000, depreciation: 0.13 },
-            { name: "NX 200", basePrice: 1890000, depreciation: 0.13 },
-            { name: "NX 250", basePrice: 2030000, depreciation: 0.13 },
-            { name: "NX 300", basePrice: 2190000, depreciation: 0.13 },
-            { name: "NX 350h", basePrice: 2490000, depreciation: 0.12 },
-            { name: "NX 450h+", basePrice: 2890000, depreciation: 0.13 },
-
-            // RX 系列
-            { name: "RX", basePrice: 3000000, depreciation: 0.13 },
-            { name: "RX 300", basePrice: 2690000, depreciation: 0.13 },
-            { name: "RX 350", basePrice: 3190000, depreciation: 0.12 },
-            { name: "RX 350h", basePrice: 3290000, depreciation: 0.12 },
-            { name: "RX 450h", basePrice: 3590000, depreciation: 0.12 },
-            { name: "RX 500h", basePrice: 3890000, depreciation: 0.12 },
-
-            // UX 系列
+            // UX 系列（小型 SUV）
             { name: "UX", basePrice: 1590000, depreciation: 0.14 },
+            { name: "UX200", basePrice: 1490000, depreciation: 0.14 },
             { name: "UX 200", basePrice: 1490000, depreciation: 0.14 },
+            { name: "UX250h", basePrice: 1690000, depreciation: 0.13 },
             { name: "UX 250h", basePrice: 1690000, depreciation: 0.13 },
+            { name: "UX300e", basePrice: 1890000, depreciation: 0.15 },
             { name: "UX 300e", basePrice: 1890000, depreciation: 0.15 },
+            { name: "UX F Sport", basePrice: 1750000, depreciation: 0.14 },
 
-            // LX 系列
+            // NX 系列（中型 SUV）
+            { name: "NX", basePrice: 2100000, depreciation: 0.13 },
+            { name: "NX200", basePrice: 1890000, depreciation: 0.13 },
+            { name: "NX 200", basePrice: 1890000, depreciation: 0.13 },
+            { name: "NX200t", basePrice: 1950000, depreciation: 0.13 },
+            { name: "NX250", basePrice: 2030000, depreciation: 0.13 },
+            { name: "NX 250", basePrice: 2030000, depreciation: 0.13 },
+            { name: "NX300", basePrice: 2190000, depreciation: 0.13 },
+            { name: "NX 300", basePrice: 2190000, depreciation: 0.13 },
+            { name: "NX300h", basePrice: 2350000, depreciation: 0.12 },
+            { name: "NX 300h", basePrice: 2350000, depreciation: 0.12 },
+            { name: "NX350h", basePrice: 2490000, depreciation: 0.12 },
+            { name: "NX 350h", basePrice: 2490000, depreciation: 0.12 },
+            { name: "NX450h+", basePrice: 2890000, depreciation: 0.13 },
+            { name: "NX 450h+", basePrice: 2890000, depreciation: 0.13 },
+            { name: "NX F Sport", basePrice: 2350000, depreciation: 0.13 },
+
+            // RX 系列（大型 SUV）
+            { name: "RX", basePrice: 3000000, depreciation: 0.13 },
+            { name: "RX270", basePrice: 2550000, depreciation: 0.13 },
+            { name: "RX300", basePrice: 2690000, depreciation: 0.13 },
+            { name: "RX 300", basePrice: 2690000, depreciation: 0.13 },
+            { name: "RX330", basePrice: 2850000, depreciation: 0.13 },
+            { name: "RX350", basePrice: 3190000, depreciation: 0.12 },
+            { name: "RX 350", basePrice: 3190000, depreciation: 0.12 },
+            { name: "RX350h", basePrice: 3290000, depreciation: 0.12 },
+            { name: "RX 350h", basePrice: 3290000, depreciation: 0.12 },
+            { name: "RX400h", basePrice: 3350000, depreciation: 0.12 },
+            { name: "RX450h", basePrice: 3590000, depreciation: 0.12 },
+            { name: "RX 450h", basePrice: 3590000, depreciation: 0.12 },
+            { name: "RX500h", basePrice: 3890000, depreciation: 0.12 },
+            { name: "RX 500h", basePrice: 3890000, depreciation: 0.12 },
+            { name: "RX F Sport", basePrice: 3450000, depreciation: 0.12 },
+            { name: "RX350L", basePrice: 3390000, depreciation: 0.12 },
+            { name: "RX450hL", basePrice: 3790000, depreciation: 0.12 },
+
+            // LX 系列（旗艦 SUV）
             { name: "LX", basePrice: 5500000, depreciation: 0.11 },
+            { name: "LX470", basePrice: 5150000, depreciation: 0.11 },
+            { name: "LX570", basePrice: 5590000, depreciation: 0.11 },
             { name: "LX 570", basePrice: 5590000, depreciation: 0.11 },
+            { name: "LX600", basePrice: 6190000, depreciation: 0.10 },
             { name: "LX 600", basePrice: 6190000, depreciation: 0.10 },
+            { name: "LX F Sport", basePrice: 6450000, depreciation: 0.10 },
 
-            // GX 系列
+            // GX 系列（越野 SUV）
             { name: "GX", basePrice: 4200000, depreciation: 0.12 },
+            { name: "GX460", basePrice: 4350000, depreciation: 0.12 },
             { name: "GX 460", basePrice: 4350000, depreciation: 0.12 },
+            { name: "GX470", basePrice: 4150000, depreciation: 0.12 },
+            { name: "GX550", basePrice: 4650000, depreciation: 0.11 },
 
-            // LC / RC 跑車系列
+            // LC 系列（旗艦跑車）
+            { name: "LC", basePrice: 5200000, depreciation: 0.13 },
+            { name: "LC500", basePrice: 5390000, depreciation: 0.13 },
             { name: "LC 500", basePrice: 5390000, depreciation: 0.13 },
+            { name: "LC500h", basePrice: 5690000, depreciation: 0.13 },
             { name: "LC 500h", basePrice: 5690000, depreciation: 0.13 },
+            { name: "LC Convertible", basePrice: 5850000, depreciation: 0.13 },
+
+            // RC 系列（雙門跑車）
             { name: "RC", basePrice: 2800000, depreciation: 0.14 },
+            { name: "RC200t", basePrice: 2650000, depreciation: 0.14 },
+            { name: "RC300", basePrice: 2890000, depreciation: 0.14 },
             { name: "RC 300", basePrice: 2890000, depreciation: 0.14 },
+            { name: "RC300h", basePrice: 3050000, depreciation: 0.14 },
+            { name: "RC350", basePrice: 3290000, depreciation: 0.13 },
             { name: "RC 350", basePrice: 3290000, depreciation: 0.13 },
             { name: "RC F", basePrice: 4590000, depreciation: 0.13 },
 
             // 經典車款
-            { name: "CT 200h", basePrice: 1450000, depreciation: 0.14 },
-            { name: "SC 430", basePrice: 2800000, depreciation: 0.14 }
+            { name: "HS250h", basePrice: 1650000, depreciation: 0.15 },
+            { name: "SC430", basePrice: 2800000, depreciation: 0.14 },
+            { name: "SC 430", basePrice: 2800000, depreciation: 0.14 },
+            { name: "LFA", basePrice: 15000000, depreciation: 0.08 }
         ]
     },
 
