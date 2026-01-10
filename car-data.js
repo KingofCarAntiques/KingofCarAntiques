@@ -428,41 +428,151 @@ const carDatabase = {
     // ========== 保留原有日系品牌（簡化版）==========
     "Toyota豐田": {
         models: [
-            // Corolla 系列
+            // ========== Corolla 系列 ==========
             { name: "Altis", basePrice: 712000, depreciation: 0.15 },
             { name: "Altis Hybrid", basePrice: 790000, depreciation: 0.14 },
             { name: "Altis GR Sport", basePrice: 830000, depreciation: 0.14 },
             { name: "Corolla Cross", basePrice: 873000, depreciation: 0.13 },
             { name: "Corolla Cross Hybrid", basePrice: 980000, depreciation: 0.12 },
             { name: "Corolla Sport", basePrice: 850000, depreciation: 0.14 },
+            { name: "Corolla", basePrice: 750000, depreciation: 0.15 },
+            { name: "Corolla 1.8", basePrice: 750000, depreciation: 0.15 },
 
-            // Camry 系列
+            // ========== Camry 凱美瑞系列 ==========
             { name: "Camry", basePrice: 1113000, depreciation: 0.12 },
             { name: "Camry Hybrid", basePrice: 1289000, depreciation: 0.12 },
+            { name: "Camry 2.0", basePrice: 1050000, depreciation: 0.12 },
             { name: "Camry 2.5", basePrice: 1150000, depreciation: 0.12 },
+            { name: "Camry 3.5", basePrice: 1450000, depreciation: 0.12 },
+            { name: "Camry 豪華版", basePrice: 1199000, depreciation: 0.12 },
+            { name: "Camry 旗艦版", basePrice: 1350000, depreciation: 0.12 },
 
-            // Yaris / Vios 系列
+            // ========== Prius 油電混合系列 ==========
+            { name: "Prius", basePrice: 1100000, depreciation: 0.14 },
+            { name: "Prius 油電", basePrice: 1100000, depreciation: 0.14 },
+            { name: "Prius C", basePrice: 850000, depreciation: 0.15 },
+            { name: "Prius α", basePrice: 1250000, depreciation: 0.14 },
+            { name: "Prius Alpha", basePrice: 1250000, depreciation: 0.14 },
+            { name: "Prius PHV", basePrice: 1390000, depreciation: 0.15 },
+            { name: "Prius PHEV", basePrice: 1390000, depreciation: 0.15 },
+            { name: "Prius Prime", basePrice: 1450000, depreciation: 0.14 },
+            { name: "Prius 1.8", basePrice: 1100000, depreciation: 0.14 },
+            { name: "Prius 2.0", basePrice: 1250000, depreciation: 0.14 },
+            { name: "New Prius", basePrice: 1299000, depreciation: 0.14 },
+            { name: "Prius 4代", basePrice: 1100000, depreciation: 0.14 },
+            { name: "Prius 5代", basePrice: 1299000, depreciation: 0.14 },
+
+            // ========== Yaris 雅力士系列 ==========
             { name: "Yaris", basePrice: 636000, depreciation: 0.16 },
+            { name: "Yaris 雅力士", basePrice: 636000, depreciation: 0.16 },
+            { name: "Yaris 1.5", basePrice: 636000, depreciation: 0.16 },
             { name: "Yaris Cross", basePrice: 745000, depreciation: 0.15 },
+            { name: "Yaris Cross Hybrid", basePrice: 850000, depreciation: 0.14 },
+            { name: "Yaris 豪華版", basePrice: 699000, depreciation: 0.16 },
+            { name: "Yaris 旗艦版", basePrice: 759000, depreciation: 0.15 },
+            { name: "New Yaris", basePrice: 689000, depreciation: 0.16 },
+            { name: "GR Yaris", basePrice: 1790000, depreciation: 0.13 },
+
+            // ========== Vios 系列 ==========
             { name: "Vios", basePrice: 550000, depreciation: 0.16 },
             { name: "Vios 1.5", basePrice: 580000, depreciation: 0.16 },
+            { name: "Vios 經典版", basePrice: 520000, depreciation: 0.16 },
+            { name: "Vios 豪華版", basePrice: 599000, depreciation: 0.16 },
+            { name: "Vios 旗艦版", basePrice: 650000, depreciation: 0.16 },
+            { name: "New Vios", basePrice: 599000, depreciation: 0.16 },
 
-            // SUV / 休旅車系列
+            // ========== Town Ace 小乘貨車系列 ==========
+            { name: "Town Ace", basePrice: 650000, depreciation: 0.15 },
+            { name: "Town Ace 廂車", basePrice: 689000, depreciation: 0.15 },
+            { name: "Town Ace 貨車", basePrice: 620000, depreciation: 0.15 },
+            { name: "Town Ace Van", basePrice: 689000, depreciation: 0.15 },
+            { name: "Town Ace 1.5", basePrice: 650000, depreciation: 0.15 },
+            { name: "Town Ace 2.0", basePrice: 720000, depreciation: 0.15 },
+            { name: "Town Ace 5人座", basePrice: 689000, depreciation: 0.15 },
+            { name: "Town Ace 客貨兩用", basePrice: 720000, depreciation: 0.15 },
+            { name: "Lite Ace", basePrice: 599000, depreciation: 0.15 },
+            { name: "Lite Ace 貨車", basePrice: 570000, depreciation: 0.15 },
+
+            // ========== C-HR 跨界休旅系列 ==========
+            { name: "C-HR", basePrice: 950000, depreciation: 0.14 },
+            { name: "CHR", basePrice: 950000, depreciation: 0.14 },
+            { name: "C-HR Hybrid", basePrice: 1050000, depreciation: 0.13 },
+            { name: "C-HR 1.2T", basePrice: 950000, depreciation: 0.14 },
+            { name: "C-HR 2.0", basePrice: 1050000, depreciation: 0.14 },
+            { name: "C-HR 豪華版", basePrice: 999000, depreciation: 0.14 },
+            { name: "C-HR 旗艦版", basePrice: 1099000, depreciation: 0.13 },
+            { name: "New C-HR", basePrice: 1050000, depreciation: 0.14 },
+
+            // ========== Granvia 商旅車系列 ==========
+            { name: "Granvia", basePrice: 1750000, depreciation: 0.13 },
+            { name: "Granvia 6人座", basePrice: 1850000, depreciation: 0.13 },
+            { name: "Granvia 9人座", basePrice: 1690000, depreciation: 0.13 },
+            { name: "Granvia 豪華版", basePrice: 1890000, depreciation: 0.13 },
+            { name: "Granvia 旗艦版", basePrice: 1990000, depreciation: 0.13 },
+            { name: "Granvia 2.8柴油", basePrice: 1750000, depreciation: 0.13 },
+            { name: "New Granvia", basePrice: 1850000, depreciation: 0.13 },
+            { name: "Grand Hiace", basePrice: 1650000, depreciation: 0.13 },
+
+            // ========== Tundra 大型皮卡系列 ==========
+            { name: "Tundra", basePrice: 2500000, depreciation: 0.12 },
+            { name: "Tundra 坦途", basePrice: 2500000, depreciation: 0.12 },
+            { name: "Tundra SR5", basePrice: 2350000, depreciation: 0.12 },
+            { name: "Tundra Limited", basePrice: 2650000, depreciation: 0.12 },
+            { name: "Tundra Platinum", basePrice: 2850000, depreciation: 0.12 },
+            { name: "Tundra 1794 Edition", basePrice: 2950000, depreciation: 0.12 },
+            { name: "Tundra TRD Pro", basePrice: 3150000, depreciation: 0.11 },
+            { name: "Tundra 5.7", basePrice: 2500000, depreciation: 0.12 },
+            { name: "Tundra Hybrid", basePrice: 2750000, depreciation: 0.12 },
+            { name: "Tundra CrewMax", basePrice: 2700000, depreciation: 0.12 },
+            { name: "Tundra Double Cab", basePrice: 2450000, depreciation: 0.12 },
+
+            // ========== Tacoma 中型皮卡系列 ==========
+            { name: "Tacoma", basePrice: 1800000, depreciation: 0.12 },
+            { name: "Tacoma 塔可馬", basePrice: 1800000, depreciation: 0.12 },
+            { name: "Tacoma SR", basePrice: 1650000, depreciation: 0.12 },
+            { name: "Tacoma SR5", basePrice: 1800000, depreciation: 0.12 },
+            { name: "Tacoma TRD Sport", basePrice: 1950000, depreciation: 0.12 },
+            { name: "Tacoma TRD Off-Road", basePrice: 2050000, depreciation: 0.12 },
+            { name: "Tacoma TRD Pro", basePrice: 2350000, depreciation: 0.11 },
+            { name: "Tacoma Limited", basePrice: 2150000, depreciation: 0.12 },
+            { name: "Tacoma 2.7", basePrice: 1700000, depreciation: 0.12 },
+            { name: "Tacoma 3.5", basePrice: 1900000, depreciation: 0.12 },
+            { name: "Tacoma 4WD", basePrice: 2000000, depreciation: 0.12 },
+            { name: "Tacoma Double Cab", basePrice: 1950000, depreciation: 0.12 },
+            { name: "Tacoma Access Cab", basePrice: 1800000, depreciation: 0.12 },
+
+            // ========== SUV / 休旅車系列 ==========
             { name: "RAV4", basePrice: 1077000, depreciation: 0.12 },
             { name: "RAV4 Hybrid", basePrice: 1250000, depreciation: 0.11 },
             { name: "RAV4 Adventure", basePrice: 1150000, depreciation: 0.12 },
-            { name: "C-HR", basePrice: 950000, depreciation: 0.14 },
-            { name: "C-HR Hybrid", basePrice: 1050000, depreciation: 0.13 },
+            { name: "RAV4 2.0", basePrice: 1077000, depreciation: 0.12 },
+            { name: "RAV4 2.5", basePrice: 1150000, depreciation: 0.12 },
+            { name: "RAV4 PHV", basePrice: 1450000, depreciation: 0.11 },
+            { name: "RAV4 Prime", basePrice: 1450000, depreciation: 0.11 },
             { name: "Highlander", basePrice: 1800000, depreciation: 0.12 },
+            { name: "Highlander 漢蘭達", basePrice: 1800000, depreciation: 0.12 },
+            { name: "Highlander Hybrid", basePrice: 2050000, depreciation: 0.12 },
+            { name: "Highlander 3.5", basePrice: 1950000, depreciation: 0.12 },
             { name: "Land Cruiser", basePrice: 3200000, depreciation: 0.10 },
+            { name: "Land Cruiser 陸地巡洋艦", basePrice: 3200000, depreciation: 0.10 },
             { name: "Land Cruiser Prado", basePrice: 2500000, depreciation: 0.11 },
+            { name: "Land Cruiser 300", basePrice: 3500000, depreciation: 0.10 },
+            { name: "Land Cruiser 200", basePrice: 3200000, depreciation: 0.10 },
+            { name: "4Runner", basePrice: 2200000, depreciation: 0.11 },
+            { name: "4Runner TRD Pro", basePrice: 2550000, depreciation: 0.11 },
             { name: "Fortuner", basePrice: 1450000, depreciation: 0.13 },
+            { name: "Fortuner 2.7", basePrice: 1350000, depreciation: 0.13 },
+            { name: "Fortuner 2.8柴油", basePrice: 1550000, depreciation: 0.13 },
+            { name: "Sequoia", basePrice: 2800000, depreciation: 0.12 },
+            { name: "Sequoia Platinum", basePrice: 3200000, depreciation: 0.12 },
 
-            // MPV / 商旅車系列
+            // ========== MPV / 商旅車系列 ==========
             { name: "Sienna", basePrice: 2530000, depreciation: 0.14 },
             { name: "Sienna SE", basePrice: 2680000, depreciation: 0.13 },
             { name: "Sienna XLE", basePrice: 2780000, depreciation: 0.13 },
             { name: "Sienna Limited", basePrice: 2980000, depreciation: 0.13 },
+            { name: "Sienna Hybrid", basePrice: 2600000, depreciation: 0.13 },
+            { name: "Sienna Platinum", basePrice: 3100000, depreciation: 0.13 },
             { name: "Alphard", basePrice: 2390000, depreciation: 0.12 },
             { name: "Alphard Hybrid", basePrice: 2600000, depreciation: 0.11 },
             { name: "Alphard Executive", basePrice: 2890000, depreciation: 0.11 },
@@ -470,9 +580,6 @@ const carDatabase = {
             { name: "Vellfire", basePrice: 2710000, depreciation: 0.12 },
             { name: "Vellfire Z", basePrice: 2850000, depreciation: 0.12 },
             { name: "Vellfire Executive", basePrice: 3100000, depreciation: 0.11 },
-            { name: "Granvia", basePrice: 1750000, depreciation: 0.13 },
-            { name: "Granvia 6人座", basePrice: 1850000, depreciation: 0.13 },
-            { name: "Granvia 9人座", basePrice: 1690000, depreciation: 0.13 },
             { name: "Previa", basePrice: 1650000, depreciation: 0.14 },
             { name: "Previa 2.4", basePrice: 1550000, depreciation: 0.14 },
             { name: "Previa 3.5", basePrice: 1850000, depreciation: 0.13 },
@@ -488,30 +595,57 @@ const carDatabase = {
             { name: "Voxy", basePrice: 1450000, depreciation: 0.14 },
             { name: "Esquire", basePrice: 1380000, depreciation: 0.14 },
 
-            // 皮卡 / 商用車
+            // ========== 皮卡 / 商用車 ==========
             { name: "Hilux", basePrice: 1350000, depreciation: 0.13 },
-            { name: "Tacoma", basePrice: 1800000, depreciation: 0.12 },
-            { name: "Town Ace", basePrice: 650000, depreciation: 0.15 },
+            { name: "Hilux 海力士", basePrice: 1350000, depreciation: 0.13 },
+            { name: "Hilux Revo", basePrice: 1450000, depreciation: 0.13 },
+            { name: "Hilux 2.4柴油", basePrice: 1350000, depreciation: 0.13 },
+            { name: "Hilux 2.8柴油", basePrice: 1550000, depreciation: 0.13 },
+            { name: "Hilux 4WD", basePrice: 1550000, depreciation: 0.13 },
             { name: "Hiace", basePrice: 1450000, depreciation: 0.13 },
+            { name: "Hiace 海乘斯", basePrice: 1450000, depreciation: 0.13 },
+            { name: "Hiace 廂型車", basePrice: 1550000, depreciation: 0.13 },
+            { name: "Hiace 9人座", basePrice: 1650000, depreciation: 0.13 },
+            { name: "Hiace Commuter", basePrice: 1750000, depreciation: 0.13 },
+            { name: "Dyna", basePrice: 850000, depreciation: 0.14 },
+            { name: "Dyna 3.5噸", basePrice: 950000, depreciation: 0.14 },
+            { name: "Coaster", basePrice: 2200000, depreciation: 0.13 },
 
-            // 性能車 / GR系列
+            // ========== 性能車 / GR系列 ==========
             { name: "GR86", basePrice: 1298000, depreciation: 0.14 },
             { name: "GR Supra", basePrice: 2350000, depreciation: 0.14 },
-            { name: "GR Yaris", basePrice: 1790000, depreciation: 0.13 },
+            { name: "GR Supra 2.0", basePrice: 2150000, depreciation: 0.14 },
+            { name: "GR Supra 3.0", basePrice: 2550000, depreciation: 0.14 },
             { name: "GR Corolla", basePrice: 1890000, depreciation: 0.13 },
+            { name: "Supra", basePrice: 2350000, depreciation: 0.14 },
+            { name: "86", basePrice: 1200000, depreciation: 0.15 },
+            { name: "MR2", basePrice: 950000, depreciation: 0.14 },
+            { name: "Celica", basePrice: 850000, depreciation: 0.15 },
 
-            // 油電 / 電動車
-            { name: "Prius", basePrice: 1100000, depreciation: 0.14 },
-            { name: "Prius PHV", basePrice: 1390000, depreciation: 0.15 },
+            // ========== 油電 / 電動車系列 ==========
             { name: "bZ4X", basePrice: 1590000, depreciation: 0.16 },
+            { name: "bZ4X 前驅", basePrice: 1590000, depreciation: 0.16 },
+            { name: "bZ4X 四驅", basePrice: 1790000, depreciation: 0.16 },
+            { name: "bZ3", basePrice: 1290000, depreciation: 0.16 },
+            { name: "Crown", basePrice: 1850000, depreciation: 0.13 },
+            { name: "Crown Hybrid", basePrice: 2050000, depreciation: 0.13 },
+            { name: "Crown Crossover", basePrice: 2150000, depreciation: 0.13 },
+            { name: "Mirai", basePrice: 2500000, depreciation: 0.17 },
 
-            // 經典 / 停產車款（二手市場常見）
+            // ========== 經典 / 停產車款 ==========
             { name: "Tercel", basePrice: 450000, depreciation: 0.18 },
             { name: "Exsior", basePrice: 500000, depreciation: 0.17 },
             { name: "Corona", basePrice: 550000, depreciation: 0.17 },
             { name: "Premio", basePrice: 600000, depreciation: 0.16 },
             { name: "Zace", basePrice: 550000, depreciation: 0.16 },
-            { name: "86", basePrice: 1200000, depreciation: 0.15 }
+            { name: "Surf", basePrice: 850000, depreciation: 0.15 },
+            { name: "Cressida", basePrice: 600000, depreciation: 0.16 },
+            { name: "Soarer", basePrice: 1200000, depreciation: 0.14 },
+            { name: "Century", basePrice: 3500000, depreciation: 0.12 },
+            { name: "Avalon", basePrice: 1450000, depreciation: 0.14 },
+            { name: "Avalon Hybrid", basePrice: 1650000, depreciation: 0.14 },
+            { name: "Matrix", basePrice: 750000, depreciation: 0.15 },
+            { name: "FJ Cruiser", basePrice: 1650000, depreciation: 0.12 }
         ]
     },
 
