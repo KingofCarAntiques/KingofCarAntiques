@@ -1953,35 +1953,113 @@ const carDatabase = {
 
     "Suzuki鈴木": {
         models: [
-            // Swift系列
+            // ========== Swift 思維特系列 ==========
             { name: "Swift", basePrice: 578000, depreciation: 0.17 },
             { name: "Swift 思維特", basePrice: 720000, depreciation: 0.17 },
+            { name: "Swift 1.2", basePrice: 578000, depreciation: 0.17 },
+            { name: "Swift 1.4", basePrice: 650000, depreciation: 0.17 },
+            { name: "Swift 1.5", basePrice: 680000, depreciation: 0.17 },
+            { name: "Swift GLX", basePrice: 720000, depreciation: 0.17 },
+            { name: "Swift Sport", basePrice: 850000, depreciation: 0.16 },
+            { name: "Swift Sport 1.4T", basePrice: 890000, depreciation: 0.16 },
+            { name: "Swift RS", basePrice: 780000, depreciation: 0.17 },
+            { name: "Swift Hybrid", basePrice: 799000, depreciation: 0.17 },
+            { name: "New Swift", basePrice: 750000, depreciation: 0.17 },
 
-            // SX4系列
+            // ========== SX4 系列 ==========
             { name: "SX4", basePrice: 568000, depreciation: 0.17 },
+            { name: "SX4 1.6", basePrice: 568000, depreciation: 0.17 },
+            { name: "SX4 2.0", basePrice: 650000, depreciation: 0.17 },
             { name: "SX4 Crossover", basePrice: 785000, depreciation: 0.16 },
+            { name: "SX4 Crossover 4WD", basePrice: 859000, depreciation: 0.16 },
+            { name: "SX4 S-Cross", basePrice: 850000, depreciation: 0.16 },
+            { name: "SX4 豪華版", basePrice: 699000, depreciation: 0.17 },
+            { name: "New SX4", basePrice: 799000, depreciation: 0.16 },
 
-            // Baleno系列
-            { name: "Baleno", basePrice: 708000, depreciation: 0.17 },
-
-            // Ignis系列
-            { name: "Ignis", basePrice: 638000, depreciation: 0.17 },
-
-            // Jimny系列
-            { name: "Jimny", basePrice: 648000, depreciation: 0.17 },
-
-            // Vitara系列
-            { name: "Vitara", basePrice: 768000, depreciation: 0.16 },
-
-            // S-Cross系列
-            { name: "S-Cross", basePrice: 980000, depreciation: 0.16 },
-
-            // Alto系列
-            { name: "Alto", basePrice: 468000, depreciation: 0.17 },
-
-            // 商用車
+            // ========== Carry 吉乘商用車系列 ==========
             { name: "Carry", basePrice: 479000, depreciation: 0.16 },
-            { name: "Grand Vitara JP", basePrice: 1038000, depreciation: 0.16 }
+            { name: "Carry 吉乘", basePrice: 479000, depreciation: 0.16 },
+            { name: "Carry 貨車", basePrice: 459000, depreciation: 0.16 },
+            { name: "Carry 廂型車", basePrice: 499000, depreciation: 0.16 },
+            { name: "Carry 1.5", basePrice: 489000, depreciation: 0.16 },
+            { name: "Carry 冷凍車", basePrice: 579000, depreciation: 0.16 },
+            { name: "Carry Pro", basePrice: 529000, depreciation: 0.16 },
+            { name: "Super Carry", basePrice: 459000, depreciation: 0.16 },
+            { name: "New Carry", basePrice: 509000, depreciation: 0.16 },
+
+            // ========== Jimny 吉乘尼越野系列 ==========
+            { name: "Jimny", basePrice: 648000, depreciation: 0.17 },
+            { name: "Jimny 吉姆尼", basePrice: 648000, depreciation: 0.17 },
+            { name: "Jimny 1.5", basePrice: 749000, depreciation: 0.17 },
+            { name: "Jimny 4WD", basePrice: 799000, depreciation: 0.16 },
+            { name: "Jimny Sierra", basePrice: 859000, depreciation: 0.16 },
+            { name: "Jimny 5門", basePrice: 899000, depreciation: 0.16 },
+            { name: "Jimny 3門", basePrice: 749000, depreciation: 0.17 },
+            { name: "New Jimny", basePrice: 799000, depreciation: 0.16 },
+            { name: "Jimny 經典版", basePrice: 699000, depreciation: 0.17 },
+            { name: "Jimny 旗艦版", basePrice: 879000, depreciation: 0.16 },
+
+            // ========== Vitara 維特拉系列 ==========
+            { name: "Vitara", basePrice: 768000, depreciation: 0.16 },
+            { name: "Vitara 維特拉", basePrice: 768000, depreciation: 0.16 },
+            { name: "Vitara 1.4T", basePrice: 850000, depreciation: 0.16 },
+            { name: "Vitara 1.6", basePrice: 768000, depreciation: 0.16 },
+            { name: "Vitara 4WD", basePrice: 899000, depreciation: 0.16 },
+            { name: "Vitara 豪華版", basePrice: 859000, depreciation: 0.16 },
+            { name: "Vitara 旗艦版", basePrice: 929000, depreciation: 0.16 },
+            { name: "Vitara S", basePrice: 899000, depreciation: 0.16 },
+            { name: "Grand Vitara", basePrice: 950000, depreciation: 0.16 },
+            { name: "Grand Vitara JP", basePrice: 1038000, depreciation: 0.16 },
+            { name: "Grand Vitara 2.4", basePrice: 1099000, depreciation: 0.16 },
+            { name: "Grand Vitara 4WD", basePrice: 1199000, depreciation: 0.16 },
+            { name: "New Vitara", basePrice: 899000, depreciation: 0.16 },
+
+            // ========== S-Cross 系列 ==========
+            { name: "S-Cross", basePrice: 980000, depreciation: 0.16 },
+            { name: "S-Cross 1.4T", basePrice: 980000, depreciation: 0.16 },
+            { name: "S-Cross 4WD", basePrice: 1099000, depreciation: 0.16 },
+            { name: "S-Cross 豪華版", basePrice: 1029000, depreciation: 0.16 },
+            { name: "S-Cross 旗艦版", basePrice: 1099000, depreciation: 0.16 },
+            { name: "S-Cross Hybrid", basePrice: 1150000, depreciation: 0.16 },
+            { name: "New S-Cross", basePrice: 1050000, depreciation: 0.16 },
+
+            // ========== Baleno 系列 ==========
+            { name: "Baleno", basePrice: 708000, depreciation: 0.17 },
+            { name: "Baleno 1.0T", basePrice: 708000, depreciation: 0.17 },
+            { name: "Baleno 1.4", basePrice: 750000, depreciation: 0.17 },
+            { name: "Baleno GLX", basePrice: 780000, depreciation: 0.17 },
+            { name: "New Baleno", basePrice: 759000, depreciation: 0.17 },
+
+            // ========== Ignis 系列 ==========
+            { name: "Ignis", basePrice: 638000, depreciation: 0.17 },
+            { name: "Ignis 1.2", basePrice: 638000, depreciation: 0.17 },
+            { name: "Ignis GLX", basePrice: 699000, depreciation: 0.17 },
+            { name: "Ignis 4WD", basePrice: 759000, depreciation: 0.17 },
+            { name: "New Ignis", basePrice: 689000, depreciation: 0.17 },
+
+            // ========== Alto 奧拓系列 ==========
+            { name: "Alto", basePrice: 468000, depreciation: 0.17 },
+            { name: "Alto 奧拓", basePrice: 468000, depreciation: 0.17 },
+            { name: "Alto 0.8", basePrice: 418000, depreciation: 0.17 },
+            { name: "Alto 1.0", basePrice: 468000, depreciation: 0.17 },
+            { name: "Alto K10", basePrice: 450000, depreciation: 0.17 },
+            { name: "Alto Works", basePrice: 550000, depreciation: 0.17 },
+
+            // ========== 其他經典車款 ==========
+            { name: "Liana", basePrice: 550000, depreciation: 0.17 },
+            { name: "Liana 利乳娜", basePrice: 550000, depreciation: 0.17 },
+            { name: "Solio", basePrice: 620000, depreciation: 0.17 },
+            { name: "Solio Bandit", basePrice: 680000, depreciation: 0.17 },
+            { name: "Escudo", basePrice: 899000, depreciation: 0.16 },
+            { name: "Escudo 2.4", basePrice: 999000, depreciation: 0.16 },
+            { name: "Every", basePrice: 459000, depreciation: 0.17 },
+            { name: "Every Wagon", basePrice: 520000, depreciation: 0.17 },
+            { name: "Wagon R", basePrice: 480000, depreciation: 0.17 },
+            { name: "Wagon R+", basePrice: 520000, depreciation: 0.17 },
+            { name: "Hustler", basePrice: 599000, depreciation: 0.17 },
+            { name: "Spacia", basePrice: 550000, depreciation: 0.17 },
+            { name: "Across", basePrice: 1290000, depreciation: 0.16 },
+            { name: "Across PHEV", basePrice: 1390000, depreciation: 0.16 }
         ]
     },
 
