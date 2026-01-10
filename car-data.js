@@ -1673,34 +1673,145 @@ const carDatabase = {
     // ========== 日本品牌（新增）==========
     "Mitsubishi三菱": {
         models: [
-            // Lancer系列
+            // ========== Colt Plus 小可 系列 ==========
+            { name: "Colt Plus", basePrice: 549000, depreciation: 0.17 },
+            { name: "Colt Plus 小乘", basePrice: 549000, depreciation: 0.17 },
+            { name: "Colt Plus 經典版", basePrice: 509000, depreciation: 0.17 },
+            { name: "Colt Plus 豪華版", basePrice: 569000, depreciation: 0.17 },
+            { name: "Colt Plus 尊貴版", basePrice: 599000, depreciation: 0.17 },
+            { name: "Colt Plus 1.5", basePrice: 549000, depreciation: 0.17 },
+            { name: "Colt Plus 1.6", basePrice: 579000, depreciation: 0.17 },
+
+            // ========== Lancer 系列 ==========
             { name: "Lancer", basePrice: 839000, depreciation: 0.16 },
             { name: "Sport Back", basePrice: 859000, depreciation: 0.16 },
             { name: "Lancer Fortis", basePrice: 649000, depreciation: 0.16 },
+            { name: "Lancer Fortis 佛提斯", basePrice: 649000, depreciation: 0.16 },
             { name: "Lancer Fortis 旗艦版", basePrice: 779000, depreciation: 0.16 },
+            { name: "Lancer Fortis 1.8", basePrice: 649000, depreciation: 0.16 },
+            { name: "Lancer Fortis 2.0", basePrice: 729000, depreciation: 0.16 },
             { name: "Lancer iO", basePrice: 699000, depreciation: 0.16 },
+            { name: "Lancer iO 2.0", basePrice: 749000, depreciation: 0.16 },
             { name: "Grand Lancer", basePrice: 669000, depreciation: 0.16 },
             { name: "Grand Lancer 旗艦版", basePrice: 881000, depreciation: 0.16 },
+            { name: "Grand Lancer 1.8", basePrice: 669000, depreciation: 0.16 },
+            { name: "Grand Lancer 2.0", basePrice: 789000, depreciation: 0.16 },
+            { name: "Lancer Evolution", basePrice: 1890000, depreciation: 0.14 },
+            { name: "Lancer EVO", basePrice: 1890000, depreciation: 0.14 },
+            { name: "Lancer EVO X", basePrice: 2090000, depreciation: 0.14 },
 
-            // SUV系列
+            // ========== Outlander 歐藍德系列 ==========
+            { name: "Outlander", basePrice: 789000, depreciation: 0.15 },
+            { name: "Outlander 歐藍德", basePrice: 789000, depreciation: 0.15 },
+            { name: "Outlander 2.4", basePrice: 789000, depreciation: 0.15 },
+            { name: "Outlander 2.4 4WD", basePrice: 899000, depreciation: 0.15 },
+            { name: "Outlander 豪華版", basePrice: 859000, depreciation: 0.15 },
+            { name: "Outlander 尊貴版", basePrice: 929000, depreciation: 0.15 },
+            { name: "Outlander 旗艦版", basePrice: 999000, depreciation: 0.15 },
+            { name: "Outlander PHEV", basePrice: 1990000, depreciation: 0.16 },
+            { name: "Outlander PHEV 插電混動", basePrice: 1990000, depreciation: 0.16 },
+            { name: "Outlander PHEV 旗艦版", basePrice: 2190000, depreciation: 0.16 },
+            { name: "New Outlander", basePrice: 1069000, depreciation: 0.15 },
+            { name: "New Outlander 旗艦版", basePrice: 1259000, depreciation: 0.15 },
+
+            // ========== Savrin 幸福力系列 ==========
+            { name: "Savrin", basePrice: 747000, depreciation: 0.16 },
+            { name: "Savrin 幸福力", basePrice: 747000, depreciation: 0.16 },
+            { name: "Savrin 2.0", basePrice: 679000, depreciation: 0.16 },
+            { name: "Savrin 2.4", basePrice: 747000, depreciation: 0.16 },
+            { name: "Savrin 豪華版", basePrice: 789000, depreciation: 0.16 },
+            { name: "Savrin 7人座", basePrice: 809000, depreciation: 0.16 },
+
+            // ========== Zinger 勁哥系列 ==========
+            { name: "Zinger", basePrice: 540000, depreciation: 0.16 },
+            { name: "Zinger 勁哥", basePrice: 540000, depreciation: 0.16 },
+            { name: "Zinger Pickup", basePrice: 629000, depreciation: 0.16 },
+            { name: "Zinger Pickup 皮卡", basePrice: 629000, depreciation: 0.16 },
+            { name: "Zinger 2.4", basePrice: 579000, depreciation: 0.16 },
+            { name: "Zinger 商用版", basePrice: 499000, depreciation: 0.16 },
+            { name: "Zinger 豪華版", basePrice: 619000, depreciation: 0.16 },
+            { name: "Zinger 5人座", basePrice: 540000, depreciation: 0.16 },
+            { name: "Zinger 8人座", basePrice: 589000, depreciation: 0.16 },
+
+            // ========== Veryca 菱利系列 (商用車) ==========
+            { name: "Veryca", basePrice: 389000, depreciation: 0.18 },
+            { name: "Veryca 菱利", basePrice: 389000, depreciation: 0.18 },
+            { name: "Veryca A180", basePrice: 389000, depreciation: 0.18 },
+            { name: "Veryca A190", basePrice: 419000, depreciation: 0.18 },
+            { name: "Veryca 廂車", basePrice: 429000, depreciation: 0.18 },
+            { name: "Veryca 貨車", basePrice: 379000, depreciation: 0.18 },
+            { name: "Veryca 1.3", basePrice: 389000, depreciation: 0.18 },
+            { name: "Veryca 1.5", basePrice: 429000, depreciation: 0.18 },
+            { name: "Veryca 廂型車", basePrice: 459000, depreciation: 0.18 },
+            { name: "Veryca 客貨兩用", basePrice: 449000, depreciation: 0.18 },
+            { name: "Veryca 冷凍車", basePrice: 529000, depreciation: 0.18 },
+
+            // ========== Delica 得利卡系列 (商用車/MPV) ==========
+            { name: "Delica", basePrice: 529000, depreciation: 0.17 },
+            { name: "Delica 得利卡", basePrice: 529000, depreciation: 0.17 },
+            { name: "Delica 貨車", basePrice: 479000, depreciation: 0.17 },
+            { name: "Delica 廂車", basePrice: 549000, depreciation: 0.17 },
+            { name: "Delica 9人座", basePrice: 589000, depreciation: 0.17 },
+            { name: "Delica 2.0", basePrice: 529000, depreciation: 0.17 },
+            { name: "Delica 2.4", basePrice: 579000, depreciation: 0.17 },
+            { name: "Delica 4WD", basePrice: 649000, depreciation: 0.17 },
+            { name: "Delica 客貨車", basePrice: 549000, depreciation: 0.17 },
+            { name: "Space Gear 得利卡", basePrice: 599000, depreciation: 0.17 },
+
+            // ========== Canter 堅達系列 (中型貨車) ==========
+            { name: "Canter", basePrice: 789000, depreciation: 0.16 },
+            { name: "Canter 堅達", basePrice: 789000, depreciation: 0.16 },
+            { name: "Canter 3.5噸", basePrice: 789000, depreciation: 0.16 },
+            { name: "Canter 5噸", basePrice: 899000, depreciation: 0.16 },
+            { name: "Canter 6噸", basePrice: 989000, depreciation: 0.16 },
+            { name: "Canter 7.5噸", basePrice: 1089000, depreciation: 0.16 },
+            { name: "Canter 8.5噸", basePrice: 1189000, depreciation: 0.16 },
+            { name: "Canter 冷凍車", basePrice: 1089000, depreciation: 0.16 },
+            { name: "Canter 傾卸車", basePrice: 929000, depreciation: 0.16 },
+            { name: "Canter 平板車", basePrice: 849000, depreciation: 0.16 },
+            { name: "Canter 廂式貨車", basePrice: 889000, depreciation: 0.16 },
+
+            // ========== Fuso 大貨車系列 ==========
+            { name: "Fuso", basePrice: 1290000, depreciation: 0.15 },
+            { name: "Fuso 11噸", basePrice: 1290000, depreciation: 0.15 },
+            { name: "Fuso 15噸", basePrice: 1590000, depreciation: 0.15 },
+            { name: "Fuso 17噸", basePrice: 1790000, depreciation: 0.15 },
+            { name: "Fuso 21噸", basePrice: 2090000, depreciation: 0.15 },
+            { name: "Fuso 曳引車", basePrice: 2490000, depreciation: 0.15 },
+
+            // ========== SUV/Crossover 系列 ==========
             { name: "ASX", basePrice: 1128000, depreciation: 0.16 },
             { name: "Eclipse Cross", basePrice: 949000, depreciation: 0.16 },
             { name: "Eclipse Cross PHEV", basePrice: 1339000, depreciation: 0.17 },
-            { name: "Outlander", basePrice: 789000, depreciation: 0.15 },
-            { name: "Outlander PHEV", basePrice: 1990000, depreciation: 0.16 },
             { name: "Xforce", basePrice: 799000, depreciation: 0.16 },
+            { name: "Xforce 旗艦版", basePrice: 899000, depreciation: 0.16 },
 
-            // Pajero系列
+            // ========== Pajero 帕傑洛系列 ==========
             { name: "Pajero", basePrice: 2280000, depreciation: 0.15 },
+            { name: "Pajero 帕傑洛", basePrice: 2280000, depreciation: 0.15 },
+            { name: "Pajero 3.2柴油", basePrice: 2280000, depreciation: 0.15 },
+            { name: "Pajero 3.8汽油", basePrice: 2180000, depreciation: 0.15 },
+            { name: "Pajero Sport", basePrice: 1790000, depreciation: 0.15 },
 
-            // MPV/商用車系列
-            { name: "Colt Plus", basePrice: 549000, depreciation: 0.17 },
-            { name: "Savrin", basePrice: 747000, depreciation: 0.16 },
-            { name: "Zinger", basePrice: 540000, depreciation: 0.16 },
-            { name: "Zinger Pickup", basePrice: 629000, depreciation: 0.16 },
+            // ========== Space Gear 太空乘系列 ==========
+            { name: "Space Gear", basePrice: 799000, depreciation: 0.16 },
+            { name: "Space Gear 太空乘", basePrice: 799000, depreciation: 0.16 },
+            { name: "Space Gear 2.4", basePrice: 799000, depreciation: 0.16 },
+            { name: "Space Gear 4WD", basePrice: 899000, depreciation: 0.16 },
+            { name: "Space Gear 長軸", basePrice: 859000, depreciation: 0.16 },
 
-            // 其他
-            { name: "Galant Grunder", basePrice: 845000, depreciation: 0.16 }
+            // ========== 其他經典車型 ==========
+            { name: "Galant Grunder", basePrice: 845000, depreciation: 0.16 },
+            { name: "Galant", basePrice: 789000, depreciation: 0.16 },
+            { name: "Grunder", basePrice: 845000, depreciation: 0.16 },
+            { name: "Grunder 2.4", basePrice: 845000, depreciation: 0.16 },
+            { name: "Mirage", basePrice: 499000, depreciation: 0.17 },
+            { name: "Attrage", basePrice: 549000, depreciation: 0.17 },
+            { name: "i-MiEV", basePrice: 890000, depreciation: 0.20 },
+            { name: "Freeca", basePrice: 459000, depreciation: 0.17 },
+            { name: "Freeca 福利卡", basePrice: 459000, depreciation: 0.17 },
+            { name: "Virage", basePrice: 529000, depreciation: 0.17 },
+            { name: "Virage iO", basePrice: 579000, depreciation: 0.17 }
         ]
     },
 
