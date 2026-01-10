@@ -1732,12 +1732,106 @@ const carDatabase = {
 
     "Mini": {
         models: [
+            // MINI 3門/5門 Hatch
+            { name: "One", basePrice: 1150000, depreciation: 0.17 },
+            { name: "One 3-Door", basePrice: 1150000, depreciation: 0.17 },
+            { name: "One 5-Door", basePrice: 1200000, depreciation: 0.17 },
             { name: "Cooper", basePrice: 1400000, depreciation: 0.17 },
+            { name: "Cooper 3-Door", basePrice: 1400000, depreciation: 0.17 },
+            { name: "Cooper 5-Door", basePrice: 1450000, depreciation: 0.17 },
+            { name: "Cooper D", basePrice: 1450000, depreciation: 0.17 },
             { name: "Cooper S", basePrice: 1650000, depreciation: 0.17 },
-            { name: "Cooper Clubman", basePrice: 1580000, depreciation: 0.17 },
-            { name: "Cooper Countryman", basePrice: 1700000, depreciation: 0.17 },
+            { name: "Cooper S 3-Door", basePrice: 1650000, depreciation: 0.17 },
+            { name: "Cooper S 5-Door", basePrice: 1700000, depreciation: 0.17 },
+            { name: "Cooper SD", basePrice: 1700000, depreciation: 0.17 },
+            { name: "Cooper SE", basePrice: 1550000, depreciation: 0.18 },
+            { name: "John Cooper Works", basePrice: 1900000, depreciation: 0.16 },
             { name: "JCW", basePrice: 1860000, depreciation: 0.17 },
-            { name: "Cabrio", basePrice: 1790000, depreciation: 0.17 }
+            { name: "JCW 3-Door", basePrice: 1900000, depreciation: 0.16 },
+            { name: "JCW 5-Door", basePrice: 1950000, depreciation: 0.16 },
+
+            // MINI Clubman
+            { name: "Clubman", basePrice: 1550000, depreciation: 0.17 },
+            { name: "Clubman One", basePrice: 1500000, depreciation: 0.17 },
+            { name: "Clubman One D", basePrice: 1550000, depreciation: 0.17 },
+            { name: "Clubman Cooper", basePrice: 1600000, depreciation: 0.17 },
+            { name: "Clubman Cooper D", basePrice: 1650000, depreciation: 0.17 },
+            { name: "Clubman Cooper S", basePrice: 1800000, depreciation: 0.17 },
+            { name: "Clubman Cooper SD", basePrice: 1850000, depreciation: 0.17 },
+            { name: "Clubman Cooper S ALL4", basePrice: 1900000, depreciation: 0.17 },
+            { name: "Clubman JCW", basePrice: 2100000, depreciation: 0.16 },
+            { name: "Clubman John Cooper Works", basePrice: 2100000, depreciation: 0.16 },
+            { name: "Clubman JCW ALL4", basePrice: 2200000, depreciation: 0.16 },
+            { name: "Cooper Clubman", basePrice: 1580000, depreciation: 0.17 },
+
+            // MINI Countryman
+            { name: "Countryman", basePrice: 1650000, depreciation: 0.17 },
+            { name: "Countryman One", basePrice: 1600000, depreciation: 0.17 },
+            { name: "Countryman One D", basePrice: 1650000, depreciation: 0.17 },
+            { name: "Countryman Cooper", basePrice: 1750000, depreciation: 0.17 },
+            { name: "Countryman Cooper D", basePrice: 1800000, depreciation: 0.17 },
+            { name: "Countryman Cooper S", basePrice: 1950000, depreciation: 0.17 },
+            { name: "Countryman Cooper SD", basePrice: 2000000, depreciation: 0.17 },
+            { name: "Countryman Cooper S ALL4", basePrice: 2050000, depreciation: 0.17 },
+            { name: "Countryman Cooper SE", basePrice: 1900000, depreciation: 0.18 },
+            { name: "Countryman Cooper SE ALL4", basePrice: 2000000, depreciation: 0.18 },
+            { name: "Countryman JCW", basePrice: 2300000, depreciation: 0.16 },
+            { name: "Countryman John Cooper Works", basePrice: 2300000, depreciation: 0.16 },
+            { name: "Countryman JCW ALL4", basePrice: 2400000, depreciation: 0.16 },
+            { name: "Cooper Countryman", basePrice: 1700000, depreciation: 0.17 },
+
+            // MINI Convertible / Cabrio
+            { name: "Cabrio", basePrice: 1790000, depreciation: 0.17 },
+            { name: "Convertible", basePrice: 1750000, depreciation: 0.17 },
+            { name: "Convertible One", basePrice: 1500000, depreciation: 0.17 },
+            { name: "Convertible Cooper", basePrice: 1700000, depreciation: 0.17 },
+            { name: "Convertible Cooper S", basePrice: 1900000, depreciation: 0.17 },
+            { name: "Convertible JCW", basePrice: 2150000, depreciation: 0.16 },
+            { name: "Cooper Cabrio", basePrice: 1700000, depreciation: 0.17 },
+            { name: "Cooper S Cabrio", basePrice: 1900000, depreciation: 0.17 },
+
+            // MINI Coupe / Roadster (經典款)
+            { name: "Coupe", basePrice: 1400000, depreciation: 0.18 },
+            { name: "Coupe Cooper", basePrice: 1400000, depreciation: 0.18 },
+            { name: "Coupe Cooper S", basePrice: 1600000, depreciation: 0.18 },
+            { name: "Coupe JCW", basePrice: 1850000, depreciation: 0.17 },
+            { name: "Roadster", basePrice: 1450000, depreciation: 0.18 },
+            { name: "Roadster Cooper", basePrice: 1450000, depreciation: 0.18 },
+            { name: "Roadster Cooper S", basePrice: 1650000, depreciation: 0.18 },
+            { name: "Roadster JCW", basePrice: 1900000, depreciation: 0.17 },
+
+            // MINI Paceman (經典款)
+            { name: "Paceman", basePrice: 1500000, depreciation: 0.18 },
+            { name: "Paceman Cooper", basePrice: 1500000, depreciation: 0.18 },
+            { name: "Paceman Cooper S", basePrice: 1700000, depreciation: 0.18 },
+            { name: "Paceman Cooper SD", basePrice: 1750000, depreciation: 0.18 },
+            { name: "Paceman JCW", basePrice: 1950000, depreciation: 0.17 },
+
+            // MINI 電動車系列
+            { name: "Electric", basePrice: 1550000, depreciation: 0.18 },
+            { name: "SE", basePrice: 1550000, depreciation: 0.18 },
+            { name: "Cooper SE", basePrice: 1600000, depreciation: 0.18 },
+            { name: "Aceman", basePrice: 1700000, depreciation: 0.18 },
+            { name: "Aceman E", basePrice: 1750000, depreciation: 0.18 },
+            { name: "Aceman SE", basePrice: 1900000, depreciation: 0.18 },
+
+            // MINI 經典車款 Classic Mini
+            { name: "Classic", basePrice: 600000, depreciation: 0.10 },
+            { name: "Classic Cooper", basePrice: 700000, depreciation: 0.10 },
+            { name: "Classic Cooper S", basePrice: 850000, depreciation: 0.10 },
+            { name: "Classic 1275 GT", basePrice: 750000, depreciation: 0.10 },
+
+            // John Cooper Works GP 限量版
+            { name: "JCW GP", basePrice: 2500000, depreciation: 0.15 },
+            { name: "John Cooper Works GP", basePrice: 2500000, depreciation: 0.15 },
+            { name: "GP3", basePrice: 2500000, depreciation: 0.15 },
+
+            // 特別版
+            { name: "Anniversary Edition", basePrice: 1600000, depreciation: 0.16 },
+            { name: "Oxford Edition", basePrice: 1500000, depreciation: 0.17 },
+            { name: "Brick Lane Edition", basePrice: 1550000, depreciation: 0.17 },
+            { name: "Resolute Edition", basePrice: 1650000, depreciation: 0.16 },
+            { name: "Untold Edition", basePrice: 1700000, depreciation: 0.16 }
         ]
     },
 
