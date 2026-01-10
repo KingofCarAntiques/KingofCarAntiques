@@ -2065,41 +2065,150 @@ const carDatabase = {
 
     "Subaru速霸陸": {
         models: [
-            // Impreza系列
+            // ========== Impreza 翼豹系列 ==========
             { name: "Impreza", basePrice: 1850000, depreciation: 0.16 },
+            { name: "Impreza 翼豹", basePrice: 1850000, depreciation: 0.16 },
+            { name: "Impreza 1.6", basePrice: 899000, depreciation: 0.16 },
+            { name: "Impreza 2.0", basePrice: 999000, depreciation: 0.16 },
+            { name: "Impreza 4D", basePrice: 950000, depreciation: 0.16 },
+            { name: "Impreza 5D", basePrice: 980000, depreciation: 0.16 },
+            { name: "Impreza Sedan", basePrice: 950000, depreciation: 0.16 },
+            { name: "Impreza Hatchback", basePrice: 980000, depreciation: 0.16 },
+            { name: "Impreza Sport", basePrice: 1050000, depreciation: 0.16 },
+            { name: "Impreza WRX", basePrice: 1500000, depreciation: 0.15 },
             { name: "Impreza WRX STI", basePrice: 1900000, depreciation: 0.16 },
+            { name: "Impreza GC8", basePrice: 1200000, depreciation: 0.14 },
+            { name: "Impreza GDB", basePrice: 1400000, depreciation: 0.14 },
+            { name: "Impreza GRB", basePrice: 1600000, depreciation: 0.15 },
 
-            // WRX系列
+            // ========== GC8 經典系列 (第一代 Impreza) ==========
+            { name: "GC8", basePrice: 1200000, depreciation: 0.14 },
+            { name: "GC8 WRX", basePrice: 1350000, depreciation: 0.14 },
+            { name: "GC8 WRX STI", basePrice: 1600000, depreciation: 0.13 },
+            { name: "GC8 Type R", basePrice: 1500000, depreciation: 0.13 },
+            { name: "GC8 Type RA", basePrice: 1550000, depreciation: 0.13 },
+            { name: "GC8 Version 5", basePrice: 1450000, depreciation: 0.13 },
+            { name: "GC8 Version 6", basePrice: 1500000, depreciation: 0.13 },
+            { name: "GC8 22B", basePrice: 3500000, depreciation: 0.10 },
+
+            // ========== WRX 系列 ==========
             { name: "WRX", basePrice: 1270000, depreciation: 0.16 },
+            { name: "WRX 2.0T", basePrice: 1270000, depreciation: 0.16 },
+            { name: "WRX 2.4T", basePrice: 1450000, depreciation: 0.16 },
+            { name: "WRX 豪華版", basePrice: 1350000, depreciation: 0.16 },
+            { name: "WRX 旗艦版", basePrice: 1499000, depreciation: 0.16 },
             { name: "WRX STI", basePrice: 1760000, depreciation: 0.16 },
+            { name: "WRX STI 性能版", basePrice: 1900000, depreciation: 0.15 },
+            { name: "WRX STI S209", basePrice: 2200000, depreciation: 0.14 },
+            { name: "WRX STI Type S", basePrice: 1950000, depreciation: 0.15 },
+            { name: "WRX STI Type RA", basePrice: 2050000, depreciation: 0.15 },
             { name: "WRX Wagon", basePrice: 1658000, depreciation: 0.16 },
+            { name: "WRX Sportswagon", basePrice: 1450000, depreciation: 0.16 },
+            { name: "New WRX", basePrice: 1399000, depreciation: 0.16 },
 
-            // Legacy系列
+            // ========== Legacy 力獅系列 ==========
             { name: "Legacy", basePrice: 1100000, depreciation: 0.16 },
+            { name: "Legacy 力獅", basePrice: 1100000, depreciation: 0.16 },
+            { name: "Legacy 2.0", basePrice: 999000, depreciation: 0.16 },
+            { name: "Legacy 2.5", basePrice: 1150000, depreciation: 0.16 },
+            { name: "Legacy 2.5GT", basePrice: 1350000, depreciation: 0.16 },
+            { name: "Legacy 2.5i", basePrice: 1100000, depreciation: 0.16 },
+            { name: "Legacy 3.0R", basePrice: 1450000, depreciation: 0.16 },
+            { name: "Legacy 3.6R", basePrice: 1550000, depreciation: 0.16 },
             { name: "Legacy Wagon", basePrice: 1230000, depreciation: 0.16 },
+            { name: "Legacy Touring Wagon", basePrice: 1280000, depreciation: 0.16 },
+            { name: "Legacy B4", basePrice: 1200000, depreciation: 0.16 },
+            { name: "Legacy GT", basePrice: 1350000, depreciation: 0.16 },
+            { name: "Legacy GT Spec.B", basePrice: 1450000, depreciation: 0.15 },
+            { name: "Legacy 豪華版", basePrice: 1199000, depreciation: 0.16 },
+            { name: "Legacy 旗艦版", basePrice: 1399000, depreciation: 0.16 },
+            { name: "New Legacy", basePrice: 1250000, depreciation: 0.16 },
 
-            // BRZ系列
-            { name: "BRZ", basePrice: 1330000, depreciation: 0.16 },
-            { name: "BRZ STI", basePrice: 1748000, depreciation: 0.16 },
-
-            // Forester系列
+            // ========== Forester 森林人系列 ==========
             { name: "Forester", basePrice: 1070000, depreciation: 0.15 },
+            { name: "Forester 森林人", basePrice: 1070000, depreciation: 0.15 },
+            { name: "Forester 2.0", basePrice: 1070000, depreciation: 0.15 },
+            { name: "Forester 2.0i", basePrice: 1099000, depreciation: 0.15 },
+            { name: "Forester 2.0i-L", basePrice: 1150000, depreciation: 0.15 },
+            { name: "Forester 2.0i-S", basePrice: 1250000, depreciation: 0.15 },
+            { name: "Forester 2.5", basePrice: 1199000, depreciation: 0.15 },
+            { name: "Forester 2.5i", basePrice: 1199000, depreciation: 0.15 },
+            { name: "Forester XT", basePrice: 1350000, depreciation: 0.15 },
+            { name: "Forester 2.0XT", basePrice: 1350000, depreciation: 0.15 },
             { name: "Forester GT", basePrice: 1258000, depreciation: 0.15 },
+            { name: "Forester GT Edition", basePrice: 1350000, depreciation: 0.15 },
+            { name: "Forester e-Boxer", basePrice: 1399000, depreciation: 0.15 },
+            { name: "Forester 豪華版", basePrice: 1199000, depreciation: 0.15 },
+            { name: "Forester 旗艦版", basePrice: 1350000, depreciation: 0.15 },
+            { name: "Forester STI", basePrice: 1450000, depreciation: 0.15 },
+            { name: "Forester tS", basePrice: 1399000, depreciation: 0.15 },
+            { name: "New Forester", basePrice: 1199000, depreciation: 0.15 },
 
-            // Outback系列
+            // ========== BRZ 跑車系列 ==========
+            { name: "BRZ", basePrice: 1330000, depreciation: 0.16 },
+            { name: "BRZ 2.0", basePrice: 1330000, depreciation: 0.16 },
+            { name: "BRZ 2.4", basePrice: 1450000, depreciation: 0.16 },
+            { name: "BRZ Premium", basePrice: 1399000, depreciation: 0.16 },
+            { name: "BRZ Limited", basePrice: 1499000, depreciation: 0.16 },
+            { name: "BRZ STI", basePrice: 1748000, depreciation: 0.16 },
+            { name: "BRZ STI Sport", basePrice: 1650000, depreciation: 0.16 },
+            { name: "BRZ tS", basePrice: 1599000, depreciation: 0.16 },
+            { name: "New BRZ", basePrice: 1450000, depreciation: 0.16 },
+
+            // ========== Outback 傲虎系列 ==========
             { name: "Outback", basePrice: 1800000, depreciation: 0.15 },
+            { name: "Outback 傲虎", basePrice: 1800000, depreciation: 0.15 },
+            { name: "Outback 2.5", basePrice: 1650000, depreciation: 0.15 },
+            { name: "Outback 2.5i", basePrice: 1650000, depreciation: 0.15 },
+            { name: "Outback 2.5i-S", basePrice: 1800000, depreciation: 0.15 },
+            { name: "Outback 3.6R", basePrice: 1950000, depreciation: 0.15 },
+            { name: "Outback 豪華版", basePrice: 1750000, depreciation: 0.15 },
+            { name: "Outback 旗艦版", basePrice: 1950000, depreciation: 0.15 },
+            { name: "Outback XT", basePrice: 1899000, depreciation: 0.15 },
+            { name: "Outback Wilderness", basePrice: 1999000, depreciation: 0.15 },
+            { name: "New Outback", basePrice: 1850000, depreciation: 0.15 },
 
-            // XV系列
+            // ========== XV / Crosstrek 系列 ==========
             { name: "XV", basePrice: 980000, depreciation: 0.16 },
-
-            // Levorg系列
-            { name: "Levorg", basePrice: 1220000, depreciation: 0.16 },
-
-            // Crosstrek系列
+            { name: "XV 2.0", basePrice: 980000, depreciation: 0.16 },
+            { name: "XV 2.0i", basePrice: 1050000, depreciation: 0.16 },
+            { name: "XV 2.0i-S", basePrice: 1150000, depreciation: 0.16 },
+            { name: "XV e-Boxer", basePrice: 1199000, depreciation: 0.16 },
+            { name: "XV GT Edition", basePrice: 1150000, depreciation: 0.16 },
+            { name: "XV 豪華版", basePrice: 1099000, depreciation: 0.16 },
+            { name: "XV 旗艦版", basePrice: 1199000, depreciation: 0.16 },
             { name: "Crosstrek", basePrice: 1148000, depreciation: 0.16 },
+            { name: "Crosstrek 2.0", basePrice: 1148000, depreciation: 0.16 },
+            { name: "Crosstrek 2.5", basePrice: 1250000, depreciation: 0.16 },
+            { name: "Crosstrek Limited", basePrice: 1299000, depreciation: 0.16 },
+            { name: "Crosstrek Wilderness", basePrice: 1399000, depreciation: 0.16 },
+            { name: "New XV", basePrice: 1099000, depreciation: 0.16 },
 
-            // Solterra電動車
-            { name: "Solterra", basePrice: 1898000, depreciation: 0.17 }
+            // ========== Levorg 系列 ==========
+            { name: "Levorg", basePrice: 1220000, depreciation: 0.16 },
+            { name: "Levorg 1.6GT", basePrice: 1220000, depreciation: 0.16 },
+            { name: "Levorg 1.6GT-S", basePrice: 1350000, depreciation: 0.16 },
+            { name: "Levorg 2.0GT", basePrice: 1450000, depreciation: 0.16 },
+            { name: "Levorg 2.0GT-S", basePrice: 1550000, depreciation: 0.16 },
+            { name: "Levorg STI Sport", basePrice: 1650000, depreciation: 0.15 },
+            { name: "New Levorg", basePrice: 1399000, depreciation: 0.16 },
+
+            // ========== 電動車系列 ==========
+            { name: "Solterra", basePrice: 1898000, depreciation: 0.17 },
+            { name: "Solterra ET-SS", basePrice: 1898000, depreciation: 0.17 },
+            { name: "Solterra ET-HS", basePrice: 2099000, depreciation: 0.17 },
+
+            // ========== 經典車款 ==========
+            { name: "Tribeca", basePrice: 1650000, depreciation: 0.16 },
+            { name: "Tribeca 3.6R", basePrice: 1750000, depreciation: 0.16 },
+            { name: "Exiga", basePrice: 1150000, depreciation: 0.16 },
+            { name: "Exiga 2.0GT", basePrice: 1250000, depreciation: 0.16 },
+            { name: "Exiga Crossover 7", basePrice: 1350000, depreciation: 0.16 },
+            { name: "Ascent", basePrice: 1899000, depreciation: 0.15 },
+            { name: "Ascent Limited", basePrice: 2099000, depreciation: 0.15 },
+            { name: "Ascent Touring", basePrice: 2199000, depreciation: 0.15 },
+            { name: "SVX", basePrice: 1500000, depreciation: 0.14 },
+            { name: "Alcyone SVX", basePrice: 1500000, depreciation: 0.14 }
         ]
     },
 
