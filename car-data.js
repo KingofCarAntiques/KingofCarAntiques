@@ -1259,10 +1259,75 @@ const carDatabase = {
 
     "Isuzu五十鈴": {
         models: [
-            // ELF系列
-            { name: "ELF 第五代 貨車", basePrice: 1280000, depreciation: 0.15 },
-            { name: "ELF 第六代 貨車", basePrice: 1565000, depreciation: 0.15 },
-            { name: "ELF 一路發（日本）", basePrice: 1565000, depreciation: 0.15 }
+            // ELF 一路發系列（小型貨車 3.5噸以下）
+            { name: "ELF", basePrice: 1350000, depreciation: 0.14 },
+            { name: "ELF 一路發", basePrice: 1280000, depreciation: 0.14 },
+            { name: "ELF 一路發 2.8", basePrice: 1180000, depreciation: 0.14 },
+            { name: "ELF 一路發 3.0", basePrice: 1280000, depreciation: 0.14 },
+            { name: "ELF 一路發 3.5噸", basePrice: 1350000, depreciation: 0.14 },
+            { name: "ELF 一路發 冷凍車", basePrice: 1550000, depreciation: 0.14 },
+            { name: "ELF 一路發 廂型車", basePrice: 1450000, depreciation: 0.14 },
+            { name: "ELF 100P", basePrice: 950000, depreciation: 0.15 },
+            { name: "ELF 150", basePrice: 1050000, depreciation: 0.15 },
+            { name: "ELF 250", basePrice: 1150000, depreciation: 0.15 },
+            { name: "ELF 350", basePrice: 1280000, depreciation: 0.14 },
+
+            // NLR / NMR / NPR 系列（中型貨車）
+            { name: "NLR", basePrice: 1150000, depreciation: 0.14 },
+            { name: "NLR 3.5噸", basePrice: 1180000, depreciation: 0.14 },
+            { name: "NMR", basePrice: 1350000, depreciation: 0.14 },
+            { name: "NMR 5噸", basePrice: 1450000, depreciation: 0.14 },
+            { name: "NPR", basePrice: 1550000, depreciation: 0.13 },
+            { name: "NPR 6.5噸", basePrice: 1650000, depreciation: 0.13 },
+            { name: "NPR 75", basePrice: 1580000, depreciation: 0.13 },
+            { name: "NQR", basePrice: 1750000, depreciation: 0.13 },
+            { name: "NQR 8噸", basePrice: 1850000, depreciation: 0.13 },
+
+            // Forward 福乘系列（大型貨車）
+            { name: "Forward", basePrice: 2250000, depreciation: 0.13 },
+            { name: "Forward 福乘 10噸", basePrice: 2350000, depreciation: 0.13 },
+            { name: "Forward 福乘 15噸", basePrice: 2650000, depreciation: 0.12 },
+            { name: "FRR", basePrice: 1950000, depreciation: 0.13 },
+            { name: "FRR 11噸", basePrice: 2150000, depreciation: 0.13 },
+            { name: "FSR", basePrice: 2350000, depreciation: 0.13 },
+            { name: "FTR", basePrice: 2550000, depreciation: 0.12 },
+            { name: "FVR", basePrice: 2850000, depreciation: 0.12 },
+
+            // Giga 巨乘系列（重型貨車/拖車頭）
+            { name: "Giga", basePrice: 3500000, depreciation: 0.12 },
+            { name: "Giga 巨乘", basePrice: 3650000, depreciation: 0.12 },
+            { name: "Giga 拖車頭", basePrice: 3850000, depreciation: 0.11 },
+            { name: "CXZ", basePrice: 3250000, depreciation: 0.12 },
+            { name: "CYZ", basePrice: 3450000, depreciation: 0.12 },
+            { name: "EXZ", basePrice: 3850000, depreciation: 0.11 },
+
+            // D-MAX 皮卡系列
+            { name: "D-MAX", basePrice: 950000, depreciation: 0.14 },
+            { name: "D-MAX 1.9", basePrice: 920000, depreciation: 0.14 },
+            { name: "D-MAX 3.0", basePrice: 1050000, depreciation: 0.14 },
+            { name: "D-MAX 4WD", basePrice: 1150000, depreciation: 0.13 },
+            { name: "D-MAX Hi-Lander", basePrice: 1080000, depreciation: 0.14 },
+            { name: "D-MAX V-Cross", basePrice: 1180000, depreciation: 0.13 },
+            { name: "D-MAX X-Series", basePrice: 1250000, depreciation: 0.13 },
+
+            // MU-X 休旅車系列
+            { name: "MU-X", basePrice: 1350000, depreciation: 0.14 },
+            { name: "MU-X 1.9", basePrice: 1280000, depreciation: 0.14 },
+            { name: "MU-X 3.0", basePrice: 1450000, depreciation: 0.13 },
+            { name: "MU-X 4WD", basePrice: 1550000, depreciation: 0.13 },
+            { name: "MU-X Ultimate", basePrice: 1650000, depreciation: 0.13 },
+
+            // 商用車 / 巴士
+            { name: "Elf 中巴", basePrice: 1850000, depreciation: 0.14 },
+            { name: "NQR 中型巴士", basePrice: 2350000, depreciation: 0.13 },
+            { name: "LT 大型巴士", basePrice: 3500000, depreciation: 0.12 },
+
+            // 經典 / 停產車款
+            { name: "Trooper", basePrice: 650000, depreciation: 0.16 },
+            { name: "Bighorn", basePrice: 750000, depreciation: 0.15 },
+            { name: "Faster", basePrice: 550000, depreciation: 0.16 },
+            { name: "Panther", basePrice: 450000, depreciation: 0.17 },
+            { name: "Gemini", basePrice: 350000, depreciation: 0.18 }
         ]
     },
 
