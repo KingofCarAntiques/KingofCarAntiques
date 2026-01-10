@@ -610,41 +610,177 @@ const carDatabase = {
 
     "Nissan日產": {
         models: [
-            // 轎車系列
+            // ========== Tiida 騏達系列 ==========
+            { name: "Tiida", basePrice: 650000, depreciation: 0.15 },
+            { name: "Tiida 騏達", basePrice: 650000, depreciation: 0.15 },
+            { name: "Tiida 1.6", basePrice: 620000, depreciation: 0.15 },
+            { name: "Tiida 1.8", basePrice: 680000, depreciation: 0.15 },
+            { name: "Tiida 5門", basePrice: 650000, depreciation: 0.15 },
+            { name: "Tiida 4門", basePrice: 630000, depreciation: 0.15 },
+            { name: "Tiida 豪華版", basePrice: 699000, depreciation: 0.15 },
+            { name: "Tiida Turbo", basePrice: 750000, depreciation: 0.15 },
+            { name: "Big Tiida", basePrice: 720000, depreciation: 0.15 },
+            { name: "Big Tiida 1.6", basePrice: 720000, depreciation: 0.15 },
+
+            // ========== March 馬乳系列 ==========
+            { name: "March", basePrice: 500000, depreciation: 0.16 },
+            { name: "March 馬乳", basePrice: 500000, depreciation: 0.16 },
+            { name: "March 1.3", basePrice: 480000, depreciation: 0.16 },
+            { name: "March 1.5", basePrice: 520000, depreciation: 0.16 },
+            { name: "March 經典版", basePrice: 459000, depreciation: 0.16 },
+            { name: "March 豪華版", basePrice: 529000, depreciation: 0.16 },
+            { name: "New March", basePrice: 539000, depreciation: 0.16 },
+
+            // ========== Super Sentra / Sentra 系列 ==========
             { name: "Sentra", basePrice: 805000, depreciation: 0.15 },
             { name: "Sentra B18", basePrice: 820000, depreciation: 0.14 },
-            { name: "Altima", basePrice: 1250000, depreciation: 0.14 },
-            { name: "Tiida", basePrice: 650000, depreciation: 0.15 },
-            { name: "Livina", basePrice: 620000, depreciation: 0.15 },
-            { name: "March", basePrice: 500000, depreciation: 0.16 },
+            { name: "Super Sentra", basePrice: 750000, depreciation: 0.15 },
+            { name: "Super Sentra 1.8", basePrice: 750000, depreciation: 0.15 },
+            { name: "Super Sentra 豪華版", basePrice: 799000, depreciation: 0.15 },
+            { name: "Super Sentra 旗艦版", basePrice: 859000, depreciation: 0.15 },
+            { name: "Sentra 1.6", basePrice: 699000, depreciation: 0.15 },
+            { name: "Sentra 1.8", basePrice: 759000, depreciation: 0.15 },
+            { name: "Sentra Aero", basePrice: 829000, depreciation: 0.15 },
+            { name: "New Sentra", basePrice: 805000, depreciation: 0.15 },
+            { name: "All New Sentra", basePrice: 839000, depreciation: 0.14 },
+
+            // ========== Teana 鐵安娜系列 ==========
             { name: "Teana", basePrice: 1150000, depreciation: 0.14 },
+            { name: "Teana 鐵乳娜", basePrice: 1150000, depreciation: 0.14 },
+            { name: "Teana 2.0", basePrice: 999000, depreciation: 0.14 },
+            { name: "Teana 2.5", basePrice: 1150000, depreciation: 0.14 },
+            { name: "Teana 3.5", basePrice: 1450000, depreciation: 0.14 },
+            { name: "Teana 豪華版", basePrice: 1099000, depreciation: 0.14 },
+            { name: "Teana 旗艦版", basePrice: 1299000, depreciation: 0.14 },
+            { name: "New Teana", basePrice: 1199000, depreciation: 0.14 },
 
-            // SUV / 休旅車系列
-            { name: "Kicks", basePrice: 785000, depreciation: 0.14 },
-            { name: "Kicks e-Power", basePrice: 950000, depreciation: 0.13 },
-            { name: "X-Trail", basePrice: 1195000, depreciation: 0.13 },
-            { name: "X-Trail e-Power", basePrice: 1350000, depreciation: 0.12 },
-            { name: "Juke", basePrice: 850000, depreciation: 0.14 },
-            { name: "Murano", basePrice: 1450000, depreciation: 0.14 },
-            { name: "Pathfinder", basePrice: 1650000, depreciation: 0.13 },
+            // ========== Altima 系列 ==========
+            { name: "Altima", basePrice: 1250000, depreciation: 0.14 },
+            { name: "Altima 2.0T", basePrice: 1250000, depreciation: 0.14 },
+            { name: "Altima 2.5", basePrice: 1350000, depreciation: 0.14 },
+            { name: "Altima 豪華版", basePrice: 1299000, depreciation: 0.14 },
+            { name: "Altima 旗艦版", basePrice: 1399000, depreciation: 0.14 },
 
-            // 電動車
-            { name: "Leaf", basePrice: 1490000, depreciation: 0.16 },
-            { name: "Ariya", basePrice: 1850000, depreciation: 0.15 },
-
-            // 跑車 / 性能車
+            // ========== 370Z / Z 跑車系列 ==========
             { name: "370Z", basePrice: 2200000, depreciation: 0.14 },
+            { name: "370Z Coupe", basePrice: 2200000, depreciation: 0.14 },
+            { name: "370Z Roadster", basePrice: 2450000, depreciation: 0.14 },
+            { name: "370Z NISMO", basePrice: 2650000, depreciation: 0.13 },
+            { name: "350Z", basePrice: 1800000, depreciation: 0.14 },
             { name: "Z", basePrice: 2350000, depreciation: 0.13 },
+            { name: "New Z", basePrice: 2350000, depreciation: 0.13 },
+            { name: "Fairlady Z", basePrice: 2350000, depreciation: 0.13 },
+
+            // ========== GT-R 超跑系列 ==========
             { name: "GT-R", basePrice: 6500000, depreciation: 0.12 },
+            { name: "GTR", basePrice: 6500000, depreciation: 0.12 },
+            { name: "GT-R Premium", basePrice: 6800000, depreciation: 0.12 },
+            { name: "GT-R NISMO", basePrice: 8500000, depreciation: 0.11 },
+            { name: "GT-R Black Edition", basePrice: 7200000, depreciation: 0.12 },
+            { name: "GT-R Track Edition", basePrice: 7500000, depreciation: 0.12 },
+            { name: "GT-R R35", basePrice: 6500000, depreciation: 0.12 },
+            { name: "Skyline GT-R", basePrice: 5500000, depreciation: 0.12 },
+            { name: "Skyline GT-R R34", basePrice: 4500000, depreciation: 0.11 },
+            { name: "Skyline GT-R R33", basePrice: 3500000, depreciation: 0.11 },
 
-            // 商用車
+            // ========== X-Trail 奇駿系列 ==========
+            { name: "X-Trail", basePrice: 1195000, depreciation: 0.13 },
+            { name: "X-Trail 奇駿", basePrice: 1195000, depreciation: 0.13 },
+            { name: "X-Trail 2.0", basePrice: 1099000, depreciation: 0.13 },
+            { name: "X-Trail 2.5", basePrice: 1295000, depreciation: 0.13 },
+            { name: "X-Trail 4WD", basePrice: 1395000, depreciation: 0.13 },
+            { name: "X-Trail e-Power", basePrice: 1350000, depreciation: 0.12 },
+            { name: "X-Trail e-Power 4WD", basePrice: 1450000, depreciation: 0.12 },
+            { name: "X-Trail 豪華版", basePrice: 1199000, depreciation: 0.13 },
+            { name: "X-Trail 旗艦版", basePrice: 1359000, depreciation: 0.13 },
+            { name: "New X-Trail", basePrice: 1259000, depreciation: 0.13 },
+
+            // ========== Livina 麗威娜系列 ==========
+            { name: "Livina", basePrice: 620000, depreciation: 0.15 },
+            { name: "Livina 麗威娜", basePrice: 620000, depreciation: 0.15 },
+            { name: "Livina 1.6", basePrice: 620000, depreciation: 0.15 },
+            { name: "Livina 1.8", basePrice: 680000, depreciation: 0.15 },
+            { name: "Livina 豪華版", basePrice: 669000, depreciation: 0.15 },
+            { name: "Livina 經典版", basePrice: 599000, depreciation: 0.15 },
+            { name: "Grand Livina", basePrice: 720000, depreciation: 0.15 },
+            { name: "Grand Livina 7人座", basePrice: 759000, depreciation: 0.15 },
+            { name: "New Livina", basePrice: 659000, depreciation: 0.15 },
+
+            // ========== Kicks 勁客系列 ==========
+            { name: "Kicks", basePrice: 785000, depreciation: 0.14 },
+            { name: "Kicks 勁客", basePrice: 785000, depreciation: 0.14 },
+            { name: "Kicks 1.5", basePrice: 759000, depreciation: 0.14 },
+            { name: "Kicks 豪華版", basePrice: 819000, depreciation: 0.14 },
+            { name: "Kicks 旗艦版", basePrice: 879000, depreciation: 0.14 },
+            { name: "Kicks e-Power", basePrice: 950000, depreciation: 0.13 },
+            { name: "Kicks e-Power 豪華版", basePrice: 999000, depreciation: 0.13 },
+            { name: "New Kicks", basePrice: 819000, depreciation: 0.14 },
+
+            // ========== Juke 小乘系列 ==========
+            { name: "Juke", basePrice: 850000, depreciation: 0.14 },
+            { name: "Juke 1.6", basePrice: 850000, depreciation: 0.14 },
+            { name: "Juke 1.6T", basePrice: 950000, depreciation: 0.14 },
+            { name: "Juke 豪華版", basePrice: 899000, depreciation: 0.14 },
+            { name: "Juke 旗艦版", basePrice: 959000, depreciation: 0.14 },
+            { name: "Juke NISMO", basePrice: 1050000, depreciation: 0.14 },
+            { name: "New Juke", basePrice: 919000, depreciation: 0.14 },
+
+            // ========== Rogue 俠客系列 ==========
+            { name: "Rogue", basePrice: 1299000, depreciation: 0.13 },
+            { name: "Rogue 俠客", basePrice: 1299000, depreciation: 0.13 },
+            { name: "Rogue 2.5", basePrice: 1299000, depreciation: 0.13 },
+            { name: "Rogue SV", basePrice: 1399000, depreciation: 0.13 },
+            { name: "Rogue SL", basePrice: 1499000, depreciation: 0.13 },
+            { name: "Rogue Platinum", basePrice: 1599000, depreciation: 0.13 },
+            { name: "Rogue Sport", basePrice: 1199000, depreciation: 0.13 },
+
+            // ========== Murano 樓蘭系列 ==========
+            { name: "Murano", basePrice: 1450000, depreciation: 0.14 },
+            { name: "Murano 樓蘭", basePrice: 1450000, depreciation: 0.14 },
+            { name: "Murano 2.5", basePrice: 1350000, depreciation: 0.14 },
+            { name: "Murano 3.5", basePrice: 1550000, depreciation: 0.14 },
+            { name: "Murano 4WD", basePrice: 1599000, depreciation: 0.14 },
+
+            // ========== Pathfinder 探路者系列 ==========
+            { name: "Pathfinder", basePrice: 1650000, depreciation: 0.13 },
+            { name: "Pathfinder 探路者", basePrice: 1650000, depreciation: 0.13 },
+            { name: "Pathfinder 4WD", basePrice: 1799000, depreciation: 0.13 },
+            { name: "Pathfinder Platinum", basePrice: 1899000, depreciation: 0.13 },
+
+            // ========== 電動車系列 ==========
+            { name: "Leaf", basePrice: 1490000, depreciation: 0.16 },
+            { name: "Leaf 40kWh", basePrice: 1490000, depreciation: 0.16 },
+            { name: "Leaf 62kWh", basePrice: 1690000, depreciation: 0.16 },
+            { name: "Leaf e+", basePrice: 1790000, depreciation: 0.16 },
+            { name: "Ariya", basePrice: 1850000, depreciation: 0.15 },
+            { name: "Ariya 63kWh", basePrice: 1850000, depreciation: 0.15 },
+            { name: "Ariya 87kWh", basePrice: 2150000, depreciation: 0.15 },
+            { name: "Ariya e-4ORCE", basePrice: 2350000, depreciation: 0.15 },
+
+            // ========== 商用車系列 ==========
             { name: "NV350", basePrice: 1350000, depreciation: 0.14 },
+            { name: "NV350 Urvan", basePrice: 1350000, depreciation: 0.14 },
+            { name: "NV200", basePrice: 899000, depreciation: 0.15 },
+            { name: "Urvan", basePrice: 1250000, depreciation: 0.14 },
+            { name: "Caravan", basePrice: 1150000, depreciation: 0.14 },
 
-            // 經典車款
+            // ========== 經典車款 ==========
             { name: "Cefiro", basePrice: 750000, depreciation: 0.15 },
+            { name: "Cefiro 2.0", basePrice: 699000, depreciation: 0.15 },
+            { name: "Cefiro 3.0", basePrice: 850000, depreciation: 0.15 },
+            { name: "Cefiro A32", basePrice: 650000, depreciation: 0.15 },
+            { name: "Cefiro A33", basePrice: 750000, depreciation: 0.15 },
             { name: "Bluebird", basePrice: 550000, depreciation: 0.16 },
             { name: "Maxima", basePrice: 900000, depreciation: 0.15 },
-            { name: "Skyline", basePrice: 1500000, depreciation: 0.13 }
+            { name: "Maxima 3.5", basePrice: 1050000, depreciation: 0.15 },
+            { name: "Skyline", basePrice: 1500000, depreciation: 0.13 },
+            { name: "Skyline 350GT", basePrice: 1650000, depreciation: 0.13 },
+            { name: "Primera", basePrice: 650000, depreciation: 0.15 },
+            { name: "Sunny", basePrice: 450000, depreciation: 0.16 },
+            { name: "Silvia", basePrice: 1200000, depreciation: 0.13 },
+            { name: "Silvia S15", basePrice: 1500000, depreciation: 0.12 },
+            { name: "180SX", basePrice: 1100000, depreciation: 0.13 },
+            { name: "240SX", basePrice: 1000000, depreciation: 0.13 }
         ]
     },
 
