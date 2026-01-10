@@ -1917,20 +1917,67 @@ const carDatabase = {
     // ========== 英國品牌（新增）==========
     "MG": {
         models: [
-            // HS系列
+            // ========== HS 系列 (中型SUV) ==========
             { name: "HS", basePrice: 939000, depreciation: 0.16 },
+            { name: "HS 1.5T", basePrice: 899000, depreciation: 0.16 },
+            { name: "HS 2.0T", basePrice: 999000, depreciation: 0.16 },
+            { name: "HS 豪華版", basePrice: 959000, depreciation: 0.16 },
+            { name: "HS 旗艦版", basePrice: 1029000, depreciation: 0.16 },
+            { name: "HS PHEV", basePrice: 1199000, depreciation: 0.17 },
+            { name: "HS PHEV 插電混動", basePrice: 1199000, depreciation: 0.17 },
 
-            // ZS系列
+            // ========== ZS 系列 (小型SUV) ==========
             { name: "ZS", basePrice: 769000, depreciation: 0.16 },
+            { name: "ZS 1.5", basePrice: 729000, depreciation: 0.16 },
+            { name: "ZS 豪華版", basePrice: 789000, depreciation: 0.16 },
+            { name: "ZS 旗艦版", basePrice: 849000, depreciation: 0.16 },
+            { name: "ZS EV", basePrice: 1099000, depreciation: 0.17 },
+            { name: "ZS EV 純電動", basePrice: 1099000, depreciation: 0.17 },
+            { name: "ZS EV 長程版", basePrice: 1199000, depreciation: 0.17 },
 
-            // MG4電動車
+            // ========== MG4 EV 電動車系列 ==========
             { name: "MG4", basePrice: 1189000, depreciation: 0.17 },
+            { name: "MG4 EV", basePrice: 1189000, depreciation: 0.17 },
+            { name: "MG4 EV 純電動", basePrice: 1189000, depreciation: 0.17 },
+            { name: "MG4 EV 標準版", basePrice: 1089000, depreciation: 0.17 },
+            { name: "MG4 EV 長程版", basePrice: 1289000, depreciation: 0.17 },
+            { name: "MG4 EV 旗艦版", basePrice: 1389000, depreciation: 0.17 },
+            { name: "MG4 EV XPOWER", basePrice: 1489000, depreciation: 0.17 },
+            { name: "MG4 XPOWER", basePrice: 1489000, depreciation: 0.17 },
 
-            // MG5
+            // ========== MG5 系列 (轎車/旅行車) ==========
             { name: "MG5", basePrice: 1085000, depreciation: 0.16 },
+            { name: "MG5 1.5T", basePrice: 989000, depreciation: 0.16 },
+            { name: "MG5 豪華版", basePrice: 1059000, depreciation: 0.16 },
+            { name: "MG5 旗艦版", basePrice: 1129000, depreciation: 0.16 },
+            { name: "MG5 EV", basePrice: 1199000, depreciation: 0.17 },
+            { name: "MG5 EV 純電動", basePrice: 1199000, depreciation: 0.17 },
 
-            // GS50 Plus
-            { name: "GS50 Plus", basePrice: 1085000, depreciation: 0.16 }
+            // ========== G50 Plus / G10 MPV系列 ==========
+            { name: "G50 Plus", basePrice: 1085000, depreciation: 0.16 },
+            { name: "G50", basePrice: 999000, depreciation: 0.16 },
+            { name: "G50 Plus 豪華版", basePrice: 1129000, depreciation: 0.16 },
+            { name: "G50 Plus 旗艦版", basePrice: 1199000, depreciation: 0.16 },
+            { name: "G10", basePrice: 1289000, depreciation: 0.16 },
+            { name: "G10 豪華版", basePrice: 1389000, depreciation: 0.16 },
+            { name: "G10 PLUS", basePrice: 1489000, depreciation: 0.16 },
+
+            // ========== MG6 / MG7 轎車系列 ==========
+            { name: "MG6", basePrice: 899000, depreciation: 0.16 },
+            { name: "MG6 1.5T", basePrice: 859000, depreciation: 0.16 },
+            { name: "MG6 2.0T", basePrice: 989000, depreciation: 0.16 },
+            { name: "MG7", basePrice: 1089000, depreciation: 0.16 },
+            { name: "MG7 2.0T", basePrice: 1189000, depreciation: 0.16 },
+
+            // ========== RX 系列 (SUV) ==========
+            { name: "RX5", basePrice: 859000, depreciation: 0.16 },
+            { name: "RX5 PLUS", basePrice: 959000, depreciation: 0.16 },
+            { name: "RX8", basePrice: 1189000, depreciation: 0.16 },
+
+            // ========== 其他電動車 ==========
+            { name: "Marvel R", basePrice: 1399000, depreciation: 0.17 },
+            { name: "Cyberster", basePrice: 1999000, depreciation: 0.17 },
+            { name: "Cyberster 電動跑車", basePrice: 1999000, depreciation: 0.17 }
         ]
     },
 
