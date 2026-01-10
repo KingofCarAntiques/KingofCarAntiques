@@ -100,11 +100,34 @@
                     <!-- 車輛資訊 -->
                     <div class="form-section-header">車輛資訊</div>
 
-                    <!-- 廠牌車款選擇 -->
+                    <!-- 廠牌車款選擇（含搜尋功能） -->
                     <div class="form-group">
                         <label>廠牌 <span class="required">*</span></label>
+                        <div class="car-search-container">
+                            <input type="text" id="carSearchInput" class="car-search-input" placeholder="🔍 輸入品牌或車款搜尋（如：BMW、Camry）" autocomplete="off">
+                            <div id="searchResultCount" class="search-result-count"></div>
+                        </div>
                         <select id="carBrand" required>
                             <option value="">請選擇廠牌車款</option>
+                        </select>
+                    </div>
+
+                    <!-- 車輛形式 -->
+                    <div class="form-group">
+                        <label>車輛形式 <span class="required">*</span></label>
+                        <select id="carType" required>
+                            <option value="">請選擇車輛形式</option>
+                            <option value="sedan">轎車 (Sedan)</option>
+                            <option value="suv">休旅車 (SUV)</option>
+                            <option value="mpv">多功能車 (MPV)</option>
+                            <option value="sports">跑車 (Sports Car)</option>
+                            <option value="coupe">雙門轎跑 (Coupe)</option>
+                            <option value="hatchback">掀背車 (Hatchback)</option>
+                            <option value="wagon">旅行車 (Wagon)</option>
+                            <option value="truck">貨卡 (Truck)</option>
+                            <option value="van">廂型車 (Van)</option>
+                            <option value="convertible">敞篷車 (Convertible)</option>
+                            <option value="other">其他</option>
                         </select>
                     </div>
 

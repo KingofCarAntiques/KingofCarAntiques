@@ -761,6 +761,7 @@ function hideQuickPriceSection() {
 document.addEventListener('DOMContentLoaded', function() {
     setupTabSwitching();
     initializeCarOptions(); // 初始化車款選項
+    setupCarSearch(); // 設置車款搜尋功能
     setupMainResetButton(); // 設置重新填寫按鈕
     setupQuickEstimateButton(); // 設置即時估價按鈕
     setupNoBrandHandler(); // 設置「沒有品牌」選項處理
@@ -956,6 +957,128 @@ function getSelectedEquipment() {
         return cb.nextElementSibling.textContent.trim();
     });
     return equipmentList;
+}
+
+// ==================== 車款搜尋功能 ====================
+
+// 儲存所有車款選項（用於搜尋篩選）
+let allCarOptions = [];
+
+function setupCarSearch() {
+    const searchInput = document.getElementById('carSearchInput');
+    const carBrandSelect = document.getElementById('carBrand');
+    const resultCount = document.getElementById('searchResultCount');
+
+    if (!searchInput || !carBrandSelect) {
+        console.error('❌ 找不到搜尋相關元素');
+        return;
+    }
+
+    // 儲存所有選項（排除第一個「請選擇」和最後一個「沒有品牌」）
+    allCarOptions = Array.from(carBrandSelect.options).slice(1, -1).map(option => ({
+        value: option.value,
+        text: option.textContent,
+        element: option
+    }));
+
+    console.log(`✅ 車款搜尋功能初始化完成，共 ${allCarOptions.length} 個車款`);
+
+    // 監聽搜尋輸入
+    searchInput.addEventListener('input', function() {
+        const keyword = this.value.trim().toLowerCase();
+        filterCarOptions(keyword, carBrandSelect, resultCount);
+    });
+
+    // 清空搜尋框時還原所有選項
+    searchInput.addEventListener('focus', function() {
+        if (this.value === '') {
+            showAllOptions(carBrandSelect, resultCount);
+        }
+    });
+
+    // 選擇車款後清空搜尋框
+    carBrandSelect.addEventListener('change', function() {
+        if (this.value && this.value !== 'no-brand') {
+            searchInput.value = '';
+            resultCount.classList.remove('active');
+        }
+    });
+}
+
+// 篩選車款選項
+function filterCarOptions(keyword, selectElement, resultCountElement) {
+    if (!keyword) {
+        showAllOptions(selectElement, resultCountElement);
+        return;
+    }
+
+    // 清空現有選項（保留第一個「請選擇」）
+    const firstOption = selectElement.options[0];
+    selectElement.innerHTML = '';
+    selectElement.appendChild(firstOption);
+
+    // 篩選匹配的選項
+    let matchCount = 0;
+    allCarOptions.forEach(option => {
+        const text = option.text.toLowerCase();
+        // 支援中英文、品牌名、車型名搜尋
+        if (text.includes(keyword) ||
+            text.replace(/\s/g, '').includes(keyword.replace(/\s/g, ''))) {
+            const newOption = document.createElement('option');
+            newOption.value = option.value;
+            newOption.textContent = option.text;
+            selectElement.appendChild(newOption);
+            matchCount++;
+        }
+    });
+
+    // 加回「沒有品牌」選項
+    const noBrandOption = document.createElement('option');
+    noBrandOption.value = 'no-brand';
+    noBrandOption.textContent = '── 沒有您的品牌車型？點此聯繫我們 ──';
+    selectElement.appendChild(noBrandOption);
+
+    // 更新結果計數
+    if (keyword) {
+        resultCountElement.textContent = `找到 ${matchCount} 款`;
+        resultCountElement.classList.add('active');
+
+        if (matchCount === 0) {
+            resultCountElement.textContent = '無結果';
+            resultCountElement.style.color = '#dc3545';
+        } else {
+            resultCountElement.style.color = '#17a2b8';
+        }
+    } else {
+        resultCountElement.classList.remove('active');
+    }
+
+    console.log(`🔍 搜尋 "${keyword}"：找到 ${matchCount} 款車`);
+}
+
+// 顯示所有選項
+function showAllOptions(selectElement, resultCountElement) {
+    // 清空現有選項
+    const firstOption = selectElement.options[0];
+    selectElement.innerHTML = '';
+    selectElement.appendChild(firstOption);
+
+    // 還原所有選項
+    allCarOptions.forEach(option => {
+        const newOption = document.createElement('option');
+        newOption.value = option.value;
+        newOption.textContent = option.text;
+        selectElement.appendChild(newOption);
+    });
+
+    // 加回「沒有品牌」選項
+    const noBrandOption = document.createElement('option');
+    noBrandOption.value = 'no-brand';
+    noBrandOption.textContent = '── 沒有您的品牌車型？點此聯繫我們 ──';
+    selectElement.appendChild(noBrandOption);
+
+    // 隱藏結果計數
+    resultCountElement.classList.remove('active');
 }
 
 // ==================== 處理「沒有品牌」選項 ====================
