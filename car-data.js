@@ -1733,7 +1733,25 @@ const carDatabase = {
             { name: "720S", basePrice: 16200000, depreciation: 0.15 },
             { name: "765LT", basePrice: 25680000, depreciation: 0.14 },
             { name: "GT", basePrice: 12600000, depreciation: 0.15 },
-            { name: "Artura", basePrice: 13980000, depreciation: 0.15 }
+            { name: "Artura", basePrice: 13980000, depreciation: 0.15 },
+            // Sport 系列
+            { name: "540C Coupe", basePrice: 9200000, depreciation: 0.16 },
+            { name: "570S Spider", basePrice: 11500000, depreciation: 0.16 },
+            { name: "570GT", basePrice: 11200000, depreciation: 0.16 },
+            { name: "600LT Spider", basePrice: 14500000, depreciation: 0.15 },
+            // Super 系列
+            { name: "650S Spider", basePrice: 16000000, depreciation: 0.15 },
+            { name: "675LT", basePrice: 18500000, depreciation: 0.15 },
+            { name: "675LT Spider", basePrice: 19500000, depreciation: 0.15 },
+            { name: "720S Spider", basePrice: 17500000, depreciation: 0.15 },
+            { name: "750S", basePrice: 18800000, depreciation: 0.14 },
+            { name: "750S Spider", basePrice: 19800000, depreciation: 0.14 },
+            { name: "765LT Spider", basePrice: 27000000, depreciation: 0.14 },
+            // Ultimate 系列
+            { name: "P1", basePrice: 55000000, depreciation: 0.12 },
+            { name: "Senna", basePrice: 45000000, depreciation: 0.12 },
+            { name: "Speedtail", basePrice: 75000000, depreciation: 0.12 },
+            { name: "Elva", basePrice: 60000000, depreciation: 0.12 }
         ]
     },
 
