@@ -1726,7 +1726,50 @@ const carDatabase = {
             { name: "Model 3", basePrice: 1800000, depreciation: 0.16 },
             { name: "Model Y", basePrice: 2100000, depreciation: 0.16 },
             { name: "Model S", basePrice: 3500000, depreciation: 0.15 },
-            { name: "Model X", basePrice: 4000000, depreciation: 0.15 }
+            { name: "Model X", basePrice: 4000000, depreciation: 0.15 },
+            // ========== Model 3 系列 ==========
+            { name: "Model 3 Standard Range", basePrice: 1650000, depreciation: 0.16 },
+            { name: "Model 3 Long Range", basePrice: 1950000, depreciation: 0.16 },
+            { name: "Model 3 Performance", basePrice: 2200000, depreciation: 0.15 },
+            { name: "Model 3 Highland", basePrice: 1800000, depreciation: 0.15 },
+            { name: "Model 3 Highland Long Range", basePrice: 2100000, depreciation: 0.15 },
+            { name: "Model 3 Highland Performance", basePrice: 2350000, depreciation: 0.15 },
+            // ========== Model Y 系列 ==========
+            { name: "Model Y Standard Range", basePrice: 1950000, depreciation: 0.16 },
+            { name: "Model Y Long Range", basePrice: 2300000, depreciation: 0.16 },
+            { name: "Model Y Performance", basePrice: 2550000, depreciation: 0.15 },
+            // ========== Model S 系列 ==========
+            { name: "Model S 75D", basePrice: 3200000, depreciation: 0.16 },
+            { name: "Model S 90D", basePrice: 3500000, depreciation: 0.16 },
+            { name: "Model S 100D", basePrice: 3800000, depreciation: 0.15 },
+            { name: "Model S P85D", basePrice: 3600000, depreciation: 0.16 },
+            { name: "Model S P90D", basePrice: 3900000, depreciation: 0.15 },
+            { name: "Model S P100D", basePrice: 4500000, depreciation: 0.15 },
+            { name: "Model S Long Range", basePrice: 3800000, depreciation: 0.15 },
+            { name: "Model S Plaid", basePrice: 4800000, depreciation: 0.14 },
+            { name: "Model S 小改款", basePrice: 4000000, depreciation: 0.15 },
+            { name: "Model S 小改款 Long Range", basePrice: 4200000, depreciation: 0.15 },
+            { name: "Model S 小改款 Plaid", basePrice: 5200000, depreciation: 0.14 },
+            // ========== Model X 系列 ==========
+            { name: "Model X 75D", basePrice: 3800000, depreciation: 0.16 },
+            { name: "Model X 90D", basePrice: 4100000, depreciation: 0.16 },
+            { name: "Model X 100D", basePrice: 4500000, depreciation: 0.15 },
+            { name: "Model X P90D", basePrice: 4600000, depreciation: 0.15 },
+            { name: "Model X P100D", basePrice: 5200000, depreciation: 0.15 },
+            { name: "Model X Long Range", basePrice: 4300000, depreciation: 0.15 },
+            { name: "Model X Plaid", basePrice: 5500000, depreciation: 0.14 },
+            { name: "Model X 小改款", basePrice: 4500000, depreciation: 0.15 },
+            { name: "Model X 小改款 Long Range", basePrice: 4800000, depreciation: 0.15 },
+            { name: "Model X 小改款 Plaid", basePrice: 5800000, depreciation: 0.14 },
+            // ========== Cybertruck ==========
+            { name: "Cybertruck", basePrice: 3500000, depreciation: 0.15 },
+            { name: "Cybertruck AWD", basePrice: 4000000, depreciation: 0.15 },
+            { name: "Cybertruck Cyberbeast", basePrice: 4800000, depreciation: 0.14 },
+            // ========== Roadster ==========
+            { name: "Roadster", basePrice: 2500000, depreciation: 0.14 },
+            { name: "Roadster 2.0", basePrice: 2800000, depreciation: 0.14 },
+            { name: "Roadster 2.5", basePrice: 3000000, depreciation: 0.14 },
+            { name: "New Roadster", basePrice: 8000000, depreciation: 0.12 }
         ]
     },
 
