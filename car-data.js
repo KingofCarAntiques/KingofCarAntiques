@@ -815,7 +815,25 @@ const carDatabase = {
             { name: "SF90 Stradale", basePrice: 25000000, depreciation: 0.13 },
             { name: "296 GTB", basePrice: 18000000, depreciation: 0.14 },
             { name: "812 Superfast", basePrice: 20000000, depreciation: 0.14 },
-            { name: "GTC4Lusso", basePrice: 18000000, depreciation: 0.15 }
+            { name: "GTC4Lusso", basePrice: 18000000, depreciation: 0.15 },
+            { name: "GTC4Lusso T", basePrice: 16000000, depreciation: 0.15 },
+            // 新增經典車型
+            { name: "F430", basePrice: 8800000, depreciation: 0.16 },
+            { name: "F430 Spider", basePrice: 9500000, depreciation: 0.16 },
+            { name: "599 GTB Fiorano", basePrice: 12000000, depreciation: 0.16 },
+            { name: "612 Scaglietti", basePrice: 9500000, depreciation: 0.16 },
+            { name: "575M Maranello", basePrice: 8500000, depreciation: 0.17 },
+            // 新增 Spider/GTS 版本
+            { name: "458 Spider", basePrice: 14500000, depreciation: 0.15 },
+            { name: "488 Spider", basePrice: 15500000, depreciation: 0.15 },
+            { name: "488 Pista", basePrice: 18000000, depreciation: 0.14 },
+            { name: "SF90 Spider", basePrice: 27000000, depreciation: 0.13 },
+            { name: "296 GTS", basePrice: 19500000, depreciation: 0.14 },
+            { name: "812 GTS", basePrice: 22000000, depreciation: 0.14 },
+            { name: "Roma Spider", basePrice: 13500000, depreciation: 0.15 },
+            { name: "Portofino M", basePrice: 12000000, depreciation: 0.15 },
+            // SUV
+            { name: "Purosangue", basePrice: 28000000, depreciation: 0.13 }
         ]
     },
 
