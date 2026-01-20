@@ -765,6 +765,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupMainResetButton(); // 設置重新填寫按鈕
     setupQuickEstimateButton(); // 設置即時估價按鈕
     setupNoBrandHandler(); // 設置「沒有品牌」選項處理
+    updateLastUpdateDate(); // 更新底部的「最後更新日期」
 });
 
 
@@ -1125,3 +1126,17 @@ function setupNoBrandHandler() {
     console.log('✅ 「沒有品牌」選項處理已設置');
 }
 
+
+// ==================== 更新底部的「最後更新日期」 ====================
+
+function updateLastUpdateDate() {
+    const lastUpdateElement = document.getElementById('lastUpdateDate');
+    if (lastUpdateElement && typeof carDataInfo !== 'undefined') {
+        lastUpdateElement.textContent = carDataInfo.lastUpdate;
+        console.log('✅ 已更新「最後更新日期」為:', carDataInfo.lastUpdate);
+    } else if (lastUpdateElement) {
+        // 如果 carDataInfo 不存在，顯示預設值
+        lastUpdateElement.textContent = '每月更新';
+        console.log('⚠️ carDataInfo 未定義，使用預設值');
+    }
+}

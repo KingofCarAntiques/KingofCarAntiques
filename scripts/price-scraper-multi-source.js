@@ -522,6 +522,7 @@ async function updateCarDataFile(carDatabase, results) {
         // 更新日期
         const now = new Date();
         const updateDate = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
+        const updateDateISO = now.toISOString().split('T')[0];
 
         content = content.replace(
             /\/\/ 📅 最後更新：.*/,
@@ -532,6 +533,18 @@ async function updateCarDataFile(carDatabase, results) {
         content = content.replace(
             /\/\/ 📊 數據來源：.*/,
             `// 📊 數據來源：8891汽車網、ABC好車網、市場行情（自動更新）`
+        );
+
+        // 更新 carDataInfo（供網頁自動讀取日期）
+        content = content.replace(
+            /const carDataInfo = \{[\s\S]*?\};/,
+            `const carDataInfo = {
+    lastUpdate: "${updateDate}",
+    lastUpdateDate: "${updateDateISO}",
+    dataSource: "8891汽車網、ABC好車網、市場行情",
+    totalBrands: ${Object.keys(carDatabase).length},
+    totalModels: ${Object.values(carDatabase).reduce((sum, brand) => sum + (brand.models ? brand.models.length : 0), 0)}
+};`
         );
 
         // 替換 carDatabase 物件
