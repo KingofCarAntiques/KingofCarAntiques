@@ -975,12 +975,21 @@ function setupCarSearch() {
         return;
     }
 
-    // 儲存所有選項（排除第一個「請選擇」和最後一個「沒有品牌」）
-    allCarOptions = Array.from(carBrandSelect.options).slice(1, -1).map(option => ({
-        value: option.value,
-        text: option.textContent,
-        element: option
-    }));
+    // 直接從 carDatabase 建立搜尋選項陣列
+    allCarOptions = [];
+    if (typeof carDatabase !== 'undefined') {
+        Object.keys(carDatabase).forEach(function(brand) {
+            var brandData = carDatabase[brand];
+            if (brandData.models && Array.isArray(brandData.models)) {
+                brandData.models.forEach(function(model) {
+                    allCarOptions.push({
+                        value: JSON.stringify({brand: brand, model: model.name, type: model.type || 'N/A', basePrice: model.basePrice, depreciation: model.depreciation}),
+                        text: brand + ' - ' + model.name
+                    });
+                });
+            }
+        });
+    }
 
     console.log(`✅ 車款搜尋功能初始化完成，共 ${allCarOptions.length} 個車款`);
 
