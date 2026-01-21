@@ -1,11 +1,11 @@
 // ===============================================
 // 秒估車 - 車款價格資料庫（完整版）
 // ===============================================
-// 📅 最後更新：2026年1月10日
+// 📅 最後更新：2026年1月21日
 // 📊 數據來源：石貳全中古車行情表第460期 完整版
 // 🔄 更新頻率：每月更新
-// 📋 支援品牌：51個品牌
-// 📋 支援車款：850+ 款
+// 📋 支援品牌：63個品牌
+// 📋 支援車款：1050+ 款
 //
 // 🆕 2026年1月10日 更新：
 //    ✅ Toyota豐田：新增 Vios、C-HR、Highlander、Land Cruiser、
@@ -63,11 +63,11 @@
 
 // 資料庫更新資訊（供網頁自動讀取）
 const carDataInfo = {
-    lastUpdate: "2026年1月10日",
-    lastUpdateDate: "2026-01-10",
+    lastUpdate: "2026年1月21日",
+    lastUpdateDate: "2026-01-21",
     dataSource: "8891汽車網、行將拍賣、市場行情",
-    totalBrands: 51,
-    totalModels: 850
+    totalBrands: 63,
+    totalModels: 1050
 };
 // 車款資料庫
 const carDatabase = {
@@ -3440,6 +3440,214 @@ const carDatabase = {
 
             // J-Space系列
             { name: "J-Space", basePrice: 950000, depreciation: 0.16 }
+        ]
+    }
+
+
+    "Genesis捷恩斯": {
+        models: [
+            { name: "G70", basePrice: 1980000, depreciation: 0.18 },
+            { name: "G70 3.3T", basePrice: 2380000, depreciation: 0.18 },
+            { name: "G80", basePrice: 2580000, depreciation: 0.17 },
+            { name: "G80 2.5T", basePrice: 2380000, depreciation: 0.17 },
+            { name: "G80 3.5T", basePrice: 2980000, depreciation: 0.17 },
+            { name: "G80 Electrified 電動版", basePrice: 3280000, depreciation: 0.18 },
+            { name: "G90", basePrice: 4580000, depreciation: 0.16 },
+            { name: "G90 3.5T", basePrice: 4280000, depreciation: 0.16 },
+            { name: "G90 Long 長軸版", basePrice: 5280000, depreciation: 0.16 },
+            { name: "GV60", basePrice: 1980000, depreciation: 0.18 },
+            { name: "GV60 Performance", basePrice: 2380000, depreciation: 0.18 },
+            { name: "GV70", basePrice: 2180000, depreciation: 0.17 },
+            { name: "GV70 2.5T", basePrice: 2080000, depreciation: 0.17 },
+            { name: "GV70 3.5T", basePrice: 2680000, depreciation: 0.17 },
+            { name: "GV70 Electrified 電動版", basePrice: 2880000, depreciation: 0.18 },
+            { name: "GV80", basePrice: 2880000, depreciation: 0.17 },
+            { name: "GV80 2.5T", basePrice: 2588000, depreciation: 0.17 },
+            { name: "GV80 3.5T", basePrice: 3380000, depreciation: 0.17 },
+            { name: "GV80 Coupe", basePrice: 3180000, depreciation: 0.17 }
+        ]
+    },
+
+    "Chevrolet雪佛蘭": {
+        models: [
+            { name: "Camaro", basePrice: 1880000, depreciation: 0.18 },
+            { name: "Camaro 2.0T", basePrice: 1680000, depreciation: 0.18 },
+            { name: "Camaro SS", basePrice: 2380000, depreciation: 0.17 },
+            { name: "Camaro ZL1", basePrice: 3280000, depreciation: 0.16 },
+            { name: "Camaro Convertible 敞篷", basePrice: 2080000, depreciation: 0.18 },
+            { name: "Corvette", basePrice: 3580000, depreciation: 0.16 },
+            { name: "Corvette Stingray", basePrice: 3880000, depreciation: 0.16 },
+            { name: "Corvette C8", basePrice: 4280000, depreciation: 0.15 },
+            { name: "Corvette C8 Convertible", basePrice: 4680000, depreciation: 0.15 },
+            { name: "Corvette Z06", basePrice: 5880000, depreciation: 0.15 },
+            { name: "Corvette C7 Z06", basePrice: 3980000, depreciation: 0.16 },
+            { name: "Corvette E-Ray", basePrice: 5280000, depreciation: 0.15 },
+            { name: "Tahoe", basePrice: 2980000, depreciation: 0.17 },
+            { name: "Suburban", basePrice: 3580000, depreciation: 0.17 },
+            { name: "Traverse", basePrice: 1980000, depreciation: 0.18 },
+            { name: "Equinox", basePrice: 1280000, depreciation: 0.19 },
+            { name: "Blazer", basePrice: 1680000, depreciation: 0.18 },
+            { name: "Trailblazer", basePrice: 1080000, depreciation: 0.19 },
+            { name: "Silverado", basePrice: 2280000, depreciation: 0.17 },
+            { name: "Silverado 1500", basePrice: 2480000, depreciation: 0.17 },
+            { name: "Colorado", basePrice: 1580000, depreciation: 0.18 },
+            { name: "Malibu", basePrice: 1180000, depreciation: 0.19 },
+            { name: "Impala", basePrice: 1380000, depreciation: 0.19 },
+            { name: "Cruze", basePrice: 880000, depreciation: 0.20 }
+        ]
+    },
+
+    "Dodge道奇": {
+        models: [
+            { name: "Challenger", basePrice: 1880000, depreciation: 0.18 },
+            { name: "Challenger R/T", basePrice: 2180000, depreciation: 0.17 },
+            { name: "Challenger SRT", basePrice: 2880000, depreciation: 0.17 },
+            { name: "Challenger SRT Hellcat", basePrice: 3680000, depreciation: 0.16 },
+            { name: "Challenger SRT Demon", basePrice: 5280000, depreciation: 0.15 },
+            { name: "Charger", basePrice: 1680000, depreciation: 0.18 },
+            { name: "Charger R/T", basePrice: 1980000, depreciation: 0.17 },
+            { name: "Charger SRT", basePrice: 2680000, depreciation: 0.17 },
+            { name: "Charger SRT Hellcat", basePrice: 3480000, depreciation: 0.16 },
+            { name: "Durango", basePrice: 2180000, depreciation: 0.18 },
+            { name: "Durango R/T", basePrice: 2480000, depreciation: 0.17 },
+            { name: "Durango SRT", basePrice: 3180000, depreciation: 0.17 },
+            { name: "Durango SRT Hellcat", basePrice: 4280000, depreciation: 0.16 },
+            { name: "Ram 1500", basePrice: 2080000, depreciation: 0.17 },
+            { name: "Ram 1500 TRX", basePrice: 3880000, depreciation: 0.16 },
+            { name: "Ram 2500", basePrice: 2580000, depreciation: 0.17 }
+        ]
+    },
+
+    "Chrysler克萊斯勒": {
+        models: [
+            { name: "300", basePrice: 1680000, depreciation: 0.19 },
+            { name: "300C", basePrice: 1980000, depreciation: 0.18 },
+            { name: "300S", basePrice: 1880000, depreciation: 0.18 },
+            { name: "300 SRT8", basePrice: 2480000, depreciation: 0.17 },
+            { name: "Pacifica", basePrice: 1880000, depreciation: 0.18 },
+            { name: "Pacifica Hybrid", basePrice: 2180000, depreciation: 0.18 },
+            { name: "PT Cruiser", basePrice: 680000, depreciation: 0.20 },
+            { name: "Crossfire", basePrice: 980000, depreciation: 0.19 },
+            { name: "Town & Country", basePrice: 1280000, depreciation: 0.19 }
+        ]
+    },
+
+    "Lincoln林肯": {
+        models: [
+            { name: "Navigator", basePrice: 3880000, depreciation: 0.17 },
+            { name: "Navigator L 長軸版", basePrice: 4280000, depreciation: 0.17 },
+            { name: "Navigator Reserve", basePrice: 4080000, depreciation: 0.17 },
+            { name: "Navigator Black Label", basePrice: 4880000, depreciation: 0.16 },
+            { name: "Aviator", basePrice: 2680000, depreciation: 0.18 },
+            { name: "Aviator Reserve", basePrice: 2980000, depreciation: 0.17 },
+            { name: "Aviator Grand Touring PHEV", basePrice: 3280000, depreciation: 0.17 },
+            { name: "Nautilus", basePrice: 2080000, depreciation: 0.18 },
+            { name: "Nautilus Reserve", basePrice: 2380000, depreciation: 0.18 },
+            { name: "Corsair", basePrice: 1680000, depreciation: 0.18 },
+            { name: "Corsair Reserve", basePrice: 1880000, depreciation: 0.18 },
+            { name: "Corsair Grand Touring PHEV", basePrice: 2180000, depreciation: 0.18 },
+            { name: "Continental", basePrice: 2280000, depreciation: 0.18 },
+            { name: "Continental Reserve", basePrice: 2580000, depreciation: 0.18 },
+            { name: "MKZ", basePrice: 1480000, depreciation: 0.19 },
+            { name: "MKC", basePrice: 1380000, depreciation: 0.19 },
+            { name: "MKX", basePrice: 1580000, depreciation: 0.19 }
+        ]
+    },
+
+    "Acura極品": {
+        models: [
+            { name: "MDX", basePrice: 2280000, depreciation: 0.18 },
+            { name: "MDX Type S", basePrice: 2880000, depreciation: 0.17 },
+            { name: "MDX A-Spec", basePrice: 2580000, depreciation: 0.17 },
+            { name: "RDX", basePrice: 1780000, depreciation: 0.18 },
+            { name: "RDX A-Spec", basePrice: 2080000, depreciation: 0.18 },
+            { name: "TLX", basePrice: 1680000, depreciation: 0.18 },
+            { name: "TLX Type S", basePrice: 2380000, depreciation: 0.17 },
+            { name: "TLX A-Spec", basePrice: 1980000, depreciation: 0.18 },
+            { name: "Integra", basePrice: 1480000, depreciation: 0.18 },
+            { name: "Integra Type S", basePrice: 1880000, depreciation: 0.17 },
+            { name: "NSX", basePrice: 8880000, depreciation: 0.15 },
+            { name: "NSX Type S", basePrice: 9980000, depreciation: 0.15 },
+            { name: "ILX", basePrice: 1280000, depreciation: 0.19 },
+            { name: "RLX", basePrice: 1880000, depreciation: 0.18 },
+            { name: "TSX", basePrice: 1180000, depreciation: 0.19 },
+            { name: "TL", basePrice: 1080000, depreciation: 0.19 },
+            { name: "Legend", basePrice: 1480000, depreciation: 0.19 }
+        ]
+    },
+
+    "Buick別克": {
+        models: [
+            { name: "Enclave", basePrice: 1980000, depreciation: 0.18 },
+            { name: "Enclave Avenir", basePrice: 2380000, depreciation: 0.18 },
+            { name: "Envision", basePrice: 1480000, depreciation: 0.19 },
+            { name: "Envision Avenir", basePrice: 1780000, depreciation: 0.18 },
+            { name: "Encore", basePrice: 980000, depreciation: 0.19 },
+            { name: "Encore GX", basePrice: 1180000, depreciation: 0.19 },
+            { name: "LaCrosse", basePrice: 1380000, depreciation: 0.19 },
+            { name: "Regal", basePrice: 1280000, depreciation: 0.19 },
+            { name: "Verano", basePrice: 980000, depreciation: 0.20 },
+            { name: "Park Avenue", basePrice: 880000, depreciation: 0.20 },
+            { name: "Lucerne", basePrice: 780000, depreciation: 0.20 }
+        ]
+    },
+
+    "Renault雷諾": {
+        models: [
+            { name: "Clio", basePrice: 780000, depreciation: 0.19 },
+            { name: "Clio RS", basePrice: 1180000, depreciation: 0.18 },
+            { name: "Megane", basePrice: 980000, depreciation: 0.19 },
+            { name: "Megane RS", basePrice: 1580000, depreciation: 0.18 },
+            { name: "Megane E-Tech 電動版", basePrice: 1680000, depreciation: 0.18 },
+            { name: "Captur", basePrice: 880000, depreciation: 0.19 },
+            { name: "Kadjar", basePrice: 1080000, depreciation: 0.19 },
+            { name: "Koleos", basePrice: 1280000, depreciation: 0.18 },
+            { name: "Austral", basePrice: 1380000, depreciation: 0.18 },
+            { name: "Zoe", basePrice: 1080000, depreciation: 0.19 },
+            { name: "Alpine A110", basePrice: 2880000, depreciation: 0.17 },
+            { name: "Alpine A110 S", basePrice: 3280000, depreciation: 0.17 }
+        ]
+    },
+
+    "DS": {
+        models: [
+            { name: "DS 3", basePrice: 1280000, depreciation: 0.19 },
+            { name: "DS 3 Crossback", basePrice: 1480000, depreciation: 0.18 },
+            { name: "DS 3 E-Tense 電動版", basePrice: 1680000, depreciation: 0.18 },
+            { name: "DS 4", basePrice: 1580000, depreciation: 0.18 },
+            { name: "DS 4 Cross", basePrice: 1680000, depreciation: 0.18 },
+            { name: "DS 7", basePrice: 1880000, depreciation: 0.17 },
+            { name: "DS 7 Crossback", basePrice: 1980000, depreciation: 0.17 },
+            { name: "DS 7 E-Tense 4x4", basePrice: 2380000, depreciation: 0.17 },
+            { name: "DS 9", basePrice: 2180000, depreciation: 0.17 },
+            { name: "DS 9 E-Tense", basePrice: 2580000, depreciation: 0.17 }
+        ]
+    },
+
+    "Seat西雅特": {
+        models: [
+            { name: "Ibiza", basePrice: 780000, depreciation: 0.19 },
+            { name: "Ibiza FR", basePrice: 980000, depreciation: 0.19 },
+            { name: "Leon", basePrice: 980000, depreciation: 0.19 },
+            { name: "Leon FR", basePrice: 1180000, depreciation: 0.18 },
+            { name: "Leon Cupra", basePrice: 1580000, depreciation: 0.18 },
+            { name: "Arona", basePrice: 880000, depreciation: 0.19 },
+            { name: "Ateca", basePrice: 1180000, depreciation: 0.18 },
+            { name: "Ateca FR", basePrice: 1380000, depreciation: 0.18 },
+            { name: "Tarraco", basePrice: 1480000, depreciation: 0.18 }
+        ]
+    },
+
+    "Cupra酷派": {
+        models: [
+            { name: "Formentor", basePrice: 1680000, depreciation: 0.18 },
+            { name: "Formentor VZ", basePrice: 1980000, depreciation: 0.17 },
+            { name: "Formentor VZ5", basePrice: 2580000, depreciation: 0.17 },
+            { name: "Leon", basePrice: 1480000, depreciation: 0.18 },
+            { name: "Leon VZ", basePrice: 1780000, depreciation: 0.18 },
+            { name: "Born", basePrice: 1580000, depreciation: 0.18 },
+            { name: "Tavascan", basePrice: 1980000, depreciation: 0.18 },
+            { name: "Ateca", basePrice: 1580000, depreciation: 0.18 }
         ]
     }
 };
