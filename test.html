@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>測試車款載入</title>
+</head>
+<body>
+    <h1>測試車款載入</h1>
+    <select id="carBrand">
+        <option value="">請選擇廠牌車款</option>
+    </select>
+    <div id="result"></div>
+
+    <script src="car-data.js"></script>
+    <script>
+        window.onload = function() {
+            var resultDiv = document.getElementById('result');
+            var select = document.getElementById('carBrand');
+
+            if (typeof carDatabase === 'undefined') {
+                resultDiv.innerHTML = '<p style="color:red">錯誤：carDatabase 未定義</p>';
+                return;
+            }
+
+            var brands = Object.keys(carDatabase);
+            resultDiv.innerHTML = '<p style="color:green">成功載入 ' + brands.length + ' 個品牌</p>';
+
+            // 加入選項
+            brands.forEach(function(brand) {
+                var brandData = carDatabase[brand];
+                if (brandData.models) {
+                    brandData.models.forEach(function(model) {
+                        var option = document.createElement('option');
+                        option.value = brand + ' - ' + model.name;
+                        option.textContent = brand + ' - ' + model.name;
+                        select.appendChild(option);
+                    });
+                }
+            });
+
+            resultDiv.innerHTML += '<p>下拉選單已有 ' + (select.options.length - 1) + ' 個車款</p>';
+        };
+    </script>
+</body>
+</html>
