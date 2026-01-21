@@ -3651,36 +3651,3 @@ const carDatabase = {
         ]
     }
 };
-
-// 初始化車款選單
-function initCarSelect() {
-    const carSelect = document.getElementById('carBrand');
-
-    // 清空現有選項（保留第一個預設選項）
-    while (carSelect.options.length > 1) {
-        carSelect.remove(1);
-    }
-
-    // 添加所有車款
-    Object.keys(carDatabase).forEach(brand => {
-        const brandGroup = document.createElement('optgroup');
-        brandGroup.label = brand;
-
-        carDatabase[brand].models.forEach(model => {
-            const option = document.createElement('option');
-            option.value = JSON.stringify({
-                brand: brand,
-                model: model.name,
-                basePrice: model.basePrice,
-                depreciation: model.depreciation
-            });
-            option.textContent = `${brand} ${model.name}`;
-            brandGroup.appendChild(option);
-        });
-
-        carSelect.appendChild(brandGroup);
-    });
-}
-
-// 頁面載入時初始化
-document.addEventListener('DOMContentLoaded', initCarSelect);
