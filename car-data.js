@@ -2041,7 +2041,10 @@ const carDatabase = {
             { name: "300系列貨車 3.49噸", basePrice: 1044000, depreciation: 0.15 },
             { name: "300系列 XZU307L", basePrice: 1040000, depreciation: 0.15 },
             { name: "200系列 HKMEVR3", basePrice: 1190000, depreciation: 0.15 },
-            { name: "200系列貨車", basePrice: 1245000, depreciation: 0.15 }
+            { name: "200系列貨車", basePrice: 1245000, depreciation: 0.15 },
+            { name: "XZU600L 3.49噸貨車", basePrice: 1150000, depreciation: 0.14 },
+            { name: "XZU640L 5噸貨車", basePrice: 1380000, depreciation: 0.14 },
+            { name: "XZU650L 6.5噸貨車", basePrice: 1550000, depreciation: 0.14 }
         ]
     },
     "Hyundai現代": {
