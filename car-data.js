@@ -2790,7 +2790,7 @@ const carDatabase = {
             { name: "Leadca", basePrice: 806000, depreciation: 0.16 },
             { name: "J-Space", basePrice: 950000, depreciation: 0.16 }
         ]
-    }
+    },
     "Genesis捷恩斯": {
         models: [
             { name: "G70", basePrice: 1980000, depreciation: 0.18 },
