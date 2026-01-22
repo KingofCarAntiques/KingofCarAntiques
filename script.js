@@ -157,6 +157,8 @@ function handleFormSubmit(e) {
         'hatchback': '掀背車 (Hatchback)',
         'wagon': '旅行車 (Wagon)',
         'truck': '貨卡 (Truck)',
+        'truck-gas': '貨車汽油',
+        'truck-diesel': '貨車柴油',
         'van': '廂型車 (Van)',
         'convertible': '敞篷車 (Convertible)',
         'other': '其他'
