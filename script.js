@@ -995,7 +995,7 @@ function setupCarSearch() {
 
     // 監聽搜尋輸入
     searchInput.addEventListener('input', function() {
-        const keyword = this.value.trim().toLowerCase();
+        const keyword = this.value.trim();
         filterCarOptions(keyword, carBrandSelect, resultCount);
     });
 
@@ -1027,13 +1027,41 @@ function filterCarOptions(keyword, selectElement, resultCountElement) {
     selectElement.innerHTML = '';
     selectElement.appendChild(firstOption);
 
+    // 確保 allCarOptions 有資料
+    if (allCarOptions.length === 0) {
+        console.log('allCarOptions 為空，重新建立...');
+        if (typeof carDatabase !== 'undefined') {
+            Object.keys(carDatabase).forEach(function(brand) {
+                var brandData = carDatabase[brand];
+                if (brandData.models && Array.isArray(brandData.models)) {
+                    brandData.models.forEach(function(model) {
+                        allCarOptions.push({
+                            value: JSON.stringify({brand: brand, model: model.name, type: model.type || 'N/A', basePrice: model.basePrice, depreciation: model.depreciation}),
+                            text: brand + ' - ' + model.name
+                        });
+                    });
+                }
+            });
+        }
+        console.log('重新建立完成，共 ' + allCarOptions.length + ' 個車款');
+    }
+
+    // 關鍵字處理
+    const keywordLower = keyword.toLowerCase();
+    const keywordNoSpace = keyword.replace(/\s/g, '');
+
     // 篩選匹配的選項
     let matchCount = 0;
     allCarOptions.forEach(option => {
-        const text = option.text.toLowerCase();
-        // 支援中英文、品牌名、車型名搜尋
+        const text = option.text;
+        const textLower = text.toLowerCase();
+        const textNoSpace = text.replace(/\s/g, '');
+
+        // 支援多種搜尋方式
         if (text.includes(keyword) ||
-            text.replace(/\s/g, '').includes(keyword.replace(/\s/g, ''))) {
+            textLower.includes(keywordLower) ||
+            textNoSpace.includes(keywordNoSpace) ||
+            textNoSpace.toLowerCase().includes(keywordNoSpace.toLowerCase())) {
             const newOption = document.createElement('option');
             newOption.value = option.value;
             newOption.textContent = option.text;
