@@ -345,7 +345,19 @@ function calculateCarValue(carData, manufactureDate, mileage, carColor) {
 
     // 計算估價
     let estimatedPrice = basePrice * depreciation * mileageDepreciation;
-// 顏色調整（白/黑/銀色較保值）    let colorAdjustment = 1.0;    if (carColor === "white" || carColor === "black" || carColor === "silver") {        colorAdjustment = 1.05; // 保值色 +5%    } else if (carColor === "gray" || carColor === "blue") {        colorAdjustment = 1.0; // 一般色 0%    } else if (carColor === "red") {        colorAdjustment = 0.98; // 紅色 -2%    } else {        colorAdjustment = 0.95; // 其他色 -5%    }    estimatedPrice *= colorAdjustment;
+
+    // 顏色調整（白/黑/銀色較保值）
+    let colorAdjustment = 1.0;
+    if (carColor === "white" || carColor === "black" || carColor === "silver") {
+        colorAdjustment = 1.05; // 保值色 +5%
+    } else if (carColor === "gray" || carColor === "blue") {
+        colorAdjustment = 1.0; // 一般色 0%
+    } else if (carColor === "red") {
+        colorAdjustment = 0.98; // 紅色 -2%
+    } else {
+        colorAdjustment = 0.95; // 其他色 -5%
+    }
+    estimatedPrice *= colorAdjustment;
 
     // 確保最低價格
     estimatedPrice = Math.max(estimatedPrice, basePrice * 0.1);
