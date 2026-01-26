@@ -345,6 +345,25 @@
                         </select>
                     </div>
 
+                    <!-- 車輛照片上傳 -->
+                    <div class="form-section-header full-estimate-only">車輛照片（選填）</div>
+                    <div class="form-group full-estimate-only photo-upload-section">
+                        <label>上傳愛車照片 <span class="optional-tag">可提高估價準確度</span></label>
+                        <div class="photo-upload-hint">
+                            建議上傳：車頭、車尾、內裝、儀表板、行照（最多 6 張）
+                        </div>
+                        <div class="photo-upload-area" id="photoUploadArea">
+                            <div class="upload-placeholder" id="uploadPlaceholder">
+                                <span class="upload-icon">📷</span>
+                                <span class="upload-text">點擊或拖曳照片到此處</span>
+                                <span class="upload-formats">支援 JPG、PNG（每張最大 5MB）</span>
+                            </div>
+                            <input type="file" id="photoInput" multiple accept="image/jpeg,image/png,image/webp" style="display:none">
+                        </div>
+                        <div class="photo-preview-container" id="photoPreviewContainer"></div>
+                        <div class="photo-upload-status" id="photoUploadStatus"></div>
+                    </div>
+
                     <!-- 聯絡資訊 -->
                     <div class="form-section-header full-estimate-only">聯絡資訊</div>
 
