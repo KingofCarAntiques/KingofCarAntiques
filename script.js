@@ -1191,3 +1191,220 @@ function updateLastUpdateDate() {
         console.log('⚠️ carDataInfo 未定義，使用預設值');
     }
 }
+
+// ==================== 熱門車款排行功能 ====================
+
+// 預設熱門車款（基於台灣市場行情）
+const defaultPopularCars = [
+    { brand: 'Toyota豐田', model: 'Camry', count: 156 },
+    { brand: 'Mercedes-Benz賓士', model: 'C300', count: 142 },
+    { brand: 'BMW寶馬', model: '3-Series 320i', count: 138 },
+    { brand: 'Honda本田', model: 'CR-V', count: 125 },
+    { brand: 'Toyota豐田', model: 'RAV4', count: 118 },
+    { brand: 'Lexus凌志', model: 'ES', count: 105 },
+    { brand: 'Mercedes-Benz賓士', model: 'GLC', count: 98 },
+    { brand: 'BMW寶馬', model: 'X3', count: 92 },
+    { brand: 'Audi奧迪', model: 'A4', count: 87 },
+    { brand: 'Porsche保時捷', model: 'Cayenne', count: 76 }
+];
+
+// 初始化熱門車款功能
+function initPopularCars() {
+    const popularCarsList = document.getElementById('popularCarsList');
+    if (!popularCarsList) {
+        console.warn('⚠️ 找不到熱門車款列表元素');
+        return;
+    }
+
+    // 從 localStorage 讀取使用記錄
+    let carSelectionHistory = getCarSelectionHistory();
+
+    // 合併預設數據和實際使用數據
+    const popularCars = mergePopularCarsData(carSelectionHistory);
+
+    // 渲染熱門車款列表
+    renderPopularCars(popularCars, popularCarsList);
+
+    console.log('✅ 熱門車款排行已初始化');
+}
+
+// 取得車款選擇歷史記錄
+function getCarSelectionHistory() {
+    try {
+        const history = localStorage.getItem('carSelectionHistory');
+        return history ? JSON.parse(history) : {};
+    } catch (e) {
+        console.error('讀取車款歷史記錄失敗:', e);
+        return {};
+    }
+}
+
+// 記錄車款選擇
+function recordCarSelection(brand, model) {
+    try {
+        let history = getCarSelectionHistory();
+        const key = `${brand}|${model}`;
+
+        if (history[key]) {
+            history[key].count++;
+            history[key].lastSelected = Date.now();
+        } else {
+            history[key] = {
+                brand: brand,
+                model: model,
+                count: 1,
+                lastSelected: Date.now()
+            };
+        }
+
+        localStorage.setItem('carSelectionHistory', JSON.stringify(history));
+        console.log('📊 已記錄車款選擇:', brand, model);
+
+        // 更新熱門車款顯示
+        setTimeout(() => initPopularCars(), 100);
+    } catch (e) {
+        console.error('記錄車款選擇失敗:', e);
+    }
+}
+
+// 合併預設數據和實際使用數據
+function mergePopularCarsData(userHistory) {
+    const merged = {};
+
+    // 加入預設數據
+    defaultPopularCars.forEach(car => {
+        const key = `${car.brand}|${car.model}`;
+        merged[key] = {
+            brand: car.brand,
+            model: car.model,
+            count: car.count,
+            isDefault: true
+        };
+    });
+
+    // 加入/更新用戶實際選擇數據（權重更高）
+    Object.values(userHistory).forEach(car => {
+        const key = `${car.brand}|${car.model}`;
+        if (merged[key]) {
+            // 實際使用數據權重 x3
+            merged[key].count += car.count * 3;
+            merged[key].isDefault = false;
+        } else {
+            merged[key] = {
+                brand: car.brand,
+                model: car.model,
+                count: car.count * 3,
+                isDefault: false
+            };
+        }
+    });
+
+    // 轉為陣列並排序（取前 10 名）
+    return Object.values(merged)
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 10);
+}
+
+// 渲染熱門車款列表
+function renderPopularCars(cars, container) {
+    container.innerHTML = '';
+
+    cars.forEach((car, index) => {
+        const item = document.createElement('div');
+        item.className = 'popular-car-item';
+        item.setAttribute('data-brand', car.brand);
+        item.setAttribute('data-model', car.model);
+
+        // 簡化品牌名稱顯示
+        const shortBrand = car.brand.replace(/[a-zA-Z\-]/g, '').trim() || car.brand.split(/[^a-zA-Z]/)[0];
+
+        item.innerHTML = `
+            <span class="popular-car-rank">${index + 1}</span>
+            <span class="popular-car-name">${shortBrand} ${car.model}</span>
+        `;
+
+        // 點擊快速選擇
+        item.addEventListener('click', () => {
+            selectPopularCar(car.brand, car.model);
+        });
+
+        container.appendChild(item);
+    });
+}
+
+// 快速選擇熱門車款
+function selectPopularCar(brand, model) {
+    const carBrandSelect = document.getElementById('carBrand');
+    const searchInput = document.getElementById('carSearchInput');
+
+    if (!carBrandSelect) {
+        console.error('找不到車款選單');
+        return;
+    }
+
+    // 在選項中尋找對應的車款
+    const options = carBrandSelect.options;
+    let found = false;
+
+    for (let i = 0; i < options.length; i++) {
+        const optionText = options[i].textContent;
+        if (optionText.includes(brand) && optionText.includes(model)) {
+            carBrandSelect.selectedIndex = i;
+            found = true;
+
+            // 清空搜尋框
+            if (searchInput) {
+                searchInput.value = '';
+            }
+
+            // 觸發 change 事件
+            carBrandSelect.dispatchEvent(new Event('change'));
+
+            // 記錄選擇
+            recordCarSelection(brand, model);
+
+            // 滾動到表單
+            const formContainer = document.querySelector('.form-container');
+            if (formContainer) {
+                formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            console.log('✅ 已快速選擇車款:', brand, model);
+            break;
+        }
+    }
+
+    if (!found) {
+        // 如果沒找到精確匹配，嘗試用搜尋功能
+        if (searchInput) {
+            searchInput.value = model;
+            searchInput.dispatchEvent(new Event('input'));
+        }
+        console.log('⚠️ 未找到精確匹配，已填入搜尋框:', model);
+    }
+}
+
+// 在頁面載入時初始化熱門車款
+document.addEventListener('DOMContentLoaded', function() {
+    // 延遲載入，確保 car-data.js 已載入
+    setTimeout(initPopularCars, 500);
+});
+
+// 監聽車款選擇，記錄到歷史
+document.addEventListener('DOMContentLoaded', function() {
+    const carBrandSelect = document.getElementById('carBrand');
+    if (carBrandSelect) {
+        carBrandSelect.addEventListener('change', function() {
+            if (this.value && this.value !== 'no-brand') {
+                try {
+                    const carData = JSON.parse(this.value);
+                    if (carData.brand && carData.model) {
+                        recordCarSelection(carData.brand, carData.model);
+                    }
+                } catch (e) {
+                    // 忽略解析錯誤
+                }
+            }
+        });
+    }
+});

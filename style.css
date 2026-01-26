@@ -1938,3 +1938,181 @@ body::before {
         gap: 10px;
     }
 }
+
+/* ==================== 熱門車款排行樣式 ==================== */
+
+.popular-cars-section {
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+    border-radius: 12px;
+    margin: 15px;
+    padding: 15px;
+    border: 2px solid #ffc107;
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.2);
+}
+
+.popular-cars-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #ffc107;
+}
+
+.fire-icon {
+    font-size: 20px;
+    animation: fireFlicker 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes fireFlicker {
+    0% {
+        transform: scale(1) rotate(-5deg);
+    }
+    100% {
+        transform: scale(1.1) rotate(5deg);
+    }
+}
+
+.popular-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #d63384;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.popular-badge {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(255, 107, 107, 0.8);
+    }
+}
+
+.popular-cars-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.popular-car-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 20px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 13px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.popular-car-item:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    border-color: transparent;
+}
+
+.popular-car-item:active {
+    transform: translateY(0);
+}
+
+.popular-car-rank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.popular-car-item:nth-child(1) .popular-car-rank {
+    background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+    color: #8b4513;
+}
+
+.popular-car-item:nth-child(2) .popular-car-rank {
+    background: linear-gradient(135deg, #c0c0c0 0%, #a8a8a8 100%);
+    color: #4a4a4a;
+}
+
+.popular-car-item:nth-child(3) .popular-car-rank {
+    background: linear-gradient(135deg, #cd7f32 0%, #b87333 100%);
+    color: white;
+}
+
+.popular-car-item:nth-child(n+4) .popular-car-rank {
+    background: #f0f0f0;
+    color: #666;
+}
+
+.popular-car-item:hover .popular-car-rank {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+.popular-car-name {
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+}
+
+.popular-car-count {
+    font-size: 11px;
+    color: #6c757d;
+    opacity: 0.8;
+}
+
+.popular-car-item:hover .popular-car-count {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.popular-car-loading {
+    width: 100%;
+    text-align: center;
+    color: #6c757d;
+    padding: 10px;
+    font-size: 13px;
+}
+
+/* 響應式調整 */
+@media (max-width: 480px) {
+    .popular-cars-section {
+        margin: 10px;
+        padding: 12px;
+    }
+
+    .popular-car-item {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .popular-car-name {
+        max-width: 90px;
+    }
+
+    .popular-title {
+        font-size: 14px;
+    }
+}
