@@ -6,23 +6,70 @@
     <title>秒估車 - 快速汽車估價系統 | www.秒估車.com.tw</title>
     <link rel="stylesheet" href="style.css">
 
-    <!-- Google Analytics（如需使用請填入您的 GA4 追蹤 ID） -->
+    <!-- ========== 廣告追蹤設定區 ========== -->
+    <!--
+        📊 使用說明：
+        1. 填入您的追蹤 ID 後，系統會自動追蹤以下事件：
+           - PageView: 頁面瀏覽
+           - Lead: 表單送出（最重要的轉換事件）
+           - Contact: 點擊 LINE / 電話
+           - ViewContent: 查看估價結果
+
+        2. 取得追蹤 ID 的方式：
+           - GA4: Google Analytics → 管理 → 資料串流 → 評估 ID
+           - FB Pixel: Facebook 廣告管理員 → 事件管理工具 → 像素
+           - Google Ads: Google Ads → 工具 → 轉換 → 轉換 ID
+    -->
     <script>
-        // 請將 'G-XXXXXXXXXX' 替換為您的 Google Analytics 4 追蹤 ID
-        const GA_ID = ''; // 👈 填入您的 GA4 ID（例如：G-XXXXXXXXXX）
+        // ====== 請在這裡填入您的追蹤 ID ======
+        const GA_ID = '';           // 👈 Google Analytics 4（例如：G-XXXXXXXXXX）
+        const FB_PIXEL_ID = '';     // 👈 Facebook Pixel（例如：1234567890）
+        const GADS_ID = '';         // 👈 Google Ads 轉換 ID（例如：AW-1234567890）
+        const GADS_LABEL = '';      // 👈 Google Ads 轉換標籤（例如：AbCdEfGhIjK）
+        // =====================================
 
+        // Google Analytics 4
         if (GA_ID) {
-            // 載入 Google Analytics
-            const script1 = document.createElement('script');
-            script1.async = true;
-            script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-            document.head.appendChild(script1);
+            const gaScript = document.createElement('script');
+            gaScript.async = true;
+            gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+            document.head.appendChild(gaScript);
 
-            // 初始化 GA
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', GA_ID);
+
+            // 如果有 Google Ads ID，也一起設定
+            if (GADS_ID) {
+                gtag('config', GADS_ID);
+            }
+        }
+
+        // Facebook Pixel
+        if (FB_PIXEL_ID) {
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', FB_PIXEL_ID);
+            fbq('track', 'PageView');
+        }
+    </script>
+    <!-- Facebook Pixel noscript 備用 -->
+    <noscript>
+        <img height="1" width="1" style="display:none" id="fbPixelImg"
+            src="about:blank" />
+    </noscript>
+    <script>
+        // 動態設定 FB Pixel noscript 圖片
+        if (FB_PIXEL_ID) {
+            document.getElementById('fbPixelImg').src =
+                `https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`;
         }
     </script>
 </head>
@@ -399,7 +446,7 @@
                         </div>
 
                         <!-- 電話按鈕 -->
-                        <a href="tel:0911177619" class="phone-contact-btn">
+                        <a href="tel:0911177619" class="phone-contact-btn" onclick="trackContactEvent('phone')">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
                             </svg>

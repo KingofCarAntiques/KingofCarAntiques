@@ -13,8 +13,126 @@ const NOTIFICATION_EMAIL = 'a0911177619@yahoo.com.tw';
 // 電話號碼設定
 const PHONE_NUMBER = '0911177619'; // 收購專線電話號碼
 
-// Google Analytics ID（選填）
+// Google Analytics ID（選填）- 已移至 HTML 統一管理
 const GA_TRACKING_ID = ''; // 👈 如需使用 Google Analytics，請填入追蹤 ID（例如：G-XXXXXXXXXX）
+
+// ==================== 廣告追蹤工具函數 ====================
+
+/**
+ * 追蹤轉換事件（表單送出）
+ * @param {string} carBrand - 車款品牌
+ * @param {string} urgency - 急迫程度
+ */
+function trackLeadConversion(carBrand, urgency) {
+    const value = urgency === 'urgent' ? 100 : 50; // 急售客戶價值更高
+
+    // Google Analytics 4
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'generate_lead', {
+            'event_category': 'form',
+            'event_label': carBrand,
+            'value': value,
+            'currency': 'TWD'
+        });
+        console.log('📊 GA4 追蹤: generate_lead');
+    }
+
+    // Google Ads 轉換
+    if (typeof gtag !== 'undefined' && typeof GADS_ID !== 'undefined' && GADS_ID) {
+        gtag('event', 'conversion', {
+            'send_to': `${GADS_ID}/${GADS_LABEL}`,
+            'value': value,
+            'currency': 'TWD'
+        });
+        console.log('📊 Google Ads 追蹤: conversion');
+    }
+
+    // Facebook Pixel
+    if (typeof fbq !== 'undefined') {
+        fbq('track', 'Lead', {
+            content_name: carBrand,
+            value: value,
+            currency: 'TWD'
+        });
+        console.log('📊 FB Pixel 追蹤: Lead');
+    }
+}
+
+/**
+ * 追蹤聯絡事件（LINE / 電話）
+ * @param {string} method - 聯絡方式 ('line' 或 'phone')
+ * @param {string} carBrand - 車款品牌（選填）
+ */
+function trackContactEvent(method, carBrand = '') {
+    // Google Analytics 4
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'contact', {
+            'event_category': 'engagement',
+            'event_label': method,
+            'contact_method': method,
+            'car_brand': carBrand
+        });
+        console.log('📊 GA4 追蹤: contact -', method);
+    }
+
+    // Facebook Pixel
+    if (typeof fbq !== 'undefined') {
+        fbq('track', 'Contact', {
+            content_name: method,
+            content_category: carBrand || 'general'
+        });
+        console.log('📊 FB Pixel 追蹤: Contact -', method);
+    }
+}
+
+/**
+ * 追蹤估價查詢事件
+ * @param {string} carBrand - 車款品牌
+ * @param {number} estimatedPrice - 估價金額
+ */
+function trackEstimateView(carBrand, estimatedPrice) {
+    // Google Analytics 4
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'view_item', {
+            'event_category': 'estimate',
+            'event_label': carBrand,
+            'value': estimatedPrice,
+            'currency': 'TWD'
+        });
+        console.log('📊 GA4 追蹤: view_item (估價)');
+    }
+
+    // Facebook Pixel
+    if (typeof fbq !== 'undefined') {
+        fbq('track', 'ViewContent', {
+            content_name: carBrand,
+            value: estimatedPrice,
+            currency: 'TWD'
+        });
+        console.log('📊 FB Pixel 追蹤: ViewContent');
+    }
+}
+
+/**
+ * 追蹤自訂事件
+ * @param {string} eventName - 事件名稱
+ * @param {object} params - 事件參數
+ */
+function trackCustomEvent(eventName, params = {}) {
+    // Google Analytics 4
+    if (typeof gtag !== 'undefined') {
+        gtag('event', eventName, params);
+    }
+
+    // Facebook Pixel
+    if (typeof fbq !== 'undefined') {
+        fbq('trackCustom', eventName, params);
+    }
+
+    console.log('📊 自訂事件追蹤:', eventName, params);
+}
+
+// ==================== 原有程式碼 ====================
 
 // 防重複提交機制
 let lastSubmitTime = 0;
@@ -244,7 +362,10 @@ function handleFormSubmit(e) {
     // 3. 記錄提交時間（防重複提交）
     lastSubmitTime = currentTime;
 
-    // 4. Google Analytics 事件追蹤
+    // 4. 廣告追蹤（GA4 + FB Pixel + Google Ads）
+    trackLeadConversion(`${carData.brand} ${carData.model}`, urgency);
+
+    // 舊版 GA 事件追蹤（保留相容性）
     if (typeof gtag !== 'undefined') {
         gtag('event', 'form_submit', {
             'event_category': 'engagement',
@@ -488,14 +609,19 @@ tabs.forEach(tab => {
 function openLineChat() {
     // 如果有估價資訊，可以帶入預填訊息
     let message = '您好，我想諮詢汽車估價相關問題。';
+    let carBrand = '';
 
     if (currentEstimation) {
         message = `您好，我剛完成了 ${currentEstimation.car} 的估價（${currentEstimation.date}、${currentEstimation.mileage}萬公里），估價範圍為 NT$${currentEstimation.minPrice.toLocaleString()}-${currentEstimation.maxPrice.toLocaleString()}，想進一步諮詢。`;
+        carBrand = currentEstimation.car;
     }
 
     // 建立 LINE 官方帳號連結（含預填訊息）
     const encodedMessage = encodeURIComponent(message);
     const lineUrl = `${LINE_OFFICIAL_URL}?text=${encodedMessage}`;
+
+    // 廣告追蹤：LINE 點擊事件
+    trackContactEvent('line', carBrand);
 
     // 在新視窗開啟 LINE
     window.open(lineUrl, '_blank');
@@ -718,6 +844,9 @@ function displayQuickEstimate(carData, year, mileage, basePrice, retailPrice, pu
         零售價: (retailPrice / 10000).toFixed(1) + '萬',
         收購價: (purchasePrice / 10000).toFixed(1) + '萬'
     });
+
+    // 廣告追蹤：估價查詢事件
+    trackEstimateView(`${carData.brand} ${carData.model}`, purchasePrice);
 
     // 顯示車輛資訊
     document.getElementById('displayBrand').textContent = carData.brand || '-';
