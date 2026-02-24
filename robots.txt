@@ -1,0 +1,21 @@
+# robots.txt for 秒估車
+# https://kingofcarantiques.github.io/KingofCarAntiques/
+
+User-agent: *
+Allow: /
+
+# 網站地圖位置
+Sitemap: https://kingofcarantiques.github.io/KingofCarAntiques/sitemap.xml
+
+# 允許所有搜尋引擎爬取
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
