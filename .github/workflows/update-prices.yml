@@ -1,9 +1,9 @@
 # ===============================================
-# 秒估車 - 每月自動更新價格工作流程 v3.0
+# 秒估車 - 每月自動更新價格工作流程 v4.0
 # ===============================================
-# 📅 執行時間：每月1日凌晨 2:00 (台灣時間)
-# 🔄 功能：多來源爬取車價數據（8891、ABC好車網）
-# 🛡️ 特色：異常值過濾、加權平均、自動備份
+# 執行時間：每月1日凌晨 2:00 (台灣時間)
+# 功能：自動更新車輛價格（市場折舊率 + Google Sheets）
+# 特色：穩定可靠、不依賴爬蟲、支援手動觸發
 # ===============================================
 
 name: 每月自動更新車輛價格
@@ -13,7 +13,7 @@ on:
   schedule:
     - cron: '0 18 1 * *'  # UTC 18:00 = 台灣時間隔日 02:00
 
-  # 也可以手動觸發（用於測試）
+  # 手動觸發（用於測試）
   workflow_dispatch:
     inputs:
       debug_mode:
@@ -25,109 +25,89 @@ on:
           - 'true'
           - 'false'
 
+# 設定權限
+permissions:
+  contents: write
+
 jobs:
   update-car-prices:
     runs-on: ubuntu-latest
-    timeout-minutes: 60  # 最長執行60分鐘
+    timeout-minutes: 10  # 最長執行10分鐘（不需要爬蟲，執行很快）
 
     steps:
       # 1. 檢出代碼
-      - name: 📥 檢出代碼
+      - name: 檢出代碼
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 1
 
       # 2. 設定 Node.js 環境
-      - name: 🔧 設定 Node.js 18
+      - name: 設定 Node.js 20
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'npm'
-          cache-dependency-path: scripts/package.json
+          node-version: '20'
 
-      # 3. 安裝依賴套件
-      - name: 📦 安裝依賴套件
+      # 3. 執行價格更新（不需要 npm install，使用原生模組）
+      - name: 執行價格更新
         run: |
           cd scripts
-          npm ci || npm install
-          echo "✅ 依賴套件安裝完成"
-
-      # 4. 安裝 Puppeteer 所需的系統依賴
-      - name: 🔧 安裝 Puppeteer 系統依賴
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            libnss3 \
-            libnspr4 \
-            libatk1.0-0 \
-            libatk-bridge2.0-0 \
-            libcups2 \
-            libdrm2 \
-            libxkbcommon0 \
-            libxcomposite1 \
-            libxdamage1 \
-            libxfixes3 \
-            libxrandr2 \
-            libgbm1 \
-            libasound2
-          echo "✅ Puppeteer 系統依賴安裝完成"
-
-      # 5. 執行多來源價格爬蟲
-      - name: 🕷️ 執行多來源價格爬蟲
-        run: |
-          cd scripts
-          echo "🚀 開始執行價格爬蟲..."
-          node price-scraper-multi-source.js
+          echo "🚀 開始執行價格更新..."
+          node price-updater.js
         env:
           NODE_ENV: production
           GOOGLE_SHEET_CSV_URL: ${{ secrets.GOOGLE_SHEET_CSV_URL }}
           DEBUG_MODE: ${{ github.event.inputs.debug_mode }}
-        continue-on-error: false
 
-      # 6. 檢查是否有變更
-      - name: 🔍 檢查檔案變更
+      # 4. 檢查是否有變更
+      - name: 檢查檔案變更
         id: check_changes
         run: |
           if [[ -n $(git status --porcelain car-data.js) ]]; then
             echo "changes=true" >> $GITHUB_OUTPUT
             echo "✅ 檢測到 car-data.js 有變更"
-            git diff --stat car-data.js || true
+            git diff --stat car-data.js | head -20
           else
             echo "changes=false" >> $GITHUB_OUTPUT
             echo "ℹ️ car-data.js 無變更"
           fi
 
-      # 7. 上傳執行日誌（用於調試）
-      - name: 📋 上傳執行日誌
+      # 5. 上傳執行日誌
+      - name: 上傳執行日誌
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: scraper-logs-${{ github.run_number }}
+          name: update-logs-${{ github.run_number }}
           path: |
-            scripts/scraper.log
+            scripts/update.log
             scripts/price-results.json
           retention-days: 30
 
-      # 8. 提交變更
-      - name: 💾 提交價格更新
+      # 6. 提交變更
+      - name: 提交價格更新
         if: steps.check_changes.outputs.changes == 'true'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
           git add car-data.js
           git add scripts/price-results.json || true
-          COMMIT_MSG="🔄 自動更新車價 - $(TZ='Asia/Taipei' date +'%Y年%m月%d日')
 
-          📊 數據來源：8891汽車網、ABC好車網
-          🤖 由 GitHub Actions 自動執行"
+          # 取得台灣時間
+          TW_DATE=$(TZ='Asia/Taipei' date +'%Y年%m月%d日')
+          TW_TIME=$(TZ='Asia/Taipei' date +'%H:%M')
+
+          COMMIT_MSG="🔄 自動更新車價 - ${TW_DATE} ${TW_TIME}
+
+          📊 更新方式：市場折舊率計算
+          🤖 由 GitHub Actions 自動執行
+          🔗 執行編號: #${{ github.run_number }}"
 
           git commit -m "$COMMIT_MSG"
           git push
           echo "✅ 變更已提交並推送"
 
-      # 9. 執行結果摘要
-      - name: 📊 執行結果摘要
+      # 7. 執行結果摘要
+      - name: 執行結果摘要
         if: always()
         run: |
           echo "=========================================="
@@ -136,11 +116,24 @@ jobs:
           echo "執行時間: $(TZ='Asia/Taipei' date +'%Y-%m-%d %H:%M:%S') (台灣時間)"
           echo "觸發方式: ${{ github.event_name }}"
           echo "有變更: ${{ steps.check_changes.outputs.changes }}"
+          echo "執行編號: #${{ github.run_number }}"
           echo "=========================================="
 
-      # 10. 失敗通知
-      - name: 🚨 失敗通知
+          # 顯示價格結果摘要
+          if [ -f scripts/price-results.json ]; then
+            echo ""
+            echo "📈 價格更新統計："
+            cat scripts/price-results.json | head -30
+          fi
+
+      # 8. 失敗通知
+      - name: 失敗通知
         if: failure()
         run: |
           echo "❌ 價格更新失敗！"
           echo "請檢查執行日誌"
+          echo ""
+          echo "可能原因："
+          echo "1. car-data.js 格式錯誤"
+          echo "2. Google Sheets URL 無效"
+          echo "3. 權限問題"
