@@ -1328,13 +1328,23 @@ function setupNoBrandHandler() {
 }
 
 
-// ==================== 更新底部的「最後更新日期」 ====================
+// ==================== 更新底部的「最後更新日期」和「數據來源」 ====================
 
 function updateLastUpdateDate() {
     const lastUpdateElement = document.getElementById('lastUpdateDate');
-    if (lastUpdateElement && typeof carDataInfo !== 'undefined') {
-        lastUpdateElement.textContent = carDataInfo.lastUpdate;
-        console.log('✅ 已更新「最後更新日期」為:', carDataInfo.lastUpdate);
+    const dataSourceElement = document.getElementById('dataSourceText');
+
+    if (typeof carDataInfo !== 'undefined') {
+        // 更新日期
+        if (lastUpdateElement) {
+            lastUpdateElement.textContent = carDataInfo.lastUpdate;
+            console.log('✅ 已更新「最後更新日期」為:', carDataInfo.lastUpdate);
+        }
+        // 更新數據來源
+        if (dataSourceElement && carDataInfo.dataSource) {
+            dataSourceElement.textContent = carDataInfo.dataSource;
+            console.log('✅ 已更新「數據來源」為:', carDataInfo.dataSource);
+        }
     } else if (lastUpdateElement) {
         // 如果 carDataInfo 不存在，顯示預設值
         lastUpdateElement.textContent = '每月更新';
