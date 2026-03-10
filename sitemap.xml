@@ -3,7 +3,7 @@
     <!-- 主頁面 -->
     <url>
         <loc>https://kingofcarantiques.github.io/KingofCarAntiques/</loc>
-        <lastmod>2025-12-01</lastmod>
+        <lastmod>2026-03-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -11,7 +11,7 @@
     <!-- 估價頁面 -->
     <url>
         <loc>https://kingofcarantiques.github.io/KingofCarAntiques/car-valuation.html</loc>
-        <lastmod>2025-12-01</lastmod>
+        <lastmod>2026-03-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -19,7 +19,7 @@
     <!-- 首頁 -->
     <url>
         <loc>https://kingofcarantiques.github.io/KingofCarAntiques/index.html</loc>
-        <lastmod>2025-12-01</lastmod>
+        <lastmod>2026-03-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
