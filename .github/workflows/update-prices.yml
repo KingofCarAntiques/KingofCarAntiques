@@ -1,8 +1,8 @@
 # ===============================================
-# 秒估車 - 每月自動更新價格工作流程 v4.0
+# 秒估車 - 每月自動更新價格工作流程 v4.1
 # ===============================================
 # 執行時間：每月1日凌晨 2:00 (台灣時間)
-# 功能：自動更新車輛價格（市場折舊率 + Google Sheets）
+# 功能：自動更新車輛價格 + sitemap.xml 日期
 # 特色：穩定可靠、不依賴爬蟲、支援手動觸發
 # ===============================================
 
@@ -67,20 +67,28 @@ jobs:
           GOOGLE_SHEET_CSV_URL: ${{ secrets.GOOGLE_SHEET_CSV_URL }}
           DEBUG_MODE: ${{ github.event.inputs.debug_mode }}
 
-      # 4. 檢查是否有變更
+      # 4. 自動更新 sitemap.xml 日期
+      - name: 更新 sitemap.xml 日期
+        run: |
+          TODAY=$(date +'%Y-%m-%d')
+          echo "📅 更新 sitemap.xml lastmod 日期為: $TODAY"
+          sed -i "s/<lastmod>[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}<\/lastmod>/<lastmod>${TODAY}<\/lastmod>/g" sitemap.xml
+          echo "✅ sitemap.xml 已更新"
+
+      # 5. 檢查是否有變更
       - name: 檢查檔案變更
         id: check_changes
         run: |
-          if [[ -n $(git status --porcelain car-data.js) ]]; then
+          if [[ -n $(git status --porcelain car-data.js sitemap.xml) ]]; then
             echo "changes=true" >> $GITHUB_OUTPUT
-            echo "✅ 檢測到 car-data.js 有變更"
-            git diff --stat car-data.js | head -20
+            echo "✅ 檢測到檔案有變更"
+            git diff --stat car-data.js sitemap.xml | head -20
           else
             echo "changes=false" >> $GITHUB_OUTPUT
-            echo "ℹ️ car-data.js 無變更"
+            echo "ℹ️ 無檔案變更"
           fi
 
-      # 5. 上傳執行日誌
+      # 6. 上傳執行日誌
       - name: 上傳執行日誌
         if: always()
         uses: actions/upload-artifact@v4
@@ -91,22 +99,23 @@ jobs:
             scripts/price-results.json
           retention-days: 30
 
-      # 6. 提交變更
+      # 7. 提交變更
       - name: 提交價格更新
         if: steps.check_changes.outputs.changes == 'true'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
           git add car-data.js
+          git add sitemap.xml
           git add scripts/price-results.json || true
 
           # 取得台灣時間
           TW_DATE=$(TZ='Asia/Taipei' date +'%Y年%m月%d日')
           TW_TIME=$(TZ='Asia/Taipei' date +'%H:%M')
 
-          COMMIT_MSG="🔄 自動更新車價 - ${TW_DATE} ${TW_TIME}
+          COMMIT_MSG="🔄 自動更新車價 + sitemap - ${TW_DATE} ${TW_TIME}
 
-          📊 更新方式：市場折舊率計算
+          📊 更新內容：車價資料 + sitemap.xml
           🤖 由 GitHub Actions 自動執行
           🔗 執行編號: #${{ github.run_number }}"
 
@@ -114,7 +123,7 @@ jobs:
           git push
           echo "✅ 變更已提交並推送"
 
-      # 7. 執行結果摘要
+      # 8. 執行結果摘要
       - name: 執行結果摘要
         if: always()
         run: |
@@ -134,7 +143,7 @@ jobs:
             cat scripts/price-results.json | head -30
           fi
 
-      # 8. 失敗通知
+      # 9. 失敗通知
       - name: 失敗通知
         if: failure()
         run: |
