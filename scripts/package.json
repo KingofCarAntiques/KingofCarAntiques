@@ -1,22 +1,17 @@
 {
-  "name": "miaoguche-price-scraper",
-  "version": "3.0.0",
-  "description": "秒估車 - 多來源自動價格更新系統",
-  "main": "price-scraper-multi-source.js",
+  "name": "miaoguche-price-updater",
+  "version": "3.1.0",
+  "description": "秒估車 - 市場規則自動價格更新系統",
+  "main": "scraper-improved.js",
   "scripts": {
-    "scrape": "node price-scraper-multi-source.js",
-    "scrape:old": "node scraper-improved.js",
-    "update": "node update-car-data-improved.js",
-    "auto-update": "node price-scraper-multi-source.js",
-    "test": "node -e \"console.log('測試連接...');\" && node price-scraper-multi-source.js"
+    "update": "node scraper-improved.js && node update-car-data-improved.js",
+    "scrape:web": "node price-scraper-multi-source.js",
+    "test": "node scraper-improved.js"
   },
   "keywords": [
     "car",
     "price",
-    "scraper",
-    "automation",
-    "8891",
-    "multi-source"
+    "automation"
   ],
   "author": "秒估車",
   "license": "MIT",
