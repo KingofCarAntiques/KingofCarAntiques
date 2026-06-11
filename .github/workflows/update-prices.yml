@@ -123,7 +123,19 @@ jobs:
           git push
           echo "✅ 變更已提交並推送"
 
-      # 8. 執行結果摘要
+      # 8. 觸發 GitHub Pages 重新部署
+      - name: 觸發網站重新部署
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          echo "🚀 觸發 GitHub Pages 重新部署..."
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/static.yml/dispatches \
+            -d '{"ref":"main"}'
+          echo "✅ 已觸發部署，約 1 分鐘後網站更新"
+
+      # 9. 執行結果摘要
       - name: 執行結果摘要
         if: always()
         run: |
@@ -143,7 +155,7 @@ jobs:
             cat scripts/price-results.json | head -30
           fi
 
-      # 9. 失敗通知
+      # 10. 失敗通知
       - name: 失敗通知
         if: failure()
         run: |
