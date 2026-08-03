@@ -36,6 +36,7 @@ on:
 # 設定權限
 permissions:
   contents: write
+  actions: write  # 觸發 static.yml (Pages 部署) 所需，缺少此權限會導致下方 curl 靜默失敗
 
 jobs:
   update-car-prices:
@@ -128,12 +129,19 @@ jobs:
         if: steps.check_changes.outputs.changes == 'true'
         run: |
           echo "🚀 觸發 GitHub Pages 重新部署..."
-          curl -X POST \
+          HTTP_STATUS=$(curl -s -o /tmp/dispatch-response.txt -w "%{http_code}" -X POST \
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             https://api.github.com/repos/${{ github.repository }}/actions/workflows/static.yml/dispatches \
-            -d '{"ref":"main"}'
-          echo "✅ 已觸發部署，約 1 分鐘後網站更新"
+            -d '{"ref":"main"}')
+
+          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 300 ]; then
+            echo "✅ 已觸發部署（HTTP $HTTP_STATUS），約 1 分鐘後網站更新"
+          else
+            echo "❌ 觸發部署失敗！HTTP 狀態碼: $HTTP_STATUS"
+            cat /tmp/dispatch-response.txt
+            exit 1
+          fi
 
       # 9. 執行結果摘要
       - name: 執行結果摘要
