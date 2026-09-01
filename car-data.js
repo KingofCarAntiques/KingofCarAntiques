@@ -1,9 +1,9 @@
 const carDataInfo = {
-    lastUpdate: "2026年8月3日",
-    lastUpdateDate: "2026-08-03",
+    lastUpdate: "2026年9月1日",
+    lastUpdateDate: "2026-09-01",
     dataSource: "市場行情、折舊率計算（每月自動更新）",
-    totalBrands: 63,
-    totalModels: 2742
+    totalBrands: 65,
+    totalModels: 2757
 };
 const carDatabase = {
     "Audi奧迪": {
@@ -2998,6 +2998,42 @@ const carDatabase = {
             { name: "Born", basePrice: 1601345, depreciation: 0.18 },
             { name: "Tavascan", basePrice: 2006749, depreciation: 0.18 },
             { name: "Ateca", basePrice: 1601345, depreciation: 0.18 }
+        ]
+    },
+    "BYD比亞迪": {
+        models: [
+            { name: "海鷗 Seagull", basePrice: 420000, depreciation: 0.23 },
+            { name: "海豚 Dolphin", basePrice: 680000, depreciation: 0.22 },
+            { name: "海豚 Dolphin 長程版", basePrice: 750000, depreciation: 0.22 },
+            { name: "元PLUS Atto 3", basePrice: 880000, depreciation: 0.21 },
+            { name: "元PLUS Atto 3 長程版", basePrice: 950000, depreciation: 0.21 },
+            { name: "宋Plus DMi", basePrice: 780000, depreciation: 0.20 },
+            { name: "宋Plus DMi 旗艦版", basePrice: 860000, depreciation: 0.20 },
+            { name: "驅逐艦05", basePrice: 850000, depreciation: 0.20 },
+            { name: "海豹 Seal", basePrice: 980000, depreciation: 0.21 },
+            { name: "海豹 Seal 長程版", basePrice: 1080000, depreciation: 0.21 },
+            { name: "海豹 Seal 四驅旗艦版", basePrice: 1200000, depreciation: 0.20 },
+            { name: "海豹U Seal U", basePrice: 920000, depreciation: 0.21 },
+            { name: "宋L", basePrice: 1100000, depreciation: 0.20 },
+            { name: "漢 Han EV", basePrice: 1250000, depreciation: 0.20 },
+            { name: "漢 Han EV 長程版", basePrice: 1380000, depreciation: 0.20 },
+            { name: "唐 Tang EV", basePrice: 1380000, depreciation: 0.20 },
+            { name: "唐 Tang EV 六座", basePrice: 1480000, depreciation: 0.20 },
+            { name: "仰望U8", basePrice: 3500000, depreciation: 0.18 }
+        ]
+    },
+    "Polestar極星": {
+        models: [
+            { name: "Polestar 2", basePrice: 1650000, depreciation: 0.21 },
+            { name: "Polestar 2 長程單馬達", basePrice: 1750000, depreciation: 0.21 },
+            { name: "Polestar 2 長程雙馬達", basePrice: 1950000, depreciation: 0.20 },
+            { name: "Polestar 2 Performance", basePrice: 2100000, depreciation: 0.20 },
+            { name: "Polestar 3", basePrice: 2300000, depreciation: 0.20 },
+            { name: "Polestar 3 長程雙馬達", basePrice: 2500000, depreciation: 0.20 },
+            { name: "Polestar 3 Performance", basePrice: 2800000, depreciation: 0.19 },
+            { name: "Polestar 4", basePrice: 1950000, depreciation: 0.20 },
+            { name: "Polestar 4 長程後輪驅動", basePrice: 2050000, depreciation: 0.20 },
+            { name: "Polestar 4 長程雙馬達", basePrice: 2250000, depreciation: 0.19 }
         ]
     }
 };
