@@ -671,35 +671,52 @@ function currentSlide(n) {
     startAutoSlide();
 }
 
-// 顯示幻燈片
+// 顯示幻燈片（橫向滑動版）
 function showSlide(n) {
     const slides = document.getElementsByClassName('car-slide');
     const dots = document.getElementsByClassName('dot');
+    const slidesContainer = document.getElementById('carSlides');
 
-    if (n > slides.length) {
-        currentSlideIndex = 1;
-    }
-    if (n < 1) {
-        currentSlideIndex = slides.length;
+    if (n > slides.length) currentSlideIndex = 1;
+    if (n < 1) currentSlideIndex = slides.length;
+
+    // 橫向滑動
+    if (slidesContainer) {
+        slidesContainer.style.transform = `translateX(-${(currentSlideIndex - 1) * 100}%)`;
     }
 
-    // 隱藏所有幻燈片
+    // Ken Burns 效果：只有當前張放大
     for (let i = 0; i < slides.length; i++) {
-        slides[i].classList.remove('active');
+        slides[i].classList.remove('ken-active');
+    }
+    if (slides[currentSlideIndex - 1]) {
+        slides[currentSlideIndex - 1].classList.add('ken-active');
     }
 
-    // 移除所有點的 active 狀態
+    // 更新指示點
     for (let i = 0; i < dots.length; i++) {
         dots[i].classList.remove('active');
-    }
-
-    // 顯示當前幻燈片
-    if (slides[currentSlideIndex - 1]) {
-        slides[currentSlideIndex - 1].classList.add('active');
     }
     if (dots[currentSlideIndex - 1]) {
         dots[currentSlideIndex - 1].classList.add('active');
     }
+
+    // 重置進度條
+    resetCarouselProgress();
+}
+
+// 重置進度條動畫
+function resetCarouselProgress() {
+    const fill = document.getElementById('carouselProgress');
+    if (!fill) return;
+    fill.style.transition = 'none';
+    fill.style.width = '0%';
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            fill.style.transition = 'width 4s linear';
+            fill.style.width = '100%';
+        });
+    });
 }
 
 // 自動輪播
@@ -707,7 +724,7 @@ function startAutoSlide() {
     autoSlideInterval = setInterval(() => {
         currentSlideIndex++;
         showSlide(currentSlideIndex);
-    }, 4000); // 每4秒切換
+    }, 4000);
 }
 
 // 停止自動輪播
