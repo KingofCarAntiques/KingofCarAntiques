@@ -19,7 +19,7 @@ permissions:
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   # Single deploy job since we're just deploying
@@ -41,12 +41,13 @@ jobs:
           echo "Updated sitemap.xml lastmod to ${TODAY}"
 
       - name: Commit sitemap changes
+        timeout-minutes: 2
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add sitemap.xml
           git diff --staged --quiet || git commit -m "🤖 自動更新 sitemap 日期"
-          git push || echo "No changes to push"
+          git push origin HEAD || echo "No changes to push"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
