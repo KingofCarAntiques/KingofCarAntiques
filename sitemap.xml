@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <!-- 主頁面 -->
+    <!-- 銝駁???-->
     <url>
         <loc>https://kingofcarantiques.github.io/KingofCarAntiques/</loc>
         <lastmod>2026-09-01</lastmod>
@@ -8,7 +8,7 @@
         <priority>1.0</priority>
     </url>
 
-    <!-- 估價頁面 -->
+    <!-- 隡啣? -->
     <url>
         <loc>https://kingofcarantiques.github.io/KingofCarAntiques/car-valuation.html</loc>
         <lastmod>2026-09-01</lastmod>
@@ -16,7 +16,7 @@
         <priority>1.0</priority>
     </url>
 
-    <!-- 首頁 -->
+    <!-- 擐? -->
     <url>
         <loc>https://kingofcarantiques.github.io/KingofCarAntiques/index.html</loc>
         <lastmod>2026-09-01</lastmod>
@@ -24,3 +24,4 @@
         <priority>0.8</priority>
     </url>
 </urlset>
+
