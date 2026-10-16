@@ -99,7 +99,7 @@
     -->
     <script>
         // ====== 請在這裡填入您的追蹤 ID ======
-        const GA_ID = '';           // 👈 Google Analytics 4（例如：G-XXXXXXXXXX）
+        const GA_ID = 'G-SVWZZ963NN'; // 👈 Google Analytics 4（例如：G-XXXXXXXXXX）
         const FB_PIXEL_ID = '';     // 👈 Facebook Pixel（例如：1234567890）
         const GADS_ID = '';         // 👈 Google Ads 轉換 ID（例如：AW-1234567890）
         const GADS_LABEL = '';      // 👈 Google Ads 轉換標籤（例如：AbCdEfGhIjK）
@@ -113,7 +113,7 @@
             document.head.appendChild(gaScript);
 
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            window.gtag = function(){dataLayer.push(arguments);};
             gtag('js', new Date());
             gtag('config', GA_ID);
 
