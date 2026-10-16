@@ -249,6 +249,13 @@ function handleFormSubmit(e) {
         return;
     }
 
+    const contactPhoneInput = document.getElementById('contactPhone')?.value || '';
+    if (contactPhoneInput && !isValidTwPhone(contactPhoneInput)) {
+        alert('請輸入正確的電話號碼\n手機：0912345678\n市話：02-12345678');
+        document.getElementById('contactPhone').focus();
+        return;
+    }
+
     // 解析車款資料
     const carData = JSON.parse(carBrandSelect.value);
 
@@ -391,6 +398,12 @@ function handleFormSubmit(e) {
 
     // 顯示提示訊息
     alert('✅ 您的資料已送出！\n\n即將開啟 LINE 對話視窗\n我們會為您提供專業的估價服務！');
+}
+
+// 驗證台灣電話號碼（手機 09xxxxxxxx 或市話 0x-xxxxxxx，允許 - 和空白）
+function isValidTwPhone(phone) {
+    const digits = phone.replace(/[\s\-()]/g, '');
+    return /^09\d{8}$/.test(digits) || /^0[2-8]\d{7,8}$/.test(digits);
 }
 
 // 儲存資料到 Google 試算表
@@ -575,6 +588,12 @@ function handleConsultSubmit(e) {
     const userEmail = document.getElementById('userEmail').value;
     const preferTime = document.getElementById('preferTime').value;
     const userNote = document.getElementById('userNote').value;
+
+    if (!isValidTwPhone(userPhone)) {
+        alert('請輸入正確的電話號碼\n手機：0912345678\n市話：02-12345678');
+        document.getElementById('userPhone').focus();
+        return;
+    }
 
     // 建立諮詢資料
     const consultData = {
@@ -1174,10 +1193,14 @@ function setupCarSearch() {
 
     console.log(`✅ 車款搜尋功能初始化完成，共 ${allCarOptions.length} 個車款`);
 
-    // 監聽搜尋輸入
+    // 監聽搜尋輸入（debounce：停止輸入 300ms 後才搜尋）
+    let searchTimer;
     searchInput.addEventListener('input', function() {
         const keyword = this.value.trim();
-        filterCarOptions(keyword, carBrandSelect, resultCount);
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => {
+            filterCarOptions(keyword, carBrandSelect, resultCount);
+        }, 300);
     });
 
     // 清空搜尋框時還原所有選項
