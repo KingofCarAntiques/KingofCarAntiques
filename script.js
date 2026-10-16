@@ -338,9 +338,7 @@ function handleFormSubmit(e) {
     }
 
     lineMessage += `\n希望了解更詳細的估價資訊，謝謝！`;
-
-    // 取得已上傳的照片 URL
-    const photoUrls = typeof getUploadedPhotoUrls === 'function' ? getUploadedPhotoUrls() : [];
+    lineMessage += `\n📷 車輛照片將在此對話中傳送`;
 
     // 準備要儲存的資料
     const formData = {
@@ -358,7 +356,6 @@ function handleFormSubmit(e) {
         contactPhone: contactPhone,
         lineId: lineId,
         contactEmail: contactEmail,
-        photoUrls: photoUrls,
         timestamp: new Date().toLocaleString('zh-TW')
     };
 
@@ -390,11 +387,6 @@ function handleFormSubmit(e) {
         const lineUrl = `${LINE_OFFICIAL_URL}?text=${encodeURIComponent(lineMessage)}`;
         window.open(lineUrl, '_blank');
     }, 500);
-
-    // 6. 清除已上傳的照片
-    if (typeof clearAllPhotos === 'function') {
-        clearAllPhotos();
-    }
 
     // 顯示提示訊息
     alert('✅ 您的資料已送出！\n\n即將開啟 LINE 對話視窗\n我們會為您提供專業的估價服務！');
@@ -448,12 +440,7 @@ function sendEmailNotification(data) {
     emailData.append('Line ID', data.lineId || '未填寫');
     emailData.append('Email', data.contactEmail || '未填寫');
 
-    // 加入照片連結
-    if (data.photoUrls && data.photoUrls.length > 0) {
-        emailData.append('車輛照片', data.photoUrls.join('\n'));
-    } else {
-        emailData.append('車輛照片', '未上傳');
-    }
+    emailData.append('車輛照片', '請至 LINE 對話查看');
 
     fetch(`https://formsubmit.co/ajax/${NOTIFICATION_EMAIL}`, {
         method: 'POST',
@@ -983,11 +970,6 @@ function resetQuickEstimate() {
     equipmentCheckboxes.forEach(checkbox => {
         checkbox.checked = false;
     });
-
-    // 清空已上傳的照片
-    if (typeof clearAllPhotos === 'function') {
-        clearAllPhotos();
-    }
 
     // 平滑滾動到表單頂部
     const formContainer = document.querySelector('.form-container');
@@ -1608,245 +1590,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
-// ==================== 照片上傳功能 ====================
-
-// Imgur Client ID（免費匿名上傳）
-const IMGUR_CLIENT_ID = 'f9b8e2a12b1c8d3'; // 公用 Client ID
-
-// 存放上傳的照片 URL
-let uploadedPhotos = [];
-const MAX_PHOTOS = 6;
-const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
-
-// 初始化照片上傳功能
-document.addEventListener('DOMContentLoaded', function() {
-    const uploadArea = document.getElementById('photoUploadArea');
-    const photoInput = document.getElementById('photoInput');
-    const previewContainer = document.getElementById('photoPreviewContainer');
-
-    if (!uploadArea || !photoInput) {
-        console.log('📷 照片上傳元素未找到，跳過初始化');
-        return;
-    }
-
-    // 點擊上傳區域觸發檔案選擇
-    uploadArea.addEventListener('click', () => {
-        if (uploadedPhotos.length < MAX_PHOTOS) {
-            photoInput.click();
-        } else {
-            alert(`最多只能上傳 ${MAX_PHOTOS} 張照片`);
-        }
-    });
-
-    // 檔案選擇後處理
-    photoInput.addEventListener('change', (e) => {
-        handleFiles(e.target.files);
-        photoInput.value = ''; // 清空，允許重複選擇同一檔案
-    });
-
-    // 拖曳上傳
-    uploadArea.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        uploadArea.classList.add('drag-over');
-    });
-
-    uploadArea.addEventListener('dragleave', (e) => {
-        e.preventDefault();
-        uploadArea.classList.remove('drag-over');
-    });
-
-    uploadArea.addEventListener('drop', (e) => {
-        e.preventDefault();
-        uploadArea.classList.remove('drag-over');
-        handleFiles(e.dataTransfer.files);
-    });
-
-    console.log('📷 照片上傳功能已初始化');
-});
-
-// 處理選擇的檔案
-function handleFiles(files) {
-    const statusEl = document.getElementById('photoUploadStatus');
-
-    for (let file of files) {
-        // 檢查數量限制
-        if (uploadedPhotos.length >= MAX_PHOTOS) {
-            alert(`最多只能上傳 ${MAX_PHOTOS} 張照片`);
-            break;
-        }
-
-        // 檢查檔案類型
-        if (!file.type.match(/^image\/(jpeg|png|webp)$/)) {
-            alert(`不支援的檔案格式：${file.name}\n請上傳 JPG、PNG 或 WebP 格式`);
-            continue;
-        }
-
-        // 檢查檔案大小
-        if (file.size > MAX_FILE_SIZE) {
-            alert(`檔案太大：${file.name}\n請上傳 5MB 以下的照片`);
-            continue;
-        }
-
-        // 顯示上傳中狀態
-        statusEl.textContent = `正在上傳 ${file.name}...`;
-        statusEl.className = 'photo-upload-status uploading';
-
-        // 上傳到 Imgur
-        uploadToImgur(file);
-    }
-}
-
-// 上傳到 Imgur
-async function uploadToImgur(file) {
-    const statusEl = document.getElementById('photoUploadStatus');
-
-    try {
-        const formData = new FormData();
-        formData.append('image', file);
-
-        const response = await fetch('https://api.imgur.com/3/image', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Client-ID ${IMGUR_CLIENT_ID}`
-            },
-            body: formData
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-            const photoData = {
-                url: result.data.link,
-                deleteHash: result.data.deletehash,
-                name: file.name
-            };
-
-            uploadedPhotos.push(photoData);
-            addPhotoPreview(photoData);
-
-            statusEl.textContent = `已上傳 ${uploadedPhotos.length}/${MAX_PHOTOS} 張照片`;
-            statusEl.className = 'photo-upload-status success';
-
-            console.log('📷 照片上傳成功:', photoData.url);
-        } else {
-            throw new Error(result.data?.error || '上傳失敗');
-        }
-    } catch (error) {
-        console.error('📷 上傳失敗:', error);
-        statusEl.textContent = `上傳失敗：${error.message}`;
-        statusEl.className = 'photo-upload-status error';
-
-        // 3 秒後清除錯誤訊息
-        setTimeout(() => {
-            if (uploadedPhotos.length > 0) {
-                statusEl.textContent = `已上傳 ${uploadedPhotos.length}/${MAX_PHOTOS} 張照片`;
-                statusEl.className = 'photo-upload-status success';
-            } else {
-                statusEl.textContent = '';
-                statusEl.className = 'photo-upload-status';
-            }
-        }, 3000);
-    }
-}
-
-// 新增照片預覽
-function addPhotoPreview(photoData) {
-    const container = document.getElementById('photoPreviewContainer');
-    const index = uploadedPhotos.length - 1;
-
-    const previewItem = document.createElement('div');
-    previewItem.className = 'photo-preview-item';
-    previewItem.setAttribute('data-index', index);
-
-    previewItem.innerHTML = `
-        <img src="${photoData.url}" alt="車輛照片 ${index + 1}">
-        <button type="button" class="remove-photo" onclick="removePhoto(${index})">✕</button>
-        <div class="photo-label">照片 ${index + 1}</div>
-    `;
-
-    container.appendChild(previewItem);
-
-    // 更新上傳區域顯示
-    updateUploadAreaVisibility();
-}
-
-// 移除照片
-function removePhoto(index) {
-    const statusEl = document.getElementById('photoUploadStatus');
-
-    // 從陣列移除
-    uploadedPhotos.splice(index, 1);
-
-    // 重新渲染預覽
-    rerenderPhotoPreviews();
-
-    // 更新狀態
-    if (uploadedPhotos.length > 0) {
-        statusEl.textContent = `已上傳 ${uploadedPhotos.length}/${MAX_PHOTOS} 張照片`;
-        statusEl.className = 'photo-upload-status success';
-    } else {
-        statusEl.textContent = '';
-        statusEl.className = 'photo-upload-status';
-    }
-
-    console.log('📷 照片已移除，剩餘:', uploadedPhotos.length);
-}
-
-// 重新渲染照片預覽
-function rerenderPhotoPreviews() {
-    const container = document.getElementById('photoPreviewContainer');
-    container.innerHTML = '';
-
-    uploadedPhotos.forEach((photo, index) => {
-        const previewItem = document.createElement('div');
-        previewItem.className = 'photo-preview-item';
-        previewItem.setAttribute('data-index', index);
-
-        previewItem.innerHTML = `
-            <img src="${photo.url}" alt="車輛照片 ${index + 1}">
-            <button type="button" class="remove-photo" onclick="removePhoto(${index})">✕</button>
-            <div class="photo-label">照片 ${index + 1}</div>
-        `;
-
-        container.appendChild(previewItem);
-    });
-
-    updateUploadAreaVisibility();
-}
-
-// 更新上傳區域顯示
-function updateUploadAreaVisibility() {
-    const uploadArea = document.getElementById('photoUploadArea');
-    const placeholder = document.getElementById('uploadPlaceholder');
-
-    if (uploadedPhotos.length >= MAX_PHOTOS) {
-        placeholder.innerHTML = `
-            <span class="upload-icon">✅</span>
-            <span class="upload-text">已達上傳上限 (${MAX_PHOTOS} 張)</span>
-            <span class="upload-formats">如需更換，請先刪除現有照片</span>
-        `;
-    } else {
-        placeholder.innerHTML = `
-            <span class="upload-icon">📷</span>
-            <span class="upload-text">點擊或拖曳照片到此處</span>
-            <span class="upload-formats">支援 JPG、PNG（每張最大 5MB）</span>
-        `;
-    }
-}
-
-// 取得已上傳照片的 URL 列表
-function getUploadedPhotoUrls() {
-    return uploadedPhotos.map(p => p.url);
-}
-
-// 清空所有照片
-function clearAllPhotos() {
-    uploadedPhotos = [];
-    rerenderPhotoPreviews();
-    const statusEl = document.getElementById('photoUploadStatus');
-    if (statusEl) {
-        statusEl.textContent = '';
-        statusEl.className = 'photo-upload-status';
-    }
-}
